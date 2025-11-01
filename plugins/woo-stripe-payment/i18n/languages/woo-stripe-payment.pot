@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Payment Plugins for Stripe WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Payment Plugins for Stripe WooCommerce 3.3.94\n"
+"Project-Id-Version: Payment Plugins for Stripe WooCommerce 3.3.95\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-stripe-payment\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-15T01:51:37+00:00\n"
+"POT-Creation-Date: 2025-10-29T16:13:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woo-stripe-payment\n"
@@ -427,7 +427,7 @@ msgstr ""
 #: includes/admin/meta-boxes/views/html-product-data.php:46
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:156
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:68
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:271
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:276
 #: includes/gateways/class-wc-payment-gateway-stripe-link.php:77
 #: includes/gateways/class-wc-payment-gateway-stripe-mobilepay.php:41
 #: includes/gateways/settings/applepay-settings.php:62
@@ -540,7 +540,7 @@ msgstr ""
 #: includes/admin/meta-boxes/views/html-product-data.php:15
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:152
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:64
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:267
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:272
 #: includes/gateways/class-wc-payment-gateway-stripe-link.php:73
 #: includes/gateways/class-wc-payment-gateway-stripe-mobilepay.php:37
 #: includes/gateways/settings/applepay-settings.php:58
@@ -554,7 +554,7 @@ msgstr ""
 #: includes/admin/meta-boxes/views/html-product-data.php:48
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:157
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:69
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:272
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:277
 #: includes/gateways/class-wc-payment-gateway-stripe-link.php:78
 #: includes/gateways/class-wc-payment-gateway-stripe-mobilepay.php:42
 #: includes/gateways/settings/applepay-settings.php:63
@@ -1324,7 +1324,7 @@ msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:160
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:72
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:275
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:280
 #: includes/gateways/class-wc-payment-gateway-stripe-link.php:81
 #: includes/gateways/class-wc-payment-gateway-stripe-mobilepay.php:45
 #: includes/gateways/settings/applepay-settings.php:66
@@ -1335,7 +1335,7 @@ msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:165
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:77
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:280
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:285
 #: includes/gateways/class-wc-payment-gateway-stripe-link.php:85
 #: includes/gateways/settings/ach-settings.php:67
 #: includes/gateways/settings/applepay-settings.php:83
@@ -1347,7 +1347,7 @@ msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:168
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:80
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:283
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:288
 #: includes/gateways/class-wc-payment-gateway-stripe-link.php:88
 #: includes/gateways/settings/ach-settings.php:70
 #: includes/gateways/settings/applepay-settings.php:86
@@ -1361,7 +1361,7 @@ msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:170
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:82
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:285
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:290
 #: includes/gateways/class-wc-payment-gateway-stripe-link.php:89
 #: includes/gateways/settings/ach-settings.php:72
 #: includes/gateways/settings/applepay-settings.php:88
@@ -1373,19 +1373,19 @@ msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:175
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:100
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:301
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:306
 msgid "Message Sections"
 msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:178
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:103
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:304
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:309
 msgid "Checkout page"
 msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:179
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:104
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:305
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:310
 #: includes/gateways/class-wc-payment-gateway-stripe-link.php:56
 #: includes/gateways/settings/applepay-settings.php:73
 #: includes/gateways/settings/googlepay-settings.php:92
@@ -1395,7 +1395,7 @@ msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:180
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:105
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:306
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:311
 #: includes/gateways/class-wc-payment-gateway-stripe-link.php:57
 #: includes/gateways/settings/applepay-settings.php:74
 #: includes/gateways/settings/googlepay-settings.php:93
@@ -1405,7 +1405,7 @@ msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:181
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:107
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:307
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:312
 msgid "Shop/Category Page"
 msgstr ""
 
@@ -1526,13 +1526,13 @@ msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:277
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:244
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:319
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:324
 msgid "Below Total"
 msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:278
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:245
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:320
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:325
 msgid "Below Checkout Button"
 msgstr ""
 
@@ -1542,15 +1542,15 @@ msgstr ""
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:248
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:319
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:389
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:323
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:335
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:346
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:328
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:340
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:351
 msgid "This option controls the location in which the messaging for the payment method will appear."
 msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:330
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:314
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:330
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:335
 msgid "Above Price"
 msgstr ""
 
@@ -1558,8 +1558,8 @@ msgstr ""
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:384
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:315
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:385
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:331
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:342
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:336
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:347
 msgid "Below Price"
 msgstr ""
 
@@ -1567,8 +1567,8 @@ msgstr ""
 #: includes/gateways/class-wc-payment-gateway-stripe-affirm.php:385
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:316
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:386
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:332
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:343
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:337
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:348
 msgid "Below Add to Cart"
 msgstr ""
 
@@ -1600,7 +1600,7 @@ msgstr ""
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:185
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:255
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:326
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:289
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:294
 #: includes/gateways/settings/googlepay-settings.php:118
 msgid "Icon"
 msgstr ""
@@ -1668,7 +1668,7 @@ msgstr ""
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:195
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:265
 #: includes/gateways/class-wc-payment-gateway-stripe-afterpay.php:336
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:297
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:302
 msgid "This is the icon style that appears next to the gateway on the checkout page."
 msgstr ""
 
@@ -1877,6 +1877,18 @@ msgstr ""
 msgid "Payment Method Display"
 msgstr ""
 
+#: includes/gateways/class-wc-payment-gateway-stripe-billie.php:25
+msgid "Billie"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-billie.php:26
+msgid "Billie (Stripe) by Payment Plugins"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-billie.php:27
+msgid "Billie gateway that integrates with your Stripe account."
+msgstr ""
+
 #: includes/gateways/class-wc-payment-gateway-stripe-blik.php:26
 msgid "BLIK"
 msgstr ""
@@ -2061,87 +2073,87 @@ msgstr ""
 msgid "Ideal gateway that integrates with your Stripe account."
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:129
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:134
 msgid "Klarna"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:131
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:136
 msgid "Klarna (Stripe) by Payment Plugins"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:132
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:137
 msgid "Klarna gateway that integrates with your Stripe account."
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:292
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:297
 msgid "Black text"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:293
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:298
 msgid "Pink background black text"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:311
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:316
 msgid "These are the sections where the Klarna messaging will be enabled."
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:315
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:320
 msgid "Cart Message Location"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:326
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:331
 msgid "Product Message Location"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:338
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:343
 msgid "Shop/Category Message Location"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:429
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:437
 msgid "The rules for Klarna are as follows:"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:430
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:439
 msgid "Learn more"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:433
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:442
 msgid "For EEA, UK, and Switzerland accounts:"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:435
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:444
 msgid "You can offer Klarna if:"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:437
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:446
 msgid "Your Stripe account is based in EEA, UK, or Switzerland"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:438
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:447
 msgid "Your customer is located in EEA, UK, or Switzerland"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:439
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:448
 msgid "Your store currency matches the customer's local currency"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:443
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:452
 msgid "For all other countries:"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:445
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:454
 msgid "Transactions are only allowed when:"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:447
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:456
 msgid "Your customer is in the same country as your Stripe account"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:448
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:457
 msgid "Your store currency matches your country's currency"
 msgstr ""
 
-#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:453
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:462
 msgid "Example: If your Stripe account is US-based, your customer must be in the US and your store must use USD."
 msgstr ""
 
@@ -3678,8 +3690,8 @@ msgstr ""
 msgid "Your PHP version is %s but Stripe requires version 5.6+."
 msgstr ""
 
-#: templates/cart/payment-methods.php:13
-#: templates/cart/payment-methods.php:28
+#: templates/cart/payment-methods.php:14
+#: templates/cart/payment-methods.php:29
 msgid "or"
 msgstr ""
 

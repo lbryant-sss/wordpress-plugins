@@ -4,7 +4,7 @@ Donate link: https://zipaddr2.com/wordpress/
 Tags: zipaddr, zip, address, ajax, cross-domain
 Requires at least: 3.7
 Tested up to: 6.8
-Stable tag: 1.40
+Stable tag: 1.41
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ Nothing in particular.
 1. https://zipaddr2.com/wordpress/popup.png
 
 == Changelog ==
+= 1.41 =
+We supported JetFormBuilder.
+
 = 1.40 =
 We reviewed our best practices and security checks.
 

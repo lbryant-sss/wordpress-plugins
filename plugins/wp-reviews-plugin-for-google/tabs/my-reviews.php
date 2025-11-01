@@ -228,7 +228,7 @@ echo esc_html(sprintf(__('Automatic review update, creating unlimited review wid
 <td class="ti-text-center source-<?php echo esc_attr(ucfirst("google")); ?>"><?php echo wp_kses_post(trustindex_plugin_write_rating_stars($review->rating)); ?></td>
 <td class="ti-text-center"><?php echo esc_html($review->date); ?></td>
 <td>
-<div class="ti-review-content"><?php echo wp_kses_post($reviewText); ?></div>
+<div class="ti-review-content"><?php echo wp_kses_post($reviewText ? $reviewText : ""); ?></div>
 <?php
 
 $state = 'reply';

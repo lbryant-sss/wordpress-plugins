@@ -1,4 +1,9 @@
 <?php
+declare( strict_types = 1 );
+
+//phpcs:disable VariableAnalysis
+// There are "undefined" variables here because they're defined in the code that includes this file as a template.
+
 $tick_icon = '<svg class="akismet-setup-instructions__icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
   <circle cx="24" cy="24" r="22" fill="#2E7D32"/>
   <path d="M16 24l6 6 12-14" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -59,12 +64,15 @@ $tick_icon = '<svg class="akismet-setup-instructions__icon" width="48" height="4
 	</ul>
 
 	<?php
-	Akismet::view(
-		'get',
-		array(
-			'text'    => __( 'Get started', 'akismet' ),
-			'classes' => array( 'akismet-button', 'akismet-is-primary', 'akismet-setup-instructions__button' ),
-		)
-	);
+	if ( empty( $use_jetpack_connection ) ) :
+		Akismet::view(
+			'get',
+			array(
+				'text'    => __( 'Get started', 'akismet' ),
+				'classes' => array( 'akismet-button', 'akismet-is-primary', 'akismet-setup-instructions__button' ),
+				'utm_content' => 'setup_instructions',
+			)
+		);
+	endif;
 	?>
 </section>

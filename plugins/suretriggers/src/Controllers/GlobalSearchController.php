@@ -6945,14 +6945,35 @@ Cc:johnDoe@xyz.com Bcc:johnDoe@xyz.com',
 				$order_id = $orders[0]->get_id();
 				$order    = wc_get_order( $order_id );
 				if ( $order instanceof \WC_Order ) {
-					$user_id                  = $order->get_customer_id();
-					$order_context            = WooCommerce::get_order_context( $order_id );
-					$order_sample_data        = array_merge(
-						isset( $order_context ) ? $order_context : [],
-						WordPress::get_user_context( $user_id )
-					);
-					$context['response_type'] = 'live';
+					$user_id                               = $order->get_customer_id();
+					$order_context                         = WooCommerce::get_order_context( $order_id );
+										$order_sample_data = array_merge(
+											isset( $order_context ) ? $order_context : [],
+											WordPress::get_user_context( $user_id )
+										);
+					$context['response_type']              = 'live';
 				}
+			}
+			
+			// Add dummy coupon details if no coupons exist in the order.
+			if ( ! isset( $order_sample_data ) ) {
+				$order_sample_data = [];
+			}
+			if ( ! isset( $order_sample_data['coupons'] ) || empty( $order_sample_data['coupons'] ) ) {
+				$order_sample_data['coupons'] = [
+					[
+						'code_name'     => 'SAMPLE10',
+						'discount_type' => 'percent',
+						'coupon_amount' => '10',
+						'meta_data'     => [],
+					],
+					[
+						'code_name'     => 'SAMPLE20',
+						'discount_type' => 'fixed_cart',
+						'coupon_amount' => '20',
+						'meta_data'     => [],
+					],
+				];
 			}
 			
 			$context['pluggable_data'] = $order_sample_data;
@@ -22302,12 +22323,38 @@ Cc:johnDoe@xyz.com Bcc:johnDoe@xyz.com',
 						$payment_gateway = get_post_meta( $booking_id, 'wp_travel_engine_booking_payment_gateway', true );
 						$payment_details = get_post_meta( $booking_id, 'wp_travel_engine_booking_payment_details', true );
 						
+						$coupon_details = [];
+						$cart_info      = get_post_meta( $booking_id, 'cart_info', true );
+						
+						if ( ! empty( $cart_info ) && is_array( $cart_info ) && isset( $cart_info['discounts'] ) ) {
+							foreach ( $cart_info['discounts'] as $discount ) {
+								if ( isset( $discount['name'] ) ) {
+									$coupon_details[] = [
+										'coupon_code'    => $discount['name'],
+										'discount_type'  => isset( $discount['type'] ) ? $discount['type'] : '',
+										'discount_value' => isset( $discount['value'] ) ? $discount['value'] : 0,
+									];
+								}
+							}
+						}
+						
+						if ( empty( $coupon_details ) ) {
+							$coupon_details = [
+								[
+									'coupon_code'    => 'SAVE20',
+									'discount_type'  => 'percentage',
+									'discount_value' => 20,
+								],
+							];
+						}
+						
 						$data = [
 							'booking_data'    => $booking_data,
 							'booking_meta'    => $booking_meta,
 							'payment_status'  => $payment_status,
 							'payment_gateway' => $payment_gateway,
 							'payment_details' => $payment_details,
+							'coupon_details'  => $coupon_details,
 						];
 					} else {
 						$data = [
@@ -22425,6 +22472,13 @@ Cc:johnDoe@xyz.com Bcc:johnDoe@xyz.com',
 						'payment_status'  => 'check-waiting',
 						'payment_gateway' => 'Check Payment',
 						'payment_details' => '',
+						'coupon_details'  => [
+							[
+								'coupon_code'    => 'SAVE20',
+								'discount_type'  => 'percentage',
+								'discount_value' => 20,
+							],
+						],
 					];
 					$context['pluggable_data'] = $get_booking_sample_data( $sample_customer, $sample_trip, '', $payment_data );
 				} else {
@@ -23766,20 +23820,35 @@ Cc:johnDoe@xyz.com Bcc:johnDoe@xyz.com',
 			return $context;
 		}
 
-		global $wpdb;
+		$subscription     = null;
+		$subscription_obj = null;
 
-		$subscription = $wpdb->get_row(
-			"SELECT * FROM {$wpdb->prefix}posts WHERE post_type = 'shop_subscription' ORDER BY post_modified DESC LIMIT 1"
-		);
+		if ( function_exists( 'wcs_get_subscriptions' ) ) {
+			$subscriptions = wcs_get_subscriptions(
+				[
+					'subscriptions_per_page' => 1,
+					'orderby'                => 'date',
+					'order'                  => 'DESC',
+				] 
+			);
+			
+			if ( ! empty( $subscriptions ) ) {
+				$subscription_obj = reset( $subscriptions );
+				$subscription     = (object) [ 'ID' => $subscription_obj->get_id() ];
+			}
+		}
 
-		if ( $subscription ) {
+		if ( $subscription && ! $subscription_obj ) {
 			$subscription_obj = wcs_get_subscription( $subscription->ID );
-			$user_id          = $subscription_obj->get_user_id();
-			$items            = $subscription_obj->get_items();
-			$product_id       = 0;
-			$variation_id     = 0;
-			$product_name     = '';
-			$variation_name   = '';
+		}
+
+		if ( $subscription_obj ) {
+			$user_id        = $subscription_obj->get_user_id();
+			$items          = $subscription_obj->get_items();
+			$product_id     = 0;
+			$variation_id   = 0;
+			$product_name   = '';
+			$variation_name = '';
 
 			foreach ( $items as $item ) {
 				$product_id     = $item->get_product_id();
@@ -23805,7 +23874,7 @@ Cc:johnDoe@xyz.com Bcc:johnDoe@xyz.com',
 			if ( 'wc_subscription_updated' === $term ) {
 				$subscription_data = [
 					'start_date'        => $subscription_obj->get_date_created(),
-					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' )->format( 'Y-m-d H:i:s' ) : 0,
+					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' ) : 0,
 				];
 
 				$context['variation_id']      = $variation_id;
@@ -23814,7 +23883,7 @@ Cc:johnDoe@xyz.com Bcc:johnDoe@xyz.com',
 				$context['variation_name']    = $variation_name;
 				$context['product_name']      = $product_name;
 				$context['subscription_data'] = $subscription_data;
-				$context['subscription_id']   = $subscription->ID;
+				$context['subscription_id']   = $subscription_obj->get_id();
 				$context['user']              = WordPress::get_user_context( $user_id );
 				$context['user_billing_data'] = $user_billing_data;
 				$context['new_status']        = $subscription_obj->get_status();
@@ -23829,25 +23898,25 @@ Cc:johnDoe@xyz.com Bcc:johnDoe@xyz.com',
 				$context['subscription_data'] = $subscription_data;
 				$context['user']              = WordPress::get_user_context( $user_id );
 				$context['user_billing_data'] = $user_billing_data;
-				$context['subscription_id']   = $subscription->ID;
+				$context['subscription_id']   = $subscription_obj->get_id();
 			} elseif ( 'wc_subscribes_product' === $term ) {
 				$subscription_data = [
 					'status'            => $subscription_obj->get_status(),
 					'start_date'        => $subscription_obj->get_date_created(),
-					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' )->format( 'Y-m-d H:i:s' ) : 0,
+					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' ) : 0,
 				];
 
 				$context['subscription_data'] = $subscription_data;
-				$context['subscription_id']   = $subscription->ID;
+				$context['subscription_id']   = $subscription_obj->get_id();
 				$context['user']              = WordPress::get_user_context( $user_id );
 				$context['user_billing_data'] = $user_billing_data;
-				$context['subscription']      = $subscription->ID;
+				$context['subscription']      = $subscription_obj->get_id();
 				$context['subscription_name'] = get_the_title( $product_id );
 			} elseif ( 'wc_purchases_variable_subscription' === $term ) {
 				$subscription_data = [
 					'status'            => $subscription_obj->get_status(),
 					'start_date'        => $subscription_obj->get_date_created(),
-					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' )->format( 'Y-m-d H:i:s' ) : 0,
+					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' ) : 0,
 				];
 
 				$context['subscription_data']            = $subscription_data;
@@ -23856,30 +23925,30 @@ Cc:johnDoe@xyz.com Bcc:johnDoe@xyz.com',
 				$context['variable_subscription_option'] = $variation_id;
 				$context['variable_subscription']        = $product_id;
 				$context['subscription_name']            = $variation_name;
-				$context['subscription_id']              = $subscription->ID;
+				$context['subscription_id']              = $subscription_obj->get_id();
 			} elseif ( 'wc_renews_subscription_product' === $term ) {
 				$subscription_data = [
 					'status'            => $subscription_obj->get_status(),
 					'start_date'        => $subscription_obj->get_date_created(),
-					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' )->format( 'Y-m-d H:i:s' ) : 0,
+					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' ) : 0,
 				];
 
 				$context['subscription']      = $product_id;
 				$context['subscription_name'] = get_the_title( $product_id );
 				$context['last_order']        = $subscription_obj->get_last_order();
 				$context['subscription_data'] = $subscription_data;
-				$context['subscription_id']   = $subscription->ID;
+				$context['subscription_id']   = $subscription_obj->get_id();
 				$context['user']              = WordPress::get_user_context( $user_id );
 				$context['user_billing_data'] = $user_billing_data;
 			} elseif ( 'wc_subscription_product_expires' === $term ) {
 				$subscription_data = [
 					'status'            => $subscription_obj->get_status(),
 					'start_date'        => $subscription_obj->get_date_created(),
-					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' )->format( 'Y-m-d H:i:s' ) : 0,
+					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' ) : 0,
 				];
 
 				$context['subscription_data'] = $subscription_data;
-				$context['subscription_id']   = $subscription->ID;
+				$context['subscription_id']   = $subscription_obj->get_id();
 				$context['user']              = WordPress::get_user_context( $user_id );
 				$context['user_billing_data'] = $user_billing_data;
 				$context['subscription']      = $product_id;

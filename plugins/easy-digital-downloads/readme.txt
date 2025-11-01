@@ -1,12 +1,12 @@
 === Easy Digital Downloads – eCommerce Payments and Subscriptions made easy ===
 Author URI: https://easydigitaldownloads.com
 Plugin URI: https://easydigitaldownloads.com
-Contributors: easydigitaldownloads, am, cklosows, littlerchicken, achchu93, smub, chriscct7, sumobi, johnjamesjacoby
+Contributors: easydigitaldownloads, am, cklosows, littlerchicken, alhoseany, gwierzba, smub, chriscct7, sumobi, johnjamesjacoby
 Tags: ecommerce, payments, sell, digital store, stripe
 Requires at least: 6.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable Tag: 3.5.3
+Stable Tag: 3.6.0
 License: GPLv2 or later
 
 The #1 eCommerce plugin to sell digital products & subscriptions. Accept credit card payments with Stripe & PayPal and start your store today.
@@ -240,6 +240,16 @@ Check out some of our popular posts for actionable advice for running your busin
 8. Checkout Form Block - Default Theme
 
 == Changelog ==
+= 3.6.0 =
+* NEW: Introducing Elementor Widget support for the Checkout Block.
+* NEW: Added support for multiple layouts on the Checkout Block.
+* New: Improved Checkout Block preview in the editor.
+* Downloads: Fixed an issue with Chosen select fields and Bundles.
+* Dev: Added a new "Labs" section under Tools.
+* Dev: Added Cart Caching to Labs - an experimental feature that improves cart and checkout performance.
+
+View the full changelog at [https://easydigitaldownloads.com/changelogs/plugin/easy-digital-downloads/](https://easydigitaldownloads.com/changelogs/plugin/easy-digital-downloads/?utm_medium=readme&utm_source=wporg&utm_campaign=edd-plugin&utm_term=description)
+
 = 3.5.3 =
 * New: Blocks - Added optional captcha support to checkout block.
 * Emails: Added support for resending user verification emails.
@@ -250,8 +260,6 @@ Check out some of our popular posts for actionable advice for running your busin
 * Taxes: Fixed JavaScript error where tax_data was not defined.
 * Dev: Fixed translation build process to preserve Pro strings in lite build.
 * Dev: Fixed JavaScript error when adding Simple Shipping tracking data to an order.
-
-View the full changelog at [https://easydigitaldownloads.com/changelogs/plugin/easy-digital-downloads/](https://easydigitaldownloads.com/changelogs/plugin/easy-digital-downloads/?utm_medium=readme&utm_source=wporg&utm_campaign=edd-plugin&utm_term=description)
 
 = 3.5.2 =
 * Accessibility: Fixed custom screen-reader-text using deprecated property.
@@ -317,242 +325,6 @@ View the full changelog at [https://easydigitaldownloads.com/changelogs/plugin/e
 * Reports: Fixed an issue where excluding taxes would result in $0 earnings being displayed.
 * Stripe: Allow subscription payment methods to be updated using Payment Elements.
 * Templates: Add $args parameter to edd_get_template_part.
-
-= 3.3.9 =
-* Blocks: Add support for inner blocks to certain blocks.
-* Blocks: Add a hook to the registration block above the submit button.
-* Blocks: Update login block behavior for logged in users.
-* Checkout: Add `edd_purchase_form_after_email` hook to the Checkout block.
-* Dev: Deprecate and update comments filters.
-* Dev: Refactor gateway registration logic.
-* Dev: Update "Add New" admin button text for WordPress Core consistency.
-* Dev: Update wp-scripts version.
-* Dev: Register a loader/mini event manager.
-* Emails: Register phone tag for use in emails.
-* Utilities: Ensure get_date_string() supports seconds.
-* Shortcodes: Improve email change handling from the user profile shortcode.
-* Payments: Refactor tax rate addition process to use modal interface.
-* Payments: Update discount add/edit screens for improved UI.
-* Reports: Prevent fatal error when requesting non-existent order IDs through the Sales API.
-* Shortcodes: Improved error handling for `edd_receipt` shortcode.
-* Stripe: Allow error logging for gateway-related JS errors when using Payment Elements.
-* Stripe: Remove non-functional subscription handling from webhook events.
-* Stripe: Prevent checkout errors in Card Elements flow.
-* Users: Add "Lost password" option to the login form on the Checkout Block.
-
-= 3.3.8.1 =
-* Checkout: Compatibility updated for Checkout Fields Manager.
-* Dev: Empty legacy files have been replaced for plugins which may manually be loading them in error.
-
-= 3.3.8 =
-* Customers: Improved messaging when trying to assign a user's email to their customer account.
-* Compatibility: Added EDD's Checkout URI to the list of excluded speculative URLs for WordPress 6.8.
-* Downloads: Fixed issue where download details metabox didn't honor store currency.
-* Downloads: Price assignment for bundles now correctly displays without requiring a product update.
-* Downloads: Resolved issue where Chosen field did not initialize when Bundle is selected for the product type.
-* Downloads: Improved handling of download URLs to support the order item object.
-* Emails: Fixed a fatal error in sending purchase receipt after store reset.
-* PayPal: 100% discount codes now function properly with PayPal.
-* Reports: Improved batch export functionality.
-* Reports: Updated order export to allow different values and correct formatting.
-* Reports: Stats class now avoids ambiguous column queries.
-* Settings: Created product grid page automatically on fresh install.
-* Stripe: Added logging for Stripe confirmation process.
-* Stripe: Corrected issue where dispute ID stored was actually the payment ID.
-* Stripe: Improved the loading behavior of the Stripe Connect settings screen.
-* Stripe: Fixed issue where test mode warning wasn't showing in the gateways settings screen.
-* Stripe: Improved reliability when retrieving connected country in Stripe Connect.
-* Stripe: Update the object reference when completing a Stripe order.
-* Dev: Rolled back changes to the included EDD Updater to ensure compatibility by unexpected uses.
-* Dev: Deprecated functionality impacting namespaced class usage in `EDD_Batch_Export`.
-
-= 3.3.7 =
-* Blocks: Fixed undefined index error in checkout block preview.
-* Checkout: Improved existing email check for logged-in users during checkout.
-* Compatibility: Improved handling of upgrade pages.
-* Currency: Fixed Money_Formatter unformat method ensuring `original_amount` is not null before processing.
-* Customers: Improve performance of viewing customers in the admin.
-* Downloads: Improved file protection handling in some edge case configurations.
-* Downloads: Supports feature now listens on 'change' instead of 'click'.
-* Downloads: Improved variable price handling.
-* Downloads: Improved download title validation before returning via AJAX.
-* Emails: Fixed email summary dates not adjusting for the local time zone.
-* Emails: Store admins can now search/filter emails and email logs.
-* Fees: Order adjustments with titles longer than 100 characters now correctly record fees.
-* HTML: `EDD\HTML\Number` input now allows a `0` minimum value.
-* i18n: Fixed multiple translation warnings in the new metabox implementation.
-* Orders: Orders - Deferred Actions now unschedule or gracefully fail on deleted orders.
-* PayPal: Ensure that `straight to gateway` is only enabled for supported PayPal gateways.
-* PayPal: Removed PayPal Commerce IE 11 Polyfills by default, now requiring opt-in.
-* Reports: Improved price assignment selection when adding new price variations.
-* Settings: Improved admin settings notices.
-* Settings: Improved styling for input fields.
-* Stripe: Fixed issue where Stripe variables were added to the DOM twice.
-* Taxes: Fix an issue preventing saving a global tax rate.
-* Dev: Counting with `fields` set fails in Berlin.
-* Dev: Generating orders via CLI no longer adds unnecessary order meta.
-* Dev: Fixed CLI order handling triggering new deprecation notices.
-* Dev: Unit tests updated to remove older versions.
-* Dev: Resending a receipt no longer throws a deprecation notice.
-
-= 3.3.6.1 =
-* Fixes a formatting issue for stores using European style decimal separators.
-
-= 3.3.6 =
-* **Important:** This release requires **WordPress 6.2 or higher**.
-* Admin: Prevent UI shifting in the EDD admin pages.
-* Blocks: Improved the UI of the Checkout block registration settings.
-* Checkout: Improved reliability of guest checkout process.
-* Checkout: Improved the detection of existing customer email addresses.
-* Customers: Switched to using `Order` objects instead of `EDD_Payment` objects.
-* Dev: Added the `edd_empty_cart_message` to the Checkout block.
-* Dev: Fixed an issue that could cause hooking into `edd_purchase_form_user_info_fields` to result in a fatal error.
-* Dev: Introduced the `edd_order_receipt_before` hook to the receipt block.
-* Discounts: Fixed an issue that would prevent min/max values on discounts from being changed to empty values.
-* Discounts: Improved the logic of discount code validation to ensure that required products are allowed even if in a prevented category.
-* Downloads: Added the ability to copy the block, shortcode, or add to cart links to the clipboard from the Download Edit screen.
-* Downloads: Improved the registration and rendering of metaboxes.
-* Downloads: Improved the variable pricing UI for the Download Edit screen.
-* Downloads: Refreshed and combined Download metaboxes for improved download management.
-* Emails: Fixed an issue that could result in the password reset email from the Auto Register extension not being sent.
-* HTML: All HTML element classes now run `get_data_elements` to ensure that the data elements are available.
-* HTML: Improved search results for Chosen select fields.
-* HTML: Introduced the `Number` input field.
-* i18n: Fixed an issue resulting in an undefined variable notice in translations.
-* Logs: Updated the date column of the Logs to reflect the store timezone (instead of UTC) and improved the formatting.
-* Orders: Corrected an issue resulting in the order total being incorrect when combining fees and taxes.
-* Pages: Fixed an issue that resulted in 'noindex nofollow' tags being added when no checkout page is set.
-* PayPal: Ensure that the merchant status check accounts for all exceptions.
-* Reports: Added support for filtering by order status on the Payment Gateways reports.
-* Reports: Current Period reports no longer show 'Hour by Hour' when less than two days of the period have passed.
-* Reports: Improved the tooltip handling for reports to be more consistent.
-* Reports: Separated many charts into individual charts to improve usability and flexibility.
-* Reports: The Payment Gateways list table report now filters reports by the selected gateways, instead of linking to a list of orders for the gateway.
-* Sessions: Prevent an undefined variable notice.
-* Stripe: Added support for TWINT, and Revolut Pay.
-* Stripe: Always get mandates for India-based customers/stores.
-* Stripe: Fixed an issue that could cause a gateway error if the Payment Method Configuration cannot be retrieved.
-* Stripe: Improved compatibility with Zero Decimal Currencies.
-* Stripe: Improved performance by switching to using `Order` objects instead of `EDD_Payment` objects.
-
-= 3.3.5.2 =
-* Checkout: Fixed a user's first/last name not saving to their WordPress account when registering during checkout.
-* Checkout: Fixed purchase data being sent to some gateways which process credit cards from form data.
-
-= 3.3.5.1 =
-* Stripe: Fixed issues with displaying and saving Stripe settings.
-
-= 3.3.5 =
-* NEW! Added Support for more Stripe Payment Methods, including more wallets, mobile payment methods, and some bank redirects.
-* Stripe: Improved accessibility of the checkout form.
-* Stripe: Improved compatibility with Stripe with customized checkouts missing form attributes.
-* Stripe: Properly handle error messages when trying to create webhooks without HTTPS.
-* Stripe: Updated the Stripe PHP library.
-* PayPal: Fixed an issue preventing PayPal from fully connecting in test mode.
-* PayPal: Improved the messaging around the PayPal settings screen.
-* PayPal: Fixed an issue with the date_created on some PayPal Commerce orders.
-* WP-REST: Improved integration with the WP-REST API media endpoint.
-* Receipt: Improved hash validation when viewing a receipt as a guest.
-* Emails: Fixed a possible fatal error with the WP Mail SMTP plugin.
-* Emails: The Banned Email list filter is now accessible even when the list is empty.
-* Checkout: Improved handling of guest customers.
-* Checkout: Prevent an edge case where a warning could be thrown during checkout.
-* HTTP: Introduced a standard HTTP Request utility to make consistent HTTP requests.
-* Discounts: Prevent a JavaScript error when editing a discount.
-* Administration: Vertical navigation elements now support the Back/Forward browser navigation.
-
-= 3.3.4 =
-* NEW! Stripe: When connecting EDD to Stripe, the necessary webhooks are registered.
-* Cart: Enhanced cookie handling when emptying and re-adding items to cart.
-* Checkout: Resolved undefined variable issue when using block registration form.
-* Downloads: Improved response header handling to prevent invalid content-length headers.
-* Downloads: Resolved inconsistency in author availability for new vs existing downloads.
-* Emails: Improved email tag loading for more efficient processing.
-* Emails: Removed image insertion capability from password reset email editor.
-* Emails: Corrected filter name in new user email for proper functionality.
-* Emails: Fixed a fatal error in password reset due to missing parameters.
-* Emails: Fixed empty {password_link} email tag for first-time users.
-* File System: Consolidate filesystem interactions by normalizing file paths.
-* Orders: Improve order total calculations for orders with multiple adjustments.
-* Orders: Fixed an issue with resumed orders and date_created values.
-* Orders: Deleting an order now deletes the related transactions entry.
-* Orders: Implemented safeguard to prevent negative order totals.
-* Reports: Fixed PHP notices occurring in certain time zones.
-* Sessions: Added new filters for more flexible cookie management.
-* Sessions: Added built-in support for Pantheon cookie exclusions.
-* Sessions: Added built-in support for WP Engine cookie exclusions.
-* Stripe: Improve legacy card elements session compatibility.
-* Users: Added a tool to help fix corrupted capabilities that prevent access to EDD settings screens.
-
-= 3.3.3 =
-* Reports: Refund tiles for fully refunded items could include partial refunds.
-* Sessions: Improve session handling during checkout when logging in a user at the same time.
-* Admin: Fixed a display issue when searching for EDD items in list views.
-* Emails: Prevent a PHP error related to the Email Summary settings.
-* Emails: Improved the Email Summaries reliability.
-* Blocks: Fixed an issue on the Checkout block for existing customers without a last name.
-* Downloads: Improved the handling of the cart widget markup when adding an item to the cart.
-* Downloads: Improved the detection and handling of local files when they are downloaded.
-* Settings: Refactored the process of saving settings for consistency.
-
-= 3.3.2 =
-* Checkout: Improved session handling with Stripe payments.
-* Settings: Improved pass validation that could cause deactivation on certain server configurations.
-* Admin: Improve responsiveness of EDD admin menus.
-* Sessions: Set default session handling to database on new installs.
-* i18n: Ensure that some block strings are able to be translated.
-
-= 3.3.1 =
-* Settings: Fixed a PHP warning related to a store's region when managing settings.
-* Settings: Ensure that the selected currency option is a registered currency.
-* Orders: Fixed an issue resulting in searching for orders not always working.
-* Emails: Ensure that email subjects do not contain HTML tags.
-* Emails: The Admin Sale Notification wasn't sending to multiple recipients.
-* Checkout: Improved checkout page detection compatibility for extensions.
-* Onboarding: Improved the onboarding wizard styles and content.
-
-= 3.3.0 =
-* Important: This release requires WordPress 6.0 or higher.
-* Emails: **NEW** Managing emails is now easier than ever with the new Email Editor. All emails are now visible and managed from Downloads > Emails.
-* Emails: **NEW** You can now easily toggle the status of most emails to enable or disable them.
-* Emails: **NEW** Email tags have been improved to be more widely available to extensions and are now context aware by email type and recipient.
-* Emails: **NEW** You can now send an email to the customer when an order is marked as refunded.
-* Emails: **NEW** Added email tags for the refund amount and refund ID.
-* Emails: **NEW** You can now see a log of emails sent to customers by EDD in Downloads > Emails > Logs.
-* Emails: **NEW** Added a new email tag for the order fees.
-* Emails: **NEW** Added the ability to email store owners about the Stripe "Early Fraud Warning" webhook.
-* Emails: **NEW** You can now easily restore the default email templates from the editor.
-* Emails: More emails are now able to be previewed and tested.
-* Emails: Added the ability to edit the New User, Password Reset, and User Verification emails.
-* Emails: Email settings have been moved to Downloads > Emails > Settings.
-* Sessions: **NEW** The session handling has been rewritten from the ground up to be more reliable and improve performance.
-* Sessions: The session storage method can now be changed via a setting in Downloads > Settings > Misc.
-* Sessions: Added a custom database table for session storage, when using the database storage method.
-* Sessions: Improved the performance and reliability of the session cleanup Cron event.
-* Sessions: Improved session handling to only start when necessary, allowing more pages to be cached for guests.
-* Extensions: The Disable Purchase Receipts extension is now marked as legacy and will be deactivated, as the functionality is now built into EDD.
-* Extensions: The Auto Register extension is now marked as legacy and will be deactivated, as the functionality is now built into EDD.
-* Stripe: Improved the handling when a Stripe customer cannot be found.
-* Stripe: Added a disconnect button to the Stripe settings if the Stripe account that is connected has been closed.
-* Stripe: Improved and implemented fallbacks to reduce failures when processing Stripe payments.
-* PayPal: Improved the onboarding process for PayPal to avoid a possible fatal error.
-* HTML: The Product Dropdown element has been improved for reliability, search, and performance.
-* Migration: Improved the reliability of the EDD 3.0+ migration routine.
-* Reports: When the percentage difference was calculated, it was possible for a positive change to show as a negative percentage.
-* Cart: In some cases, the Add to Cart button was not redirecting logged-in users to the checkout page.
-* Checkout: Improved the handling of the purchase form when showing the login form.
-* Checkout: Improved the handling of the address fields when using the Stripe Payment Element.
-* Checkout: Improved purchase validation during the checkout process.
-* Exports: The Orders Export could sometimes use the product ID as the User ID.
-* WPCron: We've refactored how EDD uses WPCron to improve performance and reliability.
-* Customers: Improved the validation when removing email addresses from a customer.
-* Admin: Many of our 'checkbox' settings have been updated to use the new 'toggle' setting type.
-* Admin: Improved the consistency of the EDD Admin Pages.
-* i18n: Updated the list of regions for the UK.
-* i18n: Added Regions for Benin.
-* i18n: We reviewed, updated, and improved a large number of translations with translator comments and context.
-* Performance: Improved integration with the Heartbeat API to reduce the number of requests.
-* Refunds: Improved the reliability and performance of generating a refund number.
 
 == Upgrade Notice ==
 IMPORTANT: Upgrading from Easy Digital Downloads 2.x to 3.0+ is a major release that includes many improvements and changes. You will be asked to perform database maintenance once installed. Please ensure you make a backup of your site prior to upgrading. Your site should remain functional during this maintenance, but as with all updates, it is best to make a backup of your site prior to updating.

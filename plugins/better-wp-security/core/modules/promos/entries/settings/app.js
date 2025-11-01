@@ -8,11 +8,8 @@ import { useSelect } from '@wordpress/data';
  */
 import { coreStore } from '@ithemes/security.packages.data';
 import { ModulePanelHeaderFill } from '@ithemes/security.pages.settings';
-
-/**
- * Internal dependencies
- */
-import { GetProMalwareScheduling } from '../components';
+import { GetProMalwareScheduling, StellarSale } from '@ithemes/security.promos.components';
+import { ToolbarFill } from '@ithemes/security-ui';
 
 export default function App() {
 	const { installType } = useSelect(
@@ -22,10 +19,15 @@ export default function App() {
 		[]
 	);
 	return (
-		<ModulePanelHeaderFill>
-			{ ( { module } ) => module.id === 'malware-scheduling' &&
-				installType === 'free' &&
-				<GetProMalwareScheduling /> }
-		</ModulePanelHeaderFill>
+		<>
+			<ModulePanelHeaderFill>
+				{ ( { module } ) => module.id === 'malware-scheduling' &&
+					installType === 'free' &&
+					<GetProMalwareScheduling /> }
+			</ModulePanelHeaderFill>
+			<ToolbarFill area="banner">
+				<StellarSale installType={ installType } />
+			</ToolbarFill>
+		</>
 	);
 }

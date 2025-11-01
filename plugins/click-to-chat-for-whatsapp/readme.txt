@@ -3,7 +3,7 @@ Requires at least: 4.7
 Tested up to: 6.8.2
 Requires PHP: 5.6
 Contributors: HoliThemes
-Stable tag: 4.29
+Stable tag: 4.30
 Tags: whatsapp, whatsapp business, click to chat, whatsapp chat, WooCommerce WhatsApp
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -540,6 +540,9 @@ Thank you so much in advance from "Click to Chat" Team
 * Or enable Auto-updates to update automatically
 
 == Changelog ==
+
+= 4.30 =
+* Enchancement: Google Analytics feature.
 
 = 4.29 =
 * Settings to load JavaScript files as Normal, Async, or Defer for improved performance.

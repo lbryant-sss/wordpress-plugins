@@ -3,9 +3,9 @@ Contributors: fernandobt, zymeth25
 Donate Link: http://picandocodigo.net/programacion/wordpress/list-category-posts-wordpress-plugin-english/#support
 Tags: list, categories, posts, cms
 Requires at least: 3.3
-Tested up to: 6.8.2
+Tested up to: 6.8.3
 Requires PHP: 5.6
-Stable tag: 0.92.0
+Stable tag: 0.93.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,9 +72,9 @@ I have a [PayPal account](http://picandocodigo.net/programacion/wordpress/list-c
 
 **Development**
 
-Development is being tracked on [GitHub](https://github.com/picandocodigo/List-Category-Posts). Fork it, code, make a pull request, suggest improvements, etc. over there. I dream of the day all of the WordPress plugins will be hosted on Git :)
+Development is being tracked on [Codeberg](https://codeberg.org/picandocodigo/list-category-posts) and [GitHub](https://github.com/picandocodigo/List-Category-Posts). Fork it, code, make a pull request, suggest improvements, etc. over there. I dream of the day all of the WordPress plugins will be hosted on Git :)
 
-Since the documentation on how to use the plugin has passed wordpress.org's character limit, the text was cut. I've since started using [a wiki](https://github.com/picandocodigo/List-Category-Posts/wiki) for more comfortable reading and maintaining. Please check it out, suggestions are welcome on GitHub issues!
+Since the documentation on how to use the plugin has passed wordpress.org's character limit, the text was cut. You can find the complete documentation on [the wiki](https://github.com/picandocodigo/List-Category-Posts/wiki). It's also more comfortable to read and maintain than a txt file. Please check it out, suggestions are welcome on Codeberg/GitHub issues!
 
 ==Instructions on how to use the plugin==
 
@@ -242,6 +242,14 @@ Template system has changed. Custom templates should be stored in WordPress them
 == Changelog ==
 
 See [CHANGELOG.md](https://github.com/picandocodigo/List-Category-Posts/blob/master/CHANGELOG.md) for full Changelog.
+
+= 0.93.0 =
+
+* Don't skip password protected filter when showing content.
+* Sanitize post_status so some posts are only shown if user is Editor or Administrator.
+* Addresses reported vulnerability: CVE-2025-11377, Authenticated (Contributor+) Information Exposure. Severity Score: 4.3 (Medium). CVSS Vector: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N. Organization: Wordfence. Vulnerability Researcher(s): Athiwat Tiprasaharn (Jitlada)
+
+This is a low risk vulnerability that could potentially be executed by an authenticated attacker, with contributor-level access and above. But it should be fixed with this version.
 
 = 0.92.0 =
 

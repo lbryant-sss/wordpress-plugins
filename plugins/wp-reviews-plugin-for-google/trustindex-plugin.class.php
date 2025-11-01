@@ -9,9 +9,11 @@ private $version;
 public static $permissionNeeded = 'edit_pages';
 public static $allowedAttributesForWidget = [
 'template' => ['id' => true, 'class' => true, 'style' => true],
-'pre' => ['id' => true, 'class' => true, 'style' => true],
+'pre' => ['id' => true, 'style' => true, 'class' => true],
 'div' => [
 'id' => true, 'class' => true, 'style' => true, 'aria-label' => true, 'role' => true,
+'data-template-id' => true,
+'data-css-url' => true,
 'data-no-translation' => true,
 'data-time-locale' => true,
 'data-layout-id' => true,
@@ -67,6 +69,7 @@ public static $allowedAttributesForWidget = [
 'br' => [],
 'i' => ['class' => true, 'style' => true],
 'style' => ['type' => true],
+'script' => ['type' => true, 'src' => true],
 ];
 public function __construct($shortname, $pluginFilePath, $version, $pluginName, $platformName)
 {
@@ -136,7 +139,7 @@ return admin_url('admin-ajax.php') . '?action='. $this->getWebhookAction();
 public function getProFeatureButton($campaignId)
 {
 
-return '<a class="ti-btn" href="https://www.trustindex.io/?a=sys&c='. $campaignId .'" target="_blank">'. __('Create a Free Account for More Features', 'wp-reviews-plugin-for-google') .'</a>';
+return '<a class="ti-btn" href="https://lp.trustindex.io/'.$this->getShortName().'-wp/?a=sys&c='. $campaignId .'" target="_blank">'. __('Create a Free Account for More Features', 'wp-reviews-plugin-for-google') .'</a>';
 }
 public function is_review_download_in_progress()
 {
@@ -895,14 +898,14 @@ public function shortcode_func($atts)
 {
 $atts = shortcode_atts([ 'data-widget-id' => null, 'no-registration' => null ], $atts);
 if (isset($atts['data-widget-id']) && $atts['data-widget-id']) {
-$content = $this->renderWidgetFrontend($atts['data-widget-id']);
+$content = $this->renderWidgetFrontend(esc_attr($atts['data-widget-id']));
 if ($this->isElementorEditing()) {
 $content .= '<script type="text/javascript" src="https://cdn.trustindex.io/loader.js"></script>';
 }
-return $content;
+return wp_kses($content, self::$allowedAttributesForWidget);
 }
 else if (isset($atts['no-registration']) && $atts['no-registration']) {
-$forcePlatform = $atts['no-registration'];
+$forcePlatform = esc_attr($atts['no-registration']);
 if (substr($forcePlatform, 0, 5) !== 'trust' && substr($forcePlatform, -4) !== 'ilot' && !in_array($forcePlatform, $this->get_platforms())) {
 $avPlatforms = $this->get_platforms();
 $forcePlatform = $avPlatforms[0];
@@ -913,25 +916,33 @@ $filePath = preg_replace('/[^\/\\\\]+([\\\\\/]trustindex-plugin\.class\.php)/', 
 }
 $className = 'TrustindexPlugin_' . $forcePlatform;
 if (!class_exists($className)) {
-return $this->frontEndErrorForAdmins(ucfirst($forcePlatform) . ' plugin is not active or not found!');
+return wp_kses_post($this->frontEndErrorForAdmins(ucfirst($forcePlatform) . ' plugin is not active or not found!'));
 }
-$chosedPlatform = new $className($forcePlatform, $filePath, "do-not-care-13.2.1", "do-not-care-Widgets for Google Reviews", "do-not-care-Google");
+$chosedPlatform = new $className($forcePlatform, $filePath, "do-not-care-13.2.2", "do-not-care-Widgets for Google Reviews", "do-not-care-Google");
 $chosedPlatform->setNotificationParam('not-using-no-widget', 'active', false);
 if (!$chosedPlatform->is_noreg_linked()) {
 /* translators: %s: Platform name */
-return $this->frontEndErrorForAdmins(sprintf(__('You have to connect your business (%s)!', 'wp-reviews-plugin-for-google'), $forcePlatform));
+return wp_kses_post($this->frontEndErrorForAdmins(sprintf(__('You have to connect your business (%s)!', 'wp-reviews-plugin-for-google'), $forcePlatform)));
 } else if (!$chosedPlatform->getWidgetOption('widget-setted-up')) {
-return $this->frontEndErrorForAdmins('You have to complete your widget setup!');
+return wp_kses_post($this->frontEndErrorForAdmins('You have to complete your widget setup!'));
 } else {
 if ($this->isElementorEditing()) {
-return $chosedPlatform->renderWidgetAdmin(true);
+$html = preg_replace('/<style\b[^>]*>.*?<\/style>/is', '', $chosedPlatform->renderWidgetAdmin(true));
+$html = wp_kses($html, $className::$allowedAttributesForWidget);
+$html .= '<style type="text/css">'.get_option($this->get_option_name('css-content')).'</style>';
+return $html;
 } else {
-return $chosedPlatform->renderWidgetFrontend();
+$html = preg_replace('/<style\b[^>]*>.*?<\/style>/is', '', $chosedPlatform->renderWidgetFrontend());
+$html = wp_kses($html, $className::$allowedAttributesForWidget);
+if (!is_file($chosedPlatform->getCssFile()) || get_option($chosedPlatform->get_option_name('load-css-inline'), 0)) {
+$html .= '<style type="text/css">'.get_option($chosedPlatform->get_option_name('css-content')).'</style>';
+}
+return $html;
 }
 }
 }
 else {
-return $this->frontEndErrorForAdmins(__('Your shortcode is deficient: Trustindex Widget ID is empty! Example: ', 'wp-reviews-plugin-for-google') . '<br /><code>['.$this->get_shortcode_name().' data-widget-id="478dcc2136263f2b3a3726ff"]</code>');
+return wp_kses_post($this->frontEndErrorForAdmins(__('Your shortcode is deficient: Trustindex Widget ID is empty! Example: ', 'wp-reviews-plugin-for-google') . '<br /><code>['.$this->get_shortcode_name().' data-widget-id="478dcc2136263f2b3a3726ff"]</code>'));
 }
 }
 public function frontEndErrorForAdmins($text)
@@ -5982,8 +5993,6 @@ $preContent = preg_replace('/<img (.*)src="([^"]+)"(.*)\/?>/U', '<trustindex-ima
 $preContent = str_replace('srcset="', 'data-imgurlset="', $preContent);
 if (is_file($this->getCssFile()) && !get_option($this->get_option_name('load-css-inline'), 0)) {
 $attributes['data-css-url'] = $this->getCssUrl().'?'.filemtime($this->getCssFile());
-} else {
-$preContent .= '<style type="text/css">'.get_option($this->get_option_name('css-content')).'</style>';
 }
 $preContent .= '</template></pre>';
 } else {
@@ -6152,23 +6161,23 @@ $filter = $this->getWidgetOption('filter', false, $isPreview);
 $onlyRatings = isset($filter['only-ratings']) && $filter['only-ratings'] ? 1 : 0;
 if (isset($filter['stars']) && count($filter['stars']) === 1 && (int)$filter['stars'][0] === 5) {
 if ($this->is_ten_scale_rating_platform()) {
-$reviews = $wpdb->get_results($wpdb->prepare('SELECT *, rating AS original_rating, ROUND(rating / 2, 0) AS rating FROM %i WHERE ROUND(rating / 2, 0) = 5 AND (%d = 0 OR (text != "")) ORDER BY date DESC', $this->get_tablename('reviews'), $onlyRatings));
+$reviews = $wpdb->get_results($wpdb->prepare('SELECT *, rating AS original_rating, ROUND(rating / 2, 0) AS rating FROM %i WHERE hidden = 0 AND ROUND(rating / 2, 0) = 5 AND (%d = 0 OR (text != "")) ORDER BY date DESC', $this->get_tablename('reviews'), $onlyRatings));
 } else {
-$reviews = $wpdb->get_results($wpdb->prepare('SELECT *, rating AS original_rating FROM %i WHERE (rating IS NULL OR rating = 5) AND (%d = 0 OR (text != "")) ORDER BY date DESC', $this->get_tablename('reviews'), $onlyRatings));
+$reviews = $wpdb->get_results($wpdb->prepare('SELECT *, rating AS original_rating FROM %i WHERE hidden = 0 AND (rating IS NULL OR rating = 5) AND (%d = 0 OR (text != "")) ORDER BY date DESC', $this->get_tablename('reviews'), $onlyRatings));
 }
 }
 else if (isset($filter['stars']) && count($filter['stars']) === 2) {
 if ($this->is_ten_scale_rating_platform()) {
-$reviews = $wpdb->get_results($wpdb->prepare('SELECT *, rating AS original_rating, ROUND(rating / 2, 0) AS rating FROM %i WHERE ROUND(rating / 2, 0) IN (4,5) AND (%d = 0 OR (text != "")) ORDER BY date DESC', $this->get_tablename('reviews'), $onlyRatings));
+$reviews = $wpdb->get_results($wpdb->prepare('SELECT *, rating AS original_rating, ROUND(rating / 2, 0) AS rating FROM %i WHERE hidden = 0 AND ROUND(rating / 2, 0) IN (4,5) AND (%d = 0 OR (text != "")) ORDER BY date DESC', $this->get_tablename('reviews'), $onlyRatings));
 } else {
-$reviews = $wpdb->get_results($wpdb->prepare('SELECT *, rating AS original_rating FROM %i WHERE (rating IS NULL OR rating IN (4,5)) AND (%d = 0 OR (text != "")) ORDER BY date DESC', $this->get_tablename('reviews'), $onlyRatings));
+$reviews = $wpdb->get_results($wpdb->prepare('SELECT *, rating AS original_rating FROM %i WHERE hidden = 0 AND (rating IS NULL OR rating IN (4,5)) AND (%d = 0 OR (text != "")) ORDER BY date DESC', $this->get_tablename('reviews'), $onlyRatings));
 }
 }
 else {
 if ($this->is_ten_scale_rating_platform()) {
-$reviews = $wpdb->get_results($wpdb->prepare('SELECT *, rating AS original_rating, ROUND(rating / 2, 0) AS rating FROM %i WHERE %d = 0 OR (text != "") ORDER BY date DESC', $this->get_tablename('reviews'), $onlyRatings));
+$reviews = $wpdb->get_results($wpdb->prepare('SELECT *, rating AS original_rating, ROUND(rating / 2, 0) AS rating FROM %i WHERE hidden = 0 AND (%d = 0 OR (text != "")) ORDER BY date DESC', $this->get_tablename('reviews'), $onlyRatings));
 } else {
-$reviews = $wpdb->get_results($wpdb->prepare('SELECT *, rating AS original_rating FROM %i WHERE %d = 0 OR (text != "") ORDER BY date DESC', $this->get_tablename('reviews'), $onlyRatings));
+$reviews = $wpdb->get_results($wpdb->prepare('SELECT *, rating AS original_rating FROM %i WHERE hidden = 0 AND (%d = 0 OR (text != "")) ORDER BY date DESC', $this->get_tablename('reviews'), $onlyRatings));
 }
 }
 if ($isDemoReviews && ($isForceDemoReviews || !$reviews)) {

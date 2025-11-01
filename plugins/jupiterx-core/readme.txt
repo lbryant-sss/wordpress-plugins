@@ -3,7 +3,7 @@ Contributors: artbees
 Tags: jupiter, jupiterx
 Requires at least: 5.6
 Tested up to: 6.8
-Stable tag: 4.11.1
+Stable tag: 4.12.0
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,6 +29,15 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
+= 4.12.0 =
+* Added AND logic between popup triggers.
+* Fixed issues related to popup triggers behavior.
+* Fixed column count in Counter widget.
+* Fixed Elementor cache and shortcode context for JupiterX Global Widgets.
+* Added option to exclude repetitive posts in Advanced Posts widget.
+* Fixed couple of warnings in Advanced Posts widget.
+* Fixed warning in post widget.
+
 = 4.11.1 =
 * Fixed a security issue.
 * Added Play Icon section to the Media Carousel widget style tab.

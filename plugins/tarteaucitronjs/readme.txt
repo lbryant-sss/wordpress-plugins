@@ -15,7 +15,7 @@ Get a compliant and accessible cookie banner
 
 Automatic service detection, colors switcher, texts customization.
 
-Free for 7 days, licence required after the trial.
+Free for 7 days, license required after the trial.
 
 == Installation ==
 
@@ -31,6 +31,9 @@ Free for 7 days, licence required after the trial.
 3. Find the settings page through `Settings > tarteaucitron.io`
 
 == Changelog ==
+
+= 1.9.6 =
+* Fix the mode detection
 
 = 1.9.5 =
 * Fix a stored cross-site scripting potential issue

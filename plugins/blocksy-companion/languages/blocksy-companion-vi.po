@@ -696,7 +696,7 @@ msgstr "Xác nhận đăng ký"
 
 #: framework/premium/extensions/woocommerce-extra/features/product-waitlist/templates/emails/waitlist-confirm-subscription.php:65
 msgid "Click the button below to confirm your subscription. Once confirmed, we will notify you when the item is back in stock."
-msgstr "Nhấp vào nút bên dưới để xác nhận đăng ký của bạn. Sau khi xác nhận, chúng tôi sẽ thông báo cho bạn khi sản phẩm có hàng trở lại."
+msgstr "Nhấp vào nút bên dưới để xác nhận đăng ký của b��n. Sau khi xác nhận, chúng tôi sẽ thông báo cho bạn khi sản phẩm có hàng trở lại."
 
 #: framework/premium/extensions/woocommerce-extra/features/product-waitlist/templates/emails/waitlist-confirm-subscription.php:29,
 #: framework/premium/extensions/woocommerce-extra/features/product-waitlist/templates/emails/plain/waitlist-confirm-subscription.php:15
@@ -797,7 +797,7 @@ msgstr "Nhận thông báo khi {product_title} có hàng trở lại"
 
 #: framework/premium/extensions/woocommerce-extra/features/product-waitlist/includes/emails/confirm-subscription.php:10
 msgid "Confirm waitlist subscription"
-msgstr "Xác nhận đăng ký danh sách chờ"
+msgstr "X��c nhận đăng ký danh sách chờ"
 
 #: framework/premium/extensions/woocommerce-extra/features/product-waitlist/includes/emails/confirm-subscription.php:9
 msgid "This email is sent when a user subscribes to a product stock alert and should confirm their subscription"
@@ -1939,7 +1939,7 @@ msgstr "Loại phụ"
 
 #: framework/premium/extensions/woocommerce-extra/features/swatches/woo-tab-options.php:122
 msgid "Tooltip Image"
-msgstr "Hình ảnh chú thích"
+msgstr "Hình ảnh ch�� thích"
 
 #: framework/premium/extensions/woocommerce-extra/features/swatches/woo-tab-options.php:111
 msgid "{term_name}"
@@ -2929,7 +2929,7 @@ msgstr "Hiển thị phần tổng quan đơn hàng."
 
 #: framework/premium/extensions/woocommerce-extra/static/js/blocks/ct-order/index.js:71
 msgid "Order Overview"
-msgstr "Tổng quan đơn hàng"
+msgstr "Tổng quan đơn h��ng"
 
 #: framework/premium/extensions/woocommerce-extra/static/js/blocks/ct-order/index.js:112
 msgid "Display customer details section."
@@ -3436,7 +3436,7 @@ msgstr "Nút xem giỏ hàng"
 
 #: framework/premium/extensions/woocommerce-extra/features/quick-view/options.php:219
 msgid "Add To Cart Button"
-msgstr "N��t thêm vào giỏ hàng"
+msgstr "Nút thêm vào giỏ hàng"
 
 #: framework/premium/extensions/woocommerce-extra/features/added-to-cart-popup/customizer-options.php:232,
 #: framework/premium/extensions/woocommerce-extra/features/quick-view/options.php:176,
@@ -3490,7 +3490,7 @@ msgstr "Loại nút"
 
 #: framework/premium/extensions/woocommerce-extra/features/quick-view/options.php:19
 msgid "Additional Actions"
-msgstr "Hành động bổ sung"
+msgstr "Hành ��ộng bổ sung"
 
 #: framework/premium/extensions/woocommerce-extra/features/quick-view/helpers.php:36
 msgid "Quick view"
@@ -4167,7 +4167,7 @@ msgstr "Điều Kiện Hiển Thị Popup"
 
 #: framework/premium/features/content-blocks/options/maintenance.php:16
 msgid "Add one or more conditions to display the Maintenance block."
-msgstr "Thêm một hoặc nhiều điều kiện để hiển thị khối bảo trì."
+msgstr "Thêm một ho���c nhiều điều kiện để hiển thị khối bảo trì."
 
 #: framework/premium/features/content-blocks/options/maintenance.php:15
 msgid "Maintenance Block Display Conditions"
@@ -4685,7 +4685,7 @@ msgstr "Trang cảm ơn tùy chỉnh"
 
 #: framework/helpers/exts-configs.php:305
 msgid "Show a size chart guide so that your visitors can pick the right size for them when ordering a product."
-msgstr "Hiển thị hướng dẫn bảng kích thước để khách hàng của bạn có thể chọn kích cỡ phù hợp khi đặt mua sản phẩm."
+msgstr "Hiển thị hướng dẫn bảng kích thước ��ể khách hàng của bạn có thể chọn kích cỡ phù hợp khi đặt mua sản phẩm."
 
 #: framework/helpers/exts-configs.php:304,
 #: framework/premium/extensions/woocommerce-extra/features/size-guide/feature.php:64,
@@ -4711,7 +4711,7 @@ msgstr "Quản lý tốt hơn các sản phẩm liên kết với một số tù
 
 #: framework/helpers/exts-configs.php:361
 msgid "Affiliate Product Links"
-msgstr "Link sản phẩm tiếp th��� liên kết"
+msgstr "Link sản phẩm tiếp thị liên kết"
 
 #: framework/helpers/exts-configs.php:287
 msgid "Categorise products by brands and show their logo in archive or single page so users could discover more about their makers."
@@ -4825,7 +4825,7 @@ msgstr "Hiển thị thời gian đọc xấp xỉ của một bài viết, đ�
 
 #: framework/helpers/exts-configs.php:84
 msgid "Add a dark colour scheme and switch to your website, which will make it pleasant to look at in low light environments."
-msgstr "Thêm một bảng màu tối và chuyển đổi trang web của bạn, điều này sẽ làm cho nó dễ nhìn hơn trong môi trường ánh sáng yếu."
+msgstr "Thêm một bảng màu tối và chuy���n đổi trang web của bạn, điều này sẽ làm cho nó dễ nhìn hơn trong môi trường ánh sáng yếu."
 
 #. translators: This is a brand name. Preferably to not be translated
 #: framework/helpers/exts-configs.php:83
@@ -5082,7 +5082,7 @@ msgstr "Tệp lệnh đầu trang"
 
 #: framework/features/header/modal/register.php:76
 msgid "A link to set a new password will be sent to your email address."
-msgstr "Một liên kết để đặt mật khẩu mới s��� được gửi đến địa chỉ email của bạn."
+msgstr "Một liên kết để đặt mật khẩu m���i sẽ được gửi đến địa chỉ email của bạn."
 
 #: framework/premium/features/content-blocks/admin-ui.php:708
 msgid "Show WooCommerce Hooks"

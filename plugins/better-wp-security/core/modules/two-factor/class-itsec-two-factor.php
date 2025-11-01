@@ -47,10 +47,8 @@ class ITSEC_Two_Factor {
 	private function __construct() {
 		add_action( 'itsec_login_interstitial_init', array( $this, 'register_interstitial' ) );
 
-		if ( $this->is_legacy_ui_enabled() ) {
-			add_action( 'show_user_profile', array( $this, 'user_two_factor_options' ) );
-			add_action( 'personal_options_update', array( $this, 'user_two_factor_options_update' ) );
-		}
+		add_action( 'show_user_profile', array( $this, 'other_user_two_factor_options' ) );
+		add_action( 'personal_options_update', array( $this, 'other_user_two_factor_options_update' ) );
 
 		add_action( 'edit_user_profile', array( $this, 'user_two_factor_options' ) );
 		add_action( 'edit_user_profile_update', array( $this, 'user_two_factor_options_update' ) );
@@ -124,6 +122,22 @@ class ITSEC_Two_Factor {
 		$verbs['two_factor'][] = 'itsec-get-two-factor-users';
 
 		return $verbs;
+	}
+
+	/**
+	 * Add user profile fields.
+	 *
+	 * This executes during the `show_user_profile` action.
+	 * Editing other user 2FA options is possible only with a legacy UI.
+	 *
+	 * @param WP_User $user WP_User object.
+	 */
+	public function other_user_two_factor_options( $user ) {
+		if ( ! $this->is_legacy_ui_enabled() ) {
+			return;
+		}
+
+		$this->user_two_factor_options( $user );
 	}
 
 	/**
@@ -216,6 +230,22 @@ class ITSEC_Two_Factor {
 		 * To be used by Two Factor methods to add settings UI.
 		 */
 		do_action( 'show_user_security_settings', $user );
+	}
+
+	/**
+	 * Update the user meta value.
+	 *
+	 * This executes during the `personal_options_update` actions.
+	 * Updating 2FA options for another user is only available for legacy UI.
+	 *
+	 * @param int $user_id User ID.
+	 */
+	public function other_user_two_factor_options_update( $user_id ) {
+		if ( ! $this->is_legacy_ui_enabled() ) {
+			return;
+		}
+
+		$this->user_two_factor_options_update( $user_id );
 	}
 
 	/**

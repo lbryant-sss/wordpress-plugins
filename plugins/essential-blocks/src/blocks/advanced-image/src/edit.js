@@ -363,16 +363,12 @@ const Edit = (props) => {
         );
     }
 
-    const classes = `
-    img-style-${stylePreset}
+    const classes = `img-style-${stylePreset}
     ${captionStyle}
     caption-horizontal-${horizontalAlign}
     caption-vertical-${verticalAlign}
     ${verticalAlignCap2}
-    ${hoverEffect}
-`
-        .replace(/\s+/g, " ")
-        .trim();
+    ${hoverEffect}`.replace(/\s+/g, " ").trim();
 
     return (
         <>

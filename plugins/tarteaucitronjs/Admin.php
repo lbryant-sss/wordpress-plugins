@@ -106,7 +106,7 @@ function tarteaucitron_config_page() {
             if (!is_wp_error($response) && isset($response['body'])) {
                 $body = $response['body'];
 
-                if (strpos($body, 'window.tarteaucitron_blacklist') === 0) {
+                if (strpos($body, 'window.tarteaucitron_blacklist') !== false) {
                     update_option('tarteaucitronShowWidget', 'invisible');
                     $mode = "⚡️Automatic";
                 } elseif (strpos($body, 'console.error') === 0) {

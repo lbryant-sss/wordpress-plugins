@@ -16,9 +16,11 @@ import { Button, Heading, Text, TextSize, TextVariant, TextWeight } from '@ithem
  * Internal dependencies
  */
 import { AsideHeaderFill, FirewallBannerFill, BeforeCreateFirewallRuleFill } from '@ithemes/security.pages.firewall';
+import { StellarSale } from '@ithemes/security.promos.components';
 import { coreStore } from '@ithemes/security.packages.data';
 import { useLocalStorage } from '@ithemes/security-hocs';
 import { Patchstack } from '@ithemes/security-style-guide';
+import { ToolbarFill } from '@ithemes/security-ui';
 import {
 	StyledAsideHeader,
 	StyledPatchstackBanner,
@@ -76,6 +78,9 @@ export default function App() {
 					<BeforeCreateRulePromo installType={ installType } />
 				</BeforeCreateFirewallRuleFill>
 			) }
+			<ToolbarFill area="banner">
+				<StellarSale installType={ installType } />
+			</ToolbarFill>
 		</>
 	);
 }

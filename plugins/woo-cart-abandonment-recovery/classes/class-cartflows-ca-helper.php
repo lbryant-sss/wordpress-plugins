@@ -88,11 +88,9 @@ class Cartflows_Ca_Helper {
 		if ( ! is_array( $excluded_order_statuses ) ) {
 			$excluded_order_statuses = [];
 		}
-		$all_statuses        = function_exists( 'wc_get_order_statuses' ) ? str_replace( 'wc-', '', array_keys( wc_get_order_statuses() ) ) : [];
-		$all_statuses        = array_diff( $all_statuses, [ 'refunded', 'checkout-draft', 'cancelled' ] );
-		$acceptable_statuses = array_values( array_diff( $all_statuses, $excluded_order_statuses ) );
-		
-		return $acceptable_statuses;
+		$acceptable_order_statuses = array_map( 'strtolower', $excluded_order_statuses );
+
+		return $acceptable_order_statuses;
 	}
 
 	/**

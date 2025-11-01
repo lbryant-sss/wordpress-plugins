@@ -4,7 +4,7 @@ Tags: woocommerce, review plugin, review reminder, customer reviews, review for 
 Requires at least: 4.5
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 5.86.1
+Stable tag: 5.86.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -233,6 +233,8 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.86.2 =
+* Bug fix: export of reviews could not be completed in some scenarios
 = 5.86.1 =
 * Bug fix: media files were uploaded to the Media Library but not attached to reviews during import
 * Bug fix: random sorting in [cusrev_reviews_slider] shortcode didn't work correctly in some scenarios

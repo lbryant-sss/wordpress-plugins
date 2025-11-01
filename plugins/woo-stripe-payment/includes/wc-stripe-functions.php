@@ -1368,3 +1368,26 @@ function wc_stripe_get_site_locale() {
 function wc_stripe_is_processing_webhook() {
 	return defined( WC_Stripe_Constants::WOOCOMMERCE_STRIPE_PROCESSING_WEBHOOK );
 }
+
+/**
+ * @param $handle
+ *
+ * @since 3.3.95
+ * @return mixed|string
+ */
+function wc_stripe_get_script_handle( $handle ) {
+	if ( ! defined( 'WC_VERSION' ) || version_compare( WC_VERSION, '10.3.0', '<' ) ) {
+		return $handle;
+	}
+	switch ( $handle ) {
+		case 'jquery-blockui':
+		case 'jquery-tiptip':
+		case 'jquery-payment':
+		case 'jquery-cookie':
+			$handle = 'wc-' . $handle;
+			break;
+		default:
+	}
+
+	return $handle;
+}

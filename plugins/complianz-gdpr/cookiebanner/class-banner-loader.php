@@ -106,9 +106,9 @@ if ( ! class_exists( "cmplz_banner_loader" ) ) {
 			?>
 			<script>
 				var request = new XMLHttpRequest();
-				var error_ocurred = false;
+				var error_occurred = false;
 				window.onerror = function (msg, url, lineNo, columnNo, error) {
-					error_ocurred = true;
+					error_occurred = true;
 
 					var request = new XMLHttpRequest();
 					request.open('POST', '<?php echo add_query_arg(
@@ -130,7 +130,7 @@ if ( ! class_exists( "cmplz_banner_loader" ) ) {
 
 				//if no error occurred after 3 seconds, send a reset signal
 				setTimeout(function () {
-					if (!error_ocurred) {
+					if (!error_occurred) {
 						var request = new XMLHttpRequest();
 						request.open('POST', '<?php echo add_query_arg(
 							array(
@@ -689,6 +689,10 @@ if ( ! class_exists( "cmplz_banner_loader" ) ) {
                 $additional_stats = array_map( 'trim', explode( ',', cmplz_get_option( "additional_gtags_stats" ) ) );
 				$additional_tags = '';
 				foreach ($additional_stats as $stat){
+					$stat = trim($stat); 
+					if (empty($stat)) {
+						 continue; 
+						}
 					$additional_tags .= str_replace( '{tag}', esc_attr($stat), $template );
 				}
 
@@ -1266,7 +1270,7 @@ if ( ! class_exists( "cmplz_banner_loader" ) ) {
 		/**
 		 * Check if the site needs a cookie banner. Pass a region to check cookie banner requirement for a specific region
 		 *
-		 * @@param string|bool $region
+		 * @param string|bool $region
 		 *
 		 * @return bool
 		 * *@since 1.2

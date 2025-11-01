@@ -388,7 +388,7 @@ export const validateSettings = ( moduleId ) => async ( { select, resolveSelect 
 function convertSchemaErrorToText( errors, moduleId, schema ) {
 	const text = [];
 
-	for ( const { message, schemaPath, dataPath } of errors ) {
+	for ( const { message, schemaPath, instancePath } of errors ) {
 		let ptr = JsonPointer.create( schemaPath );
 		let parent = ptr.parent( schema );
 
@@ -402,7 +402,7 @@ function convertSchemaErrorToText( errors, moduleId, schema ) {
 		if ( parent?.title ) {
 			text.push( `${ parent.title } ${ message }.` );
 		} else {
-			text.push( `${ moduleId }${ dataPath } ${ message }.` );
+			text.push( `${ moduleId }${ instancePath } ${ message }.` );
 		}
 	}
 

@@ -4,7 +4,7 @@ Tags: Gutenberg, Block Editor, Gutenberg Templates, Gutenberg WooCommerce, Gener
 Requires at least: 5.8
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 5.7.3
+Stable tag: 5.7.4
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -168,7 +168,7 @@ Design without limits in WordPress block editor, using 70+ of the most useful Es
 - **[Lottie Animation](https://essential-blocks.com/demo/lottie-animation/)** - Add LottiFiles Animations to your Gutenberg site seamlessly and customize how you want it to appear.
 - **[Mega Menu (PRO)](https://essential-blocks.com/demo/mega-menu/)** - Create fully customized & mobile-friendly menu with grid, nested, dropdown,etc. dynamic layouts; add icons, badges, multimedia, etc.
 - **[Query Loop Builder (PRO)](https://essential-blocks.com/demo/query-loop-builder/)** - Easily create advanced, filterable post layouts in Gutenberg with the Query Loop Builder block. Display dynamic content stunningly and hook visitors, no coding required.
-
+- **[Business Hours (PRO)](https://essential-blocks.com/demo/business-hours/)** - Showcase available opening times in a stylish and interactive table view. Highlight closing days, special days, multi-shift, etc.
 
 More Gutenberg blocks and demos coming soon for the block visual editor (weekly update)
 
@@ -263,6 +263,13 @@ If you found the recent version of Essential Blocks isn’t working or conflicti
 
 
 == Changelog ==
+
+= 5.7.4 - 30/10/2025 =
+- Added: AI Image Editing feature
+- Fixed: Post Grid | Custom Post Types not appearing in Taxonomy Filter
+- Fixed: Post Grid | PHP warning fix
+- Few minor bug fixes & improvements
+
 = 5.7.3 - 23/10/2025 =
 - Fixed: Advanced Video | Video ratio issue
 - Fixed: Post Grid | Pagination conflict with Filter
@@ -271,12 +278,10 @@ If you found the recent version of Essential Blocks isn’t working or conflicti
 - Few minor bug fixes & improvements
 
 
-
 = 5.7.2 - 12/10/2025 =
 - Fixed: Editor not working with the last update
 - Improved: Security enhancements
 - Few minor bug fixes & improvements
-
 
 = 5.7.1 - 07/10/2025 =
 - Improved: Loop Builder | Added support for more blocks

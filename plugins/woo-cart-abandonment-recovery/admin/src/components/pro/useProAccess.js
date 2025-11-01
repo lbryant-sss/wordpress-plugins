@@ -55,7 +55,7 @@ export const useProAccess = () => {
 
 	const getActionButtonText = () => {
 		if ( 'not-installed' === cart_abandonment_admin?.wcar_pro_status ) {
-			return __( 'Get Pro Version', 'woo-cart-abandonment-recovery' );
+			return __( 'Go Pro', 'woo-cart-abandonment-recovery' );
 		} else if ( 'inactive' === cart_abandonment_admin?.wcar_pro_status ) {
 			return __( 'Activate', 'woo-cart-abandonment-recovery' );
 		} else if ( ! hasLicense ) {
@@ -163,3 +163,4 @@ export const useProAccess = () => {
 		UPGRADE_ACTIONS,
 	};
 };
+

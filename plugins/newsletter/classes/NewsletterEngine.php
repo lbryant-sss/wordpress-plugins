@@ -385,7 +385,7 @@ class NewsletterEngine {
         if (empty($email->id)) {
             $email->id = '0'; // As string, it's ok, compatible with WP query results
         }
-        $email->options = maybe_unserialize($email->options);
+        $email->options = maybe_unserialize($email->options ?? []);
     }
 
     function skip_run($email = null) {
@@ -400,6 +400,8 @@ class NewsletterEngine {
             $hour = gmdate('G') + get_option('gmt_offset');
             $start = (int) $this->options['schedule_start'];
             $end = (int) $this->options['schedule_end'];
+            // When the end is seto to 00:00, $end becomes -1 and the current hour is always greater than the end so the
+            // end time does not applies as it must be (send without limits for all the day)
             $end--; // Stop at the starting of the hour
 
             $this->logger->debug('Start: ' . $start);

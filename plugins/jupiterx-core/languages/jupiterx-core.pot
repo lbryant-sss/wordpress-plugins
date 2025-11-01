@@ -1,14 +1,14 @@
 # Copyright (c) 2025 Jupiter X Core.
 msgid ""
 msgstr ""
-"Project-Id-Version: Jupiter X Core 4.11.1\n"
+"Project-Id-Version: Jupiter X Core 4.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jupiterx-core\n"
 "Last-Translator: Artbees Team <info@artbees.net>\n"
 "Language-Team: Artbees Team <info@artbees.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-29T13:24:59+00:00\n"
+"POT-Creation-Date: 2025-10-29T11:48:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: jupiterx-core\n"
@@ -121,9 +121,10 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-accordion/widgets/advanced-accordion.php:254
 #: includes/extensions/raven/includes/modules/advanced-accordion/widgets/advanced-accordion.php:317
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:991
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2983
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5382
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5491
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1050
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2998
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5397
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5506
 #: includes/extensions/raven/includes/modules/animated-gradient/module.php:49
 #: includes/extensions/raven/includes/modules/business-hours/widgets/business-hours.php:84
 #: includes/extensions/raven/includes/modules/business-hours/widgets/business-hours.php:272
@@ -198,9 +199,10 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-accordion/widgets/advanced-accordion.php:255
 #: includes/extensions/raven/includes/modules/advanced-accordion/widgets/advanced-accordion.php:318
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:992
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2984
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5383
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5492
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1051
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2999
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5398
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5507
 #: includes/extensions/raven/includes/modules/animated-gradient/module.php:50
 #: includes/extensions/raven/includes/modules/business-hours/widgets/business-hours.php:85
 #: includes/extensions/raven/includes/modules/business-hours/widgets/business-hours.php:273
@@ -2337,8 +2339,8 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-content.php:237
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-content.php:794
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-content.php:802
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3110
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5422
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3125
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5437
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:353
 #: includes/extensions/raven/includes/modules/button/widgets/button.php:127
 #: includes/extensions/raven/includes/modules/carousel/widgets/media-carousel.php:464
@@ -2472,7 +2474,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1091
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1148
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:128
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2802
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2817
 #: includes/extensions/raven/includes/modules/carousel/widgets/testimonial-carousel.php:739
 #: includes/extensions/raven/includes/modules/cart/widgets/cart.php:387
 #: includes/extensions/raven/includes/modules/cart/widgets/cart.php:509
@@ -2531,14 +2533,14 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1512
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2088
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2309
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1503
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2782
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3554
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4097
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4462
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4901
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5251
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5350
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1518
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2797
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3569
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4112
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4477
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4916
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5266
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5365
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:215
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:420
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:581
@@ -2566,8 +2568,8 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/circle-progress/widgets/circle-progress.php:629
 #: includes/extensions/raven/includes/modules/circle-progress/widgets/circle-progress.php:681
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:263
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:307
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:355
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:315
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:363
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:546
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:1024
 #: includes/extensions/raven/includes/modules/forms/widgets/form.php:1443
@@ -2730,18 +2732,18 @@ msgid "New"
 msgstr ""
 
 #: includes/customizer/api/includes/control/group/class-background.php:43
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1248
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1332
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3250
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3357
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3640
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3772
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3901
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4183
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4315
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4533
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4640
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4747
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1263
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1347
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3265
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3372
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3655
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3787
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3916
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4198
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4330
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4548
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4655
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4762
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:139
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:368
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:457
@@ -2776,13 +2778,13 @@ msgstr ""
 #: includes/customizer/api/includes/control/group/class-background.php:51
 #: includes/customizer/api/includes/control/group/class-background.php:203
 #: includes/customizer/api/includes/control/group/class-background.php:206
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2461
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2489
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5191
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5294
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:276
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:334
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:382
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2476
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2504
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5206
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5309
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:284
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:342
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:390
 #: includes/extensions/raven/includes/modules/heading/widgets/heading.php:128
 #: includes/extensions/raven/includes/modules/icon/widgets/icon.php:150
 #: includes/extensions/raven/includes/modules/icon/widgets/icon.php:204
@@ -2842,18 +2844,18 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2159
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2230
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2320
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1252
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1335
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3253
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3360
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3643
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3775
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3904
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4186
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4318
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4536
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4643
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4750
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1267
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1350
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3268
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3375
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3658
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3790
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3919
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4201
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4333
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4551
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4658
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4765
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:485
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:524
 #: includes/extensions/raven/includes/modules/breadcrumbs/widgets/breadcrumbs.php:197
@@ -3027,7 +3029,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:318
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:409
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:467
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1538
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1553
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:33
 #: includes/extensions/raven/includes/modules/media-gallery/widgets/media-gallery.php:732
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:664
@@ -3048,7 +3050,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:319
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:410
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:468
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1539
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1554
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:34
 #: includes/extensions/raven/includes/modules/media-gallery/widgets/media-gallery.php:733
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:665
@@ -3069,7 +3071,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:320
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:411
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:469
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1540
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1555
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:35
 #: includes/extensions/raven/includes/modules/media-gallery/widgets/media-gallery.php:734
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:666
@@ -3090,7 +3092,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:321
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:412
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:470
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1541
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1556
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:36
 #: includes/extensions/raven/includes/modules/media-gallery/widgets/media-gallery.php:735
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:667
@@ -3111,7 +3113,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:322
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:413
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:471
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1542
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1557
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:37
 #: includes/extensions/raven/includes/modules/media-gallery/widgets/media-gallery.php:736
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:668
@@ -3132,7 +3134,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:323
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:414
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:472
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1543
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1558
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:38
 #: includes/extensions/raven/includes/modules/media-gallery/widgets/media-gallery.php:737
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:669
@@ -3153,7 +3155,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:324
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:415
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:473
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1544
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1559
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:39
 #: includes/extensions/raven/includes/modules/media-gallery/widgets/media-gallery.php:738
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:670
@@ -3174,7 +3176,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:325
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:416
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:474
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1545
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1560
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:40
 #: includes/extensions/raven/includes/modules/forms/fields/recaptcha-v3.php:148
 #: includes/extensions/raven/includes/modules/forms/widgets/login.php:235
@@ -3199,7 +3201,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:326
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:417
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:475
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1546
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1561
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:41
 #: includes/extensions/raven/includes/modules/forms/fields/recaptcha-v3.php:147
 #: includes/extensions/raven/includes/modules/forms/widgets/login.php:234
@@ -3246,7 +3248,7 @@ msgid "Fixed"
 msgstr ""
 
 #: includes/customizer/api/includes/control/group/class-background.php:120
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1598
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1613
 #: includes/extensions/raven/includes/modules/call-to-action/widgets/call-to-action.php:49
 #: includes/extensions/raven/includes/modules/carousel/widgets/media-carousel.php:420
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:57
@@ -3412,9 +3414,9 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1074
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1125
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1258
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1646
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3119
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4007
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1661
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3134
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4022
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:184
 #: includes/extensions/raven/includes/modules/animated-heading/widgets/animated-heading.php:335
 #: includes/extensions/raven/includes/modules/button/widgets/button.php:267
@@ -3488,20 +3490,20 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1716
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2181
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2252
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1282
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1364
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2073
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2302
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3291
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3398
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3688
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3820
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3949
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4231
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4363
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4574
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4681
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4788
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1297
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1379
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2088
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2317
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3306
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3413
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3703
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3835
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3964
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4246
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4378
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4589
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4696
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4803
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:285
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:299
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:539
@@ -3635,22 +3637,22 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1725
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2191
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2262
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1292
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1374
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2118
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2347
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3301
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3408
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3701
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3833
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3962
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4244
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4376
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4584
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4691
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4798
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5224
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5327
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1307
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1389
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2133
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2362
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3316
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3423
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3716
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3848
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3977
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4259
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4391
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4599
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4706
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4813
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5239
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5342
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:295
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:319
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:560
@@ -3971,40 +3973,40 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2212
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2413
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2433
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1263
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1345
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2022
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2251
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2465
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2493
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2607
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2630
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3055
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3077
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3225
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3272
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3333
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3379
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3610
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3668
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3742
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3800
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3871
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3929
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4153
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4211
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4285
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4343
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4509
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4555
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4616
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4662
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4723
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4769
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4848
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4972
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5195
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5298
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1278
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1360
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2037
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2266
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2480
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2508
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2622
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2645
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3070
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3092
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3240
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3287
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3348
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3394
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3625
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3683
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3757
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3815
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3886
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3944
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4168
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4226
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4300
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4358
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4524
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4570
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4631
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4677
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4738
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4784
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4863
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4987
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5210
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5313
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:266
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:389
 #: includes/extensions/raven/includes/modules/animated-gradient/module.php:71
@@ -4482,17 +4484,17 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1955
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2135
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2407
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1237
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1943
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2450
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2600
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2851
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3048
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3218
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3600
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4143
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4502
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5168
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1252
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1958
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2465
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2615
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2866
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3063
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3233
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3615
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4158
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4517
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5183
 #: includes/extensions/raven/includes/modules/archive-title/widgets/archive-title.php:181
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:467
 #: includes/extensions/raven/includes/modules/breadcrumbs/widgets/breadcrumbs.php:210
@@ -4989,7 +4991,7 @@ msgstr ""
 #: includes/customizer/settings/post-types/popup.php:98
 #: includes/extensions/raven/includes/core/dynamic-tags/tags/post/post-featured-image.php:23
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:682
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1523
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1538
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:152
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:21
 #: includes/extensions/raven/includes/modules/categories/skins/skin-outer-content.php:21
@@ -5037,7 +5039,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/circle-progress/widgets/circle-progress.php:599
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:389
 #: includes/extensions/raven/includes/modules/counter/widgets/counter.php:105
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:371
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:379
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:900
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:1112
 #: includes/extensions/raven/includes/modules/forms/actions/discord.php:132
@@ -5102,7 +5104,7 @@ msgstr ""
 
 #: includes/customizer/settings/blog-archive/popup.php:42
 #: includes/customizer/settings/portfolio-archive/popup.php:34
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2734
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2749
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:1438
 msgid "Meta"
 msgstr ""
@@ -5121,7 +5123,7 @@ msgstr ""
 #: includes/customizer/settings/product-page/popup.php:51
 #: includes/customizer/settings/product-page/settings.php:94
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:812
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5005
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5020
 #: includes/extensions/raven/includes/modules/forms/actions/activecampaign.php:165
 #: includes/extensions/raven/includes/modules/forms/actions/crm-trait.php:421
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:1157
@@ -5233,7 +5235,7 @@ msgstr ""
 #: includes/extensions/raven/includes/core/dynamic-tags/tags/site/current-date-time.php:38
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-content.php:902
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:742
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5456
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5471
 #: includes/extensions/raven/includes/modules/carousel/widgets/reviews.php:379
 #: includes/extensions/raven/includes/modules/circle-progress/widgets/circle-progress.php:58
 #: includes/extensions/raven/includes/modules/forms/actions/activecampaign.php:86
@@ -5362,20 +5364,20 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:790
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2170
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2241
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1978
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2207
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3263
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3370
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3656
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3788
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3917
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4199
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4331
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4546
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4653
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4760
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5206
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5309
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1993
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2222
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3278
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3385
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3671
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3803
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3932
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4214
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4346
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4561
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4668
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4775
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5221
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5324
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:257
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:273
 #: includes/extensions/raven/includes/modules/business-hours/widgets/business-hours.php:212
@@ -5510,16 +5512,16 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1753
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2107
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:83
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1410
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1879
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2572
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2822
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3020
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3185
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3569
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4112
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4474
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5062
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1425
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1894
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2587
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2837
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3035
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3200
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3584
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4127
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4489
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5077
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:227
 #: includes/extensions/raven/includes/modules/animated-heading/widgets/animated-heading.php:260
 #: includes/extensions/raven/includes/modules/archive-description/widgets/archive-description.php:37
@@ -5543,7 +5545,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/content-switch/widgets/content-switch.php:198
 #: includes/extensions/raven/includes/modules/content-switch/widgets/content-switch.php:317
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:280
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:235
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:243
 #: includes/extensions/raven/includes/modules/divider/widgets/divider.php:155
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:558
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:1036
@@ -5626,7 +5628,7 @@ msgstr ""
 
 #: includes/customizer/settings/blog-single/meta.php:97
 #: includes/customizer/settings/portfolio-single/meta.php:68
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2753
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2768
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:1457
 msgid "Meta Divider"
 msgstr ""
@@ -5634,8 +5636,8 @@ msgstr ""
 #: includes/customizer/settings/blog-single/meta.php:117
 #: includes/customizer/settings/portfolio-single/meta.php:88
 #: includes/customizer/settings/title-bar/breadcrumb.php:76
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2886
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2931
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2901
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2946
 #: includes/extensions/raven/includes/modules/forms/widgets/form.php:2746
 #: includes/extensions/raven/includes/modules/image-comparison/widgets/image-comparison.php:965
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:1560
@@ -5674,7 +5676,7 @@ msgstr ""
 #: includes/customizer/settings/post-types/popup.php:100
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:704
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1034
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5424
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5439
 #: includes/extensions/raven/includes/modules/forms/actions/email.php:225
 #: includes/extensions/raven/includes/modules/forms/module.php:67
 #: includes/extensions/raven/includes/modules/post-meta/widgets/post-meta.php:87
@@ -5743,14 +5745,14 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/add-to-cart/widgets/add-to-cart.php:749
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:60
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:649
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3522
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3537
 #: includes/extensions/raven/includes/modules/button/widgets/button.php:794
 #: includes/extensions/raven/includes/modules/carousel/widgets/base.php:309
 #: includes/extensions/raven/includes/modules/cart/widgets/cart.php:2306
 #: includes/extensions/raven/includes/modules/column/module.php:77
 #: includes/extensions/raven/includes/modules/column/module.php:99
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:237
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:212
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:214
 #: includes/extensions/raven/includes/modules/forms/widgets/form.php:2288
 #: includes/extensions/raven/includes/modules/marquee/classes/marquee.php:86
 #: includes/extensions/raven/includes/modules/media-gallery/widgets/media-gallery.php:1582
@@ -5793,17 +5795,17 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1973
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2206
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2427
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1321
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2170
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2478
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2623
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2900
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3070
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3326
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3861
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4275
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4716
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5272
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1336
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2185
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2493
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2638
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2915
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3085
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3341
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3876
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4290
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4731
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5287
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:506
 #: includes/extensions/raven/includes/modules/breadcrumbs/widgets/breadcrumbs.php:231
 #: includes/extensions/raven/includes/modules/button/widgets/button.php:495
@@ -6095,7 +6097,7 @@ msgstr ""
 #: includes/customizer/settings/product-list/popup.php:35
 #: includes/customizer/settings/product-list/settings.php:69
 #: includes/customizer/settings/product-page/popup.php:31
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4840
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4855
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:361
 #: includes/extensions/raven/includes/modules/carousel/widgets/reviews.php:215
 #: includes/extensions/raven/includes/modules/carousel/widgets/reviews.php:544
@@ -6300,7 +6302,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/carousel/widgets/testimonial-carousel.php:703
 #: includes/extensions/raven/includes/modules/cart/widgets/cart.php:1591
 #: includes/extensions/raven/includes/modules/cart/widgets/cart.php:2257
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:288
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:296
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:664
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:1253
 #: includes/extensions/raven/includes/modules/forms/fields/recaptcha.php:147
@@ -6403,8 +6405,8 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:953
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1871
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1991
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3732
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4609
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3747
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4624
 #: includes/extensions/raven/includes/modules/forms/widgets/form.php:2648
 #: includes/extensions/raven/includes/modules/image-accordion/widgets/image-accordion.php:60
 #: includes/extensions/raven/includes/modules/image-accordion/widgets/image-accordion.php:450
@@ -6452,7 +6454,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/button/widgets/button.php:231
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:219
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:188
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:204
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:206
 #: includes/extensions/raven/includes/modules/icon/widgets/icon.php:91
 #: includes/extensions/raven/includes/modules/icon/widgets/icon.php:294
 #: includes/extensions/raven/includes/modules/image-accordion/widgets/image-accordion.php:279
@@ -6506,7 +6508,7 @@ msgstr ""
 #: includes/extensions/raven/includes/core/document-types/types/popup.php:183
 #: includes/extensions/raven/includes/core/document-types/types/popup.php:250
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:706
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1445
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1460
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:207
 #: includes/extensions/raven/includes/modules/call-to-action/widgets/call-to-action.php:427
 #: includes/extensions/raven/includes/modules/cart/widgets/cart.php:89
@@ -6561,7 +6563,7 @@ msgstr ""
 #: includes/extensions/raven/includes/core/document-types/types/popup.php:185
 #: includes/extensions/raven/includes/core/document-types/types/popup.php:258
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:707
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1453
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1468
 #: includes/extensions/raven/includes/modules/call-to-action/widgets/call-to-action.php:435
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:330
 #: includes/extensions/raven/includes/modules/circle-progress/widgets/circle-progress.php:505
@@ -6608,7 +6610,7 @@ msgid "Bottom"
 msgstr ""
 
 #: includes/customizer/settings/header/settings.php:191
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1058
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1073
 #: includes/extensions/raven/includes/modules/hotspot/widgets/hotspot.php:573
 #: includes/extensions/raven/includes/modules/hotspot/widgets/hotspot.php:611
 #: includes/extensions/raven/includes/modules/motion-effects/sticky.php:55
@@ -6855,7 +6857,7 @@ msgstr ""
 #: includes/customizer/settings/product-list/popup.php:31
 #: includes/customizer/settings/product-list/settings.php:70
 #: includes/customizer/settings/product-page/popup.php:47
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5455
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5470
 #: includes/extensions/raven/includes/modules/media-gallery/widgets/media-gallery.php:80
 #: includes/extensions/raven/includes/modules/media-gallery/widgets/media-gallery.php:406
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:366
@@ -6886,7 +6888,7 @@ msgstr ""
 #: includes/customizer/settings/product-page/popup.php:27
 #: includes/extensions/raven/includes/core/dynamic-tags/tags/action/lightbox.php:41
 #: includes/extensions/raven/includes/core/dynamic-tags/tags/action/lightbox.php:51
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4920
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4935
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:195
 #: includes/extensions/raven/includes/modules/call-to-action/widgets/call-to-action.php:38
 #: includes/extensions/raven/includes/modules/call-to-action/widgets/call-to-action.php:130
@@ -6957,7 +6959,7 @@ msgstr ""
 #: includes/customizer/settings/product-list/popup.php:67
 #: includes/customizer/settings/product-list/settings.php:39
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:873
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3442
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3457
 #: includes/extensions/raven/includes/modules/carousel/widgets/base.php:186
 #: includes/extensions/raven/includes/modules/carousel/widgets/base.php:574
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:178
@@ -7006,7 +7008,7 @@ msgstr ""
 
 #: includes/customizer/settings/product-list/settings.php:43
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:898
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3997
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4012
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:148
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:873
 #: includes/extensions/raven/includes/modules/products/widgets/products.php:1410
@@ -7080,9 +7082,9 @@ msgstr ""
 #: includes/customizer/settings/product-list/settings.php:197
 #: includes/customizer/settings/product-page/settings.php:303
 #: includes/extensions/raven/includes/core/document-types/types/popup.php:131
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1730
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3146
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4037
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1745
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3161
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4052
 #: includes/extensions/raven/includes/modules/button/widgets/button.php:297
 #: includes/extensions/raven/includes/modules/call-to-action/widgets/call-to-action.php:371
 #: includes/extensions/raven/includes/modules/call-to-action/widgets/call-to-action.php:498
@@ -7301,7 +7303,7 @@ msgstr ""
 
 #: includes/customizer/settings/sidebar/popup.php:45
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:719
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4963
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4978
 #: includes/extensions/raven/includes/modules/business-hours/widgets/business-hours.php:312
 #: includes/extensions/raven/includes/modules/cart/widgets/cart.php:1719
 #: includes/extensions/raven/includes/modules/divider/widgets/divider.php:16
@@ -7343,8 +7345,8 @@ msgid "Breadcrumb Divider"
 msgstr ""
 
 #: includes/customizer/settings/title-bar/breadcrumb.php:101
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2872
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2919
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2887
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2934
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:1547
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:1593
 msgid "Links Color"
@@ -7368,7 +7370,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-accordion/widgets/advanced-accordion.php:79
 #: includes/extensions/raven/includes/modules/advanced-accordion/widgets/advanced-accordion.php:145
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-content.php:23
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1401
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1416
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:36
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:72
 #: includes/extensions/raven/includes/modules/breadcrumbs/widgets/breadcrumbs.php:40
@@ -8896,16 +8898,16 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1763
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2116
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:92
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1420
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1889
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2581
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2831
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3029
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3195
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3578
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4121
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4483
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5072
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1435
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1904
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2596
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2846
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3044
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3210
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3593
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4136
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4498
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5087
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:236
 #: includes/extensions/raven/includes/modules/animated-heading/widgets/animated-heading.php:268
 #: includes/extensions/raven/includes/modules/archive-description/widgets/archive-description.php:45
@@ -8928,7 +8930,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/content-switch/widgets/content-switch.php:207
 #: includes/extensions/raven/includes/modules/content-switch/widgets/content-switch.php:325
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:288
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:243
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:251
 #: includes/extensions/raven/includes/modules/divider/widgets/divider.php:165
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:566
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:1044
@@ -9041,17 +9043,17 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1767
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2112
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:88
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1416
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1810
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1885
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2577
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2827
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3025
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3191
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3574
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4117
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4479
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5068
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1431
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1825
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1900
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2592
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2842
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3040
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3206
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3589
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4132
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4494
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5083
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:232
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:240
 #: includes/extensions/raven/includes/modules/animated-gradient/module.php:99
@@ -9081,7 +9083,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/content-switch/widgets/content-switch.php:291
 #: includes/extensions/raven/includes/modules/content-switch/widgets/content-switch.php:321
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:284
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:239
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:247
 #: includes/extensions/raven/includes/modules/divider/widgets/divider.php:161
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:496
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:562
@@ -9220,17 +9222,17 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1767
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:2120
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:96
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1424
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1811
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1893
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2585
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2835
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3033
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3199
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3582
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4125
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4487
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5076
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1439
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1826
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1908
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2600
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2850
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3048
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3214
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3597
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4140
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4502
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5091
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:232
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:240
 #: includes/extensions/raven/includes/modules/animated-gradient/module.php:100
@@ -9260,7 +9262,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/content-switch/widgets/content-switch.php:283
 #: includes/extensions/raven/includes/modules/content-switch/widgets/content-switch.php:329
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:292
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:247
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:255
 #: includes/extensions/raven/includes/modules/divider/widgets/divider.php:169
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:497
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:570
@@ -9425,7 +9427,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:95
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:106
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:117
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:182
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:184
 #: includes/extensions/raven/includes/modules/forms/widgets/form.php:845
 #: includes/extensions/raven/includes/modules/forms/widgets/form.php:856
 #: includes/extensions/raven/includes/modules/forms/widgets/login.php:327
@@ -9580,7 +9582,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:94
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:105
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:116
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:181
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:183
 #: includes/extensions/raven/includes/modules/forms/widgets/form.php:844
 #: includes/extensions/raven/includes/modules/forms/widgets/form.php:855
 #: includes/extensions/raven/includes/modules/forms/widgets/login.php:326
@@ -9701,7 +9703,7 @@ msgstr ""
 #: includes/extensions/raven/includes/core/document-types/types/popup.php:814
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-content.php:295
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-content.php:443
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2405
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2420
 #: includes/extensions/raven/includes/modules/carousel/widgets/media-carousel.php:459
 #: includes/extensions/raven/includes/modules/carousel/widgets/media-carousel.php:552
 #: includes/extensions/raven/includes/modules/hotspot/widgets/hotspot.php:748
@@ -9740,7 +9742,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/animated-gradient/module.php:115
 #: includes/extensions/raven/includes/modules/call-to-action/widgets/call-to-action.php:1323
 #: includes/extensions/raven/includes/modules/circle-progress/widgets/circle-progress.php:158
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:189
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:191
 #: includes/extensions/raven/includes/modules/image-accordion/widgets/image-accordion.php:243
 #: includes/extensions/raven/includes/modules/marquee/classes/marquee.php:109
 #: includes/extensions/raven/includes/modules/media-gallery/widgets/media-gallery.php:937
@@ -9758,7 +9760,7 @@ msgid "Popup"
 msgstr ""
 
 #: includes/extensions/raven/includes/core/document-types/types/popup.php:489
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5089
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5104
 #: includes/extensions/raven/includes/modules/carousel/widgets/base.php:502
 #: includes/extensions/raven/includes/modules/forms/widgets/form.php:1521
 #: includes/extensions/raven/includes/modules/products/widgets/products.php:4463
@@ -9766,7 +9768,7 @@ msgid "Horizontal Offset"
 msgstr ""
 
 #: includes/extensions/raven/includes/core/document-types/types/popup.php:508
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5123
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5138
 #: includes/extensions/raven/includes/modules/carousel/widgets/base.php:479
 #: includes/extensions/raven/includes/modules/forms/widgets/form.php:1509
 msgid "Vertical Offset"
@@ -10190,7 +10192,7 @@ msgstr ""
 
 #: includes/extensions/raven/includes/core/dynamic-tags/tags/action/contact-url.php:89
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:356
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:323
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:331
 #: includes/extensions/raven/includes/modules/forms/module.php:63
 #: includes/extensions/raven/includes/modules/forms/widgets/form.php:934
 #: includes/extensions/raven/includes/modules/shopping-cart/widgets/shopping-cart.php:454
@@ -10727,7 +10729,7 @@ msgstr ""
 #: includes/extensions/raven/includes/core/dynamic-tags/tags/post/post-terms.php:56
 #: includes/extensions/raven/includes/core/dynamic-tags/tags/site/internal-url.php:45
 #: includes/extensions/raven/includes/core/dynamic-tags/tags/woocommerce/product-terms.php:54
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5405
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5420
 #: includes/extensions/raven/includes/modules/post-meta/widgets/post-meta.php:179
 #: includes/extensions/raven/includes/modules/post-navigation/widgets/post-navigation.php:355
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:316
@@ -10752,7 +10754,7 @@ msgstr ""
 
 #: includes/extensions/raven/includes/core/dynamic-tags/tags/post/post-title.php:14
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:693
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2533
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2548
 #: includes/extensions/raven/includes/modules/post-navigation/widgets/post-navigation.php:112
 #: includes/extensions/raven/includes/modules/post-navigation/widgets/post-navigation.php:483
 #: includes/extensions/raven/includes/modules/post-title/widgets/post-title.php:18
@@ -10792,7 +10794,7 @@ msgstr ""
 #: includes/extensions/raven/includes/core/dynamic-tags/tags/site/internal-url.php:54
 #: includes/extensions/raven/includes/core/dynamic-tags/tags/site/internal-url.php:71
 #: includes/extensions/raven/includes/core/dynamic-tags/tags/site/internal-url.php:88
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1086
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1101
 #: includes/extensions/raven/includes/modules/post-comments/widgets/post-comments.php:107
 #: includes/extensions/raven/includes/modules/posts/widgets/posts-carousel.php:218
 #: includes/extensions/raven/includes/modules/posts/widgets/posts.php:191
@@ -11103,10 +11105,10 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1833
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1877
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:117
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2858
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2907
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5175
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5279
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2873
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2922
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5190
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5294
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:322
 #: includes/extensions/raven/includes/modules/alert/widgets/alert.php:354
 #: includes/extensions/raven/includes/modules/animated-heading/widgets/animated-heading.php:387
@@ -11260,7 +11262,7 @@ msgid "Text Color"
 msgstr ""
 
 #: includes/extensions/raven/includes/modules/add-to-cart/widgets/add-to-cart.php:283
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2508
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2523
 #: includes/extensions/raven/includes/modules/call-to-action/widgets/call-to-action.php:1479
 #: includes/extensions/raven/includes/modules/carousel/widgets/base.php:204
 #: includes/extensions/raven/includes/modules/hotspot/widgets/hotspot.php:312
@@ -11340,13 +11342,13 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/add-to-cart/widgets/add-to-cart.php:1410
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:468
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-style.php:1936
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1823
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2553
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3001
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3173
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3492
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4067
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4447
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1838
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2568
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3016
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3188
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3507
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4082
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4462
 #: includes/extensions/raven/includes/modules/button/widgets/button.php:818
 #: includes/extensions/raven/includes/modules/call-to-action/widgets/call-to-action.php:543
 #: includes/extensions/raven/includes/modules/call-to-action/widgets/call-to-action.php:618
@@ -11549,7 +11551,7 @@ msgstr ""
 #: includes/extensions/raven/includes/modules/carousel/widgets/reviews.php:582
 #: includes/extensions/raven/includes/modules/cart/widgets/cart.php:178
 #: includes/extensions/raven/includes/modules/counter/widgets/counter.php:50
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:265
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:273
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:70
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:109
 #: includes/extensions/raven/includes/modules/flip-box/widgets/flip-box.php:745
@@ -12119,7 +12121,7 @@ msgid "Custom Toggle Icon"
 msgstr ""
 
 #: includes/extensions/raven/includes/modules/advanced-nav-menu/controls/tab-content.php:780
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5401
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5416
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:312
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:183
 msgid "Item Type"
@@ -12337,13 +12339,13 @@ msgstr ""
 msgid "Error: First item of the menu cannot be of \"Sub Menu\" type."
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/functionality/frontend.php:84
-#: includes/extensions/raven/includes/modules/advanced-posts/functionality/frontend.php:143
+#: includes/extensions/raven/includes/modules/advanced-posts/functionality/frontend.php:92
+#: includes/extensions/raven/includes/modules/advanced-posts/functionality/frontend.php:161
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:155
 msgid "No results found."
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/functionality/frontend.php:616
+#: includes/extensions/raven/includes/modules/advanced-posts/functionality/frontend.php:646
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:2494
 msgid "By"
 msgstr ""
@@ -12422,7 +12424,7 @@ msgstr ""
 
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:233
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:106
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:152
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:154
 #: includes/extensions/raven/includes/modules/photo-album/skins/skin-base.php:61
 #: includes/extensions/raven/includes/modules/post-terms/widgets/post-terms.php:99
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:247
@@ -12442,7 +12444,7 @@ msgstr ""
 
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:234
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:107
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:153
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:155
 #: includes/extensions/raven/includes/modules/photo-album/skins/skin-base.php:62
 #: includes/extensions/raven/includes/modules/post-terms/widgets/post-terms.php:100
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:248
@@ -12463,7 +12465,7 @@ msgstr ""
 
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:235
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:108
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:154
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:156
 #: includes/extensions/raven/includes/modules/photo-album/skins/skin-base.php:63
 #: includes/extensions/raven/includes/modules/post-terms/widgets/post-terms.php:101
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:249
@@ -12484,7 +12486,7 @@ msgstr ""
 
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:236
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:109
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:155
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:157
 #: includes/extensions/raven/includes/modules/photo-album/skins/skin-base.php:64
 #: includes/extensions/raven/includes/modules/post-terms/widgets/post-terms.php:102
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:250
@@ -12504,7 +12506,7 @@ msgstr ""
 
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:237
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:110
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:156
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:158
 #: includes/extensions/raven/includes/modules/photo-album/skins/skin-base.php:65
 #: includes/extensions/raven/includes/modules/post-terms/widgets/post-terms.php:103
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:251
@@ -12524,7 +12526,7 @@ msgstr ""
 
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:238
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:111
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:157
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:159
 #: includes/extensions/raven/includes/modules/photo-album/skins/skin-base.php:66
 #: includes/extensions/raven/includes/modules/post-terms/widgets/post-terms.php:104
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:252
@@ -12673,7 +12675,7 @@ msgid "Show Overlay Content On Hover"
 msgstr ""
 
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:626
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4829
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4844
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:864
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-cover.php:1021
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:2206
@@ -12702,7 +12704,7 @@ msgid "After Title"
 msgstr ""
 
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:715
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5432
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5447
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:1066
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-cover.php:597
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:343
@@ -12792,7 +12794,7 @@ msgid "Reading Time"
 msgstr ""
 
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:848
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2951
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2966
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:1193
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-cover.php:803
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:347
@@ -12801,7 +12803,7 @@ msgid "Excerpt"
 msgstr ""
 
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:859
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3099
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3114
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:1205
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-cover.php:815
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:359
@@ -12824,7 +12826,7 @@ msgid "Infinite Load"
 msgstr ""
 
 #: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:911
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4416
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4431
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:106
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:1290
 msgid "Sortable"
@@ -12893,25 +12895,33 @@ msgstr ""
 msgid "Random"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1045
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1046
+msgid "Ignore Repetitive Posts"
+msgstr ""
+
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1047
+msgid "Exclude posts that have already been displayed on other pages."
+msgstr ""
+
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1060
 #: includes/extensions/raven/includes/modules/posts/widgets/posts-carousel.php:177
 #: includes/extensions/raven/includes/modules/posts/widgets/posts.php:150
 msgid "Order"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1049
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1064
 #: includes/extensions/raven/includes/modules/posts/widgets/posts-carousel.php:181
 #: includes/extensions/raven/includes/modules/posts/widgets/posts.php:154
 msgid "ASC"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1050
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1065
 #: includes/extensions/raven/includes/modules/posts/widgets/posts-carousel.php:182
 #: includes/extensions/raven/includes/modules/posts/widgets/posts.php:155
 msgid "DESC"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1059
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1074
 #: includes/extensions/raven/includes/modules/posts/widgets/posts-carousel.php:191
 #: includes/extensions/raven/includes/modules/posts/widgets/posts.php:164
 #: includes/extensions/raven/includes/modules/products/widgets/products-carousel.php:307
@@ -12919,7 +12929,7 @@ msgstr ""
 msgid "Use this setting to skip over posts (e.g. '4' to skip over 4 posts)."
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1071
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1086
 #: includes/extensions/raven/includes/modules/posts/widgets/posts-carousel.php:203
 #: includes/extensions/raven/includes/modules/posts/widgets/posts.php:176
 #: includes/extensions/raven/includes/modules/products/widgets/products-carousel.php:323
@@ -12927,14 +12937,14 @@ msgstr ""
 msgid "Excludes"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1077
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1092
 #: includes/extensions/raven/includes/modules/post-comments/widgets/post-comments.php:98
 #: includes/extensions/raven/includes/modules/posts/widgets/posts-carousel.php:209
 #: includes/extensions/raven/includes/modules/posts/widgets/posts.php:182
 msgid "Current Post"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1078
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1093
 #: includes/extensions/raven/includes/modules/posts/widgets/posts-carousel.php:210
 #: includes/extensions/raven/includes/modules/posts/widgets/posts.php:183
 #: includes/extensions/raven/includes/modules/products/widgets/products-carousel.php:330
@@ -12942,7 +12952,7 @@ msgstr ""
 msgid "Manual Selection"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1113
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1128
 #: includes/extensions/raven/includes/modules/column/module.php:39
 #: includes/extensions/raven/includes/modules/countdown/widgets/countdown.php:72
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:88
@@ -12952,7 +12962,7 @@ msgstr ""
 msgid "Block"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1121
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1136
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:253
 #: includes/extensions/raven/includes/modules/forms/widgets/form.php:1065
 #: includes/extensions/raven/includes/modules/forms/widgets/social-login.php:311
@@ -12962,7 +12972,7 @@ msgstr ""
 msgid "Column Spacing"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1177
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1192
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:266
 #: includes/extensions/raven/includes/modules/forms/widgets/form.php:1086
 #: includes/extensions/raven/includes/modules/forms/widgets/social-login.php:338
@@ -12972,8 +12982,8 @@ msgstr ""
 msgid "Row Spacing"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1210
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4870
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1225
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4885
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:252
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:390
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:435
@@ -12998,7 +13008,7 @@ msgstr ""
 msgid "Gap"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1439
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1454
 #: includes/extensions/raven/includes/modules/cart/widgets/cart.php:86
 #: includes/extensions/raven/includes/modules/categories/skins/skin-base.php:317
 #: includes/extensions/raven/includes/modules/image-comparison/widgets/image-comparison.php:536
@@ -13008,7 +13018,7 @@ msgstr ""
 msgid "Vertical Alignment"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1449
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1464
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:211
 #: includes/extensions/raven/includes/modules/call-to-action/widgets/call-to-action.php:431
 #: includes/extensions/raven/includes/modules/cart/widgets/cart.php:90
@@ -13032,7 +13042,7 @@ msgstr ""
 msgid "Middle"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1534
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1549
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:29
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-cover.php:437
 #: includes/extensions/raven/includes/modules/posts/post/actions/post-cover.php:280
@@ -13040,7 +13050,7 @@ msgstr ""
 msgid "Background Position"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1593
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1608
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:52
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-cover.php:460
 #: includes/extensions/raven/includes/modules/posts/post/actions/post-cover.php:333
@@ -13048,7 +13058,7 @@ msgstr ""
 msgid "Background Size"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1597
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1612
 #: includes/extensions/raven/includes/modules/carousel/widgets/media-carousel.php:422
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:56
 #: includes/extensions/raven/includes/modules/post-terms/widgets/post-terms.php:98
@@ -13059,7 +13069,7 @@ msgstr ""
 msgid "Auto"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1599
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1614
 #: includes/extensions/raven/includes/modules/carousel/widgets/media-carousel.php:421
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:58
 #: includes/extensions/raven/includes/modules/hotspot/widgets/hotspot.php:224
@@ -13070,19 +13080,19 @@ msgstr ""
 msgid "Contain"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1768
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1783
 #: includes/extensions/raven/includes/modules/products/widgets/products.php:2279
 msgid "Small Images Height"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1806
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1821
 #: includes/extensions/raven/includes/modules/posts/carousel/actions/post-classic.php:376
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:690
 msgid "Image Position"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1950
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2177
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:1965
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2192
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:98
 #: includes/extensions/raven/includes/modules/categories/skins/skin-inner-content.php:140
 #: includes/extensions/raven/includes/modules/categories/skins/skin-outer-content.php:91
@@ -13114,36 +13124,36 @@ msgstr ""
 msgid "Opacity"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2646
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2661
 msgid "Metro Post Title"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2670
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2685
 msgid "Matrix Post Title"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2763
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2778
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:1467
 msgid "Divider Spacing"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2962
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2977
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:1642
 msgid "Excerpt Length"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2981
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:2996
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:1661
 msgid "Custom Excerpt"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3112
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3127
 #: includes/extensions/raven/includes/modules/carousel/widgets/reviews.php:846
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:1789
 msgid "Read More"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3203
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3218
 #: includes/extensions/raven/includes/modules/archive-description/widgets/archive-description.php:53
 #: includes/extensions/raven/includes/modules/archive-title/widgets/archive-title.php:118
 #: includes/extensions/raven/includes/modules/button/widgets/button.php:117
@@ -13162,53 +13172,53 @@ msgstr ""
 msgid "Justified"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3454
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3469
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:331
 msgid "Pages Visible"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3468
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3483
 #: includes/extensions/raven/includes/modules/post-navigation/widgets/post-navigation.php:138
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:345
 msgid "Previous Label"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3470
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3485
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:347
 msgid "&laquo; Prev"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3480
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3495
 #: includes/extensions/raven/includes/modules/post-navigation/widgets/post-navigation.php:154
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:357
 msgid "Next Label"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3482
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3497
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:359
 msgid "Next &raquo;"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:3995
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4010
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:871
 #: includes/extensions/raven/includes/modules/products/widgets/products.php:3704
 msgid "Button Label"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4428
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4443
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:1301
 #: includes/extensions/raven/includes/modules/video/widgets/video.php:1209
 msgid "Container Spacing"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4929
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4944
 #: includes/extensions/raven/includes/modules/author-box/widgets/author-box.php:231
 #: includes/extensions/raven/includes/modules/post-comments/widgets/post-comments.php:570
 #: includes/extensions/raven/includes/modules/posts/classes/post-base.php:2306
 msgid "Image Size"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4984
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:4999
 #: includes/extensions/raven/includes/modules/business-hours/widgets/business-hours.php:360
 #: includes/extensions/raven/includes/modules/cart/widgets/cart.php:1742
 #: includes/extensions/raven/includes/modules/divider/widgets/divider.php:69
@@ -13223,12 +13233,12 @@ msgstr ""
 msgid "Weight"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5017
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5032
 #: includes/extensions/raven/includes/modules/post-terms/widgets/post-terms.php:180
 msgid "Items Gap"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5040
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5055
 #: includes/extensions/raven/includes/modules/my-account/submodules/tab-style.php:776
 #: includes/extensions/raven/includes/modules/my-account/submodules/tab-style.php:1283
 #: includes/extensions/raven/includes/modules/post-terms/widgets/post-terms.php:203
@@ -13238,86 +13248,86 @@ msgstr ""
 msgid "Rows Gap"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5379
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5394
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:290
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:161
 msgid "Display Custom Fields"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5391
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5406
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:302
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:173
 msgid "Custom Fields"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5404
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5419
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:315
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:186
 msgid "Metafield"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5412
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5427
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:323
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:194
 msgid "Custom field key"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5419
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5434
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:330
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:201
 msgid "Field Type"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5423
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5438
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:334
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:205
 msgid "Array"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5435
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5450
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:346
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:217
 msgid "Standard Date"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5436
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5451
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:347
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:218
 msgid "Full Date & Time"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5437
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5452
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:348
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:219
 msgid "Short Date"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5438
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5453
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:349
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:220
 msgid "European Date"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5439
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5454
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:350
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:221
 msgid "Day of Week"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5440
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5455
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:351
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:222
 msgid "ISO Format"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5451
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5466
 #: includes/extensions/raven/includes/modules/post-terms/widgets/post-terms.php:38
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:362
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:233
 msgid "Taxonomy Type"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5454
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5469
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:365
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:236
 #: includes/extensions/raven/includes/modules/product-meta/widgets/product-meta.php:345
@@ -13326,24 +13336,24 @@ msgstr ""
 msgid "Tag"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5464
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5479
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:375
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:246
 msgid "Taxonomy Slug"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5474
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5489
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:385
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:256
 msgid "Base Link"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5483
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5498
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:265
 msgid "The url generate based on Base link & meta value."
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5488
+#: includes/extensions/raven/includes/modules/advanced-posts/widgets/advanced-posts.php:5503
 #: includes/extensions/raven/includes/modules/posts/carousel/skins/base.php:398
 #: includes/extensions/raven/includes/modules/posts/post/skins/base.php:270
 msgid "Show as link"
@@ -15517,7 +15527,7 @@ msgstr ""
 msgid "Item #2"
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:178
+#: includes/extensions/raven/includes/modules/counter/widgets/counter.php:180
 msgid "Thousand Separator"
 msgstr ""
 
@@ -16432,7 +16442,7 @@ msgid "This file type is not allowed."
 msgstr ""
 
 #: includes/extensions/raven/includes/modules/forms/fields/file.php:152
-#: includes/extensions/raven/assets/js/frontend.js:9979
+#: includes/extensions/raven/assets/js/frontend.js:10265
 msgid "This file size is not allowed."
 msgstr ""
 
@@ -17324,7 +17334,7 @@ msgstr ""
 msgid "Save a widget as global, then add it to multiple areas. All areas will be editable from one single place."
 msgstr ""
 
-#: includes/extensions/raven/includes/modules/global-widget/widgets/global-widget.php:113
+#: includes/extensions/raven/includes/modules/global-widget/widgets/global-widget.php:122
 msgid "Global"
 msgstr ""
 
@@ -24699,6 +24709,18 @@ msgid "Select Timezone"
 msgstr ""
 
 #: includes/control-panel-2/dist/control-panel.js:103
+msgid "Logic between Triggers"
+msgstr ""
+
+#: includes/control-panel-2/dist/control-panel.js:103
+msgid "Or"
+msgstr ""
+
+#: includes/control-panel-2/dist/control-panel.js:103
+msgid "And"
+msgstr ""
+
+#: includes/control-panel-2/dist/control-panel.js:103
 msgid "Add Trigger Rule"
 msgstr ""
 
@@ -25277,15 +25299,15 @@ msgstr ""
 msgid "Error! nonce mismatch"
 msgstr ""
 
-#: includes/extensions/raven/assets/js/frontend.js:10003
+#: includes/extensions/raven/assets/js/frontend.js:10289
 msgid "Please first update/publish the changes."
 msgstr ""
 
-#: includes/extensions/raven/assets/js/frontend.js:10178
+#: includes/extensions/raven/assets/js/frontend.js:10464
 msgid "Following messages are visible only for admin users."
 msgstr ""
 
-#: includes/extensions/raven/assets/js/frontend.js:17033
+#: includes/extensions/raven/assets/js/frontend.js:17319
 msgid "No headings were found on this page."
 msgstr ""
 

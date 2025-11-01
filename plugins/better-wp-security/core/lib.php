@@ -265,6 +265,33 @@ final class ITSEC_Lib {
 	}
 
 	/**
+	 * Get the list of Central IPs.
+	 *
+	 * @return string[]
+	 */
+	static function get_trusted_ips() {
+		return apply_filters( 'solid_security_trusted_ips', array() );
+	}
+
+	/**
+	 * Determines whether a given IP address from Central and should be trusted.
+	 *
+	 * @return boolean true if IP is Central or false
+	 */
+	static function is_ip_trusted( ) {
+		$ip = self::get_ip();
+		$trusted_ips = self::get_trusted_ips();
+		
+		foreach ( $trusted_ips as $trusted_ip ) {
+			if ( ITSEC_Lib_IP_Tools::intersect( $ip, $trusted_ip ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Checks if the given IP is banned.
 	 *
 	 * @param string $ip IP address to check.

@@ -3,7 +3,7 @@ Contributors: Milap
 Tags: facebook feeds, facebook like box, facebook like button, facebook feed widget, social post feed
 Donate link: https://www.paypal.me/MilapPatel
 Requires at least: 3.0.1
-Tested up to: 6.7.2
+Tested up to: 6.8.3
 Stable tag: 6.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -18,7 +18,7 @@ This plugin adds a simple Facebook Page Like Widget to your WordPress sidebar, f
 
 > Did this plugin made your life easy? Please consider [donating](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=neetap179@gmail.com&lc=US&item_name=Providing+Excellent+WordPress+plugin+support&no_note=0&no_shipping=2&curency_code=USD&bn=PP-DonationsBF:btn_donateCC_LG.gif:NonHosted).
 
-One of the most popular & lightweight plugin for Facebook page feeds widget with over 1.5 Million downloads and 80,000+ active installs.
+One of the most popular & lightweight plugin for Facebook page feeds widget with over 1.6 Million downloads and 50,000+ active installs.
 
 How to use latest version 6.4:
 
@@ -37,7 +37,7 @@ This widget will provide you the most simple and attractive way to display Faceb
 
 * Light weight & easy to configure
 * Add application id from your created Facebook application (Or you may use default application id), add it into widget & also URL of your Facebook page. 
-* Configuration options like show/hide posts from timeline, show/hide cover, show/hide profile photos , show small header, width options, language selection, custom css.
+* Configuration options like show/hide posts from timeline, show/hide cover, show/hide profile photos , show small header, width options, language selection, custom CSS.
 * Shortcode support.
 * Fast & helpful support.
 
@@ -49,7 +49,6 @@ If you need my help with installation / configurations / issues with my plugin, 
 
 * Gmail : cemilap.88@gmail.com
 * Blog : https://patelmilap.wordpress.com/contact-me/
-* Skype : milap_for_skype
 * Facebook : https://www.facebook.com/milap112
 
 I will try my best to reply you within 1 business day.

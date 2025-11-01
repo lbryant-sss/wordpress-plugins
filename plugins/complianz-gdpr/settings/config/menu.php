@@ -141,7 +141,7 @@ function cmplz_menu() {
 							'id' => 'cookie-descriptions',
 							'title' => 'Cookiedatabase.org',
 							'intro' => __( 'Complianz provides your Cookie Policy with comprehensive cookie descriptions, supplied by cookiedatabase.org.','complianz-gdpr') ." "
-							. __('We connect to this open-source database using an external API, which sends the results of the cookiescan (a list of found cookies, used plugins and your domain) to cookiedatabase.org, for the sole purpose of providing you with accurate descriptions and keeping them up-to-date on a regular basis.','complianz-gdpr'),
+								. __('We connect to this open-source database using an external API, which sends the results of the cookiescan (a list of found cookies, used plugins and your domain) to cookiedatabase.org, for the sole purpose of providing you with accurate descriptions and keeping them up-to-date on a regular basis.','complianz-gdpr'),
 							'helpLink' => 'https://complianz.io/our-cookiedatabase-a-new-initiative/',
 							'save_buttons_required' => false,
 						],
@@ -280,7 +280,7 @@ function cmplz_menu() {
 							'id'       => 'premiumsupport',
 							'title'    => __( 'Support',  'complianz-gdpr'  ),
 							'intro'    => __( 'You will be redirected to our support form, with the needed information, automatically.',  'complianz-gdpr'  ) . ' '.
-							              cmplz_sprintf(__( 'If you encounter issues, you can also go to the <a href="%s">support</a> form directly.',  'complianz-gdpr'  ), 'https://complianz.io/support'),
+								cmplz_sprintf(__( 'If you encounter issues, you can also go to the <a href="%s">support</a> form directly.',  'complianz-gdpr'  ), 'https://complianz.io/support'),
 							'premium'      => true,
 							'upgrade'     => 'https://complianz.io/pricing',
 							'premium_text' => __( "Get premium support with %sComplianz GDPR Premium%s", 'complianz-gdpr' ),

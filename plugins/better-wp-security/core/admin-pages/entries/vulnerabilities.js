@@ -24,4 +24,3 @@ domReady( () => {
 
 export { BeforeHeaderFill } from './vulnerabilities/components/before-header/index';
 export { vulnerabilityIcon } from './vulnerabilities/components/vulnerability-table';
-export { default as PatchPriority } from './vulnerabilities/components/patch-priority';

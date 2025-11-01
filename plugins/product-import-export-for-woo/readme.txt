@@ -1,10 +1,10 @@
 === Product Import Export for WooCommerce - Import Export Product CSV Suite ===
 Contributors: webtoffee
 Tags: product export, product import, CSV import export, woocommerce product import, export woocommerce products
-Requires at least: 3.0.1
-Tested up to: 6.8.2
+Requires at least: 3.0
+Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.5.6
+Stable tag: 2.5.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,14 +46,14 @@ With this plugin, you can export and import WooCommerce products to and from a C
 * Export specific products
 * Export and import WooCommerce products with <strong>attributes, taxonomies, price, stock, and more</strong>.
 * <strong>Bulk edit products, categories, price, stock, attributes</strong> 
-* Import, export or bulk add <strong>product categories, attributes, and tags.</strong>
+* Import, export or bulk add <strong>product categories and tags.</strong>
 * Export products based on stock status (In Stock, Out of Stock, On backorder). 
 
 
 ##ADDITIONAL FEATURES##
 
 * You can control the pace of the import/export process by doing it in <strong>custom batches</strong>.
-* Let's you <strong>set a CSV delimiter</strong> of your choice for import.
+* Let's you <strong>set a CSV delimiter</strong> of your choice to import products.
 * Select from <strong>multiple import/export methods</strong>.
 * Easily import products from <strong>other eCommerce platforms</strong> such as Shopify, Magento, etc., with import <strong>column mapping</strong>.
 * <strong>Organise and structure CSV columns in the export file </strong>with the drag-and-drop UI.
@@ -61,7 +61,7 @@ With this plugin, you can export and import WooCommerce products to and from a C
 * <strong>Save frequently used import/export configurations</strong> as templates and use the template for future imports and exports.
 * The plugin <strong>stores all the past imports and exports</strong> and <strong>lets you re-run</strong> them when needed.
 * <strong>Easy debugging:</strong> View and download import log for debugging purpose.
-&#9989; Tested OK with WooCommerce 10.1.2
+&#9989; Tested OK with WooCommerce 10.3.3
 
 ###COMPATIBLE PLUGINS###
 
@@ -79,11 +79,11 @@ Import and export your WooCommerce store products from one store to another in j
  
 ####Update Stock and Price of Existing Products####
 
-Using the advanced options, you can easily update the stock, price, and similar details of the existing products on import.
+Using the advanced options of the import products WooCommerce plugin, you can easily update the stock, price, and similar details of the existing products on import.
 
 ####Import/Update Product Images - Featured Image and Gallery Images####
 
-Now you can import or update the product images of multiple WooCommerce products simultaneously with ease. With the plugin, you can import/update all the gallery images of a product along with the product image, also known as the featured image.
+Now you can import or update the product images of multiple WooCommerce products simultaneously with ease. With the WooCommerce import products plugin, you can import/update all the gallery images of a product along with the product image, also known as the featured image.
 
 ####Export Products with Images####
 
@@ -102,7 +102,7 @@ However, if you want to import only the product categories of a WooCommerce stor
 
 ####Filter Product Exports By Category, Stock status, and Other Criteria####
 
-Export WooCommerce products based on your requirements. You can filter the product data and export the products based on multiple data filtration criteria, such as category, stock, status, product type, and more.
+Export WooCommerce products based on your requirements. You can filter the product data and export the products based on multiple data filtration criteria, such as category, tag, stock, status, product type, and more.
 
 
 ###SETUP GUIDE - PRODUCT IMPORT EXPORT FOR WOOCOMMERCE###
@@ -169,6 +169,8 @@ Other useful plugins from WebToffee for migrating WooCommerce/WordPress data:
 &#128312; <a href="https://wordpress.org/plugins/wp-migration-duplicator/">WordPress Backup & Migration</a>: Quickly migrate and backup entire WordPress site or selected files from one location to another. Backup to FTP, Google drive, Amazon S3, or local storage and easily restore them back.
 &#128312; <a href="https://wordpress.org/plugins/webtoffee-product-feed/">WebToffee WooCommerce Product Feed & Sync Manager</a>: Generate WooCommerce product feed for Google, Facebook and Instagram Shops and sync WooCommerce products with Facebook catalog.
 &#128312; <a href="https://www.webtoffee.com/product/gdpr-cookie-consent/?utm_source=free_plugin_readme&utm_medium=product_import_export&utm_campaign=GDPR">GDPR Cookie Consent</a>: This premium WebToffee plugin helps websites stay compliant with GDPR, CCPA, and other privacy laws. It lets you display a fully customizable cookie consent banner, manage cookie categories, record user consents, and set up prior consent for cookies.
+&#128312; <a href="https://wordpress.org/plugins/accessibility-plus/">Accessibility Tool Kit</a>: Accessibility Tool Kit is designed to help make your site compliant with accessibility standards such as WCAG 2.1, ADA, and Section 508. It automatically detects and fixes common accessibility issues, ensuring your site is easier for everyone to use.
+
 
 = About WebToffee =
 
@@ -236,6 +238,12 @@ Yes, you can import grouped, affiliate/external products in addition to simple p
 
 
 == CHANGELOG ==
+= 2.5.7 2025-10-30 =
+* [Compatibility] – Tested OK with WooCommerce 10.3.3
+* [Compatibility] – Tested OK with WordPress 6.8.3
+* [Add] - New Brand filter in export to allow exporting products by brand
+* [Update] – Plugin Check Plugin fixes.
+
 = 2.5.6 2025-09-02 =
 * [Compatibility] - Tested OK with WooCommerce 10.1.2
 * [Improvement] - Enhancements to the import mapping screen.
@@ -731,6 +739,8 @@ Yes, you can import grouped, affiliate/external products in addition to simple p
 
 == Upgrade Notice ==
 
-= 2.5.6 =
-* [Compatibility] - Tested OK with WooCommerce 10.1.2
-* [Improvement] - Enhancements to the import mapping screen.
+= 2.5.7 =
+* [Compatibility] – Tested OK with WooCommerce 10.3.3
+* [Compatibility] – Tested OK with WordPress 6.8.3
+* [Add] - New Brand filter in export to allow exporting products by brand
+* [Update] – Plugin Check Plugin fixes.

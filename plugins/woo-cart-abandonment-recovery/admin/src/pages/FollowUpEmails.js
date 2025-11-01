@@ -58,6 +58,7 @@ const FollowUpEmails = () => {
 						sent: Math.floor( Math.random() * 100 ),
 						open: Math.floor( Math.random() * 100 ),
 						click: Math.floor( Math.random() * 100 ),
+						conversion: Math.floor( Math.random() * 100 ),
 						unsub: Math.floor( Math.random() * 100 ),
 					};
 					changed = true;
@@ -677,6 +678,22 @@ const FollowUpEmails = () => {
 								<Table.HeadCell>
 									<div className="flex items-center justify-center gap-1.5">
 										{ __(
+											'Conversion Rate',
+											'woo-cart-abandonment-recovery'
+										) }
+										{ isFeatureBlocked && (
+											<FeatureBadge
+												feature={ __(
+													'PRO',
+													'woo-cart-abandonment-recovery'
+												) }
+											/>
+										) }
+									</div>
+								</Table.HeadCell>
+								<Table.HeadCell>
+									<div className="flex items-center justify-center gap-1.5">
+										{ __(
 											'Unsubscribed',
 											'woo-cart-abandonment-recovery'
 										) }
@@ -823,6 +840,23 @@ const FollowUpEmails = () => {
 													  }%`
 													: item?.click_rate
 													? `${ item.click_rate }%`
+													: '-' }
+											</Table.Cell>
+											<Table.Cell
+												className={ `${
+													isFeatureBlocked
+														? 'blur-sm select-none'
+														: ''
+												} text-center` }
+											>
+												{ isFeatureBlocked
+													? `${
+															dummyMetrics[
+																item.id
+															]?.conversion
+													  }%`
+													: item?.conversion_rate
+													? `${ item.conversion_rate }%`
 													: '-' }
 											</Table.Cell>
 											<Table.Cell
@@ -1031,3 +1065,4 @@ const FollowUpEmails = () => {
 };
 
 export default FollowUpEmails;
+

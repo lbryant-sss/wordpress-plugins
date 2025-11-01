@@ -26,7 +26,6 @@ import { Badge, TextSize, TextVariant, Text } from '@ithemes/ui';
  * Internal dependencies
  */
 import {
-	PatchPriority,
 	vulnerabilityIcon,
 } from '@ithemes/security.pages.vulnerabilities';
 import {
@@ -42,6 +41,7 @@ import {
 	HiResIcon,
 	ActiveUpdatesBadge,
 	VirtualPatchingBadge,
+	PatchPriority,
 } from '@ithemes/security-ui';
 import { useLocalStorage } from '@ithemes/security-hocs';
 import { Page } from '../../components';

@@ -6032,7 +6032,7 @@ msgstr "Приєднуйтесь до Facebook спільноти"
 
 #: static/js/dashboard/helpers/SubmitSupport.js:33
 msgid "Submit a Support Ticket"
-msgstr "Відправте зап��т на підтримку"
+msgstr "Відправте запит на підтримку"
 
 #: static/js/dashboard/helpers/SubmitSupport.js:21
 msgid "Got a question or need help with the theme? You can always submit a support ticket or ask for help in our friendly Facebook community."
@@ -9536,7 +9536,7 @@ msgstr "%s Налаштування"
 
 #: framework/extensions/product-reviews/extension.php:599
 msgid "New Category Name"
-msgstr "Назва нової катего��ії"
+msgstr "Назва нової категорії"
 
 #: framework/extensions/product-reviews/extension.php:598
 msgid "Add New Category"

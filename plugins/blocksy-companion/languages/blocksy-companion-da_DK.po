@@ -801,7 +801,7 @@ msgstr "Bekræft venteliste tilmelding"
 
 #: framework/premium/extensions/woocommerce-extra/features/product-waitlist/includes/emails/confirm-subscription.php:9
 msgid "This email is sent when a user subscribes to a product stock alert and should confirm their subscription"
-msgstr "Denne e-mail sendes, når en bruger tilmelder sig en lagerpåmindelse og skal bekræfte sin tilmelding"
+msgstr "Denne e-mail sendes, n��r en bruger tilmelder sig en lagerpåmindelse og skal bekræfte sin tilmelding"
 
 #: framework/premium/extensions/woocommerce-extra/features/product-waitlist/includes/emails/confirm-subscription.php:8
 msgid "Waitlist - Confirm Subscription"

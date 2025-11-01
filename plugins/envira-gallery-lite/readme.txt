@@ -4,7 +4,7 @@ Tags: gallery, image gallery, photo gallery, best gallery plugin, wordpress gall
 Requires at least: 5.5.0
 Tested up to: 6.8.3
 Requires PHP: 7.0
-Stable tag: 1.11.1
+Stable tag: 1.12.0
 License: GNU General Public License v2.0 or later
 
 Envira Gallery is the fastest, easiest, and most powerful WordPress image gallery. Lightbox with Drag & Drop builder that helps you create beautiful galleries with just a few clicks.
@@ -238,6 +238,11 @@ You can get access to more features, Addons and support by <a href="http://envir
 Yes, Envira has full translation and localization support via the envira-gallery textdomain. To submit a translation, see https://translate.wordpress.org/projects/wp-plugins/envira-gallery-lite
 
 == Changelog ==
+1.12.0
+* Added: Show likes text on comments tab.
+* Added: TikTok Videos as gallery source
+* Enhanced: Permission check when converting galleries in bulk.
+
 1.11.1
 * Added: New Template - Spread Harmony (Pro)
 * Fixed: Permission issue on convert gallery feature

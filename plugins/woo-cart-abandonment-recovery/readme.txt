@@ -3,7 +3,7 @@ Contributors: sujaypawar, wpcrafter
 Tags: woocommerce, cart abandonment, cart recovery
 Requires at least: 5.4
 Tested up to: 6.8
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -163,6 +163,12 @@ You can report the issue through our [Bug Bounty Program](https://brainstormforc
 4. General settings for Email, Webhook (Coupon Code), GDPR
 
 == Changelog ==
+
+= Version 2.0.3 - Wednesday, 29th October 2025 =
+- Fix: Resolved an issue where completed orders were incorrectly marked as abandoned after the cutoff time, despite being excluded.
+- Fix: Corrected incorrect UTM parameters used in tracking links.
+- Improvement: Added support for custom order statuses to improve compatibility.
+- Improvement: Implemented minor UI enhancements for a smoother and more intuitive user experience.
 
 = Version 2.0.2 - Friday, 17th October 2025 =
 - Fix: Users with the Shop Manager role were unable to delete records from Follow-up Reports.

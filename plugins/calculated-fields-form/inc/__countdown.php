@@ -1,7 +1,14 @@
 <?php
+$offer_text = 'Halloween Offer';
+$offer_time = '2025-10-31T23:59:59';
 $currentTime = new DateTime();
-$targetTime = new DateTime('2025-10-31 23:59');
+$targetTime = new DateTime('2025-12-01 23:59');
 if ($currentTime < $targetTime):
+	$halloweenTime = new DateTime('2025-10-31 23:59');
+	if ( $halloweenTime <= $currentTime ) {
+		$offer_text = 'Black Friday';
+		$offer_time = '2025-12-01T23:59:59';
+	}
 ?>
 <style>
 	.countdown{text-align:center;width:100%;}
@@ -68,9 +75,19 @@ if ($currentTime < $targetTime):
 			gap: 1rem;
 		}
 	}
+
+	.cff-offer-a{
+		font-size:1.3em;text-decoration:none;color:#2271b1;border:2px solid #2271b1; padding:2px 10px;border-radius:5px;box-shadow:none !important;outline:none !important;
+	}
+
+	.cff-offer-a:hover,
+	.cff-offer-a:active,
+	.cff-offer-a:focus{
+		background:#2271b1;border-color:#2271b1;color:white;
+	}
 </style>
 <div class="countdown">
-	<h2 class="countdown-title" style="margin-top:10px;margin-bottom:10px;clear:both;">Halloween Offer <a href="https://cff.dwbooster.com/download" target="_blank" style="font-size:1.3em;text-decoration:none;">40% OFF</a></h2>
+	<h2 class="countdown-title" style="margin-top:10px;margin-bottom:15px;clear:both;"><?php print esc_html( $offer_text ); ?> <a href="https://cff.dwbooster.com/download" target="_blank" class="cff-offer-a"style="">40% OFF</a></h2>
 	<div class="countdown-container">
 		<div class="countdown-time-unit">
 			<div class="countdown-time-box">
@@ -114,7 +131,7 @@ if ($currentTime < $targetTime):
 	}
 	if ( typeof updateCountdown == 'undefined' ) {
 		function updateCountdown() {
-			const targetDate = new Date('2025-10-31T23:59:59').getTime();
+			const targetDate = new Date('<?php print esc_js( $offer_time ); ?>').getTime();
 			const now = new Date().getTime();
 			const difference = targetDate - now;
 

@@ -28,19 +28,31 @@ if ( ! function_exists('webappick_dashboard_widget_render') ) {
      */
     function webappick_dashboard_widget_render() {
 
-        // Initialize variable.
-        $allposts = '';
+        $cache_key = 'woo_feed_webappick_posts';
+        $cached = get_transient($cache_key);
 
-        // Enter the name of your blog here followed by /wp-json/wp/v2/posts and add filters like this one that limits the result to 2 posts.
-        $response = wp_remote_get( 'https://webappick.com/wp-json/wp/v2/posts?per_page=5' );
+        // ✅ If cached data exists, use it
+        if ($cached !== false) {
+            $posts = $cached;
+        }else {
+            // Enter the name of your blog here followed by /wp-json/wp/v2/posts and add filters like this one that limits the result to 2 posts.
+            $response = wp_remote_get('https://webappick.com/wp-json/wp/v2/posts?per_page=5');
 
-        // Exit if error.
-        if ( is_wp_error( $response ) ) {
-            return;
+            // Exit if error.
+            if (is_wp_error($response)) {
+                return;
+            }
+
+            // Get the body.
+            $posts = json_decode(wp_remote_retrieve_body($response));
+
+            // Get custom cache duration (default 1 hour)
+            $duration = (int) get_option('woo_feed_webappick_posts', 86400);
+
+            // ✅ Cache for given duration
+            set_transient($cache_key, $posts, $duration);
+
         }
-
-        // Get the body.
-        $posts = json_decode( wp_remote_retrieve_body( $response ) );
 
         // Exit if nothing is returned.
         if ( empty( $posts ) ) {

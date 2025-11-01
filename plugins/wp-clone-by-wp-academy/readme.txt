@@ -4,8 +4,8 @@ Tags: migrate, clone, backup, restore, duplicate
 Author URI: https://backupbliss.com
 Requires PHP: 5.5
 Requires at least: 3.3
-Tested up to: 6.7
-Stable tag: 2.4.7
+Tested up to: 6.8.3
+Stable tag: 2.4.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -132,6 +132,11 @@ You can back up the website database only, if you navigate to the Advanced Setti
 Backup and migration FAQ are under construction
 
 == Changelog ==
+
+= 2.4.8 =
+* Tested with WordPress 6.8.3
+* Added new Backup Bliss banner module
+* Integrated promotional banner for Backup Bliss plugin
 
 = 2.4.7 =
 * Test with WordPress 6.7
@@ -281,6 +286,7 @@ Backup and migration FAQ are under construction
 1. Configuration Page
 
 == Upgrade Notice ==
-= 2.4.7 =
-* Test with WordPress 6.7
-* Fixed a security issue
+= 2.4.8 =
+* Tested with WordPress 6.8.3
+* Added new Backup Bliss banner module
+* Integrated promotional banner for Backup Bliss plugin

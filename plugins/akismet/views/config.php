@@ -274,13 +274,13 @@ $kses_allow_link_href = array(
 									<th scope="row"><?php esc_html_e( 'Status', 'akismet' ); ?></th>
 									<td>
 										<?php
-										if ( 'cancelled' === $akismet_user->status ) :
+										if ( Akismet::USER_STATUS_CANCELLED === $akismet_user->status ) :
 											esc_html_e( 'Cancelled', 'akismet' );
-										elseif ( 'suspended' === $akismet_user->status ) :
+										elseif ( Akismet::USER_STATUS_SUSPENDED === $akismet_user->status ) :
 											esc_html_e( 'Suspended', 'akismet' );
-										elseif ( 'missing' === $akismet_user->status ) :
+										elseif ( Akismet::USER_STATUS_MISSING === $akismet_user->status ) :
 											esc_html_e( 'Missing', 'akismet' );
-										elseif ( 'no-sub' === $akismet_user->status ) :
+										elseif ( Akismet::USER_STATUS_NO_SUB === $akismet_user->status ) :
 											esc_html_e( 'No subscription found', 'akismet' );
 										else :
 											esc_html_e( 'Active', 'akismet' );
@@ -299,9 +299,9 @@ $kses_allow_link_href = array(
 							</tbody>
 						</table>
 						<div class="akismet-card-actions">
-							<?php if ( $akismet_user->status === 'active' ) : ?>
+							<?php if ( $akismet_user->status === Akismet::USER_STATUS_ACTIVE ) : ?>
 								<div class="akismet-card-actions__secondary-action">
-									<a href="https://akismet.com/account" class="akismet-settings__external-link" aria-label="Account overview on akismet.com"><?php esc_html_e( 'Account overview', 'akismet' ); ?></a>
+									<a href="https://akismet.com/account?utm_source=akismet_plugin&amp;utm_campaign=plugin_static_link&amp;utm_medium=in_plugin&amp;utm_content=account_overview" class="akismet-external-link" aria-label="Account overview on akismet.com"><?php esc_html_e( 'Account overview', 'akismet' ); ?></a>
 								</div>
 							<?php endif; ?>
 							<div id="publishing-action">
@@ -309,8 +309,9 @@ $kses_allow_link_href = array(
 								Akismet::view(
 									'get',
 									array(
-										'text'     => ( $akismet_user->account_type === 'free-api-key' && $akismet_user->status === 'active' ? __( 'Upgrade', 'akismet' ) : __( 'Change', 'akismet' ) ),
-										'redirect' => 'upgrade',
+										'text'        => ( $akismet_user->account_type === 'free-api-key' && $akismet_user->status === Akismet::USER_STATUS_ACTIVE ? __( 'Upgrade', 'akismet' ) : __( 'Change', 'akismet' ) ),
+										'redirect'    => 'upgrade',
+										'utm_content' => ( $akismet_user->account_type === 'free-api-key' && $akismet_user->status === Akismet::USER_STATUS_ACTIVE ? 'config_upgrade' : 'config_change' ),
 									)
 								);
 								?>

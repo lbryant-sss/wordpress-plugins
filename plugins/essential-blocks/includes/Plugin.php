@@ -26,6 +26,7 @@ use EssentialBlocks\Integrations\Pagination;
 use EssentialBlocks\Integrations\GlobalStyles;
 use EssentialBlocks\Integrations\AssetGeneration;
 use EssentialBlocks\Integrations\PluginInstaller;
+use EssentialBlocks\Integrations\AI\AI;
 use EssentialBlocks\Utils\SvgSanitizer;
 use EssentialBlocks\Admin\QuickSetup;
 use EssentialBlocks\Integrations\BlockUsage;
@@ -34,7 +35,7 @@ use EssentialBlocks\Utils\LiquidGlassRenderer;
 final class Plugin
 {
     use HasSingletone;
-                                                            public $version = '5.7.3';
+                                                                        public $version = '5.7.4';
 
     public $admin;
     /**
@@ -135,6 +136,9 @@ final class Plugin
         // SVG Sanitizer
         SvgSanitizer::get_instance();
 
+        // Initialize AI Integration
+        AI::get_instance();
+
         add_action( 'init', function () {
             /**
              * Register a meta `_eb_attr`
@@ -233,7 +237,7 @@ final class Plugin
         //Those flags needs to update if notice
         $this->define( 'EB_PROMOTION_FLAG', 13 );
         $this->define( 'EB_ADMIN_MENU_FLAG', 13 );
-        $this->define( 'EB_SHOW_WHATS_NEW_NOTICE', 0 );
+        $this->define( 'EB_SHOW_WHATS_NEW_NOTICE', 1 );
 
         //Table Name constants
         global $wpdb;

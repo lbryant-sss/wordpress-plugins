@@ -146,6 +146,12 @@ var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
 },{"./popup/popup":3,"./utils/animated-gradient":4,"./utils/detectr":5,"./utils/full-page-editor":6,"./utils/header":7,"./utils/masonry":8,"./utils/module":9,"./utils/motion-effects/luncher":16,"./utils/pagination":20,"./utils/smoothscroll-polyfill":21,"./utils/sortable":22,"./utils/tooltip":23,"./utils/wrapper-link":24,"./widgets/add-to-cart":25,"./widgets/advanced-accordion":26,"./widgets/advanced-nav-menu":27,"./widgets/advanced-posts":28,"./widgets/alert":29,"./widgets/animated-heading":30,"./widgets/button":31,"./widgets/carousel/media-carousel":33,"./widgets/carousel/testimonial-carousel":34,"./widgets/cart":35,"./widgets/categories":36,"./widgets/circle-progress":37,"./widgets/code-highlight":38,"./widgets/column":39,"./widgets/content-switch":40,"./widgets/countdown":41,"./widgets/counter":42,"./widgets/form":43,"./widgets/hotspot":44,"./widgets/image-accordion":45,"./widgets/image-comparison":46,"./widgets/lottie":47,"./widgets/media-gallery":48,"./widgets/my-account":49,"./widgets/nav-menu":50,"./widgets/paypal-button":51,"./widgets/photo-album":52,"./widgets/photo-roller":53,"./widgets/post-comments":54,"./widgets/post-navigation":55,"./widgets/posts":57,"./widgets/posts-carousel":56,"./widgets/product-data-tabs":58,"./widgets/product-gallery":59,"./widgets/product-reviews":60,"./widgets/products-carousel":61,"./widgets/progress-tracker":62,"./widgets/search-form":63,"./widgets/shopping-cart":64,"./widgets/slider":65,"./widgets/social-login":66,"./widgets/social-share":67,"./widgets/sticky-media-scroller":68,"./widgets/stripe-button":69,"./widgets/table-of-content":70,"./widgets/tabs":71,"./widgets/video":83,"./widgets/video-playlist/handler":74,"./widgets/wc-products":84,"@babel/runtime/helpers/interopRequireDefault":96,"@babel/runtime/helpers/typeof":106}],2:[function(require,module,exports){
 "use strict";
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 var $ = jQuery;
 
 window.jupiterxPopupSettings = function ($popup, settings, triggers) {
@@ -155,32 +161,19 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
       popupTriggers = triggers,
       id = popupSettings.id,
       popupId = popupSettings.jupiterx_popup_id,
-      editMode = Boolean(elementorFrontend.isEditMode());
+      editMode = Boolean(elementorFrontend.isEditMode()),
+      validTriggerFunctionList = [];
+  var isTriggerValid = false;
+  var canPopupDisplayImmediatly = false;
+  var isAnyTriggerNotValid = false;
+  var triggerRelation = 'or';
   var ajaxContentLoaded = false;
   var inactivityTimeout;
   var isUTMMatch;
   var hasResetTimerRun = []; //used for after inactivity trigger to display popup only once per page load
 
   this.init = function () {
-    var _popupTriggers$on_dat,
-        _popupTriggers$time_r,
-        _this = this,
-        _popupTriggers$on_scr,
-        _popupTriggers$on_scr2,
-        _popupTriggers$on_scr3,
-        _popupTriggers$show_a,
-        _popupTriggers$show_a2,
-        _popupTriggers$url_re,
-        _popupTriggers$user_b,
-        _popupTriggers$user_b2,
-        _popupTriggers$user_d,
-        _popupTriggers$user_r,
-        _popupTriggers$user_t,
-        _popupTriggers$utm_ca,
-        _popupTriggers$utm_co,
-        _popupTriggers$utm_so,
-        _popupTriggers$utm_te,
-        _popupTriggers$utm_me;
+    var _popupTriggers$on_dat, _popupTriggers$time_r, _popupTriggers$on_scr, _popupTriggers$on_scr2, _popupTriggers$on_scr3, _popupTriggers$show_a, _popupTriggers$show_a2, _popupTriggers$url_re, _popupTriggers$user_b, _popupTriggers$user_b2, _popupTriggers$user_d, _popupTriggers$user_r, _popupTriggers$user_t, _popupTriggers$utm_ca, _popupTriggers$utm_co, _popupTriggers$utm_so, _popupTriggers$utm_te, _popupTriggers$utm_me;
 
     if (editMode || $('.jupiterx-popup').length > 1 && this.handleAvoidMultiplePopups()) {
       return false;
@@ -205,8 +198,15 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
 
     if (popupTriggers.length === 0) {
       this.removeEntranceAnimationClass();
+    }
+
+    if (popupTriggers.relation_logic) {
+      var _popupTriggers$relati;
+
+      triggerRelation = (_popupTriggers$relati = popupTriggers.relation_logic) === null || _popupTriggers$relati === void 0 ? void 0 : _popupTriggers$relati.control;
     } // On date.
-    // eslint-disable-next-line camelcase
+
+    /* eslint-disable camelcase */
 
 
     if (popupTriggers.on_date) {
@@ -214,14 +214,12 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
       var triggerDate = new Date(popupTriggers.on_date.control * 1000);
 
       if (currentDate.toDateString() !== triggerDate.toDateString()) {
-        return;
-      }
-
-      if (Object.keys(popupTriggers).length === 1 && Object.keys(popupTriggers)[0] === 'on_date') {
-        this.showPopup();
+        isAnyTriggerNotValid = true;
+      } else {
+        isTriggerValid = true;
+        canPopupDisplayImmediatly = true;
       }
     } // On date range.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$on_dat = popupTriggers.on_date_range) === null || _popupTriggers$on_dat === void 0 ? void 0 : _popupTriggers$on_dat.control) {
@@ -231,14 +229,12 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
       var endDate = new Date(popupTriggers.on_date_range.control.end_date * 1000);
 
       if (!(_currentDate >= startDate && _currentDate <= endDate)) {
-        return;
-      }
-
-      if (Object.keys(popupTriggers).length === 1 && Object.keys(popupTriggers)[0] === 'on_date_range') {
-        this.showPopup();
+        isAnyTriggerNotValid = true;
+      } else {
+        isTriggerValid = true;
+        canPopupDisplayImmediatly = true;
       }
     } // On time range.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$time_r = popupTriggers.time_range) === null || _popupTriggers$time_r === void 0 ? void 0 : _popupTriggers$time_r.control) {
@@ -254,150 +250,315 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
       var currentTimestamp = new Date(new Date().toLocaleDateString() + ' ' + currentTime).getTime();
 
       if (!(_startDate <= currentTimestamp && currentTimestamp <= dueDate)) {
-        return;
-      } // Trigger when only time range is used OR on date and time range are used together OR on date range and time range are used together.
-
-
-      if (Object.keys(popupTriggers).length === 1 && Object.keys(popupTriggers).includes('time_range') || Object.keys(popupTriggers).length === 2 && Object.keys(popupTriggers).includes('time_range') && Object.keys(popupTriggers).includes('on_date') || Object.keys(popupTriggers).length === 2 && Object.keys(popupTriggers).includes('time_range') && Object.keys(popupTriggers).includes('on_date_range')) {
-        this.showPopup();
+        isAnyTriggerNotValid = true;
+      } else {
+        isTriggerValid = true;
+        canPopupDisplayImmediatly = true;
       }
     } // On Page Exit Intent.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.on_page_exit_intent) {
-      this.removeEntranceAnimationClass();
-      $document.mouseleave(function () {
-        _this.showPopup();
+      isTriggerValid = true;
+      validTriggerFunctionList.push({
+        key: 'on_page_exit_intent',
+        value: popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.on_page_exit_intent,
+        canRun: false
       });
     } // On Page load.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.on_page_load) {
-      setTimeout(function () {
-        _this.showPopup();
-      }, popupTriggers.on_page_load.control * 1000);
+      isTriggerValid = true;
+      validTriggerFunctionList.push({
+        key: 'on_page_load',
+        value: popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.on_page_load,
+        canRun: false
+      });
     } // On Scroll.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$on_scr = popupTriggers.on_scroll) === null || _popupTriggers$on_scr === void 0 ? void 0 : (_popupTriggers$on_scr2 = _popupTriggers$on_scr.control) === null || _popupTriggers$on_scr2 === void 0 ? void 0 : _popupTriggers$on_scr2.direction) {
-      this.removeEntranceAnimationClass();
-      this.onScroll();
+      isTriggerValid = true;
+      validTriggerFunctionList.push({
+        key: 'on_page_scroll',
+        value: popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.on_scroll,
+        canRun: false
+      });
     } // On Scroll Element.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$on_scr3 = popupTriggers.on_scroll_to_element) === null || _popupTriggers$on_scr3 === void 0 ? void 0 : _popupTriggers$on_scr3.control) {
-      this.removeEntranceAnimationClass();
-      this.onScrollElement();
+      isTriggerValid = true;
+      validTriggerFunctionList.push({
+        key: 'on_scroll_to_element',
+        value: popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.on_scroll_to_element,
+        canRun: false
+      });
     } // After X Page Views.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$show_a = popupTriggers.show_after_x_page_views) === null || _popupTriggers$show_a === void 0 ? void 0 : _popupTriggers$show_a.control) {
-      this.onAfterXPageViews();
+      isTriggerValid = true;
+      validTriggerFunctionList.push({
+        key: 'show_after_x_page_views',
+        value: popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.show_after_x_page_views,
+        canRun: false
+      });
     } // After X Visits.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$show_a2 = popupTriggers.show_after_x_visits) === null || _popupTriggers$show_a2 === void 0 ? void 0 : _popupTriggers$show_a2.control) {
-      this.onAfterXVisits();
+      isTriggerValid = true;
+      validTriggerFunctionList.push({
+        key: 'show_after_x_visits',
+        value: popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.show_after_x_visits,
+        canRun: false
+      });
     } // URL Referrer.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$url_re = popupTriggers.url_referrer) === null || _popupTriggers$url_re === void 0 ? void 0 : _popupTriggers$url_re.control) {
-      this.urlReferrer();
+      isTriggerValid = true;
+      validTriggerFunctionList.push({
+        key: 'url_referrer',
+        value: popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.url_referrer,
+        canRun: false
+      });
     } // User browser language.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$user_b = popupTriggers.user_browser_language) === null || _popupTriggers$user_b === void 0 ? void 0 : _popupTriggers$user_b.control) {
-      this.userBrowserLanguage();
+      isTriggerValid = true;
+      validTriggerFunctionList.push({
+        key: 'user_browser_language',
+        value: popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.user_browser_language,
+        canRun: false
+      });
     } // User browser.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$user_b2 = popupTriggers.user_browser) === null || _popupTriggers$user_b2 === void 0 ? void 0 : _popupTriggers$user_b2.control) {
-      this.userBrowser();
+      isTriggerValid = true;
+      validTriggerFunctionList.push({
+        key: 'user_browser',
+        value: popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.user_browser,
+        canRun: false
+      });
     } // User device.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$user_d = popupTriggers.user_device) === null || _popupTriggers$user_d === void 0 ? void 0 : _popupTriggers$user_d.control) {
       if (this.userDevice(popupTriggers.user_device.control, popupTriggers.user_device.operator)) {
-        this.showPopup();
+        isTriggerValid = true;
+        canPopupDisplayImmediatly = true;
+      } else {
+        isAnyTriggerNotValid = true;
       }
     } // User role.
-    // eslint-disable-next-line camelcase
 
 
-    if ((popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$user_r = popupTriggers.user_role) === null || _popupTriggers$user_r === void 0 ? void 0 : _popupTriggers$user_r.result) && popupTriggers.user_role.result === true) {
-      this.showPopup();
+    if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$user_r = popupTriggers.user_role) === null || _popupTriggers$user_r === void 0 ? void 0 : _popupTriggers$user_r.result) {
+      var _popupTriggers$user_r2;
+
+      if ((popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$user_r2 = popupTriggers.user_role) === null || _popupTriggers$user_r2 === void 0 ? void 0 : _popupTriggers$user_r2.result) === true) {
+        isTriggerValid = true;
+        canPopupDisplayImmediatly = true;
+      } else {
+        isAnyTriggerNotValid = true;
+      }
     } // User type.
-    // eslint-disable-next-line camelcase
 
 
-    if ((popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$user_t = popupTriggers.user_type) === null || _popupTriggers$user_t === void 0 ? void 0 : _popupTriggers$user_t.result) && popupTriggers.user_type.result === true) {
-      this.showPopup();
+    if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$user_t = popupTriggers.user_type) === null || _popupTriggers$user_t === void 0 ? void 0 : _popupTriggers$user_t.result) {
+      var _popupTriggers$user_t2;
+
+      if ((popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$user_t2 = popupTriggers.user_type) === null || _popupTriggers$user_t2 === void 0 ? void 0 : _popupTriggers$user_t2.result) === true) {
+        isTriggerValid = true;
+        canPopupDisplayImmediatly = true;
+      } else {
+        isAnyTriggerNotValid = true;
+      }
     } // UTM Campaign.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$utm_ca = popupTriggers.utm_campaign) === null || _popupTriggers$utm_ca === void 0 ? void 0 : _popupTriggers$utm_ca.control) {
-      isUTMMatch = this.utmUrl(popupTriggers.utm_campaign, 'utm_campaign');
+      isUTMMatch = this.utmUrl(popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.utm_campaign, 'utm_campaign');
 
       if (isUTMMatch) {
-        this.showPopup();
+        isTriggerValid = true;
+        canPopupDisplayImmediatly = true;
+      } else {
+        isAnyTriggerNotValid = true;
       }
     } // UTM Content.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$utm_co = popupTriggers.utm_content) === null || _popupTriggers$utm_co === void 0 ? void 0 : _popupTriggers$utm_co.control) {
-      isUTMMatch = this.utmUrl(popupTriggers.utm_content, 'utm_content');
+      isUTMMatch = this.utmUrl(popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.utm_content, 'utm_content');
 
       if (isUTMMatch) {
-        this.showPopup();
+        isTriggerValid = true;
+        canPopupDisplayImmediatly = true;
+      } else {
+        isAnyTriggerNotValid = true;
       }
     } // UTM Source.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$utm_so = popupTriggers.utm_source) === null || _popupTriggers$utm_so === void 0 ? void 0 : _popupTriggers$utm_so.control) {
       isUTMMatch = this.utmUrl(popupTriggers.utm_source, 'utm_source');
 
       if (isUTMMatch) {
-        this.showPopup();
+        isTriggerValid = true;
+        canPopupDisplayImmediatly = true;
+      } else {
+        isAnyTriggerNotValid = true;
       }
     } // UTM Term.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$utm_te = popupTriggers.utm_term) === null || _popupTriggers$utm_te === void 0 ? void 0 : _popupTriggers$utm_te.control) {
-      isUTMMatch = this.utmUrl(popupTriggers.utm_term, 'utm_term');
+      isUTMMatch = this.utmUrl(popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.utm_term, 'utm_term');
 
       if (isUTMMatch) {
-        this.showPopup();
+        isTriggerValid = true;
+        canPopupDisplayImmediatly = true;
+      } else {
+        isAnyTriggerNotValid = true;
       }
-    } // UTM Term.
-    // eslint-disable-next-line camelcase
+    } // UTM Medium.
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$utm_me = popupTriggers.utm_medium) === null || _popupTriggers$utm_me === void 0 ? void 0 : _popupTriggers$utm_me.control) {
-      isUTMMatch = this.utmUrl(popupTriggers.utm_medium, 'utm_medium');
+      isUTMMatch = this.utmUrl(popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.utm_medium, 'utm_medium');
 
       if (isUTMMatch) {
-        this.showPopup();
+        isTriggerValid = true;
+        canPopupDisplayImmediatly = true;
+      } else {
+        isAnyTriggerNotValid = true;
       }
     } // After inactivity.
-    // eslint-disable-next-line camelcase
 
 
     if (popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.after_inactivity) {
-      this.onAfterInactivity(popupTriggers.after_inactivity.control);
+      isTriggerValid = true;
+      validTriggerFunctionList.push({
+        key: 'after_inactivity',
+        value: popupTriggers === null || popupTriggers === void 0 ? void 0 : popupTriggers.after_inactivity.control,
+        canRun: false
+      });
+    }
+    /* eslint-enable camelcase */
+    //display popup if trigger be valid
+
+
+    if (isTriggerValid && 'or' === triggerRelation && validTriggerFunctionList.length === 0) {
+      this.showPopup();
+    }
+
+    if (isTriggerValid && 'or' === triggerRelation && validTriggerFunctionList.length > 0) {
+      if (canPopupDisplayImmediatly) {
+        this.showPopup();
+      } else {
+        this.runTriggerFunction();
+      }
+    }
+
+    if (!isAnyTriggerNotValid && 'and' === triggerRelation && validTriggerFunctionList.length === 0) {
+      this.showPopup();
+    }
+
+    if (!isAnyTriggerNotValid && 'and' === triggerRelation && validTriggerFunctionList.length > 0) {
+      this.runTriggerFunction();
+    }
+  };
+
+  this.runTriggerFunction = function () {
+    var _this = this;
+
+    var _iterator = _createForOfIteratorHelper(validTriggerFunctionList),
+        _step;
+
+    try {
+      var _loop = function _loop() {
+        var _trigger$value;
+
+        var trigger = _step.value;
+
+        switch (trigger.key) {
+          case 'on_page_exit_intent':
+            _this.removeEntranceAnimationClass();
+
+            $document.mouseleave(function () {
+              trigger.canRun = true;
+
+              _this.showPopup();
+            });
+            break;
+
+          case 'on_page_load':
+            setTimeout(function () {
+              trigger.canRun = true;
+
+              _this.showPopup();
+            }, ((_trigger$value = trigger.value) === null || _trigger$value === void 0 ? void 0 : _trigger$value.control) * 1000);
+            break;
+
+          case 'on_page_scroll':
+            _this.removeEntranceAnimationClass();
+
+            _this.onScroll(trigger);
+
+            break;
+
+          case 'on_scroll_to_element':
+            _this.removeEntranceAnimationClass();
+
+            _this.onScrollElement(trigger);
+
+            break;
+
+          case 'show_after_x_page_views':
+            _this.onAfterXPageViews(trigger);
+
+            break;
+
+          case 'show_after_x_visits':
+            _this.onAfterXVisits(trigger);
+
+            break;
+
+          case 'url_referrer':
+            _this.urlReferrer(trigger);
+
+            break;
+
+          case 'user_browser_language':
+            _this.userBrowserLanguage(trigger);
+
+            break;
+
+          case 'user_browser':
+            _this.userBrowser(trigger);
+
+            break;
+
+          case 'after_inactivity':
+            _this.onAfterInactivity(trigger);
+
+            break;
+        }
+      };
+
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        _loop();
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
     }
   };
 
@@ -663,7 +824,7 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
     }
   };
 
-  this.onAfterInactivity = function (delay) {
+  this.onAfterInactivity = function (trigger) {
     var _this6 = this;
 
     if (window.localStorage.getItem('jupiterx_popup_closed_permanently_' + popupId) === 'true' || window.localStorage.getItem('jupiterx_popup_closed_permanently_' + id) === 'true') {
@@ -671,14 +832,14 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
     } // Start the timer on page load.
 
 
-    this.resetTimer(delay); // Reset the timer on user activity.
+    this.resetTimer(trigger); // Reset the timer on user activity.
 
     $document.on('mousemove keydown', function () {
-      _this6.resetTimer(delay);
+      _this6.resetTimer(trigger);
     });
   };
 
-  this.resetTimer = function (delay) {
+  this.resetTimer = function (trigger) {
     var _this7 = this;
 
     clearTimeout(inactivityTimeout);
@@ -693,26 +854,42 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
         return;
       }
 
+      var triggerItem = validTriggerFunctionList.find(function (item) {
+        return item.key === (trigger === null || trigger === void 0 ? void 0 : trigger.key);
+      });
+
+      if (triggerItem) {
+        triggerItem.canRun = true;
+      }
+
       _this7.showPopup();
 
       hasResetTimerRun.push(popupSettings.id);
-    }, delay * 1000);
+    }, (trigger === null || trigger === void 0 ? void 0 : trigger.value) * 1000);
   };
 
-  this.onScroll = function () {
-    var _popupTriggers$on_scr4,
-        _popupTriggers$on_scr5,
+  this.onScroll = function (trigger) {
+    var _trigger$value2,
+        _trigger$value2$contr,
         _this8 = this,
-        _popupTriggers$on_scr6,
-        _popupTriggers$on_scr7;
+        _trigger$value3,
+        _trigger$value3$contr;
 
     // eslint-disable-next-line camelcase
-    if ((popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$on_scr4 = popupTriggers.on_scroll) === null || _popupTriggers$on_scr4 === void 0 ? void 0 : (_popupTriggers$on_scr5 = _popupTriggers$on_scr4.control) === null || _popupTriggers$on_scr5 === void 0 ? void 0 : _popupTriggers$on_scr5.direction) === 'up') {
+    if ((trigger === null || trigger === void 0 ? void 0 : (_trigger$value2 = trigger.value) === null || _trigger$value2 === void 0 ? void 0 : (_trigger$value2$contr = _trigger$value2.control) === null || _trigger$value2$contr === void 0 ? void 0 : _trigger$value2$contr.direction) === 'up') {
       var previousScroll = $window.scrollTop();
       $window.scroll(function () {
         var currentScroll = $window.scrollTop();
 
         if (currentScroll < previousScroll && window.localStorage.getItem('jupiterx_popup_closed_permanently_' + popupId) !== 'true') {
+          var triggerItem = validTriggerFunctionList.find(function (item) {
+            return item.key === (trigger === null || trigger === void 0 ? void 0 : trigger.key);
+          });
+
+          if (triggerItem) {
+            triggerItem.canRun = true;
+          }
+
           _this8.showPopup();
         }
 
@@ -721,17 +898,25 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
     } // eslint-disable-next-line camelcase
 
 
-    if ((popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$on_scr6 = popupTriggers.on_scroll) === null || _popupTriggers$on_scr6 === void 0 ? void 0 : (_popupTriggers$on_scr7 = _popupTriggers$on_scr6.control) === null || _popupTriggers$on_scr7 === void 0 ? void 0 : _popupTriggers$on_scr7.direction) === 'down') {
+    if ((trigger === null || trigger === void 0 ? void 0 : (_trigger$value3 = trigger.value) === null || _trigger$value3 === void 0 ? void 0 : (_trigger$value3$contr = _trigger$value3.control) === null || _trigger$value3$contr === void 0 ? void 0 : _trigger$value3$contr.direction) === 'down') {
       var isShown = false;
       $window.scroll(function () {
-        var _popupTriggers$on_scr8, _popupTriggers$on_scr9;
+        var _trigger$value4, _trigger$value4$contr;
 
         var scrollPosition = $window.scrollTop(),
             pageHeight = $document.height(),
             windowHeight = $window.height(),
             scrollPercentage = scrollPosition / (pageHeight - windowHeight) * 100; // eslint-disable-next-line camelcase
 
-        if (scrollPercentage >= (popupTriggers === null || popupTriggers === void 0 ? void 0 : (_popupTriggers$on_scr8 = popupTriggers.on_scroll) === null || _popupTriggers$on_scr8 === void 0 ? void 0 : (_popupTriggers$on_scr9 = _popupTriggers$on_scr8.control) === null || _popupTriggers$on_scr9 === void 0 ? void 0 : _popupTriggers$on_scr9.value) && !isShown && window.localStorage.getItem('jupiterx_popup_closed_permanently_' + popupId) !== 'true') {
+        if (scrollPercentage >= (trigger === null || trigger === void 0 ? void 0 : (_trigger$value4 = trigger.value) === null || _trigger$value4 === void 0 ? void 0 : (_trigger$value4$contr = _trigger$value4.control) === null || _trigger$value4$contr === void 0 ? void 0 : _trigger$value4$contr.value) && !isShown && window.localStorage.getItem('jupiterx_popup_closed_permanently_' + popupId) !== 'true') {
+          var triggerItem = validTriggerFunctionList.find(function (item) {
+            return item.key === (trigger === null || trigger === void 0 ? void 0 : trigger.key);
+          });
+
+          if (triggerItem) {
+            triggerItem.canRun = true;
+          }
+
           _this8.showPopup();
 
           isShown = true;
@@ -740,16 +925,24 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
     }
   };
 
-  this.onScrollElement = function () {
+  this.onScrollElement = function (trigger) {
     var _this9 = this;
 
     var isShown = false;
     $window.scroll(function () {
       var scrollPosition = $window.scrollTop(),
-          targetElementOffset = $(popupTriggers.on_scroll_to_element.control).offset().top,
+          targetElementOffset = $(trigger === null || trigger === void 0 ? void 0 : trigger.value.control).offset().top,
           windowHeight = $window.height();
 
       if (scrollPosition + windowHeight >= targetElementOffset && !isShown && window.localStorage.getItem('jupiterx_popup_closed_permanently_' + popupId) !== 'true') {
+        var triggerItem = validTriggerFunctionList.find(function (item) {
+          return item.key === (trigger === null || trigger === void 0 ? void 0 : trigger.key);
+        });
+
+        if (triggerItem) {
+          triggerItem.canRun = true;
+        }
+
         _this9.showPopup();
 
         isShown = true;
@@ -757,37 +950,69 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
     });
   };
 
-  this.onAfterXPageViews = function () {
-    if (elementorFrontend.storage.get('pageViews') >= popupTriggers.show_after_x_page_views.control) {
+  this.onAfterXPageViews = function (trigger) {
+    var _trigger$value5;
+
+    if (elementorFrontend.storage.get('pageViews') >= (trigger === null || trigger === void 0 ? void 0 : (_trigger$value5 = trigger.value) === null || _trigger$value5 === void 0 ? void 0 : _trigger$value5.control)) {
+      var triggerItem = validTriggerFunctionList.find(function (item) {
+        return item.key === (trigger === null || trigger === void 0 ? void 0 : trigger.key);
+      });
+
+      if (triggerItem) {
+        triggerItem.canRun = true;
+      }
+
       this.showPopup();
     }
   };
 
-  this.onAfterXVisits = function () {
-    if (elementorFrontend.storage.get('sessions') >= popupTriggers.show_after_x_visits.control) {
+  this.onAfterXVisits = function (trigger) {
+    var _trigger$value6;
+
+    if (elementorFrontend.storage.get('sessions') >= (trigger === null || trigger === void 0 ? void 0 : (_trigger$value6 = trigger.value) === null || _trigger$value6 === void 0 ? void 0 : _trigger$value6.control)) {
+      var triggerItem = validTriggerFunctionList.find(function (item) {
+        return item.key === (trigger === null || trigger === void 0 ? void 0 : trigger.key);
+      });
+
+      if (triggerItem) {
+        triggerItem.canRun = true;
+      }
+
       this.showPopup();
     }
   };
 
-  this.urlReferrer = function () {
-    var _this10 = this;
+  this.urlReferrer = function (trigger) {
+    var _trigger$value7,
+        _trigger$value8,
+        _this10 = this;
 
-    var operator = popupTriggers.url_referrer.operator,
-        control = popupTriggers.url_referrer.control;
+    var operator = trigger === null || trigger === void 0 ? void 0 : (_trigger$value7 = trigger.value) === null || _trigger$value7 === void 0 ? void 0 : _trigger$value7.operator,
+        control = trigger === null || trigger === void 0 ? void 0 : (_trigger$value8 = trigger.value) === null || _trigger$value8 === void 0 ? void 0 : _trigger$value8.control;
     $window.on('load', function () {
       if (operator === 'is' && document.referrer === control || operator === 'is-not' && document.referrer !== control || operator === 'contains' && document.referrer.includes(control) || operator === 'does-not-contains' && !document.referrer.includes(control) || operator === 'starts-with' && document.referrer.startsWith(control) || operator === 'ends-with' && document.referrer.endsWith(control)) {
         if (window.localStorage.getItem('jupiterx_popup_closed_permanently_' + popupId) !== 'true') {
+          var triggerItem = validTriggerFunctionList.find(function (item) {
+            return item.key === (trigger === null || trigger === void 0 ? void 0 : trigger.key);
+          });
+
+          if (triggerItem) {
+            triggerItem.canRun = true;
+          }
+
           _this10.showPopup();
         }
       }
     });
   };
 
-  this.userBrowserLanguage = function () {
-    var _this11 = this;
+  this.userBrowserLanguage = function (trigger) {
+    var _trigger$value9,
+        _trigger$value10,
+        _this11 = this;
 
-    var operator = popupTriggers.user_browser_language.operator,
-        control = popupTriggers.user_browser_language.control;
+    var operator = trigger === null || trigger === void 0 ? void 0 : (_trigger$value9 = trigger.value) === null || _trigger$value9 === void 0 ? void 0 : _trigger$value9.operator,
+        control = trigger === null || trigger === void 0 ? void 0 : (_trigger$value10 = trigger.value) === null || _trigger$value10 === void 0 ? void 0 : _trigger$value10.control;
     var browserLanguage = control;
 
     if (popupSettings.browser_language.indexOf('-') === -1) {
@@ -797,15 +1022,25 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
     $window.on('load', function () {
       if (operator === 'is' && popupSettings.browser_language === browserLanguage || operator === 'is-not' && popupSettings.browser_language !== browserLanguage || operator === 'contains' && popupSettings.browser_language.includes(browserLanguage) || operator === 'does-not-contains' && !popupSettings.browser_language.includes(browserLanguage) || operator === 'starts-with' && popupSettings.browser_language.startsWith(browserLanguage) || operator === 'ends-with' && popupSettings.browser_language.endsWith(browserLanguage)) {
         if (window.localStorage.getItem('jupiterx_popup_closed_permanently_' + popupId) !== 'true') {
+          var triggerItem = validTriggerFunctionList.find(function (item) {
+            return item.key === (trigger === null || trigger === void 0 ? void 0 : trigger.key);
+          });
+
+          if (triggerItem) {
+            triggerItem.canRun = true;
+          }
+
           _this11.showPopup();
         }
       }
     });
   };
 
-  this.userBrowser = function () {
-    var operator = popupTriggers.user_browser.operator,
-        control = popupTriggers.user_browser.control;
+  this.userBrowser = function (trigger) {
+    var _trigger$value11, _trigger$value12;
+
+    var operator = trigger === null || trigger === void 0 ? void 0 : (_trigger$value11 = trigger.value) === null || _trigger$value11 === void 0 ? void 0 : _trigger$value11.operator,
+        control = trigger === null || trigger === void 0 ? void 0 : (_trigger$value12 = trigger.value) === null || _trigger$value12 === void 0 ? void 0 : _trigger$value12.control;
     var userAgent = $window[0].navigator.userAgent.toLowerCase();
     var browserMatch = false;
 
@@ -819,6 +1054,14 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
     }
 
     if (operator === 'is-any-of' && browserMatch || operator === 'is-none-of' && !browserMatch) {
+      var triggerItem = validTriggerFunctionList.find(function (item) {
+        return item.key === (trigger === null || trigger === void 0 ? void 0 : trigger.key);
+      });
+
+      if (triggerItem) {
+        triggerItem.canRun = true;
+      }
+
       this.showPopup();
     }
   };
@@ -986,6 +1229,13 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
     var popupData = data || {};
 
     if (editMode) {
+      return false;
+    } // the popup display if all triggers with And logic be valid.
+
+
+    if (triggerRelation === 'and' && validTriggerFunctionList.find(function (trigger) {
+      return trigger.canRun === false;
+    })) {
       return false;
     }
 
@@ -5939,7 +6189,8 @@ var AdvancedPosts = _module["default"].extend({
         paged: 1,
         category: -1,
         maxNumPages: 1,
-        isLoading: false
+        isLoading: false,
+        renderedPosts: []
       }
     };
   },
@@ -6291,7 +6542,8 @@ var AdvancedPosts = _module["default"].extend({
         settings = this.elements.$loadMore.data('settings');
     this.setPaged({
       paged: state.paged,
-      maxNumPages: settings.maxNumPages
+      maxNumPages: settings.maxNumPages,
+      renderedPosts: state.renderedPosts
     });
     this.elements.$loadMoreButton.on('click', function (event) {
       event.preventDefault();
@@ -6302,13 +6554,18 @@ var AdvancedPosts = _module["default"].extend({
 
       _this7.elements.$preLoader[0].classList.add('active-preloader');
 
+      if (state.renderedPosts.length === 0 && _this7.getInstanceValue('query_orderby') === 'rand' && _this7.getInstanceValue('ignore_repetitive') === 'yes') {
+        _this7.setRenderedPost();
+      }
+
       var loadMorestate = _this7.getSettings('state'),
           newPaged = loadMorestate.paged + 1;
 
       _this7.addPosts({
         paged: newPaged,
         category: loadMorestate.category,
-        is_appended: true
+        is_appended: true,
+        renderedPosts: _this7.getSettings('state.renderedPosts')
       });
     });
   },
@@ -6335,6 +6592,10 @@ var AdvancedPosts = _module["default"].extend({
         return;
       }
 
+      if (self.getSettings('state.renderedPosts').length === 0 && self.getInstanceValue('query_orderby') === 'rand' && self.getInstanceValue('ignore_repetitive') === 'yes') {
+        self.setRenderedPost();
+      }
+
       var options = {
         threshold: 1.0
       };
@@ -6344,17 +6605,24 @@ var AdvancedPosts = _module["default"].extend({
         self.addPosts({
           paged: newPaged,
           category: state.category,
-          is_appended: true
+          is_appended: true,
+          renderedPosts: state.renderedPosts
         });
       }, options);
     });
   },
   handlePagination: function handlePagination(pageNum) {
     this.scrollToContainer(this.elements.$postsContainer);
+
+    if (this.getSettings('state.renderedPosts').length === 0 && this.getInstanceValue('query_orderby') === 'rand' && this.getInstanceValue('ignore_repetitive') === 'yes') {
+      this.setRenderedPost();
+    }
+
     this.elements.$postsContainer.find('.raven-posts-item').delay('100').addClass('raven-posts-remove-animation');
     this.setPosts({
       paged: pageNum,
-      category: this.getSettings('state.category')
+      category: this.getSettings('state.category'),
+      renderedPosts: this.getSettings('state.renderedPosts')
     });
   },
   renderPosts: function renderPosts(res) {
@@ -6378,7 +6646,8 @@ var AdvancedPosts = _module["default"].extend({
 
     this.setPaged({
       paged: 1,
-      maxNumPages: res.max_num_pages
+      maxNumPages: res.max_num_pages,
+      renderedPosts: res.rendered_posts
     });
 
     if (queryLoad) {
@@ -6390,7 +6659,8 @@ var AdvancedPosts = _module["default"].extend({
 
       this.setPaged({
         paged: data.paged,
-        maxNumPages: res.max_num_pages
+        maxNumPages: res.max_num_pages,
+        renderedPosts: res.rendered_posts
       });
     } // eslint-disable-next-line no-unused-expressions
 
@@ -6406,7 +6676,8 @@ var AdvancedPosts = _module["default"].extend({
     this.elements.$postsContainer.append(res.posts);
     var data = {
       paged: state.paged + 1,
-      maxNumPages: res.max_num_pages
+      maxNumPages: res.max_num_pages,
+      renderedPosts: res.rendered_posts
     };
 
     if (queryLoad) {
@@ -6460,6 +6731,7 @@ var AdvancedPosts = _module["default"].extend({
       model_id: this.getID(),
       paged: data.paged,
       category: data.category,
+      renderedPosts: JSON.stringify(data.renderedPosts),
       // eslint-disable-next-line no-undef
       nonce: ravenTools.nonce
     };
@@ -6532,7 +6804,8 @@ var AdvancedPosts = _module["default"].extend({
   },
   setPaged: function setPaged(params) {
     var paged = params.paged,
-        maxNumPages = params.maxNumPages;
+        maxNumPages = params.maxNumPages,
+        renderedPosts = params.renderedPosts;
     this.elements.$loadMore.attr('data-paged', paged);
 
     if (paged >= maxNumPages) {
@@ -6548,6 +6821,7 @@ var AdvancedPosts = _module["default"].extend({
 
     this.setSettings('state.paged', paged);
     this.setSettings('state.maxNumPages', maxNumPages);
+    this.setSettings('state.renderedPosts', renderedPosts);
   },
   mirrorRows: function mirrorRows() {
     this.setColumnsCount();
@@ -6828,6 +7102,18 @@ var AdvancedPosts = _module["default"].extend({
     }
 
     return data;
+  },
+  setRenderedPost: function setRenderedPost() {
+    var posts = this.$element.find('.raven-post-content');
+    var renderedPosts = {};
+    var postIds = [];
+    posts.each(function () {
+      var postId = $(this).data('id');
+      postIds.push(postId);
+    });
+    renderedPosts.page = '1';
+    renderedPosts.ids = postIds;
+    this.setSettings('state.renderedPosts', [renderedPosts]);
   }
 });
 

@@ -29,12 +29,17 @@ class Module extends Module_Base {
 	public function render_posts() {
 		check_ajax_referer( 'jupiterx-core-raven', 'nonce' );
 
-		$post_id       = filter_input( INPUT_POST, 'post_id' );
-		$model_id      = filter_input( INPUT_POST, 'model_id' );
-		$paged         = filter_input( INPUT_POST, 'paged' );
-		$category      = filter_input( INPUT_POST, 'category' );
-		$archive_query = filter_input( INPUT_POST, 'archive_query' );
-		$should_append = filter_input( INPUT_POST, 'should_append' );
+		$post_id        = filter_input( INPUT_POST, 'post_id' );
+		$model_id       = filter_input( INPUT_POST, 'model_id' );
+		$paged          = filter_input( INPUT_POST, 'paged' );
+		$category       = filter_input( INPUT_POST, 'category' );
+		$archive_query  = filter_input( INPUT_POST, 'archive_query' );
+		$should_append  = filter_input( INPUT_POST, 'should_append' );
+		$rendered_posts = filter_input( INPUT_POST, 'renderedPosts' );
+
+		if ( $rendered_posts ) {
+			$rendered_posts = json_decode( $rendered_posts, true );
+		}
 
 		if ( ! empty( $archive_query ) ) {
 			$archive_query          = json_decode( $archive_query, true );
@@ -89,6 +94,11 @@ class Module extends Module_Base {
 		}
 
 		$archive_query['post_status'] = 'publish';
+
+		if ( ! empty( $rendered_posts ) ) {
+			$archive_query['rendered_posts'] = $rendered_posts;
+			$archive_query['ajax_page']      = $paged;
+		}
 
 		$queried_posts = $widget->ajax_get_queried_posts( $archive_query );
 

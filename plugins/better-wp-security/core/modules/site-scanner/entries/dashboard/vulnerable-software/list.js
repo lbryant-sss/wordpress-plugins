@@ -12,6 +12,7 @@ import { ListItem, Text, TextVariant } from '@ithemes/ui';
  * Internal dependencies
  */
 import { useGlobalNavigationUrl } from '@ithemes/security-utils';
+import { PatchPriority } from '@ithemes/security-ui';
 import { EmptyState } from './index';
 import {
 	vulnerabilityIcon,
@@ -23,7 +24,6 @@ import {
 	StyledLink,
 	StyledStatusResolution,
 } from './styles';
-import { PatchPriority } from '@ithemes/security.pages.vulnerabilities';
 
 export default function VulnerabilityList( { cardData } ) {
 	return (

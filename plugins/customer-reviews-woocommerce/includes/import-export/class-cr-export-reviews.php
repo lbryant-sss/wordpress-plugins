@@ -239,7 +239,7 @@ class CR_Export_Reviews {
 			"WHERE c.comment_approved = '1' AND (p.post_type = 'product' OR p.ID IN(" . $shop_page_ids . ")) AND m.meta_key ='rating'" .
 			"LIMIT " . $offset_reviews . "," . self::$file_write_buffer;
 		$result_reviews_chunk = $wpdb->get_results( $query_reviews_chunk );
-		if ( ! $result_reviews_chunk || ! is_array( $result_reviews_chunk ) ) {
+		if ( ! $result_reviews_chunk && ! is_array( $result_reviews_chunk ) ) {
 			wp_send_json(
 				array(
 					'success'  => false,

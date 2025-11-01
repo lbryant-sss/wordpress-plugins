@@ -35,7 +35,7 @@ import {
 	StyledBlogIcon,
 	StyledBlogText,
 } from './styles';
-import { PatchPriority } from '@ithemes/security.pages.vulnerabilities';
+import { PatchPriority } from '@ithemes/security-ui';
 
 function vulnerabilityIcon( type ) {
 	switch ( type ) {

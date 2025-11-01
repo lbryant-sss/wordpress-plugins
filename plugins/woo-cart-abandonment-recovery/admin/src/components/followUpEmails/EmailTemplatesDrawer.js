@@ -133,7 +133,10 @@ const EmailTemplatesDrawer = ( { open, setOpen, template, onSave } ) => {
 		}
 
 		// Validate email rule engine
-		if ( canAccessProFeatures() && formState?.enable_email_rule_engine ) {
+		if (
+			canAccessProFeatures() &&
+			! [ '', '0', false ].includes( formState?.enable_email_rule_engine )
+		) {
 			let rules = formState.email_rule_engine || [];
 			if ( typeof rules === 'string' ) {
 				try {
@@ -232,14 +235,16 @@ const EmailTemplatesDrawer = ( { open, setOpen, template, onSave } ) => {
 		);
 
 		// Add rule engine fields
-		formData.append(
-			'wcf_enable_email_rule_engine',
-			formState?.enable_email_rule_engine ? '1' : ''
-		);
-		formData.append(
-			'wcf_email_rule_engine',
-			JSON.stringify( formState?.email_rule_engine || [] )
-		);
+		if ( canAccessProFeatures() ) {
+			formData.append(
+				'wcf_enable_email_rule_engine',
+				formState?.enable_email_rule_engine ? '1' : ''
+			);
+			formData.append(
+				'wcf_email_rule_engine',
+				JSON.stringify( formState?.email_rule_engine || [] )
+			);
+		}
 
 		// Add template ID if editing
 		if ( template?.id ) {
@@ -429,3 +434,4 @@ const EmailTemplatesDrawer = ( { open, setOpen, template, onSave } ) => {
 };
 
 export default EmailTemplatesDrawer;
+

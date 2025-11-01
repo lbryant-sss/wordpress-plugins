@@ -1036,6 +1036,21 @@ class Advanced_Posts extends Base_Widget {
 					'menu_order' => esc_html__( 'Menu Order', 'jupiterx-core' ),
 					'rand' => esc_html__( 'Random', 'jupiterx-core' ),
 				],
+				'frontend_available' => true,
+			]
+		);
+
+		$this->add_control(
+			'ignore_repetitive',
+			[
+				'label' => esc_html__( 'Ignore Repetitive Posts', 'jupiterx-core' ),
+				'description' => __( 'Exclude posts that have already been displayed on other pages.', 'jupiterx-core' ),
+				'type' => 'switcher',
+				'default' => 'no',
+				'label_on' => esc_html__( 'Yes', 'jupiterx-core' ),
+				'label_off' => esc_html__( 'No', 'jupiterx-core' ),
+				'frontend_available' => true,
+				'condition' => [ 'query_orderby' => 'rand' ],
 			]
 		);
 

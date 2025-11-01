@@ -95,7 +95,7 @@ function cmplz_field_notices( ): array {
 			'field_id' => 'data_disclosed_us',
 			'label'    => 'default',
 			'title'    => __( "Third-party cookies", 'complianz-gdpr' ),
-			'text'     => __( "The site scan detected cookies from services which share data with Third Parties. If these cookies were also used in the past 12 months, you should at least select the option 'Internet activity...'",
+			'text'     => __( "The site scan detected cookies from services which share data with Third Parties. If these cookies were also used in the past 12 months, you should at least select the option 'Internet activity...' under General > Details per purpose.",
 				'complianz-gdpr' ),
 		];
 	}
@@ -185,7 +185,7 @@ function cmplz_field_notices( ): array {
 			'label'     => 'warning',
 			'title'     => __( "TCF enabled: Review customization guidelines", 'complianz-gdpr' ),
 			'text'      => __( "You have enabled TCF. Please check the do's and don'ts regarding customizations:
-		                     <a href='https://complianz.io/customizing-the-tcf-banner/?utm_source=tipstricks&utm_medium=plugin&utm_campaign=articles&utm_id=66&utm_content=tcf' target='_blank'>Read more</a>", 'complianz-gdpr' ),
+		                     <a href='https://complianz.io/customizing-the-tcf-banner/?utm_source=tipstricks&utm_medium=plugin&utm_campaign=articles&utm_id=66&utm_content=tcf' target='_blank' aria-label='Read more about TCF customization guidelines'>Read more about TCF customization guidelines</a>", 'complianz-gdpr' ),
 			'dismissible' => true,
 		];
 	}

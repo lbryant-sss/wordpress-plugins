@@ -61,7 +61,16 @@ class Meta_Options {
 		$roles       = wcf_ca()->helper->get_wordpress_user_roles();
 		$roles_array = [];
 		foreach ( $roles as $key => $label ) {
-			$roles_array[] = (object) [
+			$roles_array[] = [
+				'id'   => $key,
+				'name' => $label,
+			];
+		}
+
+		$order_status       = wcf_ca()->helper->get_order_statuses();
+		$order_status_array = [];
+		foreach ( $order_status as $key => $label ) {
+			$order_status_array[] = [
 				'id'   => $key,
 				'name' => $label,
 			];
@@ -105,28 +114,7 @@ class Meta_Options {
 						'label'        => __( 'Exclude email sending For', 'woo-cart-abandonment-recovery' ),
 						'name'         => 'wcf_ca_excludes_orders',
 						'value'        => wcf_ca()->utils->wcar_get_option( 'wcf_ca_excludes_orders', [] ),
-						'options'      => [
-							[
-								'id'   => 'pending',
-								'name' => __( 'Pending', 'woo-cart-abandonment-recovery' ),
-							],
-							[
-								'id'   => 'processing',
-								'name' => __( 'Processing', 'woo-cart-abandonment-recovery' ),
-							],
-							[
-								'id'   => 'on-hold',
-								'name' => __( 'On Hold', 'woo-cart-abandonment-recovery' ),
-							],
-							[
-								'id'   => 'completed',
-								'name' => __( 'Completed', 'woo-cart-abandonment-recovery' ),
-							],
-							[
-								'id'   => 'failed',
-								'name' => __( 'Failed', 'woo-cart-abandonment-recovery' ),
-							],
-						],
+						'options'      => $order_status_array,
 						'desc'         => __( 'It will not send future recovery emails to selected order status and will mark as recovered.', 'woo-cart-abandonment-recovery' ),
 						'placeholder'  => __( 'Select order status', 'woo-cart-abandonment-recovery' ),
 						'is_fullwidth' => true,
@@ -806,7 +794,7 @@ class Meta_Options {
 					],
 				],
 				'is_pro'              => true,
-				'pro_upgrade_message' => 'Exclude Products gives you flexibility by keeping certain products out of coupon offers.',
+				'pro_upgrade_message' => 'Exclude Products lets you skip certain products from coupon offers.',
 				'priority'            => 150,
 			],
 			'enable_email_rule_engine' => [
@@ -817,7 +805,7 @@ class Meta_Options {
 				'is_fullwidth'        => true,
 				'group'               => 'rule_engine',
 				'is_pro'              => true,
-				'pro_upgrade_message' => 'Dynamic Conditions let you control exactly when emails are sent for smarter recovery.',
+				'pro_upgrade_message' => 'Dynamic Conditions let you decide when the email should be sent.',
 				'priority'            => 51,
 			],
 		];

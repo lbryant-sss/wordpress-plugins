@@ -133,12 +133,17 @@ if ( ! class_exists( 'Qi_Blocks_Media' ) ) {
 
 			if ( ! isset( $response ) || empty( $response->get_body() ) ) {
 				qi_blocks_get_ajax_status( 'error', esc_html__( 'Rest is invalid', 'qi-blocks' ), array() );
+			} elseif ( ! current_user_can( 'upload_files' ) ) {
+				qi_blocks_get_ajax_status( 'error', esc_html__( 'You are not authorized.', 'qi-blocks' ), array() );
 			} else {
+
 				$response_data     = json_decode( $response->get_body() );
 				$image_id          = isset( $response_data->image_id ) && ! empty( $response_data->image_id ) ? intval( $response_data->image_id ) : 0;
 				$image_custom_size = isset( $response_data->custom_size ) && is_object( $response_data->custom_size ) ? (array) $response_data->custom_size : array();
 
-				if ( ! empty( $image_id ) && ! empty( $image_custom_size ) ) {
+				if ( ! current_user_can( 'edit_post', $image_id ) ) {
+					qi_blocks_get_ajax_status( 'error', esc_html__( 'Sorry, you are not allowed to edit this post.', 'qi-blocks' ), array() );
+				} elseif ( ! empty( $image_id ) && ! empty( $image_custom_size ) ) {
 					$editor_supports = array(
 						'mime_type' => get_post_mime_type( $image_id ),
 						'methods'   => array( 'rotate' ),

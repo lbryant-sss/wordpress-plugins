@@ -23,6 +23,7 @@ import { Button, Text } from '@ithemes/ui';
 /**
  * Internal dependencies
  */
+import { PatchPriority } from '@ithemes/security-ui';
 import {
 	StyledTableSection,
 	StyledVulnerabilityName,
@@ -33,7 +34,6 @@ import {
 	StyledStatusRedCircle,
 	StyledNoWrapCell,
 } from './styles';
-import PatchPriority from '../../components/patch-priority';
 
 function vulnerabilityIcon( type ) {
 	switch ( type.toLowerCase() ) {

@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <div class="wrap">
-	<h1 id="wcf_cart_abandonment_tracking_table"><?php echo esc_html__( 'WooCommerce Cart Abandonment Recovery  ', 'woo-cart-abandonment-recovery' ); ?></h1>
+	<h1 id="wcf_cart_abandonment_tracking_table"><?php echo esc_html__( 'Cart Abandonment Recovery for WooCommerce  ', 'woo-cart-abandonment-recovery' ); ?></h1>
 	<?php
 
 	$helper_class = Cartflows_Ca_Helper::get_instance();

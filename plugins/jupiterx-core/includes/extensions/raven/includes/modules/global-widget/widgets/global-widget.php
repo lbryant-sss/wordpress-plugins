@@ -94,6 +94,15 @@ class Global_Widget extends Base_Widget {
 			return $raw_data;
 		}
 
+		// When Elementor renders content in a caching/shortcode context,
+		// make sure the widgetType is treated as 'global' to ensure the
+		// correct wrapper classes (e.g. `elementor-global-<templateID>`) are present in cached HTML.
+		if ( apply_filters( 'elementor/element/should_render_shortcode', false ) ) {
+			$raw_data['widgetType'] = $this->get_name();
+
+			return $raw_data;
+		}
+
 		return $raw_data;
 	}
 

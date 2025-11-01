@@ -56,7 +56,7 @@ class Module extends Module_Base {
 		$archive_query = filter_input( INPUT_POST, 'archive_query' );
 
 		if ( false !== $archive_query ) {
-			$archive_query          = json_decode( $archive_query, true );
+			$archive_query          = $archive_query ? json_decode( $archive_query, true ) : [];
 			$archive_query['paged'] = $paged;
 		}
 

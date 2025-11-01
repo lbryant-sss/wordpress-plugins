@@ -10,7 +10,6 @@ export { default as OnboardHeader } from './onboard-header';
 export { default as OnboardMain, OnboardEmptyMain, OnboardBackActionFill } from './onboard-main';
 export { default as OnboardProgress } from './onboard-progress';
 export { default as PrimaryForm, PrimaryFormSection } from './primary-form';
-export { default as ProTag } from './pro-tag';
 export { default as SelectableCard } from './selectable-card';
 export { default as Sidebar } from './sidebar';
 export { default as SimpleUserGroupControl } from './simple-user-group-control';

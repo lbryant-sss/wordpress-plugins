@@ -4,7 +4,7 @@ Donate link: http://cff.dwbooster.com
 Tags: form,quote form,contact form,form builder,calculator form
 Requires at least: 3.0.5
 Tested up to: 6.8
-Stable tag: 5.4.0.8
+Stable tag: 5.4.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -456,6 +456,10 @@ A: There are multiple alternatives, by using the [PDF generator add-on](https://
 
 == Changelog ==
 
+= 5.4.0.9 =
+
+* Extends the offer to Black Friday.
+
 = 5.4.0.8 =
 
 * Enhances forms templates 09, 12 and 14.
@@ -475,9 +479,3 @@ A: There are multiple alternatives, by using the [PDF generator add-on](https://
 = 5.4.0.5 =
 
 * Halloween promotion.
-
-= 5.4.0.4 =
-
-* Includes Google Calendar integration support.
-* Modifies controls such as checkboxes, radio buttons, dropdowns and containers.
-* Improves the form creation module on mobile devices.

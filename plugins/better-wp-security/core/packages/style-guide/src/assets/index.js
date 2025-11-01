@@ -1,6 +1,8 @@
 export { default as AllClearCard } from './all_clear_card.svg';
 export { default as BasicToProShield } from './basic-to-pro-shield.svg';
+export { default as CentralScreenshots } from './central-screenshots.svg';
 export { default as CheckMark } from './check.svg';
+export { default as ConnectedNodes } from './connected-nodes.svg';
 export { default as Crash } from './crash.svg';
 export { default as DeviceConfirmed } from './device_confirmed.svg';
 export { default as DevicesIcon } from './devices_icon.svg';
@@ -41,6 +43,7 @@ export { default as PurpleShield } from './purple_shield.svg';
 export { default as RedBar } from './red_bar.svg';
 export { default as RestrictedDevice } from './restricted_device.svg';
 export { default as Rocket } from './rocket.svg';
+export { default as SecurityScreenshots } from './security-screenshots.svg';
 export { default as ShieldOutline } from './shield_outline.svg';
 export { default as SiteScanSuccess } from './site_scan_success.svg';
 export { default as ProPlusPatchstack } from './solid-security-patchstack.svg';
@@ -55,4 +58,3 @@ export { default as VulnerabilityMuted } from './vulnerability_muted.svg';
 export { default as VulnerabilitySolved } from './vulnerability_solved.svg';
 export { default as VulnerabilitySuccess } from './vulnerability_success.svg';
 export { default as YellowBar } from './yellow_bar.svg';
-

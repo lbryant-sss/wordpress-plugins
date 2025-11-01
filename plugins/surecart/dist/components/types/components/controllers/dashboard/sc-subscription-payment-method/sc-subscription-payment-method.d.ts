@@ -19,7 +19,6 @@ export declare class ScSubscriptionPaymentMethod {
     renderEmpty(): any;
     currentPaymentMethodId(): string | PaymentMethod | ManualPaymentMethod;
     hasPaymentMethods(): number;
-    hasMultiplePaymentMethods(): boolean;
     componentWillLoad(): void;
     /** Get all subscriptions */
     getPaymentMethods(): Promise<void>;

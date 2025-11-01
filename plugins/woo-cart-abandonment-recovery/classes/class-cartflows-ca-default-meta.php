@@ -219,7 +219,7 @@ class Cartflows_Ca_Default_Meta {
 			],
 			'wcf_ca_admin_email'                          => [
 				'default'  => get_option( 'admin_email' ),
-				'sanitize' => 'FILTER_SANITIZE_STRING',
+				'sanitize' => 'FILTER_SANITIZE_MULTILINE_STRING',
 			],
 			'wcf_ca_send_recovery_report_emails_to_admin' => [
 				'default'  => 'on',
@@ -275,7 +275,7 @@ class Cartflows_Ca_Default_Meta {
 			],
 			'wcf_ca_global_param'                         => [
 				'default'  => '',
-				'sanitize' => 'FILTER_SANITIZE_STRING',
+				'sanitize' => 'FILTER_SANITIZE_MULTILINE_STRING',
 			],
 			'wcf_ca_cut_off_time'                         => [
 				'default'  => 15,
@@ -388,6 +388,14 @@ class Cartflows_Ca_Default_Meta {
 
 				break;
 			
+			case 'FILTER_SANITIZE_MULTILINE_STRING':
+				if ( is_array( $value ) ) {
+					$meta_value = array_map( 'sanitize_textarea_field', array_map( 'wp_unslash', $value ) );
+				} else {
+					$meta_value = sanitize_textarea_field( wp_unslash( $value ) );
+				}
+				break;
+				
 			case 'FILTER_SANITIZE_ARRAY':
 				if ( is_array( $value ) ) {
 					$meta_value = array_map( 'sanitize_text_field', array_map( 'wp_unslash', $value ) );

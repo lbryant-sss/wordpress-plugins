@@ -232,7 +232,7 @@ if(!class_exists('Atlt_Dashboard')){
             return $number;
         }
 
-        public static function review_notice($prefix, $plugin_name, $url, $icon=''){
+        public static function review_notice($prefix, $plugin_name, $url,){
             if(self::atlt_hide_review_notice_status($prefix)){
                 return;
             }
@@ -254,37 +254,28 @@ if(!class_exists('Atlt_Dashboard')){
             // Sanitize dynamic pieces before composing the message
             $plugin_name = sanitize_text_field($plugin_name);
             $message = sprintf(
-                '🎉 %s! %s <strong>%s</strong> %s 🚀<br>%s %s 🌟<br>',
-                __('Thank You For Using', 'cp-notice').' '.$plugin_name,
-                __('You\'ve translated', 'cp-notice'),
-                esc_html__(esc_html($total_character_count).' characters', 'cp-notice'),
-                esc_html__('so far using our plugin!', 'cp-notice'),
-                __('If our plugin has saved your time and effort, please consider leaving a', 'cp-notice'),
-                __('review to support our work. Your feedback means the world to us!', 'cp-notice')
+                __('Thanks for using <b>%1$s</b>! You have translated <b>%2$s</b> characters so far using our plugin!<br>Please give us a quick rating, it works as a boost for us to keep working on more <a style="text-decoration: none;" href="'.esc_url('https://coolplugins.net/').'" target="_blank" rel="noopener noreferrer"><b>Cool Plugins</b></a>!', 'cp-notice'),
+                $plugin_name,
+                $total_character_count
             );
 
             $prefix = sanitize_key($prefix);
             $message = wp_kses_post($message);
             $url = esc_url($url);
             $plugin_name = sanitize_text_field($plugin_name);
-            $icon = isset($icon) && !empty($icon) ? esc_url($icon) : '';
 
-            add_action('admin_notices', function() use ($message, $prefix, $url, $icon, $plugin_name){
-                $html= '<div class="notice notice-info cpt-review-notice">';
-                if($icon){
-                    $html .= '<img class="cpt-review-notice-icon" src="'.esc_url($icon).'" alt="'.esc_attr($plugin_name).'">';
-                }
-                $html .= '<div class="cpt-review-notice-content"><p>'.$message.'</p><div class="atlt-review-notice-dismiss" data-prefix="'.esc_attr($prefix).'" data-nonce="'.esc_attr( wp_create_nonce('atlt_hide_review_notice') ).'"><a href="'. $url .'" target="_blank" rel="noopener noreferrer" class="button button-primary">Rate Now! ★★★★★</a><button class="button cpt-not-interested">'.esc_html__('Not Interested', 'cp-notice').'</button><button class="button cpt-already-reviewed">'.esc_html__('Already Reviewed', 'cp-notice').'</button></div></div></div>';
+            add_action('admin_notices', function() use ($message, $prefix, $url , $plugin_name){
+
+                $html= '<div class="notice notice-info cpt-review-notice notice notice-info is-dismissible">';
+                $html .= '<div class="cpt-review-notice-content"><p>'.wp_kses_post($message).'</p><div class="atlt-review-notice-dismiss" data-prefix="'.esc_attr($prefix).'" data-nonce="'.esc_attr(wp_create_nonce('atlt_hide_review_notice')).'"><a href="'.esc_url($url).'" target="_blank" class="button button-primary">Rate Now! ★★★★★</a><button class="button cpt-already-reviewed">'.esc_html__('Already Reviewed', 'cp-notice').'</button><button class="button cpt-not-interested">'.esc_html__('Not Interested', 'cp-notice').'</button></div></div></div>';
                 
                 echo wp_kses_post($html);
             });
 
-            add_action('atlt_display_admin_notices', function() use ($message, $prefix, $url, $icon, $plugin_name){
-                $html= '<div class="notice notice-info cpt-review-notice">';
-                if($icon){
-                    $html .= '<img class="cpt-review-notice-icon" src="'.esc_url($icon).'" alt="'.esc_attr($plugin_name).'">';
-                }
-                $html .= '<div class="cpt-review-notice-content"><p>'.$message.'</p><div class="atlt-review-notice-dismiss" data-prefix="'.esc_attr($prefix).'" data-nonce="'.esc_attr( wp_create_nonce('atlt_hide_review_notice') ).'"><a href="'. $url .'" target="_blank" rel="noopener noreferrer" class="button button-primary">Rate Now! ★★★★★</a><button class="button cpt-not-interested">'.esc_html__('Not Interested', 'cp-notice').'</button><button class="button cpt-already-reviewed">'.esc_html__('Already Reviewed', 'cp-notice').'</button></div></div></div>';
+            add_action('atlt_display_admin_notices', function() use ($message, $prefix, $url, $plugin_name){
+                $html= '<div class="notice notice-info cpt-review-notice notice notice-info is-dismissible">';
+
+                $html .= '<div class="cpt-review-notice-content"><p>'.wp_kses_post($message).'</p><div class="atlt-review-notice-dismiss" data-prefix="'.esc_attr($prefix).'" data-nonce="'.esc_attr(wp_create_nonce('atlt_hide_review_notice')).'"><a href="'.esc_url($url).'" target="_blank" class="button button-primary">Rate Now! ★★★★★</a><button class="button cpt-already-reviewed">'.esc_html__('Already Reviewed', 'cp-notice').'</button><button class="button cpt-not-interested">'.esc_html__('Not Interested', 'cp-notice').'</button></div></div></div>';
                 
                 echo wp_kses_post($html);
             });

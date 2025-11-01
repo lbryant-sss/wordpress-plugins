@@ -56,9 +56,6 @@ class Admin
         add_action( 'wp_ajax_get_eb_admin_templates', [ $this, 'templates' ] );
         add_action( 'wp_ajax_get_eb_admin_template_count', [ $this, 'template_count' ] );
         add_action( 'wp_ajax_eb_admin_promotion', [ $this, 'eb_admin_promotion' ] );
-        add_action( 'wp_ajax_write_with_ai', [ $this, 'eb_write_with_ai' ] );
-        add_action( 'wp_ajax_generate_image_with_ai', [ $this, 'eb_generate_image_with_ai' ] );
-        add_action( 'wp_ajax_save_ai_generated_image', [ $this, 'eb_save_ai_generated_image' ] );
         add_action( 'plugin_action_links', [ $this, 'eb_menu_action_links' ], 10, 2 );
         add_action( 'eb_admin_page_setting', [ $this, 'eb_show_admin_menu_notice' ] );
         add_action( 'in_admin_header', [ $this, 'remove_admin_notice' ], 99 );
@@ -502,28 +499,24 @@ class Admin
                      */
                     $value = json_decode( wp_unslash( $value ) );
 
-                    // Validate API key if provided
-                    if ( isset( $value->apiKey ) && ! empty( $value->apiKey ) ) {
-                        // Include the OpenAI class
-                        require_once ESSENTIAL_BLOCKS_DIR_PATH . 'includes/Admin/OpenAI.php';
+                    // Use AI integration class for validation and saving
+                    if ( class_exists( 'EssentialBlocks\Integrations\AI\AI' ) ) {
+                        $result = \EssentialBlocks\Integrations\AI\AI::validate_and_save_ai_settings( $value );
 
-                        // Initialize the OpenAI class
-                        $openai = new OpenAI();
-
-                        // Validate the API key
-                        $validation = $openai->validate_api_key( $value->apiKey );
-
-                        if ( ! $validation[ 'success' ] ) {
+                        if ( ! $result[ 'success' ] ) {
                             wp_send_json_error( [
-                                'message' => $validation[ 'message' ],
-                                'type'    => 'api_key_error'
+                                'message' => $result[ 'message' ],
+                                'type'    => $result[ 'type' ]
                              ] );
                             return;
                         }
-                    }
 
-                    $updated = $settings->save_eb_write_with_ai( $value );
-                    wp_send_json_success( $updated );
+                        wp_send_json_success( $result[ 'data' ] );
+                    } else {
+                        // Fallback to direct save if AI class not available
+                        $updated = $settings->save_eb_write_with_ai( $value );
+                        wp_send_json_success( $updated );
+                    }
                     break;
                 default:
                     wp_send_json_error( __( 'Something went wrong regarding saving options data.', 'essential-blocks' ) );
@@ -1143,7 +1136,7 @@ class Admin
         $changelog_url = esc_url( 'https://essential-blocks.com/changelog/' );
 
         $message_template = __(
-            "<p><i>📣</i> Introducing Liquid Glass Effect in Essential Blocks <strong>v5.7.0</strong> - Transform your designs with stunning liquid glass visual effects and advanced styling options! For more details, check out this <strong><a target='_blank' href='%s'>changelog</a></strong>.</p>",
+            "<p><i>📣</i> Introducing New Block - Business Hours in Essential Blocks Pro <strong>v2.6.0</strong> - Display your business hours with customizable styling and responsive design! For more details, check out this <strong><a target='_blank' href='%s'>changelog</a></strong>.</p>",
             "essential-blocks"
         );
 

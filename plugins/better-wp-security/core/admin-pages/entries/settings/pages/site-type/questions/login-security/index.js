@@ -13,7 +13,7 @@ import { Heading, Text, TextSize, TextVariant, TextWeight } from '@ithemes/ui';
 /**
  * Internal dependencies
  */
-import { ProTag } from '../../../../components';
+import { ProTag } from '@ithemes/security-ui';
 import { useConfigContext } from '../../../../utils';
 import {
 	StyledCard,

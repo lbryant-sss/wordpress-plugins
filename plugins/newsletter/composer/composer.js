@@ -8,7 +8,7 @@ jQuery.fn.add_block_delete = function () {
     this.find('.tnpc-row-delete').on('click', function (ev) {
         ev.preventDefault();
         ev.stopPropagation();
-        NewsletterComposer.hide_block_options();
+        NewsletterComposer.close_block_options();
         jQuery(this).parent().remove();
     });
 };
@@ -66,7 +66,7 @@ jQuery.fn.add_block_clone = function () {
     this.find('.tnpc-row-clone').on('click', function (ev) {
         ev.preventDefault();
         ev.stopPropagation();
-        NewsletterComposer.hide_block_options();
+        NewsletterComposer.close_block_options();
         // find the row
         let row = jQuery(this).closest('.tnpc-row');
 
@@ -223,7 +223,7 @@ const NewsletterComposer = {
             ev.preventDefault();
             ev.stopPropagation();
 
-            NewsletterComposer.hide_block_options();
+            NewsletterComposer.close_block_options();
 
             jQuery.post(ajaxurl, tnp_backup_block_options, function (response) {
                 target.html(response);
@@ -245,7 +245,7 @@ const NewsletterComposer = {
 
             var data = NewsletterComposer.get_block_options();
 
-            NewsletterComposer.hide_block_options();
+            NewsletterComposer.close_block_options();
 
             jQuery.post(ajaxurl, data, function (response) {
                 target.html(response);
@@ -396,10 +396,22 @@ const NewsletterComposer = {
         jQuery("#tnpc-block-options").css('display', 'flex');
     },
 
-    hide_block_options: function () {
+    close_block_options: function () {
         jQuery("#tnpc-block-options").fadeOut(500);
         jQuery("#tnpc-block-options-form").html('');
+    },
+
+    hide_block_options: function () {
+        //jQuery("#tnpc-block-options").fadeOut(500);
+        jQuery("#tnpc-block-options-form").html('');
     }
+
+}
+
+/**
+ * @deprecated Kept for compatibility
+ */
+function tnpc_reload_options(e) {
 
 }
 
@@ -428,7 +440,7 @@ let builderAreaHelper = new BuilderAreaHelper();
 
 function tnpc_test(to_email) {
     NewsletterComposer.save();
-    NewsletterComposer.hide_block_options();
+    NewsletterComposer.close_block_options();
     data = jQuery('#tnp-builder').closest('form').serializeArray();
     if (to_email) {
         data.push({

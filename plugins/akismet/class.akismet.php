@@ -12,6 +12,13 @@ class Akismet {
 	const MAX_DELAY_BEFORE_MODERATION_EMAIL = 86400; // One day in seconds
 	const ALERT_CODE_COMMERCIAL             = 30001;
 
+	// User account status constants
+	const USER_STATUS_ACTIVE    = 'active';
+	const USER_STATUS_NO_SUB    = 'no-sub';
+	const USER_STATUS_MISSING   = 'missing';
+	const USER_STATUS_CANCELLED = 'cancelled';
+	const USER_STATUS_SUSPENDED = 'suspended';
+
 	public static $limit_notices = array(
 		10501 => 'FIRST_MONTH_OVER_LIMIT',
 		10502 => 'SECOND_MONTH_OVER_LIMIT',

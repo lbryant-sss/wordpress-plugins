@@ -12,6 +12,8 @@ import {
 	ScanComponentPromo,
 } from '@ithemes/security.pages.site-scan';
 import { coreStore } from '@ithemes/security.packages.data';
+import { StellarSale } from '@ithemes/security.promos.components';
+import { ToolbarFill } from '@ithemes/security-ui';
 
 const proModules = [
 	{
@@ -38,17 +40,21 @@ export default function App() {
 		[]
 	);
 	return (
-		<ProgressBarBeforeFill>
-			{ installType === 'free' && (
-				proModules.map( ( module ) => (
-					<ScanComponentPromo
-						key={ module.slug }
-						index={ module.index }
-						label={ module.label }
-						description={ module.description }
-					/>
-				) )
-			) }
-		</ProgressBarBeforeFill>
+		<>
+			<ProgressBarBeforeFill>
+				{ installType === 'free' &&
+					proModules.map( ( module ) => (
+						<ScanComponentPromo
+							key={ module.slug }
+							index={ module.index }
+							label={ module.label }
+							description={ module.description }
+						/>
+					) ) }
+			</ProgressBarBeforeFill>
+			<ToolbarFill area="banner">
+				<StellarSale installType={ installType } />
+			</ToolbarFill>
+		</>
 	);
 }

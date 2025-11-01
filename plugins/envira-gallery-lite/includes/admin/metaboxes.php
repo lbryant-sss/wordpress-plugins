@@ -20,6 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Envira_Gallery_Metaboxes {
 
+
 	/**
 	 * Holds the class object.
 	 *
@@ -394,7 +395,11 @@ class Envira_Gallery_Metaboxes {
 	public function meta_box_css() {
 
 		?>
-		<style type="text/css">.misc-pub-section:not(.misc-pub-post-status) { display: none; }</style>
+		<style type="text/css">
+			.misc-pub-section:not(.misc-pub-post-status) {
+				display: none;
+			}
+		</style>
 		<?php
 
 		// Fire action for CSS on Envira post type screens.
@@ -628,7 +633,7 @@ class Envira_Gallery_Metaboxes {
 		echo '<div id="envira-gallery-main" class="envira-clear">';
 
 		// Allow Addons to display a WordPress-style notification message.
-		echo apply_filters( 'envira_gallery_images_tab_notice', '', $post ); //@codingStandardsIgnoreLine
+		echo apply_filters('envira_gallery_images_tab_notice', '', $post); //@codingStandardsIgnoreLine
 
 		// Output the tab panel for the Gallery Type.
 		$this->images_display( $this->get_config( 'type', $this->get_config_default( 'type' ) ), $post );
@@ -720,7 +725,7 @@ class Envira_Gallery_Metaboxes {
 			<?php
 			if ( ! empty( $gallery_data['gallery'] ) ) {
 				foreach ( $gallery_data['gallery'] as $id => $data ) {
-					echo $this->get_gallery_item( $id, $data, $post->ID ); //@codingStandardsIgnoreLine
+					echo $this->get_gallery_item($id, $data, $post->ID); //@codingStandardsIgnoreLine
 				}
 			}
 			?>
@@ -875,7 +880,7 @@ class Envira_Gallery_Metaboxes {
 						<td>
 							<select id="envira-config-columns" name="_envira_gallery[columns]">
 								<?php foreach ( (array) $this->get_columns() as $i => $data ) : ?>
-									<option value="<?php echo esc_attr( $data['value'] ); ?>"<?php selected( $data['value'], $this->get_config( 'columns', $this->get_config_default( 'columns' ) ) ); ?>><?php echo esc_html( $data['name'] ); ?></option>
+									<option value="<?php echo esc_attr( $data['value'] ); ?>" <?php selected( $data['value'], $this->get_config( 'columns', $this->get_config_default( 'columns' ) ) ); ?>><?php echo esc_html( $data['name'] ); ?></option>
 								<?php endforeach; ?>
 							</select>
 							<p class="description"><?php esc_html_e( 'Determines the number of columns in the gallery. Automatic will attempt to fill each row as much as possible before moving on to the next row.', 'envira-gallery-lite' ); ?></p>
@@ -887,33 +892,33 @@ class Envira_Gallery_Metaboxes {
 					if ( ! isset( $post ) || 'auto-draft' === $post->post_status ) {
 						// make the lazy loading checkbox "checked", otherwise if this is a previous post don't force it.
 						?>
-					<tr id="envira-config-lazy-loading-box">
-						<th scope="row">
-							<label for="envira-config-lazy-loading"><?php esc_html_e( 'Enable Lazy Loading?', 'envira-gallery-lite' ); ?></label>
-						</th>
-						<td>
-						<label class="envira-toggle">
-							<input id="envira-config-lazy-loading" type="checkbox" class="envira-checkbox" name="_envira_gallery[lazy_loading]" value="<?php echo esc_attr( $this->get_config( 'lazy_loading', $this->get_config_default( 'lazy_loading' ) ) ); ?>" <?php checked( $this->get_config( 'lazy_loading', $this->get_config_default( 'lazy_loading' ) ), 1 ); ?> />
-							<span class="envira-switch"></span>
-							<span class="description"><?php esc_html_e( 'Enables or disables lazy loading, which helps with performance by loading thumbnails only when they are visible. See our documentation for more information.', 'envira-gallery-lite' ); ?></span>
-						</label>
-						</td>
-					</tr>
+						<tr id="envira-config-lazy-loading-box">
+							<th scope="row">
+								<label for="envira-config-lazy-loading"><?php esc_html_e( 'Enable Lazy Loading?', 'envira-gallery-lite' ); ?></label>
+							</th>
+							<td>
+								<label class="envira-toggle">
+									<input id="envira-config-lazy-loading" type="checkbox" class="envira-checkbox" name="_envira_gallery[lazy_loading]" value="<?php echo esc_attr( $this->get_config( 'lazy_loading', $this->get_config_default( 'lazy_loading' ) ) ); ?>" <?php checked( $this->get_config( 'lazy_loading', $this->get_config_default( 'lazy_loading' ) ), 1 ); ?> />
+									<span class="envira-switch"></span>
+									<span class="description"><?php esc_html_e( 'Enables or disables lazy loading, which helps with performance by loading thumbnails only when they are visible. See our documentation for more information.', 'envira-gallery-lite' ); ?></span>
+								</label>
+							</td>
+						</tr>
 
 					<?php } else { ?>
 
-					<tr id="envira-config-lazy-loading-box">
-						<th scope="row">
-							<label for="envira-config-lazy-loading"><?php esc_html_e( 'Enable Lazy Loading?', 'envira-gallery-lite' ); ?></label>
-						</th>
-						<td>
-						<label class="envira-toggle">
-							<input id="envira-config-lazy-loading" type="checkbox" class="envira-checkbox" name="_envira_gallery[lazy_loading]" value="<?php echo esc_attr( $this->get_config( 'lazy_loading', $this->get_config_default( 'lazy_loading' ) ) ); ?>" <?php checked( $this->get_config( 'lazy_loading' ), 1 ); ?> />
-							<span class="envira-switch"></span>
-							<span class="description"><?php esc_html_e( 'Enables or disables lazy loading, which helps with performance by loading thumbnails only when they are visible. See our documentation for more information.', 'envira-gallery-lite' ); ?></span>
-						</label>
-						</td>
-					</tr>
+						<tr id="envira-config-lazy-loading-box">
+							<th scope="row">
+								<label for="envira-config-lazy-loading"><?php esc_html_e( 'Enable Lazy Loading?', 'envira-gallery-lite' ); ?></label>
+							</th>
+							<td>
+								<label class="envira-toggle">
+									<input id="envira-config-lazy-loading" type="checkbox" class="envira-checkbox" name="_envira_gallery[lazy_loading]" value="<?php echo esc_attr( $this->get_config( 'lazy_loading', $this->get_config_default( 'lazy_loading' ) ) ); ?>" <?php checked( $this->get_config( 'lazy_loading' ), 1 ); ?> />
+									<span class="envira-switch"></span>
+									<span class="description"><?php esc_html_e( 'Enables or disables lazy loading, which helps with performance by loading thumbnails only when they are visible. See our documentation for more information.', 'envira-gallery-lite' ); ?></span>
+								</label>
+							</td>
+						</tr>
 
 					<?php } ?>
 
@@ -921,14 +926,16 @@ class Envira_Gallery_Metaboxes {
 						<th scope="row">
 							<label for="envira-config-lazy-loading-delay"><?php esc_html_e( 'Lazy Loading Delay', 'envira-gallery-lite' ); ?></label>
 						</th>
-							<td>
-								<input id="envira-config-lazy-loading-delay" type="number" name="_envira_gallery[lazy_loading_delay]" value="<?php echo esc_attr( $this->get_config( 'lazy_loading_delay', $this->get_config_default( 'lazy_loading_delay' ) ) ); ?>" /> <span class="envira-unit"><?php esc_html_e( 'milliseconds', 'envira-gallery-lite' ); ?></span>
-								<p class="description"><?php esc_html_e( 'Set a delay when new images are loaded', 'envira-gallery-lite' ); ?></p>
-							</td>
+						<td>
+							<input id="envira-config-lazy-loading-delay" type="number" name="_envira_gallery[lazy_loading_delay]" value="<?php echo esc_attr( $this->get_config( 'lazy_loading_delay', $this->get_config_default( 'lazy_loading_delay' ) ) ); ?>" /> <span class="envira-unit"><?php esc_html_e( 'milliseconds', 'envira-gallery-lite' ); ?></span>
+							<p class="description"><?php esc_html_e( 'Set a delay when new images are loaded', 'envira-gallery-lite' ); ?></p>
+						</td>
 					</tr>
 				</tbody>
 			</table>
-			<?php // New Automatic Layout / Justified Layout Options. ?>
+			<?php
+			// New Automatic Layout / Justified Layout Options.
+			?>
 			<div id="envira-config-justified-settings-box">
 				<table class="form-table" style="margin-bottom: 0;">
 					<tbody>
@@ -965,7 +972,7 @@ class Envira_Gallery_Metaboxes {
 							<td>
 								<select id="envira-config-gallery-theme" name="_envira_gallery[gallery_theme]">
 									<?php foreach ( (array) $this->get_gallery_themes() as $i => $data ) : ?>
-										<option value="<?php echo esc_attr( $data['value'] ); ?>"<?php selected( $data['value'], $this->get_config( 'gallery_theme', $this->get_config_default( 'gallery_theme' ) ) ); ?>><?php echo esc_html( $data['name'] ); ?></option>
+										<option value="<?php echo esc_attr( $data['value'] ); ?>" <?php selected( $data['value'], $this->get_config( 'gallery_theme', $this->get_config_default( 'gallery_theme' ) ) ); ?>><?php echo esc_html( $data['name'] ); ?></option>
 									<?php endforeach; ?>
 								</select>
 								<p class="description"><?php esc_html_e( 'Sets the theme for the gallery display.', 'envira-gallery-lite' ); ?></p>
@@ -1009,7 +1016,7 @@ class Envira_Gallery_Metaboxes {
 									<?php
 									foreach ( (array) $this->get_image_sizes() as $i => $data ) {
 										?>
-										<option value="<?php echo esc_attr( $data['value'] ); ?>"<?php selected( $data['value'], $this->get_config( 'image_size', $this->get_config_default( 'image_size' ) ) ); ?>><?php echo esc_html( $data['name'] ); ?></option>
+										<option value="<?php echo esc_attr( $data['value'] ); ?>" <?php selected( $data['value'], $this->get_config( 'image_size', $this->get_config_default( 'image_size' ) ) ); ?>><?php echo esc_html( $data['name'] ); ?></option>
 										<?php
 									}
 									?>
@@ -1031,18 +1038,18 @@ class Envira_Gallery_Metaboxes {
 								<label for="envira-config-crop"><?php esc_html_e( 'Crop Images?', 'envira-gallery-lite' ); ?></label>
 							</th>
 							<td>
-							<label class="envira-toggle">
-								<input id="envira-config-crop" type="checkbox" class="envira-checkbox" name="_envira_gallery[crop]" value="<?php echo esc_attr( $this->get_config( 'crop', $this->get_config_default( 'crop' ) ) ); ?>" <?php checked( $this->get_config( 'crop', $this->get_config_default( 'crop' ) ), 1 ); ?> />
-								<span class="envira-switch"></span>
-								<span class="description"><?php esc_html_e( 'If enabled, forces images to exactly match the sizes defined above for Image Dimensions and Mobile Dimensions.', 'envira-gallery-lite' ); ?></span>
-								<span class="description"><?php esc_html_e( 'If disabled, images will be resized to maintain their aspect ratio.', 'envira-gallery-lite' ); ?></span>
-							</label>
+								<label class="envira-toggle">
+									<input id="envira-config-crop" type="checkbox" class="envira-checkbox" name="_envira_gallery[crop]" value="<?php echo esc_attr( $this->get_config( 'crop', $this->get_config_default( 'crop' ) ) ); ?>" <?php checked( $this->get_config( 'crop', $this->get_config_default( 'crop' ) ), 1 ); ?> />
+									<span class="envira-switch"></span>
+									<span class="description"><?php esc_html_e( 'If enabled, forces images to exactly match the sizes defined above for Image Dimensions and Mobile Dimensions.', 'envira-gallery-lite' ); ?></span>
+									<span class="description"><?php esc_html_e( 'If disabled, images will be resized to maintain their aspect ratio.', 'envira-gallery-lite' ); ?></span>
+								</label>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 
-		</div>
+			</div>
 		</div>
 		<?php
 
@@ -1137,7 +1144,7 @@ class Envira_Gallery_Metaboxes {
 							<td>
 								<select id="envira-config-lightbox-theme" name="_envira_gallery[lightbox_theme]">
 									<?php foreach ( (array) $this->get_lightbox_themes() as $i => $data ) : ?>
-										<option value="<?php echo esc_attr( $data['value'] ); ?>"<?php selected( $data['value'], $this->get_config( 'lightbox_theme', $this->get_config_default( 'lightbox_theme' ) ) ); ?>><?php echo esc_html( $data['name'] ); ?></option>
+										<option value="<?php echo esc_attr( $data['value'] ); ?>" <?php selected( $data['value'], $this->get_config( 'lightbox_theme', $this->get_config_default( 'lightbox_theme' ) ) ); ?>><?php echo esc_html( $data['name'] ); ?></option>
 									<?php endforeach; ?>
 								</select>
 								<p class="description"><?php esc_html_e( 'Sets the theme for the gallery lightbox display.', 'envira-gallery-lite' ); ?></p>
@@ -1163,7 +1170,7 @@ class Envira_Gallery_Metaboxes {
 							<td>
 								<select id="envira-config-lightbox-title-display" name="_envira_gallery[title_display]">
 									<?php foreach ( (array) $this->get_title_displays() as $i => $data ) : ?>
-										<option value="<?php echo esc_attr( $data['value'] ); ?>"<?php selected( $data['value'], $this->get_config( 'title_display', $this->get_config_default( 'title_display' ) ) ); ?>><?php echo esc_html( $data['name'] ); ?></option>
+										<option value="<?php echo esc_attr( $data['value'] ); ?>" <?php selected( $data['value'], $this->get_config( 'title_display', $this->get_config_default( 'title_display' ) ) ); ?>><?php echo esc_html( $data['name'] ); ?></option>
 									<?php endforeach; ?>
 								</select>
 								<p class="description"><?php esc_html_e( 'Sets the display of the lightbox image\'s caption.', 'envira-gallery-lite' ); ?></p>
@@ -1247,12 +1254,12 @@ class Envira_Gallery_Metaboxes {
 						<td>
 							<input id="envira-config-slug" type="text" name="_envira_gallery[slug]" value="<?php echo esc_attr( $this->get_config( 'slug', $this->get_config_default( 'slug' ) ) ); ?>" />
 							<p class="description">
-							<?php
-							echo wp_kses(
-								__( '<strong>Unique</strong> internal gallery slug for identification and advanced gallery queries.', 'envira-gallery-lite' ),
-								[ 'strong' => [] ]
-							);
-							?>
+								<?php
+								echo wp_kses(
+									__( '<strong>Unique</strong> internal gallery slug for identification and advanced gallery queries.', 'envira-gallery-lite' ),
+									[ 'strong' => [] ]
+								);
+								?>
 							</p>
 						</td>
 					</tr>
@@ -1363,7 +1370,7 @@ class Envira_Gallery_Metaboxes {
 		<div class="upgrade-content">
 			<div class="hero-image-exterior">
 				<div class="interior">
-				<a href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagemobile', 'mobilefeaturesimage' ) ); ?>" target="_blank"><img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/mobile.jpg' ); ?>" /></a>
+					<a href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagemobile', 'mobilefeaturesimage' ) ); ?>" target="_blank"><img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/mobile.jpg' ); ?>" /></a>
 				</div>
 			</div>
 			<p>Build responsive WordPress galleries that work on mobile, tablet and desktop devices. You can even customize all aspects of your user's mobile gallery display experience to be different than desktop.</p>
@@ -1409,6 +1416,7 @@ class Envira_Gallery_Metaboxes {
 					<li><a target="_blank" href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagevideos', 'videoplatformlinks' ) ); ?>">Twitch</a></li>
 					<li><a target="_blank" href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagevideos', 'videoplatformlinks' ) ); ?>">VideoPress</a></li>
 					<li><a target="_blank" href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagevideos', 'videoplatformlinks' ) ); ?>">DailyMotion</a></li>
+					<li><a target="_blank" href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagevideos', 'videoplatformlinks' ) ); ?>">TikTok</a></li>
 					<li><strong>...and more!</strong></li>
 				</ul>
 			</div>
@@ -1440,7 +1448,7 @@ class Envira_Gallery_Metaboxes {
 		<div class="upgrade-content">
 			<div class="hero-image-exterior">
 				<div class="interior">
-				<a href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagesocial', 'socialsharingaddonimage' ) ); ?>" target="_blank"><img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/socialsharing.png' ); ?>" /></a>
+					<a href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagesocial', 'socialsharingaddonimage' ) ); ?>" target="_blank"><img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/socialsharing.png' ); ?>" /></a>
 				</div>
 			</div>
 			<p>You can add social sharing buttons to your Gallery images and Lightbox images. Encourage your users to share your content via:</p>
@@ -1485,7 +1493,7 @@ class Envira_Gallery_Metaboxes {
 		<div class="upgrade-content">
 			<div class="hero-image-exterior">
 				<div class="interior">
-				<a href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagetags', 'tagsaddonimage' ) ); ?>" target="_blank"><img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/tags-addon.png' ); ?>" /></a>
+					<a href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagetags', 'tagsaddonimage' ) ); ?>" target="_blank"><img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/tags-addon.png' ); ?>" /></a>
 				</div>
 			</div>
 			<p>By upgrading to Envira Gallery Pro, you can add Tags to your gallery images (and categories to Albums). Allow users to filter your galleries by tag and so much more!</p>
@@ -1519,7 +1527,7 @@ class Envira_Gallery_Metaboxes {
 		<div class="upgrade-content">
 			<div class="hero-image-exterior">
 				<div class="interior">
-				<a href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpageanimations', 'animationsaddonimage' ) ); ?>" target="_blank"><img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/animations-addon.png' ); ?>" /></a>
+					<a href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpageanimations', 'animationsaddonimage' ) ); ?>" target="_blank"><img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/animations-addon.png' ); ?>" /></a>
 				</div>
 			</div>
 			<p>By upgrading to Envira Gallery Pro, you can add Animations to your gallery.</p>
@@ -1546,14 +1554,14 @@ class Envira_Gallery_Metaboxes {
 		?>
 
 		<div class="upgrade-header">
-			<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/pagination-icon.png' ); ?>" width="35"  />
+			<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/pagination-icon.png' ); ?>" width="35" />
 			<h2>Improve Large Gallery Experiences With Envira Pro!</h2>
 		</div>
 
 		<div class="upgrade-content">
 			<div class="hero-image-exterior">
 				<div class="interior">
-				<a href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagepagination', 'paginationaddonimage' ) ); ?>" target="_blank"><img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/pagination-addon.png' ); ?>" /></a>
+					<a href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagepagination', 'paginationaddonimage' ) ); ?>" target="_blank"><img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/pagination-addon.png' ); ?>" /></a>
 				</div>
 			</div>
 			<p>If you have a lot of photos in your gallery, you can split your Gallery across multiple pages! Customize a variety of aspects including how many items are shown per page, button text, left/right arrows, and more.</p>
@@ -1590,7 +1598,7 @@ class Envira_Gallery_Metaboxes {
 		?>
 
 		<div class="upgrade-header">
-			<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/comments-icon.png' ); ?>" width="35"  />
+			<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/comments-icon.png' ); ?>" width="35" />
 			<h2 class="upgrade-to-pro">Increase user engagement with the comments addon</h2>
 		</div>
 
@@ -1609,7 +1617,7 @@ class Envira_Gallery_Metaboxes {
 				</ul>
 				<ul>
 					<li><a target="_blank" href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagecomments', 'moderation' ) ); ?>">Comments Moderation</a></li>
-					<li><strong>...and more!</strong></li>
+					<li><a target="_blank" href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagecomments', 'likes' ) ); ?>">Show Likes</a></li>
 				</ul>
 			</div>
 			<p class="upsell-comments"><strong>Bonus:</strong> Envira Lite users get a discount code for <span class="envira-green">50% off</span> regular price.</p>
@@ -1640,19 +1648,19 @@ class Envira_Gallery_Metaboxes {
 		<div class="upgrade-content">
 			<div class="hero-image-exterior">
 				<div class="interior">
-				<a href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagesearch', 'searchaddonimage' ) ); ?>" target="_blank"><img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/search-addon.png' ); ?>" /></a>
+					<a href="<?php echo esc_url( Envira_Gallery_Common_Admin::get_instance()->get_upgrade_link( 'https://enviragallery.com/lite', 'adminpagesearch', 'searchaddonimage' ) ); ?>" target="_blank"><img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/search-addon.png' ); ?>" /></a>
 				</div>
 			</div>
 			<p><?php esc_html_e( 'Upgrade to Envira Gallery Pro to unlock advanced search capabilities, making it effortless for users to find their favorite images in your galleries!', 'envira-gallery-lite' ); ?></p>
 
 			<?php
-				printf(
-					'<p><strong>%s</strong> %s <span class="envira-green">%s</span> %s.</p>',
-					esc_html__( 'Bonus:', 'envira-gallery-lite' ),
-					esc_html__( 'Envira Lite users get a discount code for', 'envira-gallery-lite' ),
-					esc_html__( '50% off', 'envira-gallery-lite' ),
-					esc_html__( 'regular price', 'envira-gallery-lite' )
-				);
+			printf(
+				'<p><strong>%s</strong> %s <span class="envira-green">%s</span> %s.</p>',
+				esc_html__( 'Bonus:', 'envira-gallery-lite' ),
+				esc_html__( 'Envira Lite users get a discount code for', 'envira-gallery-lite' ),
+				esc_html__( '50% off', 'envira-gallery-lite' ),
+				esc_html__( 'regular price', 'envira-gallery-lite' )
+			);
 			?>
 
 			<div class="cta-buttons">
@@ -1711,7 +1719,6 @@ class Envira_Gallery_Metaboxes {
 
 				// Finally, flush all gallery caches to ensure everything is up to date.
 				Envira_Gallery_Common::get_instance()->flush_gallery_caches( $post_id, $settings['config']['slug'] );
-
 			}
 
 			return;
@@ -1769,11 +1776,13 @@ class Envira_Gallery_Metaboxes {
 		$settings['config']['lightbox_image_size']  = isset( $_POST['_envira_gallery']['lightbox_image_size'] ) ? preg_replace( '#[^a-z0-9-_]#', '', sanitize_text_field( wp_unslash( $_POST['_envira_gallery']['lightbox_image_size'] ) ) ) : $this->get_config_default( 'lightbox_image_size' );
 		$settings['config']['title_display']        = isset( $_POST['_envira_gallery']['title_display'] ) ? preg_replace( '#[^a-z0-9-_]#', '', sanitize_text_field( wp_unslash( $_POST['_envira_gallery']['title_display'] ) ) ) : $this->get_config_default( 'title_display' );
 
-		// Misc.
+		// Misc. We are using a custom sanitize_html_class function to sanitize the classes.
 		$settings['config']['classes'] = isset( $_POST['_envira_gallery']['classes'] ) ? array_map(
 			function ( $custom_class ) {
 				return sanitize_html_class( wp_unslash( trim( $custom_class ) ) );
-}, explode("\n", $_POST['_envira_gallery']['classes'] ) ) : array(); // @codingStandardsIgnoreLine
+			},
+			explode( "\n", $_POST['_envira_gallery']['classes'] ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		) : array(); // @codingStandardsIgnoreLine
 		$settings['config']['rtl']     = isset( $_POST['_envira_gallery']['rtl'] ) ? 1 : 0;
 		$settings['config']['title']   = isset( $_POST['_envira_gallery']['title'] ) ? trim( wp_strip_all_tags( sanitize_text_field( wp_unslash( $_POST['_envira_gallery']['title'] ) ) ) ) : '';
 		$settings['config']['slug']    = isset( $_POST['_envira_gallery']['slug'] ) ? sanitize_text_field( wp_unslash( $_POST['_envira_gallery']['slug'] ) ) : null;
@@ -1875,12 +1884,12 @@ class Envira_Gallery_Metaboxes {
 		// Buffer the output.
 		ob_start();
 		?>
-	<li id="<?php echo esc_attr( $id ); ?>" class="envira-gallery-image envira-gallery-status-<?php echo esc_attr( $item['status'] ); ?>" data-envira-gallery-image="<?php echo esc_attr( $id ); ?>" data-envira-gallery-image-model='<?php echo esc_html( htmlspecialchars( $json, ENT_QUOTES, 'UTF-8' ) ); ?>'>
-		<img src="<?php echo esc_url( $item['_thumbnail'] ); ?>" alt="<?php echo esc_attr( $item['alt'] ); ?>" />
-		<div class="meta">
-			<div class="title">
-				<span>
-					<?php
+		<li id="<?php echo esc_attr( $id ); ?>" class="envira-gallery-image envira-gallery-status-<?php echo esc_attr( $item['status'] ); ?>" data-envira-gallery-image="<?php echo esc_attr( $id ); ?>" data-envira-gallery-image-model='<?php echo esc_html( htmlspecialchars( $json, ENT_QUOTES, 'UTF-8' ) ); ?>'>
+			<img src="<?php echo esc_url( $item['_thumbnail'] ); ?>" alt="<?php echo esc_attr( $item['alt'] ); ?>" />
+			<div class="meta">
+				<div class="title">
+					<span>
+						<?php
 						$the_title = ( isset( $item['title'] ) ? $item['title'] : '' );
 
 						// Output Title.
@@ -1888,22 +1897,24 @@ class Envira_Gallery_Metaboxes {
 
 						// If the title exceeds 20 characters, the grid view will deliberately only show the first line of the title.
 						// Therefore we need to make it clear to the user that the full title is there by way of a hint.
+						?>
+					</span>
+					<a class="hint <?php echo ( ( strlen( $the_title ) > 20 ) ? '' : ' hidden' ); ?>" title="<?php echo ( isset( $the_title ) ? esc_attr( $the_title ) : '' ); ?>">...</a>
+				</div>
+				<div class="additional">
+					<?php
+					// Addons can add content to this meta section, which is displayed when in the List View.
+					echo apply_filters('envira_gallery_metabox_output_gallery_item_meta', '', $item, $id, $post_id); // @codingStandardsIgnoreLine
 					?>
-				</span>
-				<a class="hint <?php echo ( ( strlen( $the_title ) > 20 ) ? '' : ' hidden' ); ?>" title="<?php echo ( isset( $the_title ) ? esc_attr( $the_title ) : '' ); ?>">...</a>
+				</div>
 			</div>
-			<div class="additional">
-			<?php
-				// Addons can add content to this meta section, which is displayed when in the List View.
-				echo apply_filters( 'envira_gallery_metabox_output_gallery_item_meta', '', $item, $id, $post_id ); // @codingStandardsIgnoreLine
-			?>
-			</div>
-		</div>
 
-		<a href="#" class="check"><div class="media-modal-icon"></div></a>
-		<a href="#" class="dashicons dashicons-trash envira-gallery-remove-image" title="<?php esc_html_e( 'Remove Image from Gallery?', 'envira-gallery-lite' ); ?>"></a>
-		<a href="#" class="dashicons dashicons-edit envira-gallery-modify-image" title="<?php esc_html_e( 'Modify Image', 'envira-gallery-lite' ); ?>"></a>
-	</li>
+			<a href="#" class="check">
+				<div class="media-modal-icon"></div>
+			</a>
+			<a href="#" class="dashicons dashicons-trash envira-gallery-remove-image" title="<?php esc_html_e( 'Remove Image from Gallery?', 'envira-gallery-lite' ); ?>"></a>
+			<a href="#" class="dashicons dashicons-edit envira-gallery-modify-image" title="<?php esc_html_e( 'Modify Image', 'envira-gallery-lite' ); ?>"></a>
+		</li>
 		<?php
 		return ob_get_clean();
 	}
@@ -1987,8 +1998,8 @@ class Envira_Gallery_Metaboxes {
 					if ( defined( 'WP_DEBUG' ) && WP_DEBUG && is_user_logged_in() ) {
 						echo '<pre>Envira: Error occured resizing image (these messages are only displayed to logged in WordPress users):<br />';
 						echo 'Error: ' . esc_html( $cropped_image->get_error_message() ) . '<br />';
-						echo 'Image: ' . esc_html( var_export( $image, true ) ) . '<br />'; //@codingStandardsIgnoreLine -- Not run in production
-						echo 'Args: ' . esc_html( var_export( $args, true ) ) . '</pre>'; //@codingStandardsIgnoreLine -- Not run in production
+						echo 'Image: ' . esc_html(var_export($image, true)) . '<br />'; //@codingStandardsIgnoreLine -- Not run in production
+						echo 'Args: ' . esc_html(var_export($args, true)) . '</pre>'; //@codingStandardsIgnoreLine -- Not run in production
 						die();
 					}
 				} else {
@@ -2058,7 +2069,7 @@ class Envira_Gallery_Metaboxes {
 				if ( is_wp_error( $cropped_image ) ) {
 					// If debugging is defined, print out the error.
 					if ( defined( 'ENVIRA_GALLERY_CROP_DEBUG' ) && ENVIRA_GALLERY_CROP_DEBUG ) {
-						echo '<pre>' . esc_html( var_export( $cropped_image->get_error_message(), true ) ) . '</pre>'; //@codingStandardsIgnoreLine -- Not run in production
+						echo '<pre>' . esc_html(var_export($cropped_image->get_error_message(), true)) . '</pre>'; //@codingStandardsIgnoreLine -- Not run in production
 					}
 				}
 			}
@@ -2086,8 +2097,8 @@ class Envira_Gallery_Metaboxes {
 		global $id, $post;
 
 		// Get the current post ID. If ajax, grab it from the $_POST variable.
-		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && array_key_exists( 'post_id', $_POST ) ) { // @codingStandardsIgnoreLine
-			$post_id = absint( wp_unslash( $_POST['post_id'] ) ); // @codingStandardsIgnoreLine
+		if (defined('DOING_AJAX') && DOING_AJAX && array_key_exists('post_id', $_POST)) { // @codingStandardsIgnoreLine
+			$post_id = absint(wp_unslash($_POST['post_id'])); // @codingStandardsIgnoreLine
 		} else {
 			$post_id = isset( $post->ID ) ? $post->ID : (int) $id;
 		}

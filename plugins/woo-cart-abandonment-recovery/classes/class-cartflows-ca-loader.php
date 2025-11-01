@@ -93,7 +93,7 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 			define( 'CARTFLOWS_CA_BASE', plugin_basename( CARTFLOWS_CA_FILE ) );
 			define( 'CARTFLOWS_CA_DIR', plugin_dir_path( CARTFLOWS_CA_FILE ) );
 			define( 'CARTFLOWS_CA_URL', plugins_url( '/', CARTFLOWS_CA_FILE ) );
-			define( 'CARTFLOWS_CA_VER', '2.0.2' );
+			define( 'CARTFLOWS_CA_VER', '2.0.3' );
 			define( 'CARTFLOWS_CA_REQ_PRO_VER', '1.0.0' );
 
 			define( 'CARTFLOWS_CA_SLUG', 'cartflows_ca' );
@@ -151,7 +151,7 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 
 			$class = 'notice notice-error';
 			/* translators: %s: html tags */
-			$message = sprintf( __( 'Required database tables are not created for %1$sWooCommerce Cart Abandonment Recovery%2$s plugin. Please make sure that the database user has the REFERENCES privilege to create tables.', 'woo-cart-abandonment-recovery' ), '<strong>', '</strong>' );
+			$message = sprintf( __( 'Required database tables are not created for %1$sCart Abandonment Recovery for WooCommerce%2$s plugin. Please make sure that the database user has the REFERENCES privilege to create tables.', 'woo-cart-abandonment-recovery' ), '<strong>', '</strong>' );
 
 			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), wp_kses_post( $message ) );
 		}
@@ -173,7 +173,7 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 
 			$class = 'notice notice-error';
 			/* translators: %s: html tags */
-			$message = sprintf( __( 'The %1$sWooCommerce Cart Abandonment Recovery%2$s plugin requires %1$sWooCommerce%2$s plugin installed & activated.', 'woo-cart-abandonment-recovery' ), '<strong>', '</strong>' );
+			$message = sprintf( __( 'The %1$sCart Abandonment Recovery for WooCommerce%2$s plugin requires %1$sWooCommerce%2$s plugin installed & activated.', 'woo-cart-abandonment-recovery' ), '<strong>', '</strong>' );
 			$plugin  = 'woocommerce/woocommerce.php';
 
 			if ( $this->is_woo_installed() ) {

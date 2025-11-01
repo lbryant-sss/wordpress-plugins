@@ -111,11 +111,20 @@ class Akismet_Admin {
 	}
 
 	public static function admin_menu() {
-		if ( class_exists( 'Jetpack' ) ) {
+		if ( self::is_jetpack_active() ) {
 			add_action( 'jetpack_admin_menu', array( 'Akismet_Admin', 'load_menu' ) );
 		} else {
 			self::load_menu();
 		}
+	}
+
+	/**
+	 * Check if Jetpack is active.
+	 *
+	 * @return bool True if Jetpack class exists, false otherwise.
+	 */
+	public static function is_jetpack_active(): bool {
+		return class_exists( 'Jetpack' );
 	}
 
 	public static function admin_head() {
@@ -131,7 +140,7 @@ class Akismet_Admin {
 	}
 
 	public static function load_menu() {
-		if ( class_exists( 'Jetpack' ) ) {
+		if ( self::is_jetpack_active() ) {
 			$hook = add_submenu_page( 'jetpack', __( 'Akismet Anti-spam', 'akismet' ), __( 'Akismet Anti-spam', 'akismet' ), 'manage_options', 'akismet-key-config', array( 'Akismet_Admin', 'display_page' ) );
 		} else {
 			$hook = add_options_page( __( 'Akismet Anti-spam', 'akismet' ), __( 'Akismet Anti-spam', 'akismet' ), 'manage_options', 'akismet-key-config', array( 'Akismet_Admin', 'display_page' ) );
@@ -234,7 +243,7 @@ class Akismet_Admin {
 							'<p><strong>' . esc_html__( 'Akismet Setup', 'akismet' ) . '</strong></p>' .
 							'<p>' . esc_html__( 'You need to enter an API key to activate the Akismet service on your site.', 'akismet' ) . '</p>' .
 							/* translators: %s: a link to the signup page with the text 'Akismet.com'. */
-							'<p>' . sprintf( __( 'Sign up for an account on %s to get an API Key.', 'akismet' ), '<a href="https://akismet.com/plugin-signup/" target="_blank">Akismet.com</a>' ) . '</p>',
+							'<p>' . sprintf( __( 'Sign up for an account on %s to get an API Key.', 'akismet' ), '<a href="https://akismet.com/pricing/?utm_source=akismet_plugin&amp;utm_campaign=plugin_static_link&amp;utm_medium=in_plugin&amp;utm_content=help_signup" target="_blank">Akismet.com</a>' ) . '</p>',
 					)
 				);
 
@@ -306,8 +315,9 @@ class Akismet_Admin {
 		// Help Sidebar
 		$current_screen->set_help_sidebar(
 			'<p><strong>' . esc_html__( 'For more information:', 'akismet' ) . '</strong></p>' .
-			'<p><a href="https://akismet.com/faq/" target="_blank">' . esc_html__( 'Akismet FAQ', 'akismet' ) . '</a></p>' .
-			'<p><a href="https://akismet.com/support/" target="_blank">' . esc_html__( 'Akismet Support', 'akismet' ) . '</a></p>'
+
+			'<p><a href="https://akismet.com/resources/?utm_source=akismet_plugin&amp;utm_campaign=plugin_static_link&amp;utm_medium=in_plugin&amp;utm_content=help_faq" target="_blank">' . esc_html__( 'Akismet FAQ', 'akismet' ) . '</a></p>' .
+			'<p><a href="https://akismet.com/support/?utm_source=akismet_plugin&amp;utm_campaign=plugin_static_link&amp;utm_medium=in_plugin&amp;utm_content=help_support" target="_blank">' . esc_html__( 'Akismet Support', 'akismet' ) . '</a></p>'
 		);
 	}
 
@@ -356,11 +366,11 @@ class Akismet_Admin {
 			$akismet_user = self::get_akismet_user( $api_key );
 
 			if ( $akismet_user ) {
-				if ( in_array( $akismet_user->status, array( 'active', 'active-dunning', 'no-sub' ) ) ) {
+				if ( in_array( $akismet_user->status, array( Akismet::USER_STATUS_ACTIVE, 'active-dunning', Akismet::USER_STATUS_NO_SUB ) ) ) {
 					update_option( 'wordpress_api_key', $api_key );
 				}
 
-				if ( $akismet_user->status == 'active' ) {
+				if ( $akismet_user->status == Akismet::USER_STATUS_ACTIVE ) {
 					self::$notices['status'] = 'new-key-valid';
 				} elseif ( $akismet_user->status == 'notice' ) {
 					self::$notices['status'] = $akismet_user;
@@ -371,7 +381,15 @@ class Akismet_Admin {
 				self::$notices['status'] = 'new-key-invalid';
 			}
 		} elseif ( in_array( $key_status, array( 'invalid', 'failed' ) ) ) {
-			self::$notices['status'] = 'new-key-' . $key_status;
+			// When verify-key returns 'invalid', it could be truly invalid OR suspended.
+			// Check get-subscription to distinguish between these cases.
+			$akismet_user = self::get_akismet_user( $api_key );
+
+			if ( $akismet_user && isset( $akismet_user->status ) && $akismet_user->status === Akismet::USER_STATUS_SUSPENDED ) {
+				self::$notices['status'] = Akismet::USER_STATUS_SUSPENDED;
+			} else {
+				self::$notices['status'] = 'new-key-' . $key_status;
+			}
 		}
 	}
 
@@ -396,7 +414,7 @@ class Akismet_Admin {
 				$count,
 				'akismet'
 			),
-			'https://akismet.com/wordpress/',
+			'https://akismet.com/wordpress/?utm_source=akismet_plugin&amp;utm_campaign=plugin_static_link&amp;utm_medium=in_plugin&amp;utm_content=dashboard_stats',
 			esc_url( add_query_arg( array( 'page' => 'akismet-admin' ), admin_url( isset( $submenu['edit-comments.php'] ) ? 'edit-comments.php' : 'edit.php' ) ) ),
 			number_format_i18n( $count )
 		) . '</p>';
@@ -413,12 +431,12 @@ class Akismet_Admin {
 					$count,
 					'akismet'
 				),
-				'https://akismet.com/wordpress/',
+				'https://akismet.com/wordpress/?utm_source=akismet_plugin&amp;utm_campaign=plugin_static_link&amp;utm_medium=in_plugin&amp;utm_content=dashboard_stats',
 				number_format_i18n( $count )
 			);
 		} else {
 			/* translators: %s: Akismet website URL. */
-			$intro = sprintf( __( '<a href="%s">Akismet</a> blocks spam from getting to your blog. ', 'akismet' ), 'https://akismet.com/wordpress/' );
+			$intro = sprintf( __( '<a href="%s">Akismet</a> blocks spam from getting to your blog. ', 'akismet' ), 'https://akismet.com/wordpress/?utm_source=akismet_plugin&amp;utm_campaign=plugin_static_link&amp;utm_medium=in_plugin&amp;utm_content=dashboard_stats' );
 		}
 
 		$link = add_query_arg( array( 'comment_status' => 'spam' ), admin_url( 'edit-comments.php' ) );
@@ -959,6 +977,20 @@ class Akismet_Admin {
 		return add_query_arg( $args, menu_page_url( 'akismet-key-config', false ) );
 	}
 
+	/**
+	 * Get Akismet user subscription information.
+	 *
+	 * @param string $api_key The Akismet API key.
+	 * @return object|false Object with subscription info, or false if key is invalid.
+	 *
+	 * The returned object contains these properties:
+	 * - account_id (int|false): WordPress.com user ID, or false if unavailable.
+	 * - status (string): Account status - 'active', 'active-dunning', 'no-sub', 'cancelled', 'suspended', 'missing', or 'notice'.
+	 * - account_name (string): Subscription plan display name.
+	 * - account_type (string): Account type slug.
+	 * - next_billing_date (int|false): Unix timestamp of next billing date, or false if none.
+	 * - limit_reached (bool): Whether the usage limit has been reached.
+	 */
 	public static function get_akismet_user( $api_key ) {
 		$akismet_user = false;
 
@@ -1040,7 +1072,7 @@ class Akismet_Admin {
 
 				if ( is_object( $akismet_user ) ) {
 					self::save_key( $akismet_user->api_key );
-					return in_array( $akismet_user->status, array( 'active', 'active-dunning', 'no-sub' ) );
+					return in_array( $akismet_user->status, array( Akismet::USER_STATUS_ACTIVE, 'active-dunning', Akismet::USER_STATUS_NO_SUB ) );
 				}
 			}
 		}
@@ -1165,11 +1197,11 @@ class Akismet_Admin {
 
 		/*
 		// To see all variants when testing.
-		$akismet_user->status = 'no-sub';
+		$akismet_user->status = Akismet::USER_STATUS_NO_SUB;
 		Akismet::view( 'start', compact( 'akismet_user' ) );
-		$akismet_user->status = 'cancelled';
+		$akismet_user->status = Akismet::USER_STATUS_CANCELLED;
 		Akismet::view( 'start', compact( 'akismet_user' ) );
-		$akismet_user->status = 'suspended';
+		$akismet_user->status = Akismet::USER_STATUS_SUSPENDED;
 		Akismet::view( 'start', compact( 'akismet_user' ) );
 		$akismet_user->status = 'other';
 		Akismet::view( 'start', compact( 'akismet_user' ) );
@@ -1208,7 +1240,7 @@ class Akismet_Admin {
 		$notices = array();
 
 		if ( empty( self::$notices ) ) {
-			if ( ! empty( $stat_totals['all'] ) && isset( $stat_totals['all']->time_saved ) && $akismet_user->status == 'active' && $akismet_user->account_type == 'free-api-key' ) {
+			if ( ! empty( $stat_totals['all'] ) && isset( $stat_totals['all']->time_saved ) && $akismet_user->status == Akismet::USER_STATUS_ACTIVE && $akismet_user->account_type == 'free-api-key' ) {
 
 				$time_saved = false;
 
@@ -1237,7 +1269,7 @@ class Akismet_Admin {
 			}
 		}
 
-		if ( ! Akismet::predefined_api_key() && ! isset( self::$notices['status'] ) && in_array( $akismet_user->status, array( 'cancelled', 'suspended', 'missing', 'no-sub' ) ) ) {
+		if ( ! Akismet::predefined_api_key() && ! isset( self::$notices['status'] ) && in_array( $akismet_user->status, array( Akismet::USER_STATUS_CANCELLED, Akismet::USER_STATUS_SUSPENDED, Akismet::USER_STATUS_MISSING, Akismet::USER_STATUS_NO_SUB ) ) ) {
 			$notices[] = array( 'type' => $akismet_user->status );
 		}
 
@@ -1264,10 +1296,10 @@ class Akismet_Admin {
 		// $notices[] = array( 'type' => 'missing-functions' );
 		// $notices[] = array( 'type' => 'servers-be-down' );
 		// $notices[] = array( 'type' => 'active-dunning' );
-		// $notices[] = array( 'type' => 'cancelled' );
-		// $notices[] = array( 'type' => 'suspended' );
-		// $notices[] = array( 'type' => 'missing' );
-		// $notices[] = array( 'type' => 'no-sub' );
+		// $notices[] = array( 'type' => Akismet::USER_STATUS_CANCELLED );
+		// $notices[] = array( 'type' => Akismet::USER_STATUS_SUSPENDED );
+		// $notices[] = array( 'type' => Akismet::USER_STATUS_MISSING );
+		// $notices[] = array( 'type' => Akismet::USER_STATUS_NO_SUB );
 		// $notices[] = array( 'type' => 'new-key-valid' );
 		// $notices[] = array( 'type' => 'new-key-invalid' );
 		// $notices[] = array( 'type' => 'existing-key-invalid' );
@@ -1383,7 +1415,7 @@ class Akismet_Admin {
 	 * @return array|false
 	 */
 	private static function get_jetpack_user() {
-		if ( ! class_exists( 'Jetpack' ) ) {
+		if ( ! self::is_jetpack_active() ) {
 			return false;
 		}
 

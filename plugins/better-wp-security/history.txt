@@ -1112,4 +1112,6 @@
 	Enhancement: Site Scans now run four times daily to detect new vulnerabilities.
 	Tweak: Make frontend JS code compatible with React 18.
 9.4.1 - 2025-09-15 - Volodymyr Shelmuk
-    Bug Fix: Missing assets in release 9.4.0.
+	Bug Fix: Missing assets in release 9.4.0.
+9.4.2 - 2025-10-28 - Volodymyr Shelmuk
+	Bug Fix: PHP notice about early translations loading on the settings screen.

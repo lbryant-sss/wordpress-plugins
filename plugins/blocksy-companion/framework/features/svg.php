@@ -28,23 +28,8 @@ class SvgHandling {
 			}
 		);
 
-		add_filter(
-			'wp_check_filetype_and_ext',
-			function ($data = null, $file = null, $filename = null, $mimes = null) {
-				if (strpos($filename, '.svg') !== false) {
-					$data['type'] = 'image/svg+xml';
-					$data['ext'] = 'svg';
-				}
-
-				return $data;
-			},
-			75, 4
-		);
-
-		add_filter('upload_mimes', function ($mimes) {
-			$mimes['svg'] = 'image/svg+xml';
-			return $mimes;
-		});
+		add_filter('wp_handle_sideload_prefilter', [$this, 'enable_upload_support']);
+		add_filter('wp_handle_upload_prefilter', [$this, 'enable_upload_support']);
 
 		add_filter(
 			'wp_get_attachment_metadata',
@@ -84,6 +69,36 @@ class SvgHandling {
 			},
 			10, 4
 		);
+	}
+
+	public function enable_upload_support($file) {
+		add_filter('upload_mimes', [$this, 'upload_mimes']);
+		add_filter('wp_check_filetype_and_ext', [$this, 'wp_check_filetype_and_ext'], 75, 4);
+
+		add_filter('pre_move_uploaded_file', [$this, 'pre_move_uploaded_file']);
+
+		return $file;
+	}
+
+	public function pre_move_uploaded_file($new_file) {
+		remove_filter('wp_check_filetype_and_ext', [$this, 'wp_check_filetype_and_ext'], 75);
+		remove_filter('upload_mimes', [$this, 'upload_mimes']);
+
+		return $new_file;
+	}
+
+	public function wp_check_filetype_and_ext($data = null, $file = null, $filename = null, $mimes = null) {
+		if (strpos($filename, '.svg') !== false) {
+			$data['type'] = 'image/svg+xml';
+			$data['ext'] = 'svg';
+		}
+
+		return $data;
+	}
+
+	public function upload_mimes($mimes) {
+		$mimes['svg'] = 'image/svg+xml';
+		return $mimes;
 	}
 
 	public function filter_get_attachment_metadata($data, $attachment_id) {

@@ -1,3 +1,7 @@
+Version 1.1.10 - Friday, 31st October 2025
+- Improvement: "WPForms" - Added new "Form Submitted (Field ID Based)" Trigger
+- Improvement: "WooCommerce" - Added new Actions
+
 Version 1.1.9 - Friday, 17th October 2025
 - New: Added "Pretty Links" Integration
 - New: Added "SureDash" Integration

@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Easy Digital Downloads plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Easy Digital Downloads 3.5.3\n"
+"Project-Id-Version: Easy Digital Downloads 3.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/easy-digital-downloads\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-22T20:24:14+00:00\n"
+"POT-Creation-Date: 2025-10-29T19:36:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 
@@ -35,6 +35,7 @@ msgstr ""
 #: includes/blocks/includes/functions.php:27
 #: src/Admin/Onboarding/Steps/Tools.php:152
 #: src/Admin/SiteHealth/Test.php:21
+#: src/Elementor/Subscribers/Widget.php:44
 msgid "Easy Digital Downloads"
 msgstr ""
 
@@ -5915,7 +5916,7 @@ msgid "Enter emails and/or domains (starting with \"@\") and/or TLDs (starting w
 msgstr ""
 
 #: includes/admin/admin-deprecated-functions.php:54
-#: includes/admin/tools.php:245
+#: includes/admin/admin-deprecated-functions.php:2000
 #: includes/admin/views/email-editor/header.php:51
 msgid "Save"
 msgstr ""
@@ -5967,8 +5968,8 @@ msgstr ""
 #: includes/admin/reporting/export/export-actions.php:44
 #: includes/admin/reporting/export/export-actions.php:48
 #: includes/admin/reporting/export/export-actions.php:55
-#: includes/admin/tools.php:1051
-#: includes/admin/tools.php:1057
+#: includes/admin/tools.php:925
+#: includes/admin/tools.php:931
 #: includes/admin/tools/class-edd-tools-recount-all-stats.php:78
 #: includes/admin/tools/class-edd-tools-recount-customer-stats.php:114
 #: includes/admin/tools/class-edd-tools-recount-download-stats.php:125
@@ -5987,8 +5988,8 @@ msgstr ""
 #: includes/api/class-edd-api.php:2005
 #: includes/api/class-edd-api.php:2015
 #: includes/blocks/includes/forms/recaptcha.php:143
-#: includes/cart/class-edd-cart.php:1453
-#: includes/cart/class-edd-cart.php:1467
+#: includes/cart/class-edd-cart.php:1542
+#: includes/cart/class-edd-cart.php:1556
 #: includes/class-edd-license-handler.php:479
 #: includes/deprecated-functions.php:489
 #: includes/deprecated-functions.php:506
@@ -6094,7 +6095,8 @@ msgid "Download System Info File"
 msgstr ""
 
 #: includes/admin/admin-deprecated-functions.php:336
-#: includes/admin/tools.php:1156
+#: includes/admin/tools.php:1030
+#: src/Admin/Tools/Traits/Profilers.php:229
 msgid "Copy to Clipboard"
 msgstr ""
 
@@ -6164,7 +6166,7 @@ msgstr ""
 #: includes/admin/downloads/views/metabox-bundled-products.php:140
 #: includes/admin/views/tmpl-tax-rates-table-row.php:50
 #: includes/blocks/views/checkout/cart/cart-fees.php:15
-#: includes/blocks/views/checkout/cart/cart-item.php:55
+#: includes/blocks/views/checkout/cart/cart-item.php:61
 #: src/Admin/Assets/Localization.php:94
 #: src/Admin/Downloads/Editor/VariablePrices.php:350
 #: templates/checkout_cart.php:57
@@ -6201,6 +6203,7 @@ msgstr ""
 
 #: includes/admin/admin-deprecated-functions.php:1630
 #: includes/gateways/stripe/includes/template-functions.php:470
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:291
 #: src/Pro/Admin/Settings/Invoices.php:170
 #: includes/blocks/build/downloads/index.js:1
 #: includes/blocks/src/utilities/buy-button-alignment.js:6
@@ -6249,6 +6252,20 @@ msgctxt "Delete Customer tab title"
 msgid "Delete"
 msgstr ""
 
+#: includes/admin/admin-deprecated-functions.php:1972
+msgid "Enable Beta Versions"
+msgstr ""
+
+#: includes/admin/admin-deprecated-functions.php:1974
+msgid "Checking any of the below checkboxes will opt you in to receive pre-release update notifications. You can opt-out at any time. Pre-release updates do not install automatically, you will still have the opportunity to ignore update notifications."
+msgstr ""
+
+#. translators: %s: Product name
+#: includes/admin/admin-deprecated-functions.php:1990
+#, php-format
+msgid "Get updates for pre-release versions of %s"
+msgstr ""
+
 #: includes/admin/class-api-keys-table.php:126
 #: includes/user-functions.php:1077
 msgid "Never Used"
@@ -6276,8 +6293,8 @@ msgstr ""
 
 #: includes/admin/class-api-keys-table.php:218
 #: includes/blocks/views/checkout/purchase-form/register.php:7
-#: includes/checkout/template.php:362
-#: includes/checkout/template.php:371
+#: includes/checkout/template.php:363
+#: includes/checkout/template.php:372
 #: src/Emails/Tags/Registry.php:91
 #: templates/shortcode-register.php:20
 #: includes/blocks/build/register/index.js:1
@@ -6749,7 +6766,7 @@ msgstr ""
 #: includes/admin/customers/customers.php:1163
 #: includes/admin/customers/customers.php:1216
 #: includes/admin/reporting/class-export-payments.php:65
-#: includes/admin/tools.php:690
+#: includes/admin/tools.php:564
 #: includes/admin/views/tmpl-tax-rates-table-dialog.php:18
 #: includes/admin/views/tmpl-tax-rates-table-meta.php:20
 #: includes/admin/views/tmpl-tax-rates-table-row.php:21
@@ -6800,7 +6817,7 @@ msgstr ""
 #: includes/admin/reporting/class-file-downloads-logs-list-table.php:132
 #: includes/admin/reporting/class-gateway-error-logs-list-table.php:92
 #: includes/admin/reporting/class-sales-logs-list-table.php:101
-#: includes/admin/tools.php:555
+#: includes/admin/tools.php:429
 #: includes/blocks/views/orders/totals.php:39
 #: includes/privacy-functions.php:991
 #: includes/reports/reports-functions.php:329
@@ -6839,7 +6856,7 @@ msgstr ""
 #: includes/admin/reporting/class-export-customers.php:63
 #: includes/admin/reporting/class-export-customers.php:74
 #: includes/admin/reporting/class-export-payments.php:58
-#: includes/admin/tools.php:446
+#: includes/admin/tools.php:320
 #: src/Admin/Emails/ListTable.php:75
 #: src/Admin/Exports/Exporters/Customers.php:58
 #: src/Admin/Exports/Exporters/Orders.php:51
@@ -6891,7 +6908,7 @@ msgstr ""
 #: includes/admin/payments/orders.php:595
 #: includes/upgrades/functions.php:168
 #: src/Admin/Emails/Screen.php:37
-#: src/Admin/Tools/Screen.php:72
+#: src/Admin/Tools/Screen.php:71
 msgid "Logs"
 msgstr ""
 
@@ -6905,7 +6922,7 @@ msgstr ""
 #: includes/admin/customers/class-customer-table.php:252
 #: includes/admin/downloads/dashboard-columns.php:32
 #: includes/admin/reporting/class-export-customers.php:71
-#: includes/admin/tools.php:455
+#: includes/admin/tools.php:329
 #: includes/privacy-functions.php:639
 #: src/Admin/Discounts/Editor/Name.php:42
 #: src/Admin/Discounts/ListTable.php:80
@@ -7122,7 +7139,7 @@ msgstr ""
 #: includes/admin/customers/customers.php:1160
 #: includes/admin/customers/customers.php:1195
 #: includes/admin/reporting/class-export-payments.php:63
-#: includes/admin/tools.php:662
+#: includes/admin/tools.php:536
 #: includes/gateways/stripe/includes/template-functions.php:556
 #: src/Admin/Exports/Exporters/Orders.php:56
 #: src/Admin/Exports/Exporters/TaxedOrders.php:69
@@ -7133,7 +7150,7 @@ msgid "City"
 msgstr ""
 
 #: includes/admin/customers/customers.php:579
-#: includes/admin/tools.php:671
+#: includes/admin/tools.php:545
 #: src/Forms/Checkout/Registry.php:56
 #: src/Forms/Checkout/State.php:54
 #: templates/shortcode-profile-editor.php:177
@@ -7268,7 +7285,7 @@ msgstr ""
 #: includes/admin/customers/customers.php:860
 #: includes/admin/customers/customers.php:910
 #: includes/admin/payments/class-payments-table.php:427
-#: includes/admin/tools.php:612
+#: includes/admin/tools.php:486
 #: includes/admin/views/tmpl-order-refund.php:39
 #: includes/admin/views/tmpl-order-total.php:16
 #: includes/blocks/views/checkout/cart/cart-total.php:8
@@ -7488,7 +7505,7 @@ msgstr ""
 
 #: includes/admin/dashboard-widgets.php:201
 #: includes/admin/reporting/class-categories-reports-table.php:78
-#: includes/admin/tools.php:909
+#: includes/admin/tools.php:783
 #: src/Reports/Data/Downloads/Earnings_By_Taxonomy_List_Table.php:180
 msgid "Total Earnings"
 msgstr ""
@@ -7561,6 +7578,8 @@ msgstr ""
 #: src/Admin/Sections.php:99
 #: src/Admin/Settings/Screen.php:183
 #: src/Admin/Tools/Screen.php:69
+#: src/Elementor/Widgets/Config/Checkout/General.php:34
+#: src/Elementor/Widgets/Config/Checkout/Styles/General.php:34
 msgid "General"
 msgstr ""
 
@@ -7900,7 +7919,7 @@ msgstr ""
 
 #: includes/admin/downloads/metabox.php:621
 #: includes/admin/downloads/metabox.php:624
-#: includes/admin/tools.php:890
+#: includes/admin/tools.php:764
 #: src/Admin/Exports/Exporters/Downloads.php:57
 #: src/Admin/Settings/Tabs/Misc.php:187
 msgid "File Download Limit"
@@ -8014,6 +8033,7 @@ msgid "Special instructions for this %s. These will be added to the purchase rec
 msgstr ""
 
 #: includes/admin/downloads/views/metabox-bundled-products.php:56
+#: src/Elementor/Widgets/Config/Checkout/General.php:112
 msgid "Select a product"
 msgstr ""
 
@@ -8321,7 +8341,7 @@ msgstr ""
 #: includes/admin/payments/class-payments-table.php:429
 #: includes/admin/payments/orders.php:1117
 #: includes/admin/reporting/class-export-payments.php:78
-#: includes/admin/tools.php:584
+#: includes/admin/tools.php:458
 #: includes/privacy-functions.php:834
 #: src/Admin/Discounts/Editor/Status.php:42
 #: src/Admin/Discounts/ListTable.php:81
@@ -8616,7 +8636,7 @@ msgstr ""
 #: includes/admin/payments/orders.php:265
 #: includes/admin/reporting/class-export-customers.php:61
 #: includes/admin/reporting/class-export-payments.php:59
-#: includes/admin/tools.php:465
+#: includes/admin/tools.php:339
 #: src/Admin/Exports/Exporters/TaxedOrders.php:65
 #: src/Emails/Tags/Registry.php:77
 #: src/Forms/Checkout/PersonalInfo/FirstName.php:32
@@ -8628,7 +8648,7 @@ msgstr ""
 #: includes/admin/payments/orders.php:275
 #: includes/admin/reporting/class-export-customers.php:62
 #: includes/admin/reporting/class-export-payments.php:60
-#: includes/admin/tools.php:475
+#: includes/admin/tools.php:349
 #: src/Admin/Exports/Exporters/TaxedOrders.php:66
 #: src/Forms/Checkout/PersonalInfo/LastName.php:32
 #: src/Forms/Checkout/PersonalInfo/LastName.php:58
@@ -8802,7 +8822,7 @@ msgstr ""
 #: includes/admin/payments/orders.php:995
 #: includes/admin/payments/orders.php:1018
 #: includes/admin/reporting/class-export-payments.php:74
-#: includes/admin/tools.php:622
+#: includes/admin/tools.php:496
 #: src/Admin/Exports/Exporters/Orders.php:70
 #: src/Admin/Exports/Exporters/TaxedOrders.php:80
 #: src/Emails/Tags/Registry.php:233
@@ -9026,6 +9046,7 @@ msgstr ""
 #: src/Admin/Menu/Pages.php:82
 #: includes/blocks/build/buy-button/index.js:9
 #: includes/blocks/build/cart/index.js:1
+#: includes/blocks/build/checkout/index.js:6
 #: includes/blocks/build/confirmation/index.js:1
 #: includes/blocks/build/login/index.js:1
 #: includes/blocks/build/pro/currency-selector/index.js:1
@@ -9033,6 +9054,7 @@ msgstr ""
 #: includes/blocks/build/register/index.js:1
 #: includes/blocks/src/buy-button/edit.js:55
 #: includes/blocks/src/cart/edit.js:27
+#: includes/blocks/src/checkout/edit.js:49
 #: includes/blocks/src/confirmation/edit.js:26
 #: includes/blocks/src/login/edit.js:23
 #: includes/blocks/src/pro/currency-selector/edit.js:23
@@ -9181,7 +9203,7 @@ msgstr ""
 
 #: includes/admin/reporting/class-export-download-history.php:61
 #: includes/admin/reporting/class-file-downloads-logs-list-table.php:130
-#: includes/admin/tools.php:505
+#: includes/admin/tools.php:379
 #: includes/privacy-functions.php:828
 #: includes/privacy-functions.php:921
 #: includes/privacy-functions.php:999
@@ -9213,7 +9235,7 @@ msgid "ID"
 msgstr ""
 
 #: includes/admin/reporting/class-export-payments.php:57
-#: includes/admin/tools.php:545
+#: includes/admin/tools.php:419
 msgid "Payment Number"
 msgstr ""
 
@@ -9231,7 +9253,7 @@ msgid "State"
 msgstr ""
 
 #: includes/admin/reporting/class-export-payments.php:66
-#: includes/admin/tools.php:680
+#: includes/admin/tools.php:554
 #: includes/gateways/stripe/includes/template-functions.php:572
 #: src/Admin/Exports/Exporters/Orders.php:59
 #: src/Admin/Exports/Exporters/TaxedOrders.php:72
@@ -9268,7 +9290,7 @@ msgid "Currency"
 msgstr ""
 
 #: includes/admin/reporting/class-export-payments.php:71
-#: includes/admin/tools.php:603
+#: includes/admin/tools.php:477
 #: includes/admin/views/tmpl-order-form-add-order-item.php:196
 #: includes/admin/views/tmpl-order-tax.php:26
 #: includes/blocks/views/checkout/cart/cart-taxes.php:9
@@ -9291,9 +9313,12 @@ msgid "Discount Code"
 msgstr ""
 
 #: includes/admin/reporting/class-export-payments.php:73
-#: includes/admin/tools.php:535
+#: includes/admin/tools.php:409
+#: includes/blocks/views/checkout/purchase-form/gateways.php:9
 #: includes/blocks/views/orders/totals.php:33
 #: src/Admin/Exports/Exporters/Orders.php:69
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:62
+#: src/Elementor/Widgets/Config/Checkout/Titles.php:68
 #: src/Emails/Tags/Registry.php:168
 #: src/Reports/Data/Gateways/StripePaymentMethods.php:77
 #: templates/shortcode-receipt.php:63
@@ -9301,14 +9326,14 @@ msgid "Payment Method"
 msgstr ""
 
 #: includes/admin/reporting/class-export-payments.php:75
-#: includes/admin/tools.php:564
+#: includes/admin/tools.php:438
 #: src/Admin/Exports/Exporters/Orders.php:71
 #: src/Admin/Exports/Exporters/TaxedOrders.php:81
 msgid "Purchase Key"
 msgstr ""
 
 #: includes/admin/reporting/class-export-payments.php:77
-#: includes/admin/tools.php:632
+#: includes/admin/tools.php:506
 #: src/Admin/Exports/Exporters/Orders.php:73
 #: src/Admin/Exports/Exporters/ProductSales.php:73
 #: src/Admin/Exports/Exporters/TaxedOrders.php:83
@@ -9391,7 +9416,7 @@ msgstr ""
 
 #: includes/admin/reporting/contextual-help.php:67
 #: includes/admin/reporting/reports.php:807
-#: includes/admin/tools.php:955
+#: includes/admin/tools.php:829
 msgid "Export"
 msgstr ""
 
@@ -9855,7 +9880,7 @@ msgid "API"
 msgstr ""
 
 #: includes/admin/settings/register-settings.php:552
-#: includes/blocks/includes/checkout/checkout.php:131
+#: includes/blocks/includes/checkout/checkout.php:136
 #: includes/gateways/stripe/includes/payment-methods/payment-request/admin/settings.php:89
 #: includes/install.php:285
 #: templates/widget-cart-checkout.php:6
@@ -10037,7 +10062,7 @@ msgstr ""
 
 #: includes/admin/thickbox.php:77
 #: includes/blocks/includes/downloads/downloads.php:145
-#: includes/checkout/template.php:858
+#: includes/checkout/template.php:859
 #: includes/gateways/stripe/includes/payment-methods/buy-now/template.php:191
 #: includes/shortcodes.php:52
 #: includes/template-functions.php:95
@@ -10074,6 +10099,9 @@ msgid "Choose between a Button or a Link"
 msgstr ""
 
 #: includes/admin/thickbox.php:153
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:85
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:109
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:131
 msgid "Color"
 msgstr ""
 
@@ -10170,152 +10198,138 @@ msgstr ""
 msgid "These API keys allow you to use the %1$sEDD REST API%3$s to retrieve store data in JSON or XML for external applications or devices, such as the %2$sEDD mobile app%3$s."
 msgstr ""
 
-#: includes/admin/tools.php:217
-msgid "Enable Beta Versions"
-msgstr ""
-
-#: includes/admin/tools.php:219
-msgid "Checking any of the below checkboxes will opt you in to receive pre-release update notifications. You can opt-out at any time. Pre-release updates do not install automatically, you will still have the opportunity to ignore update notifications."
-msgstr ""
-
-#. translators: %s: Product name
-#: includes/admin/tools.php:235
-#, php-format
-msgid "Get updates for pre-release versions of %s"
-msgstr ""
-
-#: includes/admin/tools.php:391
+#: includes/admin/tools.php:265
 msgid "Import Orders"
 msgstr ""
 
-#: includes/admin/tools.php:393
+#: includes/admin/tools.php:267
 msgid "Import a CSV file of orders."
 msgstr ""
 
-#: includes/admin/tools.php:405
-#: includes/admin/tools.php:724
+#: includes/admin/tools.php:279
+#: includes/admin/tools.php:598
 msgid "Import CSV"
 msgstr ""
 
 #. translators: %1$s opening anchor tag, %2$s closing anchor tag
-#: includes/admin/tools.php:418
+#: includes/admin/tools.php:292
 #, php-format
 msgid "Each column loaded from the CSV needs to be mapped to an order field. Select the column that should be mapped to each field below. Any columns not needed can be ignored. See %1$sthis guide%2$s for assistance with importing payment records."
 msgstr ""
 
-#: includes/admin/tools.php:429
+#: includes/admin/tools.php:303
 msgid "Payment Field"
 msgstr ""
 
-#: includes/admin/tools.php:430
-#: includes/admin/tools.php:749
+#: includes/admin/tools.php:304
+#: includes/admin/tools.php:623
 msgid "CSV Column"
 msgstr ""
 
-#: includes/admin/tools.php:431
-#: includes/admin/tools.php:750
+#: includes/admin/tools.php:305
+#: includes/admin/tools.php:624
 msgid "Data Preview"
 msgstr ""
 
-#: includes/admin/tools.php:436
+#: includes/admin/tools.php:310
 msgid "Currency Code"
 msgstr ""
 
-#: includes/admin/tools.php:440
-#: includes/admin/tools.php:449
-#: includes/admin/tools.php:459
-#: includes/admin/tools.php:469
-#: includes/admin/tools.php:479
-#: includes/admin/tools.php:489
-#: includes/admin/tools.php:499
-#: includes/admin/tools.php:509
-#: includes/admin/tools.php:519
-#: includes/admin/tools.php:529
+#: includes/admin/tools.php:314
+#: includes/admin/tools.php:323
+#: includes/admin/tools.php:333
+#: includes/admin/tools.php:343
+#: includes/admin/tools.php:353
+#: includes/admin/tools.php:363
+#: includes/admin/tools.php:373
+#: includes/admin/tools.php:383
+#: includes/admin/tools.php:393
+#: includes/admin/tools.php:403
+#: includes/admin/tools.php:413
+#: includes/admin/tools.php:423
+#: includes/admin/tools.php:432
+#: includes/admin/tools.php:442
+#: includes/admin/tools.php:452
+#: includes/admin/tools.php:462
+#: includes/admin/tools.php:471
+#: includes/admin/tools.php:480
+#: includes/admin/tools.php:490
+#: includes/admin/tools.php:500
+#: includes/admin/tools.php:510
+#: includes/admin/tools.php:520
+#: includes/admin/tools.php:530
 #: includes/admin/tools.php:539
-#: includes/admin/tools.php:549
+#: includes/admin/tools.php:548
 #: includes/admin/tools.php:558
 #: includes/admin/tools.php:568
-#: includes/admin/tools.php:578
-#: includes/admin/tools.php:588
-#: includes/admin/tools.php:597
-#: includes/admin/tools.php:606
-#: includes/admin/tools.php:616
-#: includes/admin/tools.php:626
-#: includes/admin/tools.php:636
-#: includes/admin/tools.php:646
-#: includes/admin/tools.php:656
-#: includes/admin/tools.php:665
-#: includes/admin/tools.php:674
-#: includes/admin/tools.php:684
-#: includes/admin/tools.php:694
-#: includes/admin/tools.php:759
-#: includes/admin/tools.php:769
-#: includes/admin/tools.php:779
-#: includes/admin/tools.php:789
-#: includes/admin/tools.php:799
-#: includes/admin/tools.php:809
-#: includes/admin/tools.php:818
-#: includes/admin/tools.php:827
-#: includes/admin/tools.php:836
-#: includes/admin/tools.php:846
-#: includes/admin/tools.php:856
-#: includes/admin/tools.php:865
-#: includes/admin/tools.php:875
-#: includes/admin/tools.php:884
-#: includes/admin/tools.php:894
-#: includes/admin/tools.php:903
-#: includes/admin/tools.php:913
+#: includes/admin/tools.php:633
+#: includes/admin/tools.php:643
+#: includes/admin/tools.php:653
+#: includes/admin/tools.php:663
+#: includes/admin/tools.php:673
+#: includes/admin/tools.php:683
+#: includes/admin/tools.php:692
+#: includes/admin/tools.php:701
+#: includes/admin/tools.php:710
+#: includes/admin/tools.php:720
+#: includes/admin/tools.php:730
+#: includes/admin/tools.php:739
+#: includes/admin/tools.php:749
+#: includes/admin/tools.php:758
+#: includes/admin/tools.php:768
+#: includes/admin/tools.php:777
+#: includes/admin/tools.php:787
 msgid "- Ignore this field -"
 msgstr ""
 
-#: includes/admin/tools.php:443
-#: includes/admin/tools.php:452
-#: includes/admin/tools.php:462
-#: includes/admin/tools.php:472
-#: includes/admin/tools.php:482
-#: includes/admin/tools.php:492
-#: includes/admin/tools.php:502
-#: includes/admin/tools.php:512
-#: includes/admin/tools.php:522
-#: includes/admin/tools.php:532
+#: includes/admin/tools.php:317
+#: includes/admin/tools.php:326
+#: includes/admin/tools.php:336
+#: includes/admin/tools.php:346
+#: includes/admin/tools.php:356
+#: includes/admin/tools.php:366
+#: includes/admin/tools.php:376
+#: includes/admin/tools.php:386
+#: includes/admin/tools.php:396
+#: includes/admin/tools.php:406
+#: includes/admin/tools.php:416
+#: includes/admin/tools.php:426
+#: includes/admin/tools.php:435
+#: includes/admin/tools.php:445
+#: includes/admin/tools.php:455
+#: includes/admin/tools.php:465
+#: includes/admin/tools.php:474
+#: includes/admin/tools.php:483
+#: includes/admin/tools.php:493
+#: includes/admin/tools.php:503
+#: includes/admin/tools.php:513
+#: includes/admin/tools.php:523
+#: includes/admin/tools.php:533
 #: includes/admin/tools.php:542
-#: includes/admin/tools.php:552
+#: includes/admin/tools.php:551
 #: includes/admin/tools.php:561
 #: includes/admin/tools.php:571
-#: includes/admin/tools.php:581
-#: includes/admin/tools.php:591
-#: includes/admin/tools.php:600
-#: includes/admin/tools.php:609
-#: includes/admin/tools.php:619
-#: includes/admin/tools.php:629
-#: includes/admin/tools.php:639
-#: includes/admin/tools.php:649
-#: includes/admin/tools.php:659
-#: includes/admin/tools.php:668
-#: includes/admin/tools.php:677
-#: includes/admin/tools.php:687
-#: includes/admin/tools.php:697
-#: includes/admin/tools.php:762
-#: includes/admin/tools.php:772
-#: includes/admin/tools.php:782
-#: includes/admin/tools.php:792
-#: includes/admin/tools.php:802
-#: includes/admin/tools.php:812
-#: includes/admin/tools.php:821
-#: includes/admin/tools.php:830
-#: includes/admin/tools.php:839
-#: includes/admin/tools.php:849
-#: includes/admin/tools.php:859
-#: includes/admin/tools.php:868
-#: includes/admin/tools.php:878
-#: includes/admin/tools.php:887
-#: includes/admin/tools.php:897
-#: includes/admin/tools.php:906
-#: includes/admin/tools.php:916
+#: includes/admin/tools.php:636
+#: includes/admin/tools.php:646
+#: includes/admin/tools.php:656
+#: includes/admin/tools.php:666
+#: includes/admin/tools.php:676
+#: includes/admin/tools.php:686
+#: includes/admin/tools.php:695
+#: includes/admin/tools.php:704
+#: includes/admin/tools.php:713
+#: includes/admin/tools.php:723
+#: includes/admin/tools.php:733
+#: includes/admin/tools.php:742
+#: includes/admin/tools.php:752
+#: includes/admin/tools.php:761
+#: includes/admin/tools.php:771
+#: includes/admin/tools.php:780
+#: includes/admin/tools.php:790
 msgid "- select field to preview data -"
 msgstr ""
 
-#: includes/admin/tools.php:485
+#: includes/admin/tools.php:359
 #: includes/privacy-functions.php:631
 #: includes/privacy-functions.php:917
 #: src/Admin/Exports/Exporters/Orders.php:52
@@ -10324,25 +10338,25 @@ msgstr ""
 msgid "Customer ID"
 msgstr ""
 
-#: includes/admin/tools.php:495
+#: includes/admin/tools.php:369
 msgid "Discount Code(s)"
 msgstr ""
 
-#: includes/admin/tools.php:515
+#: includes/admin/tools.php:389
 #: src/Admin/Exports/Exporters/Orders.php:75
 #: src/Admin/Exports/Exporters/TaxedOrders.php:86
 msgid "Mode (Live|Test)"
 msgstr ""
 
-#: includes/admin/tools.php:525
+#: includes/admin/tools.php:399
 msgid "Parent Payment ID"
 msgstr ""
 
-#: includes/admin/tools.php:574
+#: includes/admin/tools.php:448
 msgid "Purchased Product(s)"
 msgstr ""
 
-#: includes/admin/tools.php:594
+#: includes/admin/tools.php:468
 #: includes/admin/views/tmpl-order-subtotal.php:16
 #: includes/blocks/views/checkout/cart/cart-subtotal.php:10
 #: includes/blocks/views/orders/totals.php:44
@@ -10353,165 +10367,169 @@ msgstr ""
 msgid "Subtotal"
 msgstr ""
 
-#: includes/admin/tools.php:642
+#: includes/admin/tools.php:516
 #: includes/gateways/stripe/includes/template-functions.php:524
 #: src/Pro/Admin/Settings/VAT.php:144
 msgid "Address Line 1"
 msgstr ""
 
-#: includes/admin/tools.php:652
+#: includes/admin/tools.php:526
 #: includes/gateways/stripe/includes/template-functions.php:540
 #: src/Pro/Admin/Settings/VAT.php:150
 msgid "Address Line 2"
 msgstr ""
 
-#: includes/admin/tools.php:702
-#: includes/admin/tools.php:921
+#: includes/admin/tools.php:576
+#: includes/admin/tools.php:795
 msgid "Process Import"
 msgstr ""
 
-#: includes/admin/tools.php:710
+#: includes/admin/tools.php:584
 msgid "Import Download Products"
 msgstr ""
 
-#: includes/admin/tools.php:712
+#: includes/admin/tools.php:586
 msgid "Import a CSV file of products."
 msgstr ""
 
 #. translators: %1$s and %2$s opening and closing anchor tags respectively
-#: includes/admin/tools.php:737
+#: includes/admin/tools.php:611
 #, php-format
 msgid "Each column loaded from the CSV needs to be mapped to a Download product field. Select the column that should be mapped to each field below. Any columns not needed can be ignored. See %1$sthis guide%2$s for assistance with importing Download products."
 msgstr ""
 
-#: includes/admin/tools.php:748
+#: includes/admin/tools.php:622
 msgid "Product Field"
 msgstr ""
 
-#: includes/admin/tools.php:755
+#: includes/admin/tools.php:629
 msgid "Product Author"
 msgstr ""
 
-#: includes/admin/tools.php:765
+#: includes/admin/tools.php:639
 #: includes/reports/reports-functions.php:337
 msgid "Product Categories"
 msgstr ""
 
-#: includes/admin/tools.php:775
+#: includes/admin/tools.php:649
 msgid "Product Creation Date"
 msgstr ""
 
-#: includes/admin/tools.php:785
+#: includes/admin/tools.php:659
 msgid "Product Description"
 msgstr ""
 
-#: includes/admin/tools.php:795
+#: includes/admin/tools.php:669
 msgid "Product Excerpt"
 msgstr ""
 
-#: includes/admin/tools.php:805
+#: includes/admin/tools.php:679
 #: src/Admin/Onboarding/Steps/Products.php:57
 msgid "Product Image"
 msgstr ""
 
-#: includes/admin/tools.php:815
+#: includes/admin/tools.php:689
 msgid "Product Notes"
 msgstr ""
 
-#: includes/admin/tools.php:824
+#: includes/admin/tools.php:698
 msgid "Product Price(s)"
 msgstr ""
 
-#: includes/admin/tools.php:833
+#: includes/admin/tools.php:707
 msgid "Product SKU"
 msgstr ""
 
-#: includes/admin/tools.php:842
+#: includes/admin/tools.php:716
 msgid "Product Slug"
 msgstr ""
 
-#: includes/admin/tools.php:852
+#: includes/admin/tools.php:726
 msgid "Product Status"
 msgstr ""
 
-#: includes/admin/tools.php:862
+#: includes/admin/tools.php:736
 msgid "Product Tags"
 msgstr ""
 
-#: includes/admin/tools.php:871
+#: includes/admin/tools.php:745
 msgid "Product Title"
 msgstr ""
 
-#: includes/admin/tools.php:881
+#: includes/admin/tools.php:755
 msgid "Download Files"
 msgstr ""
 
-#: includes/admin/tools.php:900
+#: includes/admin/tools.php:774
 msgid "Sale Count"
 msgstr ""
 
-#: includes/admin/tools.php:929
+#: includes/admin/tools.php:803
 msgid "Export Settings"
 msgstr ""
 
-#: includes/admin/tools.php:931
+#: includes/admin/tools.php:805
 msgid "Export the Easy Digital Downloads settings for this site as a .json file. This allows you to easily import the configuration into another site."
 msgstr ""
 
 #. translators: %s: Reports page URL
-#: includes/admin/tools.php:937
+#: includes/admin/tools.php:811
 #, php-format
 msgid "To export shop data (purchases, customers, etc), visit the <a href=\"%s\">Reports</a> page."
 msgstr ""
 
-#: includes/admin/tools.php:962
+#: includes/admin/tools.php:836
 msgid "Import Settings"
 msgstr ""
 
-#: includes/admin/tools.php:964
+#: includes/admin/tools.php:838
 msgid "Import the Easy Digital Downloads settings from a .json file. This file can be obtained by exporting the settings on another site using the form above."
 msgstr ""
 
-#: includes/admin/tools.php:973
+#: includes/admin/tools.php:847
 msgid "Import"
 msgstr ""
 
-#: includes/admin/tools.php:1051
+#: includes/admin/tools.php:925
 msgid "Please upload a valid .json file"
 msgstr ""
 
-#: includes/admin/tools.php:1057
+#: includes/admin/tools.php:931
 msgid "Please upload a file to import"
 msgstr ""
 
-#: includes/admin/tools.php:1124
+#: includes/admin/tools.php:998
+#: src/Admin/Tools/Traits/Profilers.php:176
 msgid "No File"
 msgstr ""
 
-#: includes/admin/tools.php:1127
+#: includes/admin/tools.php:1001
+#: src/Admin/Tools/Traits/Profilers.php:177
 msgid "Log is Empty"
 msgstr ""
 
-#: includes/admin/tools.php:1131
-#: src/Admin/Tools/Screen.php:74
+#: includes/admin/tools.php:1005
+#: src/Admin/Tools/Screen.php:73
 msgid "Debug Log"
 msgstr ""
 
 #. translators: 1: opening anchor tag, do not translate, 2: function name, do not translate, 3: closing anchor tag, do not translate
-#: includes/admin/tools.php:1139
+#: includes/admin/tools.php:1013
 #, php-format
 msgid "When debug mode is enabled, specific information will be logged here. (%1$sLearn how to use %2$s in your own code.%3$s)"
 msgstr ""
 
-#: includes/admin/tools.php:1155
+#: includes/admin/tools.php:1029
 msgid "Download Debug Log File"
 msgstr ""
 
-#: includes/admin/tools.php:1160
+#: includes/admin/tools.php:1034
+#: src/Admin/Tools/Traits/Profilers.php:238
 msgid "Clear Log"
 msgstr ""
 
-#: includes/admin/tools.php:1169
+#: includes/admin/tools.php:1043
+#: src/Admin/Tools/Traits/Profilers.php:251
 msgid "Log file"
 msgstr ""
 
@@ -10935,17 +10953,17 @@ msgid "Orders placed through the Amazon gateway must be refunded through Amazon.
 msgstr ""
 
 #: includes/admin/views/tmpl-order-adjustment-discount.php:27
-#: includes/discount-functions.php:1366
+#: includes/discount-functions.php:1369
 msgid "Remove discount"
 msgstr ""
 
 #: includes/admin/views/tmpl-order-adjustment-discount.php:35
 #: includes/admin/views/tmpl-order-form-add-order-discount.php:22
 #: includes/ajax-functions.php:1079
-#: includes/blocks/views/checkout/discount.php:16
+#: includes/blocks/views/checkout/discount.php:28
 #: includes/blocks/views/orders/discounts.php:7
-#: includes/checkout/template.php:607
-#: includes/discount-functions.php:1330
+#: includes/checkout/template.php:608
+#: includes/discount-functions.php:1333
 #: pro/invoices/functions.php:249
 #: templates/shortcode-receipt.php:87
 msgid "Discount"
@@ -11447,8 +11465,8 @@ msgstr ""
 msgid "Do not allow users to redownload items from their order history."
 msgstr ""
 
-#: includes/blocks/includes/checkout/ajax.php:39
-#: includes/cart/template.php:141
+#: includes/blocks/includes/checkout/ajax.php:41
+#: includes/cart/template.php:139
 #: includes/gateways/stripe/includes/compat.php:118
 #: includes/process-purchase.php:30
 #: src/Admin/Settings/EmptyCartBehavior.php:135
@@ -11456,23 +11474,26 @@ msgstr ""
 msgid "Your cart is empty."
 msgstr ""
 
-#: includes/blocks/includes/checkout/forms.php:201
-#: includes/blocks/includes/checkout/forms.php:215
+#: includes/blocks/includes/checkout/forms.php:72
+#: includes/blocks/includes/checkout/forms.php:86
 msgid "Unable to load form."
 msgstr ""
 
-#: includes/blocks/includes/checkout/forms.php:227
+#: includes/blocks/includes/checkout/forms.php:98
 #: includes/blocks/views/checkout/purchase-form/login.php:15
-#: includes/checkout/template.php:351
-#: includes/checkout/template.php:468
+#: includes/checkout/template.php:352
+#: includes/checkout/template.php:469
+#: src/Blocks/Checkout/Elements/PersonalInfo.php:139
 msgid "Log in"
 msgstr ""
 
-#: includes/blocks/includes/checkout/forms.php:231
+#: includes/blocks/includes/checkout/forms.php:102
+#: src/Blocks/Checkout/Elements/PersonalInfo.php:143
 msgid "Register for a new account"
 msgstr ""
 
-#: includes/blocks/includes/checkout/forms.php:235
+#: includes/blocks/includes/checkout/forms.php:106
+#: src/Blocks/Checkout/Elements/PersonalInfo.php:147
 msgid "Checkout as a guest"
 msgstr ""
 
@@ -11611,7 +11632,7 @@ msgstr ""
 msgid "downloads found"
 msgstr ""
 
-#: includes/blocks/views/checkout/cart/cart-item.php:23
+#: includes/blocks/views/checkout/cart/cart-item.php:29
 #: includes/blocks/views/orders/receipt-item.php:31
 msgid "Quantity:"
 msgstr ""
@@ -11626,16 +11647,16 @@ msgstr ""
 msgid "Item Price"
 msgstr ""
 
-#: includes/blocks/views/checkout/discount.php:12
+#: includes/blocks/views/checkout/discount.php:24
 msgid "Enter a discount code"
 msgstr ""
 
-#: includes/blocks/views/checkout/discount.php:19
+#: includes/blocks/views/checkout/discount.php:31
 msgid "Enter discount code"
 msgstr ""
 
-#: includes/blocks/views/checkout/discount.php:20
-#: includes/checkout/template.php:612
+#: includes/blocks/views/checkout/discount.php:32
+#: includes/checkout/template.php:613
 msgctxt "Apply discount at checkout"
 msgid "Apply"
 msgstr ""
@@ -11645,8 +11666,9 @@ msgid "Account Information"
 msgstr ""
 
 #: includes/blocks/views/checkout/purchase-form/credit-card.php:2
-#: includes/gateways/stripe/includes/template-functions.php:39
-msgid "Credit Card Info"
+#: includes/gateways/stripe/includes/template-functions.php:41
+#: src/Gateways/Square/Checkout/Form.php:45
+msgid "Payment Info"
 msgstr ""
 
 #: includes/blocks/views/checkout/purchase-form/credit-card.php:11
@@ -11700,12 +11722,8 @@ msgstr ""
 msgid "Expiration (MM/YY)"
 msgstr ""
 
-#: includes/blocks/views/checkout/purchase-form/gateways.php:9
-msgid "Select Payment Method"
-msgstr ""
-
-#: includes/blocks/views/checkout/purchase-form/gateways.php:51
-#: includes/checkout/template.php:813
+#: includes/blocks/views/checkout/purchase-form/gateways.php:52
+#: includes/checkout/template.php:814
 #: includes/gateways/stripe/includes/scripts.php:88
 #: src/Admin/Pointers.php:41
 msgid "Next"
@@ -11725,6 +11743,7 @@ msgid "Lost Password?"
 msgstr ""
 
 #: includes/blocks/views/checkout/purchase-form/personal-info.php:7
+#: src/Elementor/Widgets/Config/Checkout/Titles.php:38
 msgid "Personal Info"
 msgstr ""
 
@@ -11733,9 +11752,9 @@ msgid "Register For a New Account"
 msgstr ""
 
 #: includes/blocks/views/checkout/purchase-form/register.php:18
-#: includes/checkout/template.php:376
-#: includes/checkout/template.php:383
-#: includes/checkout/template.php:456
+#: includes/checkout/template.php:377
+#: includes/checkout/template.php:384
+#: includes/checkout/template.php:457
 #: src/Forms/Login/Password.php:41
 #: src/Forms/Register/Password.php:41
 #: templates/shortcode-login.php:19
@@ -11787,7 +11806,7 @@ msgid "Generate Password"
 msgstr ""
 
 #: includes/blocks/views/forms/registration.php:38
-#: includes/checkout/template.php:435
+#: includes/checkout/template.php:436
 #: templates/shortcode-register.php:46
 msgid "Register"
 msgstr ""
@@ -11878,65 +11897,65 @@ msgid "Search Downloads"
 msgstr ""
 
 #. translators: %s: tax rate formatted as a percentage
-#: includes/cart/class-edd-cart.php:911
+#: includes/cart/class-edd-cart.php:980
 #, php-format
 msgid "includes %s tax"
 msgstr ""
 
 #. translators: %s: tax rate formatted as a percentage
-#: includes/cart/class-edd-cart.php:914
+#: includes/cart/class-edd-cart.php:983
 #, php-format
 msgid "excludes %s tax"
 msgstr ""
 
-#: includes/cart/class-edd-cart.php:1418
-#: includes/cart/class-edd-cart.php:1478
+#: includes/cart/class-edd-cart.php:1507
+#: includes/cart/class-edd-cart.php:1567
 #: includes/error-tracking.php:84
 #: templates/shortcode-profile-editor.php:28
 msgid "Success"
 msgstr ""
 
-#: includes/cart/class-edd-cart.php:1419
+#: includes/cart/class-edd-cart.php:1508
 msgid "Cart saved successfully. You can restore your cart using this URL:"
 msgstr ""
 
-#: includes/cart/class-edd-cart.php:1453
-#: includes/cart/class-edd-cart.php:1467
+#: includes/cart/class-edd-cart.php:1542
+#: includes/cart/class-edd-cart.php:1556
 msgid "Cart restoration failed. Invalid token."
 msgstr ""
 
-#: includes/cart/class-edd-cart.php:1461
-#: includes/cart/class-edd-cart.php:1470
+#: includes/cart/class-edd-cart.php:1550
+#: includes/cart/class-edd-cart.php:1559
 msgid "The cart cannot be restored. Invalid token."
 msgstr ""
 
-#: includes/cart/class-edd-cart.php:1478
+#: includes/cart/class-edd-cart.php:1567
 msgid "Cart restored successfully."
 msgstr ""
 
-#: includes/cart/template.php:217
+#: includes/cart/template.php:215
 msgid "Restore Previous Cart"
 msgstr ""
 
-#: includes/cart/template.php:219
+#: includes/cart/template.php:217
 msgid "Save Cart"
 msgstr ""
 
-#: includes/cart/template.php:243
+#: includes/cart/template.php:241
 msgid "Restore Previous Cart."
 msgstr ""
 
-#: includes/cart/template.php:261
+#: includes/cart/template.php:259
 msgid "Update Cart"
 msgstr ""
 
 #. Translators: %s: name of the download that was added to the cart.
-#: includes/cart/template.php:324
+#: includes/cart/template.php:322
 #, php-format
 msgid "You have successfully added %s to your shopping cart."
 msgstr ""
 
-#: includes/cart/template.php:325
+#: includes/cart/template.php:323
 msgid "Checkout."
 msgstr ""
 
@@ -12003,114 +12022,114 @@ msgstr ""
 msgid "The date your credit card expires, typically on the front of the card."
 msgstr ""
 
-#: includes/checkout/template.php:351
+#: includes/checkout/template.php:352
 msgid "Already have an account?"
 msgstr ""
 
-#: includes/checkout/template.php:358
+#: includes/checkout/template.php:359
 msgid "Create an account"
 msgstr ""
 
-#: includes/checkout/template.php:358
+#: includes/checkout/template.php:359
 msgid "(optional)"
 msgstr ""
 
-#: includes/checkout/template.php:370
+#: includes/checkout/template.php:371
 msgid "The username you will use to log into your account."
 msgstr ""
 
-#: includes/checkout/template.php:382
+#: includes/checkout/template.php:383
 msgid "The password used to access your account."
 msgstr ""
 
-#: includes/checkout/template.php:388
+#: includes/checkout/template.php:389
 msgid "Password again"
 msgstr ""
 
-#: includes/checkout/template.php:394
+#: includes/checkout/template.php:395
 msgid "Confirm your password."
 msgstr ""
 
-#: includes/checkout/template.php:395
+#: includes/checkout/template.php:396
 msgid "Confirm password"
 msgstr ""
 
-#: includes/checkout/template.php:433
+#: includes/checkout/template.php:434
 msgid "Need to create an account?"
 msgstr ""
 
-#: includes/checkout/template.php:435
+#: includes/checkout/template.php:436
 msgid "or checkout as a guest"
 msgstr ""
 
-#: includes/checkout/template.php:445
+#: includes/checkout/template.php:446
 msgid "Username or email"
 msgstr ""
 
-#: includes/checkout/template.php:451
+#: includes/checkout/template.php:452
 msgid "Your username or email address"
 msgstr ""
 
-#: includes/checkout/template.php:462
+#: includes/checkout/template.php:463
 msgid "Your password"
 msgstr ""
 
-#: includes/checkout/template.php:500
+#: includes/checkout/template.php:501
 msgid "Select payment method"
 msgstr ""
 
-#: includes/checkout/template.php:603
+#: includes/checkout/template.php:604
 msgid "Have a discount code?"
 msgstr ""
 
-#: includes/checkout/template.php:603
+#: includes/checkout/template.php:604
 msgctxt "Entering a discount code"
 msgid "Click to enter it"
 msgstr ""
 
-#: includes/checkout/template.php:609
+#: includes/checkout/template.php:610
 msgid "Enter a discount code if you have one."
 msgstr ""
 
-#: includes/checkout/template.php:611
+#: includes/checkout/template.php:612
 #: includes/process-purchase.php:314
 #: src/Assets/Localization.php:99
 msgid "Enter discount"
 msgstr ""
 
-#: includes/checkout/template.php:639
+#: includes/checkout/template.php:640
 msgid "Agree to Terms?"
 msgstr ""
 
-#: includes/checkout/template.php:660
+#: includes/checkout/template.php:661
 msgid "Show Terms"
 msgstr ""
 
-#: includes/checkout/template.php:661
+#: includes/checkout/template.php:662
 msgid "Hide Terms"
 msgstr ""
 
-#: includes/checkout/template.php:710
+#: includes/checkout/template.php:711
 msgid "Agree to Privacy Policy?"
 msgstr ""
 
-#: includes/checkout/template.php:732
+#: includes/checkout/template.php:733
 msgid "Show Privacy Policy"
 msgstr ""
 
-#: includes/checkout/template.php:734
+#: includes/checkout/template.php:735
 msgid "Hide Privacy Policy"
 msgstr ""
 
-#: includes/checkout/template.php:768
+#: includes/checkout/template.php:769
 msgid "Purchase Total:"
 msgstr ""
 
-#: includes/checkout/template.php:792
+#: includes/checkout/template.php:793
 msgid "Go back"
 msgstr ""
 
-#: includes/checkout/template.php:863
+#: includes/checkout/template.php:864
 #: src/Admin/Settings/Tabs/Misc.php:136
 msgid "Free Download"
 msgstr ""
@@ -14437,6 +14456,7 @@ msgid "Merchandise or service not as described"
 msgstr ""
 
 #: includes/gateways/paypal/gateway-filters.php:103
+#: src/Admin/Tools/Labs.php:100
 msgid "Unauthorized"
 msgstr ""
 
@@ -14546,6 +14566,7 @@ msgstr ""
 
 #: includes/gateways/stripe/includes/admin/admin-actions.php:46
 #: src/Admin/Promos/Notices/Five_Star_Review_Dashboard.php:89
+#: src/Elementor/Widgets/Config/Checkout/General.php:40
 msgid "Yes"
 msgstr ""
 
@@ -15266,9 +15287,8 @@ msgstr ""
 msgid "Please wait..."
 msgstr ""
 
-#: includes/gateways/stripe/includes/template-functions.php:41
-#: src/Gateways/Square/Checkout/Form.php:45
-msgid "Payment Info"
+#: includes/gateways/stripe/includes/template-functions.php:39
+msgid "Credit Card Info"
 msgstr ""
 
 #: includes/gateways/stripe/includes/template-functions.php:108
@@ -15324,6 +15344,8 @@ msgstr ""
 
 #: includes/gateways/stripe/includes/template-functions.php:515
 #: src/Checkout/Address.php:86
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:58
+#: src/Elementor/Widgets/Config/Checkout/Titles.php:53
 msgid "Billing Details"
 msgstr ""
 
@@ -15346,11 +15368,11 @@ msgstr ""
 msgid "Add new card"
 msgstr ""
 
-#: includes/gateways/stripe/includes/template-functions.php:838
+#: includes/gateways/stripe/includes/template-functions.php:854
 msgid "Please enter your zip / postal code"
 msgstr ""
 
-#: includes/gateways/stripe/includes/template-functions.php:843
+#: includes/gateways/stripe/includes/template-functions.php:859
 msgid "Please select your billing country"
 msgstr ""
 
@@ -20696,6 +20718,26 @@ msgstr ""
 msgid "Enabling VAT handling in EDD will automatically deactivate the Easy Digital Downloads - EU VAT plugin."
 msgstr ""
 
+#: src/Admin/Settings/WPConsent.php:78
+msgid "Cookie Management"
+msgstr ""
+
+#: src/Admin/Settings/WPConsent.php:97
+msgid "WPConsent is the easiest way to add a GDPR / CCPA cookie consent banner to your WordPress website and EDD store."
+msgstr ""
+
+#: src/Admin/Settings/WPConsent.php:126
+msgid "Install & Activate WPConsent"
+msgstr ""
+
+#: src/Admin/Settings/WPConsent.php:136
+msgid "Activate WPConsent"
+msgstr ""
+
+#: src/Admin/Settings/WPConsent.php:153
+msgid "Configure WPConsent"
+msgstr ""
+
 #: src/Admin/Settings/WP_SMTP.php:83
 msgid "Improve Email Deliverability"
 msgstr ""
@@ -20933,20 +20975,52 @@ msgstr ""
 msgid "Easy Digital Downloads &mdash; Customized Templates"
 msgstr ""
 
+#: src/Admin/Tools/Labs.php:60
+msgid "Cart Caching (Experimental)"
+msgstr ""
+
+#: src/Admin/Tools/Labs.php:61
+msgid "Enable experimental caching layer for cart operations. May improve performance on high-traffic sites."
+msgstr ""
+
+#: src/Admin/Tools/Labs.php:113
+msgid "Invalid setting"
+msgstr ""
+
+#: src/Admin/Tools/Labs.php:239
+msgid "Experimental Features"
+msgstr ""
+
 #: src/Admin/Tools/Screen.php:70
 msgid "API Keys"
 msgstr ""
 
-#: src/Admin/Tools/Screen.php:71
-msgid "Beta Versions"
-msgstr ""
-
-#: src/Admin/Tools/Screen.php:73
+#: src/Admin/Tools/Screen.php:72
 msgid "System Info"
 msgstr ""
 
-#: src/Admin/Tools/Screen.php:75
+#: src/Admin/Tools/Screen.php:74
 msgid "Import/Export"
+msgstr ""
+
+#: src/Admin/Tools/Screen.php:75
+msgid "Labs"
+msgstr ""
+
+#: src/Admin/Tools/Traits/Profilers.php:124
+msgid "Cart Profiler"
+msgstr ""
+
+#: src/Admin/Tools/Traits/Profilers.php:206
+msgid "Profiler Log"
+msgstr ""
+
+#: src/Admin/Tools/Traits/Profilers.php:214
+msgid "Last updated:"
+msgstr ""
+
+#: src/Admin/Tools/Traits/Profilers.php:223
+msgid "Download Profiler Log File"
 msgstr ""
 
 #: src/Admin/Upgrades/v3/Customer_Addresses.php:31
@@ -21033,6 +21107,10 @@ msgstr ""
 
 #: src/Assets/Localization.php:103
 msgid "Please Wait..."
+msgstr ""
+
+#: src/Blocks/Checkout/Elements/PaymentDetails.php:55
+msgid "This is a sample credit card form."
 msgstr ""
 
 #: src/Captcha/Validate.php:218
@@ -21172,6 +21250,380 @@ msgstr ""
 
 #: src/Downloads/Services.php:107
 msgid "Select categories"
+msgstr ""
+
+#: src/Elementor/Widgets/Checkout.php:63
+msgid "EDD Checkout"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:34
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:34
+msgid "Cart"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:38
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:97
+msgid "Cart Header"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:40
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:55
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:87
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:112
+#: src/Elementor/Widgets/Config/Checkout/Titles.php:40
+#: src/Elementor/Widgets/Config/Checkout/Titles.php:55
+#: src/Elementor/Widgets/Config/Checkout/Titles.php:70
+#: src/Elementor/Widgets/Config/Checkout/Titles.php:85
+msgid "Show"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:41
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:56
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:88
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:113
+#: src/Elementor/Widgets/Config/Checkout/Titles.php:41
+#: src/Elementor/Widgets/Config/Checkout/Titles.php:56
+#: src/Elementor/Widgets/Config/Checkout/Titles.php:71
+#: src/Elementor/Widgets/Config/Checkout/Titles.php:86
+msgid "Hide"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:53
+msgid "Cart Thumbnail"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:68
+msgid "Size"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:85
+msgid "Discount Form"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Cart.php:110
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:207
+msgid "Cart Quantity"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:38
+#: includes/blocks/build/checkout/index.js:5
+#: includes/blocks/src/checkout/edit.js:36
+msgid "Preview as Guest"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:41
+msgid "No"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:44
+msgid "Show the checkout form as it would appear to a guest user."
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:47
+msgid "Cart Item"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:51
+#: includes/blocks/build/checkout/index.js:6
+#: includes/blocks/src/checkout/edit.js:46
+msgid "Select a product to preview the checkout form with a specific item in the cart."
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:54
+msgid "Account Alignment"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:62
+msgid "Align the account information text for logged in users."
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:65
+#: includes/blocks/build/checkout/index.js:6
+#: includes/blocks/src/checkout/edit.js:51
+msgid "Layout"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:84
+#: includes/blocks/build/checkout/index.js:5
+#: includes/blocks/src/checkout/edit.js:22
+msgid "Single Column"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:85
+#: includes/blocks/build/checkout/index.js:5
+#: includes/blocks/src/checkout/edit.js:23
+msgid "50/50 Split"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:86
+#: includes/blocks/build/checkout/index.js:5
+#: includes/blocks/src/checkout/edit.js:24
+msgid "70/30 Split"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:87
+#: includes/blocks/build/checkout/index.js:5
+#: includes/blocks/src/checkout/edit.js:25
+msgid "80/20 Split"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:88
+#: includes/blocks/build/checkout/index.js:5
+#: includes/blocks/src/checkout/edit.js:26
+msgid "Bottom 50/50 Split"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/General.php:89
+#: includes/blocks/build/checkout/index.js:5
+#: includes/blocks/src/checkout/edit.js:27
+msgid "Bottom 70/30 Split"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:34
+msgid "Purchase Button"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:38
+msgid "Width"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:56
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:102
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:159
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:261
+msgid "Alignment"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:72
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:110
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:168
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:212
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:42
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:81
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:105
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormSections.php:78
+#: src/Elementor/Widgets/Config/Checkout/Styles/General.php:37
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:127
+msgid "Typography"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:78
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:57
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:118
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:216
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:46
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormSections.php:42
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:88
+msgid "Background Color"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:83
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:114
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:221
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:51
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormSections.php:82
+#: src/Elementor/Widgets/Config/Checkout/Styles/General.php:41
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:93
+msgid "Text Color"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:87
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:89
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:113
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormSections.php:86
+msgid "Text Shadow"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:91
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:72
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:236
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:65
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormSections.php:57
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:107
+msgid "Box Shadow"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:97
+msgid "Hover Background Color"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:102
+msgid "Hover Text Color"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:106
+msgid "Hover Text Shadow"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:110
+msgid "Hover Box Shadow"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:116
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:62
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:123
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:172
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:226
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:55
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormSections.php:47
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:97
+msgid "Border"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:121
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:66
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:127
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:176
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:230
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:59
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormSections.php:51
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:101
+msgid "Border Radius"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:127
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:76
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:133
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:182
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:240
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:270
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:69
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormSections.php:61
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:111
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:135
+msgid "Padding"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:132
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:81
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:138
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:187
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:275
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:93
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:117
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormSections.php:66
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:116
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:140
+msgid "Margin"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:150
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:333
+#: src/Elementor/Widgets/Config/Traits/Options.php:32
+#: includes/blocks/build/downloads/index.js:1
+#: includes/blocks/build/terms/index.js:1
+#: includes/blocks/src/utilities/buy-button-alignment.js:14
+#: includes/blocks/src/utilities/image-alignment.js:14
+msgid "Left"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:154
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:295
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:314
+#: src/Elementor/Widgets/Config/Traits/Options.php:36
+#: src/Elementor/Widgets/Config/Traits/Options.php:59
+#: includes/blocks/build/downloads/index.js:1
+#: includes/blocks/build/terms/index.js:1
+#: includes/blocks/src/utilities/buy-button-alignment.js:10
+#: includes/blocks/src/utilities/image-alignment.js:10
+msgid "Center"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Buttons.php:158
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:341
+#: src/Elementor/Widgets/Config/Traits/Options.php:40
+#: includes/blocks/build/downloads/index.js:1
+#: includes/blocks/build/terms/index.js:1
+#: includes/blocks/src/utilities/buy-button-alignment.js:18
+#: includes/blocks/src/utilities/image-alignment.js:18
+msgid "Right"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:154
+msgid "Cart Items"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:256
+msgid "Footer Rows"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:310
+msgid "Top"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:318
+msgid "Bottom"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Cart.php:337
+#: src/Elementor/Widgets/Config/Traits/Options.php:67
+msgid "Space Between"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:34
+msgid "Form Elements"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:38
+msgid "Fields"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:76
+msgid "Labels"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormElements.php:100
+msgid "Descriptions"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormSections.php:34
+msgid "Form Sections"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormSections.php:39
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:84
+msgid "Section"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/FormSections.php:74
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:123
+#: includes/blocks/build/cart/index.js:1
+#: includes/blocks/build/downloads/index.js:1
+#: includes/blocks/src/cart/edit.js:36
+#: includes/blocks/src/utilities/download-order-by.js:18
+msgid "Title"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:54
+msgid "Personal Information"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Styles/Sections.php:66
+msgid "Card Details"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Titles.php:34
+msgid "Section Titles"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Checkout/Titles.php:83
+msgid "Card Info"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Traits/Options.php:55
+msgid "Start"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Traits/Options.php:63
+msgid "End"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Traits/Options.php:71
+msgid "Space Around"
+msgstr ""
+
+#: src/Elementor/Widgets/Config/Traits/Options.php:75
+msgid "Space Evenly"
 msgstr ""
 
 #: src/Emails/Base.php:219
@@ -21683,6 +22135,8 @@ msgid "Note: Once you have reviewed the order, ensure you take the appropriate a
 msgstr ""
 
 #: src/Emails/Templates/Traits/Actions.php:57
+#: includes/blocks/build/checkout/index.js:5
+#: includes/blocks/src/checkout/edit.js:34
 msgid "Preview"
 msgstr ""
 
@@ -24208,6 +24662,26 @@ msgstr ""
 msgid "Northern Ireland"
 msgstr ""
 
+#: src/Profiler/Cart.php:42
+msgid "Cart Performance Profiler"
+msgstr ""
+
+#: src/Profiler/Cart.php:43
+msgid "Enable performance profiling for cart operations. Data logs to a custom log file (below)."
+msgstr ""
+
+#: src/Profiler/Traits/Settings.php:38
+msgid "Allow Cookie-Based Profiling"
+msgstr ""
+
+#: src/Profiler/Traits/Settings.php:39
+msgid "Set an authentication cookie which allows you to track performance when you're not logged in, or when you're logged in as a different user."
+msgstr ""
+
+#: src/Profiler/Traits/Settings.php:42
+msgid "This applies to all enabled profilers."
+msgstr ""
+
 #: src/Reports/Data/Downloads/Earnings_By_Taxonomy_List_Table.php:181
 msgid "Monthly Sales Average"
 msgstr ""
@@ -24801,6 +25275,7 @@ msgstr ""
 #. translators: %s: Download label singular
 #: includes/blocks/build/buy-button/index.js:3
 #: includes/blocks/build/buy-button/index.js:10
+#: includes/blocks/build/checkout/index.js:3
 #: includes/blocks/src/buy-button/edit.js:59
 #: includes/blocks/src/utilities/downloads.js:11
 #, js-format
@@ -24809,6 +25284,7 @@ msgstr ""
 
 #. translators: %s: Download label singular
 #: includes/blocks/build/buy-button/index.js:5
+#: includes/blocks/build/checkout/index.js:5
 #: includes/blocks/src/utilities/downloads.js:17
 #, js-format
 msgid "Current %s"
@@ -24848,7 +25324,9 @@ msgstr ""
 
 #. translators: %s: Download label singular
 #: includes/blocks/build/buy-button/index.js:8
+#: includes/blocks/build/checkout/index.js:6
 #: includes/blocks/src/buy-button/edit.js:31
+#: includes/blocks/src/checkout/edit.js:43
 #, js-format
 msgid "Select a %s:"
 msgstr ""
@@ -24878,13 +25356,6 @@ msgid "Mini Cart"
 msgstr ""
 
 #: includes/blocks/build/cart/index.js:1
-#: includes/blocks/build/downloads/index.js:1
-#: includes/blocks/src/cart/edit.js:36
-#: includes/blocks/src/utilities/download-order-by.js:18
-msgid "Title"
-msgstr ""
-
-#: includes/blocks/build/cart/index.js:1
 #: includes/blocks/src/cart/edit.js:42
 msgid "Hide When Empty"
 msgstr ""
@@ -24909,9 +25380,19 @@ msgstr ""
 msgid "Show Cart Total"
 msgstr ""
 
-#: includes/blocks/build/checkout/index.js:1
-#: includes/blocks/src/checkout/edit.js:20
+#: includes/blocks/build/checkout/index.js:5
+#: includes/blocks/src/checkout/edit.js:32
 msgid "This is an example of a cart with a product in it."
+msgstr ""
+
+#: includes/blocks/build/checkout/index.js:6
+#: includes/blocks/src/checkout/edit.js:57
+msgid "Cart Thumbnail Size"
+msgstr ""
+
+#: includes/blocks/build/checkout/index.js:6
+#: includes/blocks/src/checkout/edit.js:65
+msgid "Show Discount Form"
 msgstr ""
 
 #: includes/blocks/build/confirmation/index.js:1
@@ -24937,27 +25418,6 @@ msgstr ""
 #: includes/blocks/build/confirmation/index.js:1
 #: includes/blocks/src/confirmation/edit.js:40
 msgid "The editor will display a recent random order from your site."
-msgstr ""
-
-#: includes/blocks/build/downloads/index.js:1
-#: includes/blocks/build/terms/index.js:1
-#: includes/blocks/src/utilities/buy-button-alignment.js:10
-#: includes/blocks/src/utilities/image-alignment.js:10
-msgid "Center"
-msgstr ""
-
-#: includes/blocks/build/downloads/index.js:1
-#: includes/blocks/build/terms/index.js:1
-#: includes/blocks/src/utilities/buy-button-alignment.js:14
-#: includes/blocks/src/utilities/image-alignment.js:14
-msgid "Left"
-msgstr ""
-
-#: includes/blocks/build/downloads/index.js:1
-#: includes/blocks/build/terms/index.js:1
-#: includes/blocks/src/utilities/buy-button-alignment.js:18
-#: includes/blocks/src/utilities/image-alignment.js:18
-msgid "Right"
 msgstr ""
 
 #: includes/blocks/build/downloads/index.js:1

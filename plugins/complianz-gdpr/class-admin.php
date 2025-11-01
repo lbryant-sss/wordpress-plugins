@@ -323,7 +323,10 @@ if ( ! class_exists( "cmplz_admin" ) ) {
 						<?php
 							if (isset($warning['url'])) {
 								$target = strpos( $warning['url'], 'complianz.io' )!==false ? 'target="_blank"' : '';
-								?><a href="<?php echo esc_url_raw($warning['url'])?>" <?php echo $target?>><?php esc_html_e(__("Read more", "complianz-gdpr"))?></a><?php
+								$warning_title = isset($warning['title']) ? $warning['title'] : __('this topic', 'complianz-gdpr');
+								$link_text = cmplz_sprintf( __('Read more about %s', 'complianz-gdpr'), $warning_title );
+								$aria_label = cmplz_sprintf( __('Read more about %s', 'complianz-gdpr'), $warning_title );
+								?><a href="<?php echo esc_url_raw($warning['url'])?>" <?php echo $target?> aria-label="<?php echo esc_attr($aria_label); ?>"><?php echo $link_text; ?></a><?php
 							}
 						?>
 						</p>

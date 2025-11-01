@@ -277,36 +277,29 @@ export default function TabGeneral() {
                         >
                             <div className="changelog-wrapper">
                                 <div className="changelog-title">
-                                    {__("Version: 5.7.3", "essential-blocks")}
+                                    {__("Version: 5.7.4", "essential-blocks")}
                                     <span className="changelog-date">
-                                        {__("23/10/2025", "essential-blocks")}
+                                        {__("30/10/2025", "essential-blocks")}
                                     </span>
                                 </div>
                                 <ul className="changelog-content">
                                     <li>
                                         {__(
-                                            "Fixed: Advanced Video | Video ratio issue",
+                                            "Added: AI Image Editing feature",
                                             "essential-blocks"
                                         )}
 
                                     </li>
                                     <li>
                                         {__(
-                                            "Fixed: Post Grid | Pagination conflict with Filter",
+                                            "Fixed: Post Grid | Custom Post Types not appearing in Taxonomy Filter",
                                             "essential-blocks"
                                         )}
 
                                     </li>
                                     <li>
                                         {__(
-                                            "Fixed: Slider | JQuery dependency issue",
-                                            "essential-blocks"
-                                        )}
-
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Improved: Security enhancements",
+                                            "Fixed: Post Grid | PHP warning fix",
                                             "essential-blocks"
                                         )}
 

@@ -5,7 +5,7 @@ Description: A collection of blocks for the Gutenberg block editor, developed by
 Author: Qode Interactive
 Author URI: https://qodeinteractive.com/
 Plugin URI: https://qodeinteractive.com/qi-blocks-for-gutenberg/
-Version: 1.4.3
+Version: 1.4.4
 Requires at least: 5.8
 Requires PHP: 7.4
 Text Domain: qi-blocks

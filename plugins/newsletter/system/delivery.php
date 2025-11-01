@@ -350,10 +350,10 @@ if ($mailer->get_name() === 'default') {
                                         Delay between emails
                                     </td>
                                     <td>
-                                        <?php echo esc_html(NewsletterEngine::instance()->get_send_delay()) ?> ms
+                                        &nbsp;
                                     </td>
                                     <td>
-                                        <?php echo esc_html(NEWSLETTER_CRON_INTERVAL) ?> seconds
+                                        <?php echo esc_html(NewsletterEngine::instance()->get_send_delay()) ?> ms
                                     </td>
                                 </tr>
                                 <tr>

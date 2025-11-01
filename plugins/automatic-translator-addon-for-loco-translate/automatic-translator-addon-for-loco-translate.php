@@ -2,7 +2,7 @@
 /*
 Plugin Name: LocoAI – Auto Translate for Loco Translate
 Description: Auto translation addon for Loco Translate – translate plugin & theme strings using Yandex Translate.
-Version: 2.5.2
+Version: 2.5.4
 License: GPL2
 Text Domain: loco-auto-translate
 Domain Path: languages
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'ATLT_FILE', __FILE__ );
 define( 'ATLT_URL', plugin_dir_url( ATLT_FILE ) );
 define( 'ATLT_PATH', plugin_dir_path( ATLT_FILE ) );
-define( 'ATLT_VERSION', '2.5.2' );
+define( 'ATLT_VERSION', '2.5.4' );
 !defined('ATLT_FEEDBACK_API') && define('ATLT_FEEDBACK_API',"https://feedback.coolplugins.net/");
 
 /**
@@ -129,7 +129,9 @@ if ( ! class_exists( 'LocoAutoTranslateAddon' ) ) {
 		public function atlt_add_docs_link_to_plugin_meta($links, $file) {
 			if (plugin_basename(__FILE__) === $file) {
 				$docs_link = '<a href="' . esc_url( 'https://locoaddon.com/docs/?utm_source=atlt_plugin&utm_medium=inside&utm_campaign=docs&utm_content=plugins_list' ) . '" target="_blank" rel="noopener noreferrer">Docs</a>';
+				$multilingual_link = '<a target="_blank" href="' . esc_url( admin_url( 'plugin-install.php?s=Linguator+Multilingual+AI+Translation&tab=search&type=term' ) ) . '">Create Multilingual Site</a>';
 				$links[] = $docs_link;
+				$links[] = $multilingual_link;
 			}
 			return $links;
 		}
@@ -556,7 +558,6 @@ if ( ! class_exists( 'LocoAutoTranslateAddon' ) ) {
 							'atlt', // Required
 							'LocoAI – Auto Translate for Loco Translate', // Required
 							'https://wordpress.org/support/plugin/automatic-translator-addon-for-loco-translate/reviews/#new-post', // Required
-							ATLT_URL . '/assets/images/atlt-logo.png' // Optional
 						);
 					}
 				}

@@ -64,7 +64,7 @@ class Module extends Module_Base {
 
 		wp_enqueue_style(
 			'jx-free-elementor-integrate-style',
-			jupiterx_core()->plugin_url() . '/includes/extensions/raven/assets/css/elementor-ads' . $suffix . '.css',
+			jupiterx_core()->plugin_url() . 'includes/extensions/raven/assets/css/elementor-ads' . $suffix . '.css',
 			[],
 			jupiterx_core()->version()
 		);
@@ -120,7 +120,7 @@ class Module extends Module_Base {
 
 		wp_enqueue_style(
 			'jx-free-elementor-integrate-style',
-			jupiterx_core()->plugin_url() . '/includes/extensions/raven/assets/css/elementor-ads' . $suffix . '.css',
+			jupiterx_core()->plugin_url() . 'includes/extensions/raven/assets/css/elementor-ads' . $suffix . '.css',
 			[],
 			jupiterx_core()->version()
 		);
@@ -144,7 +144,7 @@ class Module extends Module_Base {
 
 		wp_enqueue_script(
 			'jx-free-elementor-integrate-preview-js',
-			jupiterx_core()->plugin_url() . '/includes/extensions/raven/assets/js/elementor-ads' . $suffix . '.js',
+			jupiterx_core()->plugin_url() . 'includes/extensions/raven/assets/js/elementor-ads' . $suffix . '.js',
 			[ 'jquery' ],
 			jupiterx_core()->version(),
 			true
@@ -169,7 +169,7 @@ class Module extends Module_Base {
 
 		wp_enqueue_style(
 			'jx-free-elementor-integrate-style-admin',
-			jupiterx_core()->plugin_url() . '/includes/extensions/raven/assets/css/elementor-ads' . $suffix . '.css',
+			jupiterx_core()->plugin_url() . 'includes/extensions/raven/assets/css/elementor-ads' . $suffix . '.css',
 			[],
 			jupiterx_core()->version()
 		);

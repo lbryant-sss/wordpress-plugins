@@ -5,7 +5,7 @@ const ProUpgradeSettingsMsg = ( { description, buttonText, buttonAction } ) => {
 		<div className="p-2 flex justify-between items-center text-text-primary bg-flamingo-50 border border-solid border-flamingo-200 rounded-md">
 			{ description }
 			<span
-				className="flex items-center gap-1 text-flamingo-400 font-semibold cursor-pointer"
+				className="flex items-center gap-1 text-flamingo-400 font-semibold cursor-pointer whitespace-nowrap"
 				onKeyDown={ ( e ) => {
 					if ( e.key === 'Enter' ) {
 						buttonAction();
@@ -23,3 +23,4 @@ const ProUpgradeSettingsMsg = ( { description, buttonText, buttonAction } ) => {
 };
 
 export default ProUpgradeSettingsMsg;
+

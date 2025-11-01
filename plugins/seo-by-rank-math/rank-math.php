@@ -9,7 +9,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Rank Math SEO
- * Version:           1.0.256
+ * Version:           1.0.257-beta
  * Plugin URI:        https://rankmath.com/
  * Description:       Rank Math SEO is the Best WordPress SEO plugin with the features of many SEO and AI SEO tools in a single package to help multiply your SEO traffic.
  * Author:            Rank Math SEO
@@ -34,7 +34,7 @@ final class RankMath {
 	 *
 	 * @var string
 	 */
-	public $version = '1.0.256';
+	public $version = '1.0.257-beta';
 
 	/**
 	 * Rank Math database version.
@@ -251,7 +251,7 @@ final class RankMath {
 		define( 'RANK_MATH_URL', plugins_url( '', RANK_MATH_FILE ) . '/' );
 		define( 'RANK_MATH_SITE_URL', 'https://rankmath.com' );
 		if ( ! defined( 'CONTENT_AI_URL' ) ) {
-			define( 'CONTENT_AI_URL', 'https://cai.rankmath.com' );
+			define( 'CONTENT_AI_URL', 'https://cai-staging.rankmath.com' );
 		}
 	}
 
@@ -491,7 +491,7 @@ final class RankMath {
 
 		$more = [
 			'<a href="' . admin_url( '?page=rank-math&view=help' ) . '">' . esc_html__( 'Getting Started', 'rank-math' ) . '</a>',
-			'<a href="https://rankmath.com/kb/?utm_source=Plugin&utm_medium=Plugin%20Page%20KB%20Link&utm_campaign=WP" target="_blank">' . esc_html__( 'Documentation', 'rank-math' ) . '</a>',
+			'<a href="' . \RankMath\KB::get( 'knowledgebase', 'Plugin Page KB Link' ) . '" target="_blank">' . esc_html__( 'Documentation', 'rank-math' ) . '</a>',
 		];
 
 		return array_merge( $links, $more );

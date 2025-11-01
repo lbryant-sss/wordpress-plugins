@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-27T17:07:50+00:00\n"
+"POT-Creation-Date: 2025-10-30T16:13:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 
@@ -433,7 +433,7 @@ msgstr ""
 #: sc-customer-details2.js:431
 #: sc-customer-edit.js:100
 #: sc-payment-methods-list.js:168
-#: sc-subscription-payment-method.js:183
+#: sc-subscription-payment-method.js:172
 msgid "Test"
 msgstr ""
 
@@ -3631,18 +3631,18 @@ msgstr ""
 msgid "Product Form (Right)"
 msgstr ""
 
-#: src/Integrations/Elementor/ElementorWidgetsService.php:50
+#: src/Integrations/Elementor/ElementorWidgetsService.php:60
 #: src/WordPress/Templates/CollectionTemplateService.php:47
 #: src/WordPress/Templates/TemplatesService.php:156
 #: src/WordPress/Templates/UpsellTemplatesService.php:159
 msgid "SureCart Layout"
 msgstr ""
 
-#: src/Integrations/Elementor/ElementorWidgetsService.php:58
+#: src/Integrations/Elementor/ElementorWidgetsService.php:68
 msgid "SureCart Elements"
 msgstr ""
 
-#: src/Integrations/Elementor/ElementorWidgetsService.php:66
+#: src/Integrations/Elementor/ElementorWidgetsService.php:76
 msgid "SureCart Checkout Page"
 msgstr ""
 
@@ -8917,7 +8917,7 @@ msgstr ""
 #: settings/subscription-preservation/Reasons.js:97
 #: upsell-funnels/components/SelectTemplate/index.js:97
 #: upsell-funnels/components/SelectTemplatePart/index.js:98
-#: sc-subscription-payment-method.js:202
+#: sc-subscription-payment-method.js:191
 msgid "Add New"
 msgstr ""
 
@@ -9644,9 +9644,9 @@ msgstr ""
 #: sc-stripe-add-method.js:103
 #: sc-stripe-add-method.js:133
 #: sc-subscription-cancel2.js:51
-#: sc-subscription-payment-method.js:85
-#: sc-subscription-payment-method.js:131
-#: sc-subscription-payment-method.js:163
+#: sc-subscription-payment-method.js:81
+#: sc-subscription-payment-method.js:120
+#: sc-subscription-payment-method.js:152
 #: sc-subscription-payment.js:55
 #: sc-subscription-payment.js:117
 #: sc-subscription-reactivate2.js:50
@@ -10721,7 +10721,7 @@ msgstr ""
 #: Blocks/Dashboard/CustomerPaymentMethods/edit.js:78
 #: Blocks/Dashboard/CustomerPaymentMethods/edit.js:117
 #: sc-payment-methods-list.js:166
-#: sc-subscription-payment-method.js:185
+#: sc-subscription-payment-method.js:174
 msgid "Exp."
 msgstr ""
 
@@ -15044,7 +15044,7 @@ msgid "Option Value %d"
 msgstr ""
 
 #: products/modules/Variations/VariantOptionValue.js:91
-msgid "You have reached the variant limit of 100"
+msgid "You have reached the variant limit of 300"
 msgstr ""
 
 #: products/modules/Variations/VariantOptionValues.js:77
@@ -17856,8 +17856,8 @@ msgstr ""
 
 #: subscriptions/edit/modules/PaymentMethod/EditPaymentMethod.js:91
 #: Controllers/SubscriptionController.php:309
-#: sc-subscription-payment-method.js:178
-#: sc-subscription-payment-method.js:197
+#: sc-subscription-payment-method.js:167
+#: sc-subscription-payment-method.js:186
 #: sc-subscription.js:193
 msgid "Update Payment Method"
 msgstr ""
@@ -25861,7 +25861,7 @@ msgid "Delete Payment Method"
 msgstr ""
 
 #: sc-payment-methods-list.js:195
-#: sc-subscription-payment-method.js:118
+#: sc-subscription-payment-method.js:107
 msgid "Are you sure you want to remove this payment method?"
 msgstr ""
 
@@ -26273,8 +26273,8 @@ msgstr ""
 msgid "You do not have any payment methods."
 msgstr ""
 
-#: sc-subscription-payment-method.js:187
-#: sc-subscription-payment-method.js:191
+#: sc-subscription-payment-method.js:176
+#: sc-subscription-payment-method.js:180
 msgid "Current Payment Method"
 msgstr ""
 

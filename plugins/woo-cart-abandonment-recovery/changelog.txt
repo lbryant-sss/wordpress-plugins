@@ -1,3 +1,9 @@
+Version 2.0.3 - Wednesday, 29th October 2025
+- Fix: Resolved an issue where completed orders were incorrectly marked as abandoned after the cutoff time, despite being excluded.
+- Fix: Corrected incorrect UTM parameters used in tracking links.
+- Improvement: Added support for custom order statuses to improve compatibility.
+- Improvement: Implemented minor UI enhancements for a smoother and more intuitive user experience.
+
 Version 2.0.2 - Friday, 17th October 2025
 - Fix: Users with the Shop Manager role were unable to delete records from Follow-up Reports.
 - Fix: UI toggle for switching to the older version was not functioning as expected.

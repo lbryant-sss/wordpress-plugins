@@ -1688,6 +1688,19 @@ if ( ! class_exists( "cmplz_document" ) ) {
 		 */
 
 		public function get_shortcode_page_id( $type, $region , $cache = true) {
+			/**
+			 * Filter to prevent get_shortcode_page_id function from executing.
+			 *
+			 * Don't use if you need Complianz to generate your privacy and policy documents.
+			 * Return true to stop execution.
+			 *
+			 * @since 7.5.5
+			 *
+			 * @param bool $prevent Whether to prevent function execution. Default false.
+			 */
+			if ( apply_filters( 'cmplz_prevent_get_shortcode_page_id', false ) ) {
+				return false;
+			}
 
 			global $wpdb;
 

@@ -148,6 +148,8 @@ class Counter extends Base_Widget {
 				'label' => __( 'Columns', 'jupiterx-core' ),
 				'type' => 'select',
 				'default' => 2,
+				'tablet_default' => 2,
+				'mobile_default' => 1,
 				'options' => [
 					1 => __( '1', 'jupiterx-core' ),
 					2 => __( '2', 'jupiterx-core' ),
@@ -212,6 +214,12 @@ class Counter extends Base_Widget {
 				'label' => __( 'Space Between', 'jupiterx-core' ),
 				'type' => 'slider',
 				'default' => [
+					'size' => 0,
+				],
+				'tablet_default' => [
+					'size' => 0,
+				],
+				'mobile_default' => [
 					'size' => 0,
 				],
 				'size_units' => [ 'px', '%' ],

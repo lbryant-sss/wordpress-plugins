@@ -12,6 +12,7 @@ import { Text } from '@ithemes/ui';
  * Internal dependencies
  */
 import { useGlobalNavigationUrl } from '@ithemes/security-utils';
+import { PatchPriority } from '@ithemes/security-ui';
 import { EmptyState } from './index';
 import {
 	vulnerabilityIcon,
@@ -22,7 +23,6 @@ import {
 	StyledVulnerability,
 	StyledTableSection,
 } from './styles';
-import { PatchPriority } from '@ithemes/security.pages.vulnerabilities';
 
 export default function VulnerabilityTable( { cardData, isWide } ) {
 	return (

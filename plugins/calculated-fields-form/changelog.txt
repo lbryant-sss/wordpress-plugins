@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 5.4.0.9 =
+
+* Extends the offer to Black Friday.
+
 = 5.4.0.8 =
 
 * Enhances forms templates 09, 12 and 14.

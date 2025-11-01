@@ -1622,7 +1622,7 @@ export default withSelect((select, ownProps) => {
 
     if (showTaxonomyFilter) {
         //Get Taxonomies by post type
-        const postTypes = select("core").getPostTypes();
+        const postTypes = select("core").getPostTypes({ per_page: -1 });
 
         //Get Terms
         const selectedTax = selectedTaxonomy ? JSON.parse(selectedTaxonomy).value : "category";

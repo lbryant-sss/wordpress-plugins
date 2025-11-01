@@ -284,6 +284,7 @@ class FileManager
                     'driver' => 'LocalFileSystem',
                     'path' => isset($this->options['njt_fs_file_manager_settings']['root_folder_path']) && !empty($this->options['njt_fs_file_manager_settings']['root_folder_path']) ? $this->options['njt_fs_file_manager_settings']['root_folder_path'] : ABSPATH,
                     'URL' => isset($this->options['njt_fs_file_manager_settings']['root_folder_url']) && !empty($this->options['njt_fs_file_manager_settings']['root_folder_url']) ? $this->options['njt_fs_file_manager_settings']['root_folder_url'] : site_url(),
+                    'tmpPath' => NJT_FS_BN_PLUGIN_PATH . 'includes/File_manager/lib/files/.tmp/',
                     'trashHash'     => '', // default is empty, when not enable trash
                     'uploadMaxSize' =>  $uploadMaxSize .'M',
                     'winHashFix'    => DIRECTORY_SEPARATOR !== '/', 

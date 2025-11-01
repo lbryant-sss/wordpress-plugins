@@ -42,6 +42,13 @@ class Frontend {
 	public $increment = 0;
 
 	/**
+	 * The count of excluded post when orderby set to Random
+	 *
+	 * @since 4.12.0
+	 */
+	private $random_exclude_page_count = 0;
+
+	/**
 	 * Archive page query.
 	 *
 	 * @since 2.5.3
@@ -70,9 +77,10 @@ class Frontend {
 			while ( $this->wp_query->have_posts() ) {
 				$this->wp_query->the_post();
 				++$increment;
+				$post_id = get_the_ID();
 
 				$this->render_item_before( $this->layout_type, $increment );
-				$this->render_item();
+				$this->render_item( $post_id );
 				$this->render_item_after();
 			}
 
@@ -117,22 +125,32 @@ class Frontend {
 
 			add_filter( 'excerpt_more', [ $this, 'excerpt_more' ], PHP_INT_MAX );
 
-			$queried_posts['max_num_pages'] = $this->wp_query->max_num_pages;
-			$queried_posts['total_posts']   = $this->wp_query->found_posts;
+			$queried_posts['max_num_pages']  = $this->wp_query->max_num_pages;
+			$queried_posts['total_posts']    = $this->wp_query->found_posts;
+			$queried_posts['rendered_posts'] = isset( $this->archive_query['rendered_posts'] ) ? $this->archive_query['rendered_posts'] : [];
+			$ids                             = [];
 
 			$increment = 0;
 
 			while ( $this->wp_query->have_posts() ) {
 				$this->wp_query->the_post();
 				++$increment;
+				$post_id = get_the_ID();
+				$ids[]   = (string) get_the_ID();
 
 				ob_start();
 
 				$this->render_item_before( $this->layout_type, $increment );
-				$this->render_item();
+				$this->render_item( $post_id );
 				$this->render_item_after();
 
 				$queried_posts['posts'][] = ob_get_clean();
+			}
+
+			if ( ! empty( $queried_posts['rendered_posts'] ) ) {
+				$page                            = $this->archive_query['ajax_page'];
+				$queried_posts['rendered_posts'] = $this->update_rendered_posts( $queried_posts['rendered_posts'], $page, $ids );
+				$queried_posts['max_num_pages'] += $this->random_exclude_page_count;
 			}
 
 			remove_filter( 'excerpt_length', [ $this, 'excerpt_length' ], PHP_INT_MAX );
@@ -175,6 +193,18 @@ class Frontend {
 		$args                = Utils::get_query_args( $this->settings );
 		$is_archive_template = ! empty( $this->settings['is_archive_template'] );
 		$show_pagination     = ! empty( $this->settings['show_pagination'] );
+
+		// prevent rendering repetetive posts on different page
+		if ( 'rand' === $this->settings['query_orderby'] && 'yes' === $this->settings['ignore_repetitive'] && ! empty( $this->archive_query['rendered_posts'] ) ) {
+			$excluded_posts = $this->exclude_rendered_posts( $args['posts_per_page'] );
+			$args['paged']  = 1;
+
+			if ( empty( $args['post__in'] ) ) {
+				$args['post__not_in'] = ! empty( $args['post__not_in'] ) ? array_merge( $args['post__not_in'], $excluded_posts ) : $excluded_posts;
+			} else {
+				$args['post__in'] = array_diff( $args['post__in'], $excluded_posts );
+			}
+		}
 
 		if ( $is_archive_template ) {
 			global $wp_query;
@@ -221,13 +251,13 @@ class Frontend {
 	 *
 	 * @since 2.5.3
 	 */
-	public function render_item() {
+	public function render_item( $post_id ) {
 		$html = '';
 
 		if ( ! empty( $this->settings['equal_height'] ) && 'grid' === $this->settings['general_layout'] ) {
 			$html .= $this->render_image();
 			$html .= '<div class="raven-post-content-container">';
-			$html .= '<div class="raven-post-content">';
+			$html .= '<div class="raven-post-content" data-id="' . $post_id . '">';
 			$html .= $this->render_ordered_content();
 			$html .= $this->render_button();
 			$html .= '</div>';
@@ -240,7 +270,7 @@ class Frontend {
 		}
 
 		$html .= $this->render_image();
-		$html .= '<div class="raven-post-content">';
+		$html .= '<div class="raven-post-content" data-id="' . $post_id . '">';
 		$html .= $this->render_ordered_content();
 		$html .= $this->render_button();
 		$html .= $this->render_author_spotlight();
@@ -1060,5 +1090,60 @@ class Frontend {
 	 */
 	public function excerpt_more() {
 		return '';
+	}
+
+	/**
+	 * Exclude post when orderby set to Random
+	 *
+	 * @since 4.12.0
+	 */
+	protected function exclude_rendered_posts( $posts_per_page ) {
+		$posts         = $this->archive_query['rendered_posts'];
+		$ajax_page     = $this->archive_query['ajax_page'];
+		$exclude_posts = [];
+
+		foreach ( $posts as $post ) {
+			if ( $post['page'] === $ajax_page ) {
+				continue;
+			}
+			$exclude_posts = [ ...$exclude_posts, ...$post['ids'] ]; //phpcs:ignore
+		}
+
+		$page_count = count( array_unique( $exclude_posts ) );
+		if ( $page_count > 0 ) {
+			$this->random_exclude_page_count = $page_count / intval( $posts_per_page );
+		}
+
+		return $exclude_posts;
+	}
+
+	/**
+	 * Update or added rendered_posts
+	 *
+	 * @since 4.12.0
+	 */
+	protected function update_rendered_posts( $rendered_posts, $page, $ids ) {
+		$is_already_rendered = false;
+
+		foreach ( $rendered_posts as $key => $post ) {
+
+			if ( $page === $post['page'] ) {
+				$is_already_rendered    = true;
+				$rendered_posts[ $key ] = [
+					'page' => $page,
+					'ids' => $ids,
+				];
+				break;
+			}
+		}
+
+		if ( ! $is_already_rendered ) {
+			$rendered_posts[] = [
+				'page' => $page,
+				'ids' => $ids,
+			];
+		}
+
+		return $rendered_posts;
 	}
 }

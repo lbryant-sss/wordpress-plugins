@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-10-27T17:03:16",
+  "timestamp": "2025-10-30T16:09:42",
   "compiler": {
     "name": "node",
     "version": "16.20.2"
@@ -3354,8 +3354,6 @@
           "./dist/surecart/p-2b3a9210.entry.js.map",
           "./dist/surecart/p-2f0c4d5d.entry.js",
           "./dist/surecart/p-2f0c4d5d.entry.js.map",
-          "./dist/surecart/p-2f3768bc.entry.js",
-          "./dist/surecart/p-2f3768bc.entry.js.map",
           "./dist/surecart/p-33927e65.entry.js",
           "./dist/surecart/p-33927e65.entry.js.map",
           "./dist/surecart/p-34c2dec1.entry.js",
@@ -3446,6 +3444,8 @@
           "./dist/surecart/p-5a109f78.entry.js.map",
           "./dist/surecart/p-5a8e136a.js",
           "./dist/surecart/p-5a8e136a.js.map",
+          "./dist/surecart/p-5ababc08.entry.js",
+          "./dist/surecart/p-5ababc08.entry.js.map",
           "./dist/surecart/p-5c1a03e5.js",
           "./dist/surecart/p-5c1a03e5.js.map",
           "./dist/surecart/p-5c357ef0.entry.js",
@@ -3802,8 +3802,6 @@
           "./www/build/p-2b3a9210.entry.js.map",
           "./www/build/p-2f0c4d5d.entry.js",
           "./www/build/p-2f0c4d5d.entry.js.map",
-          "./www/build/p-2f3768bc.entry.js",
-          "./www/build/p-2f3768bc.entry.js.map",
           "./www/build/p-33927e65.entry.js",
           "./www/build/p-33927e65.entry.js.map",
           "./www/build/p-34c2dec1.entry.js",
@@ -3894,6 +3892,8 @@
           "./www/build/p-5a109f78.entry.js.map",
           "./www/build/p-5a8e136a.js",
           "./www/build/p-5a8e136a.js.map",
+          "./www/build/p-5ababc08.entry.js",
+          "./www/build/p-5ababc08.entry.js.map",
           "./www/build/p-5c1a03e5.js",
           "./www/build/p-5c1a03e5.js.map",
           "./www/build/p-5c357ef0.entry.js",
@@ -5852,8 +5852,8 @@
         "components": [
           "sc-subscription-payment-method"
         ],
-        "bundleId": "p-2f3768bc",
-        "fileName": "p-2f3768bc.entry.js",
+        "bundleId": "p-5ababc08",
+        "fileName": "p-5ababc08.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-dd3464cd.js",
@@ -5861,7 +5861,7 @@
           "p-401e165e.js",
           "p-d3366af3.js"
         ],
-        "originalByteSize": 10336
+        "originalByteSize": 9555
       },
       {
         "key": "sc-subscription-switch.entry",
@@ -8896,7 +8896,7 @@
           "add-query-args-0e2a8393.js",
           "remove-query-args-938c53ea.js"
         ],
-        "originalByteSize": 10376
+        "originalByteSize": 9595
       },
       {
         "key": "sc-subscription-switch.entry",
@@ -11933,7 +11933,7 @@
           "add-query-args-49dcb630.js",
           "remove-query-args-b57e8cd3.js"
         ],
-        "originalByteSize": 10636
+        "originalByteSize": 9855
       },
       {
         "key": "sc-subscription-switch.entry",

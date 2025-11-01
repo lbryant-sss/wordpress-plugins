@@ -3,7 +3,7 @@ Contributors: sujaypawar, wpcrafter
 Tags: automation, google sheets, webhooks, schedule, SureCart
 Requires at least: 5.4
 Tested up to: 6.8
-Stable tag: 1.1.9
+Stable tag: 1.1.10
 Requires PHP: 5.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -334,6 +334,10 @@ You can report the issue through our [Bug Bounty Program](https://brainstormforc
 8. Workspace Notification Settings.
 
 == Changelog ==
+= Version 1.1.10 - Friday, 31st October 2025 =
+* Improvement: "WPForms" - Added new "Form Submitted (Field ID Based)" Trigger
+* Improvement: "WooCommerce" - Added new Actions
+
 = Version 1.1.9 - Friday, 17th October 2025 =
 * New: Added "Pretty Links" Integration
 * New: Added "SureDash" Integration

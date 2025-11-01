@@ -65,6 +65,21 @@
                 <img src="<?php echo esc_url(ATLT_URL . 'admin/atlt-dashboard/images/translatepress-addon.png'); ?>" alt="<?php esc_attr_e('TranslatePress Addon', $text_domain); ?>">
             </div>
         </div>
+
+        <div class="atlt-dashboard-addon">
+            <div class="atlt-dashboard-addon-l">
+                <strong><?php echo esc_html(atlt_get_plugin_display_name('linguator-multilingual-ai-translation', $text_domain)); ?></strong>
+                <span class="addon-desc"><?php esc_html_e('Create a Multilingual WordPress Website 10X Faster – Powered by AI.', $text_domain); ?></span>
+                <?php if (atlt_is_plugin_installed('linguator-multilingual-ai-translation')): ?>
+                    <span class="installed"><?php esc_html_e('Installed', $text_domain); ?></span>
+                <?php else: ?>
+                    <a href="<?php echo esc_url(admin_url('plugin-install.php?s=Linguator+Multilingual+AI+Translation&tab=search&type=term')); ?>" class="atlt-dashboard-btn" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Install', $text_domain); ?></a>
+                <?php endif; ?>
+            </div>
+            <div class="atlt-dashboard-addon-r">
+                <img src="<?php echo esc_url(ATLT_URL . 'admin/atlt-dashboard/images/linguator-multilingual-ai-translation.png'); ?>" alt="<?php esc_attr_e('Linguator Multilingual AI Translation', $text_domain); ?>">
+            </div>
+        </div>
     </div>
 
     <div class="atlt-dashboard-rate-us">
@@ -91,12 +106,13 @@ function atlt_format_time_taken($time_taken, $text_domain) {
 
 function atlt_is_plugin_installed($plugin_slug) {
     $plugins = get_plugins();
-    
     // Check if the plugin is installed
     if ($plugin_slug === 'automatic-translate-addon-for-translatepress') {
         return isset($plugins['automatic-translate-addon-for-translatepress/automatic-translate-addon-for-translatepress.php']) || isset($plugins['automatic-translate-addon-pro-for-translatepress/automatic-translate-addon-for-translatepress-pro.php']);
     } elseif ($plugin_slug === 'automatic-translations-for-polylang') {
         return isset($plugins['automatic-translations-for-polylang/automatic-translation-for-polylang.php']) ||isset($plugins['automatic-translations-for-polylang-pro/automatic-translation-for-polylang.php']);
+    } elseif ($plugin_slug === 'linguator-multilingual-ai-translation') {
+        return isset($plugins['linguator-multilingual-ai-translation/linguator-multilingual-ai-translation.php']);
     }
     return false; // Return false if no match found
 }
@@ -118,6 +134,10 @@ function atlt_get_plugin_display_name($plugin_slug, $text_domain) {
             'free_name' => __('AI Translation for TranslatePress', $text_domain),
             'pro_name'  => __('AI Translation for TranslatePress (Pro)', $text_domain),
         ],
+        'linguator-multilingual-ai-translation' => [
+            'free' => 'linguator-multilingual-ai-translation/linguator-multilingual-ai-translation.php',
+            'free_name' => __('Linguator Multilingual AI Translation', $text_domain),
+        ],
     ];
 
     // Check if the provided plugin slug exists
@@ -126,16 +146,20 @@ function atlt_get_plugin_display_name($plugin_slug, $text_domain) {
     }
 
     $free_installed = isset($plugins[$plugin_paths[$plugin_slug]['free']]);
-    $pro_installed = isset($plugins[$plugin_paths[$plugin_slug]['pro']]);
+    $has_pro = isset($plugin_paths[$plugin_slug]['pro']);
+    $pro_installed = $has_pro && isset($plugins[$plugin_paths[$plugin_slug]['pro']]);
 
     // Determine which version is installed
-    if ($pro_installed) {
+    if ($pro_installed && isset($plugin_paths[$plugin_slug]['pro_name'])) {
         return $plugin_paths[$plugin_slug]['pro_name'];
-    } elseif ($free_installed) {
-        return $plugin_paths[$plugin_slug]['free_name'];
-    } else {
+    }
+
+    if ($free_installed && isset($plugin_paths[$plugin_slug]['free_name'])) {
         return $plugin_paths[$plugin_slug]['free_name'];
     }
+
+    // Default to free_name if defined, otherwise a generic label
+    return $plugin_paths[$plugin_slug]['free_name'] ?? __('Unknown plugin', $text_domain);
 }
 
 function atlt_format_number($number, $text_domain) {

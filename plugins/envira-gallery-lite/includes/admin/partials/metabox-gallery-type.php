@@ -38,7 +38,8 @@
 		media_upload_form();
 		?>
 		<script type="text/javascript">
-			var post_id = <?php echo intval( $data['post']->ID ); ?>, shortform = 3;
+			var post_id = <?php echo intval( $data['post']->ID ); ?>,
+				shortform = 3;
 		</script>
 		<input type="hidden" name="post_id" id="post_id" value="<?php echo intval( $data['post']->ID ); ?>" />
 	</div>
@@ -56,18 +57,17 @@
 				</a>
 			</li>
 			<li id="envira-gallery-type-dribbble">
-				<a href="javascript:void(0);" title="<?php esc_attr_e( 'Build Galleries from Dribbble images.', 'envira-gallery-lite' ); ?>"  class="link-envira-dribbble-tab upsell">
+				<a href="javascript:void(0);" title="<?php esc_attr_e( 'Build Galleries from Dribbble images.', 'envira-gallery-lite' ); ?>" class="link-envira-dribbble-tab upsell">
 					<div class="icon"></div>
 					<div class="title"><?php esc_html_e( 'Dribbble', 'envira-gallery-lite' ); ?></div>
 				</a>
 			</li>
-<!--			TODO: restore this after tiktok addon release -->
-<!--				<li id="envira-gallery-type-tiktok">-->
-<!--				<a href="javascript:void(0);" title="--><?php //esc_attr_e( 'Build Galleries from Tiktok videos.', 'envira-gallery-lite' ); ?><!--"  class="link-envira-tiktok-tab upsell">-->
-<!--					<div class="icon"></div>-->
-<!--					<div class="title">--><?php //esc_html_e( 'Tiktok', 'envira-gallery-lite' ); ?><!--</div>-->
-<!--				</a>-->
-<!--			</li>-->
+			<li id="envira-gallery-type-tiktok">
+				<a href="javascript:void(0);" title="<?php esc_attr_e( 'Build Galleries from TikTok videos.', 'envira-gallery-lite' ); ?>" class="link-envira-tiktok-tab upsell">
+					<div class="icon"></div>
+					<div class="title"><?php esc_html_e( 'TikTok', 'envira-gallery-lite' ); ?></div>
+				</a>
+			</li>
 		</ul>
 	</div>
 
@@ -140,27 +140,27 @@
 		<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/close.png' ); ?>" alt="Close upsell modal" id="close-envira-instagram-upsell-modal" class="close-envira-addon-upsell-modal"></img>
 
 		<div class="upsell-content-container">
-	<div class="top-content">
-		<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/lock.png' ); ?>" alt="Lock icon" class="lock-icon"></img>
-		<h3>Instagram is a Pro Feature</h3>
-		<p>We’re sorry, using Instagram is not available on your plan. Please upgrade to the Pro plan to unlock all these awesome features.</p>
-	</div>
-	<div class="bottom-content">
-		<div class="connector-icon">
-			<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/connector.png' ); ?>" alt="Connector icon"></img>
-		</div>
-		<a href="https://enviragallery.com/lite/?utm_source=liteplugin&amp;utm_medium=adminpageunlockai&amp;utm_campaign=upgradetopro" class="button button-upsell-modal" target="_blank"><?php esc_html_e( 'Upgrade to Pro', 'envira-gallery-lite' ); ?>
-		<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/arrow-right.png' ); ?>" alt="Arrow right icon" class="arrow-right-icon"></img>
-	</a>
-		<div class="discount-section">
-			<div class="discount-percentage">
-				<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/discount-icon.png' ); ?>" alt="Discount percentage">
-			</img>
-		<span>%</span>
+			<div class="top-content">
+				<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/lock.png' ); ?>" alt="Lock icon" class="lock-icon"></img>
+				<h3>Instagram is a Pro Feature</h3>
+				<p>We’re sorry, using Instagram is not available on your plan. Please upgrade to the Pro plan to unlock all these awesome features.</p>
 			</div>
-			<p>Envira Gallery <?php echo esc_html( ENVIRA_LITE_VERSION ); ?> users  <span class="offer-text">get 50% off</span> the regular price, automatically applied at checkout.</p>
-		</div>
-	</div>
+			<div class="bottom-content">
+				<div class="connector-icon">
+					<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/connector.png' ); ?>" alt="Connector icon"></img>
+				</div>
+				<a href="https://enviragallery.com/lite/?utm_source=liteplugin&amp;utm_medium=adminpageunlock_instagram&amp;utm_campaign=upgradetopro" class="button button-upsell-modal" target="_blank"><?php esc_html_e( 'Upgrade to Pro', 'envira-gallery-lite' ); ?>
+					<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/arrow-right.png' ); ?>" alt="Arrow right icon" class="arrow-right-icon"></img>
+				</a>
+				<div class="discount-section">
+					<div class="discount-percentage">
+						<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/discount-icon.png' ); ?>" alt="Discount percentage">
+						</img>
+						<span>%</span>
+					</div>
+					<p>Envira Gallery <?php echo esc_html( ENVIRA_LITE_VERSION ); ?> users <span class="offer-text">get 50% off</span> the regular price, automatically applied at checkout.</p>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -172,27 +172,27 @@
 		<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/close.png' ); ?>" alt="Close upsell modal" id="close-envira-dribbble-upsell-modal" class="close-envira-addon-upsell-modal"></img>
 
 		<div class="upsell-content-container">
-	<div class="top-content">
-		<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/lock.png' ); ?>" alt="Lock icon" class="lock-icon"></img>
-		<h3>Dribbble is a Pro Feature</h3>
-		<p>We’re sorry, using Dribbble is not available on your plan. Please upgrade to the Pro plan to unlock all these awesome features.</p>
-	</div>
-	<div class="bottom-content">
-		<div class="connector-icon">
-			<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/connector.png' ); ?>" alt="Connector icon"></img>
-		</div>
-		<a href="https://enviragallery.com/lite/?utm_source=liteplugin&amp;utm_medium=adminpageunlockai&amp;utm_campaign=upgradetopro" class="button button-upsell-modal" target="_blank"><?php esc_html_e( 'Upgrade to Pro', 'envira-gallery-lite' ); ?>
-		<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/arrow-right.png' ); ?>" alt="Arrow right icon" class="arrow-right-icon"></img>
-	</a>
-		<div class="discount-section">
-			<div class="discount-percentage">
-				<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/discount-icon.png' ); ?>" alt="Discount percentage">
-			</img>
-		<span>%</span>
+			<div class="top-content">
+				<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/lock.png' ); ?>" alt="Lock icon" class="lock-icon"></img>
+				<h3>Dribbble is a Pro Feature</h3>
+				<p>We’re sorry, using Dribbble is not available on your plan. Please upgrade to the Pro plan to unlock all these awesome features.</p>
 			</div>
-			<p>Envira Gallery <?php echo esc_html( ENVIRA_LITE_VERSION ); ?> users  <span class="offer-text">get 50% off</span> the regular price, automatically applied at checkout.</p>
-		</div>
-	</div>
+			<div class="bottom-content">
+				<div class="connector-icon">
+					<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/connector.png' ); ?>" alt="Connector icon"></img>
+				</div>
+				<a href="https://enviragallery.com/lite/?utm_source=liteplugin&amp;utm_medium=adminpageunlock_dribbble&amp;utm_campaign=upgradetopro" class="button button-upsell-modal" target="_blank"><?php esc_html_e( 'Upgrade to Pro', 'envira-gallery-lite' ); ?>
+					<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/arrow-right.png' ); ?>" alt="Arrow right icon" class="arrow-right-icon"></img>
+				</a>
+				<div class="discount-section">
+					<div class="discount-percentage">
+						<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/discount-icon.png' ); ?>" alt="Discount percentage">
+						</img>
+						<span>%</span>
+					</div>
+					<p>Envira Gallery lite users <span class="offer-text">get 50% off</span> the regular price, automatically applied at checkout.</p>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -204,27 +204,27 @@
 		<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/close.png' ); ?>" alt="Close upsell modal" id="close-envira-tiktok-upsell-modal" class="close-envira-addon-upsell-modal"></img>
 
 		<div class="upsell-content-container">
-	<div class="top-content">
-		<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/lock.png' ); ?>" alt="Lock icon" class="lock-icon"></img>
-		<h3>TikTok is a Pro Feature</h3>
-		<p>We’re sorry, using Tiktok is not available on your plan. Please upgrade to the Pro plan to unlock all these awesome features.</p>
-	</div>
-	<div class="bottom-content">
-		<div class="connector-icon">
-			<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/connector.png' ); ?>" alt="Connector icon"></img>
-		</div>
-		<a href="https://enviragallery.com/lite/?utm_source=liteplugin&amp;utm_medium=adminpageunlockai&amp;utm_campaign=upgradetopro" class="button button-upsell-modal" target="_blank"><?php esc_html_e( 'Upgrade to Pro', 'envira-gallery-lite' ); ?>
-		<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/arrow-right.png' ); ?>" alt="Arrow right icon" class="arrow-right-icon"></img>
-	</a>
-		<div class="discount-section">
-			<div class="discount-percentage">
-				<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/discount-icon.png' ); ?>" alt="Discount percentage">
-			</img>
-		<span>%</span>
+			<div class="top-content">
+				<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/lock.png' ); ?>" alt="Lock icon" class="lock-icon"></img>
+				<h3>TikTok is a Pro Feature</h3>
+				<p>We’re sorry, using TikTok is not available on your plan. Please upgrade to the Pro plan to unlock all these awesome features.</p>
 			</div>
-			<p>Envira Gallery <?php echo esc_html( ENVIRA_LITE_VERSION ); ?> users  <span class="offer-text">get 50% off</span> the regular price, automatically applied at checkout.</p>
-		</div>
-	</div>
+			<div class="bottom-content">
+				<div class="connector-icon">
+					<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/connector.png' ); ?>" alt="Connector icon"></img>
+				</div>
+				<a href="https://enviragallery.com/lite/?utm_source=liteplugin&amp;utm_medium=adminpageunlock_tiktok&amp;utm_campaign=upgradetopro" class="button button-upsell-modal" target="_blank"><?php esc_html_e( 'Upgrade to Pro', 'envira-gallery-lite' ); ?>
+					<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/arrow-right.png' ); ?>" alt="Arrow right icon" class="arrow-right-icon"></img>
+				</a>
+				<div class="discount-section">
+					<div class="discount-percentage">
+						<img src="<?php echo esc_url( trailingslashit( ENVIRA_LITE_URL ) . 'assets/images/discount-icon.png' ); ?>" alt="Discount percentage">
+						</img>
+						<span>%</span>
+					</div>
+					<p>Envira Gallery lite users <span class="offer-text">get 50% off</span> the regular price, automatically applied at checkout.</p>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

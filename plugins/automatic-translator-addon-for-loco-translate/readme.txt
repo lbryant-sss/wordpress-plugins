@@ -3,10 +3,10 @@ Contributors: narinder-singh, satindersingh, coolplugins
 Donate link: https://paypal.me/CoolPlugins/10USD/
 Tags: AI translation, google translate, translate, chatgpt, multilingual
 Requires at least:5.0
-Tested up to: 6.8.2
+Tested up to: 6.8.3
 Requires PHP: 7.2
 Loco Translate Tested Up to: 2.8.2
-Stable tag: 2.5.2
+Stable tag: 2.5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,6 +78,8 @@ Loco Translate is primarily a manual translation tool for translating WordPress 
 * **[AutoPoly - AI Translation For Polylang](https://coolplugins.net/product/automatic-translations-for-polylang/?utm_source=atlt_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=atfp_check_out)** duplicates your page or post titles, content, images, galleries, or meta fields, and automatically translates them into the selected language. Whether you’re using Elementor or Gutenberg, this addon makes the translation process easier.
 
 * **[AI Translation for TranslatePress](https://coolplugins.net/product/automatic-translate-addon-for-translatepress-pro/?utm_source=atlt_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=tpa_check_out)** is a powerful addon that enhances the functionality of the TranslatePress plugin. This addon uses advanced translation services, like Google Translate, Yandex, and Chrome AI translator, to provide accurate and instant translations for your web pages automatically.
+
+* **[Linguator – Multilingual AI Translation](https://go.coolplugins.net/ai-multilingual)** is a powerful multilingual plugin that helps you create and manage multilingual content on your WordPress website. Easily translate your **posts, pages, menus,** and **categories** into different languages using AI and connect with visitors worldwide.
 
 ### Special THANKS!
 
@@ -157,6 +159,13 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 3. Free License v/s Premium License
 
 == Changelog ==
+
+= Version 2.5.4 - 31/10/2025 =
+* **Minor:** Textual changes.
+
+= Version 2.5.3 - 31/10/2025 =
+* **Improved:** Review Notice.
+* **Added:** Added other plugin recommendations to create multilingual site.
 
 = Version 2.5.2 - 28/08/2025 =
 * **Improved:** Update UTM links.

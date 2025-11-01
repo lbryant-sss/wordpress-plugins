@@ -13,22 +13,23 @@ import { Text, Heading } from '@ithemes/ui';
  */
 import { Button } from '@wordpress/components';
 
-import { SolidLogo } from '@ithemes/security-style-guide';
+import { ConnectedNodes } from '@ithemes/security-style-guide';
 
 export const StyledStellarSale = styled.aside`
 	position: relative;
-	display: flex;
+	display: grid;
+	grid-template-columns: ${ ( { isWide } ) => isWide ? '1.5fr 1fr 1fr' : '2fr 1fr' };
 	margin: 1.25rem 1.25rem 0;
 	background: #1D202F;
 	color: #F9FAF9;
 	padding: 1rem;
-	justify-content: space-between;
 	overflow: hidden;
 `;
 
 export const StyledStellarSaleDismiss = styled( Button )`
 	color: white;
 	z-index: 2;
+	justify-content: end !important;
 
 	&:hover, &:active, &:focus {
 		color: white !important;
@@ -38,15 +39,11 @@ export const StyledStellarSaleDismiss = styled( Button )`
 export const StyledStellarSaleContent = styled.div`
 	z-index: 1;
 	max-width: 50rem;
-	display: grid;
-	grid-template-columns: ${ ( { isSmall } ) => isSmall ? '1fr 1fr' : 'auto' };
+	display: flex;
+	flex-direction: column;
 	gap: 1rem 1.5rem;
-	align-items: end;
 	justify-items: start;
-	padding: ${ ( { isSmall } ) => isSmall
-		? '1.25rem 4.45rem 0.65rem 2.9rem'
-		: '1.25rem 4.45rem 0.65rem 0.25rem'
-};
+	padding: 1.25rem 4.45rem 0.65rem 2.9rem;
 `;
 
 export const StyledStellarSaleHeading = styled( Heading )`
@@ -55,6 +52,11 @@ export const StyledStellarSaleHeading = styled( Heading )`
 	strong {
 		font-size: 1.5rem;
 	}
+`;
+
+export const StyledStellarSaleActions = styled.div`
+	display: flex;
+	gap: 1.5rem;
 `;
 
 export const StyledStellarSaleButton = styled.a`
@@ -89,12 +91,10 @@ export const StyledStellarSaleLink = styled( Text )`
 
 export const StyledStellarSaleGraphic = styled( Graphic )`
 	position: absolute;
-	right: ${ ( { isWide } ) => isWide ? '5rem' : '-2rem' };
-	top: 50%;
-	transform: translateY(-50%);
-	opacity: ${ ( { isWide } ) => isWide ? 1 : 0.40 };
+	right: 0;
+	bottom: 0;
 `;
 
 function Graphic( { className } ) {
-	return <SolidLogo className={ className } />;
+	return <ConnectedNodes className={ className } />;
 }

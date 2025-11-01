@@ -129,5 +129,45 @@
         }
       }
     }
+
+    // Initialize Select2 for Goal Link field with Ajax
+    if ($.fn.select2 && $('#split_test_goal_link').length) {
+      $('#split_test_goal_link').select2({
+        theme: 'prli',
+        placeholder: PrliLinkValidation.search_for_link,
+        allowClear: true,
+        width: '100%',
+        ajax: {
+          url: ajaxurl,
+          dataType: 'json',
+          delay: 250,
+          data: function (params) {
+            return {
+              action: 'prli_search_links',
+              _ajax_nonce: PrliLinkValidation.search_links_nonce,
+              q: params.term,
+              page: params.page || 1
+            };
+          },
+          processResults: function (response) {
+            if (!response || !response.success) {
+              return {
+                results: [],
+                pagination: { more: false }
+              };
+            }
+
+            return {
+              results: response.data.results,
+              pagination: {
+                more: !!(response.data.pagination && response.data.pagination.more)
+              }
+            };
+          },
+          cache: true
+        },
+        minimumInputLength: 0
+      });
+    }
   });
 })(jQuery);

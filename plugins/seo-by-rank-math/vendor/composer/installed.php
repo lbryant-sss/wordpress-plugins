@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'rankmath/seo-by-rank-math',
-        'pretty_version' => 'v1.0.256',
-        'version' => '1.0.256.0',
-        'reference' => '39f7d2a1485effcf32a36b071721c08bb9176052',
+        'pretty_version' => 'v1.0.257-beta',
+        'version' => '1.0.257.0-beta',
+        'reference' => '0f087f0c04f2e5a30e52737b37a73fe60af199a5',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -29,9 +29,9 @@
             'dev_requirement' => false,
         ),
         'donatj/phpuseragentparser' => array(
-            'pretty_version' => 'v1.10.0',
-            'version' => '1.10.0.0',
-            'reference' => '3ba73057d2a4a275badb88b7708e91e159c40367',
+            'pretty_version' => 'v1.11.0',
+            'version' => '1.11.0.0',
+            'reference' => 'c98541c5198bb75564d7db4a8971773bc848361e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../donatj/phpuseragentparser',
             'aliases' => array(),
@@ -47,9 +47,9 @@
             'dev_requirement' => false,
         ),
         'rankmath/seo-by-rank-math' => array(
-            'pretty_version' => 'v1.0.256',
-            'version' => '1.0.256.0',
-            'reference' => '39f7d2a1485effcf32a36b071721c08bb9176052',
+            'pretty_version' => 'v1.0.257-beta',
+            'version' => '1.0.257.0-beta',
+            'reference' => '0f087f0c04f2e5a30e52737b37a73fe60af199a5',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -1006,7 +1006,7 @@
 
 			// If GA is enabled
 			if ( ctc.ga ) {
-				console.log( 'google analytics' );
+				console.log('google analytics');
 
 				// Use custom event name or default
 				var g_event_name =
@@ -1045,6 +1045,7 @@
 
 				// Keep track of whether we added gtag manually
 				var is_ctc_add_gtag = 'no';
+				var measurement_ids = [];
 
 				// If Google Tag Manager's dataLayer is present
 				if ( typeof dataLayer !== 'undefined' ) {
@@ -1080,9 +1081,11 @@
 							// Only allow certain tag ID formats
 							if ( tag_id.startsWith( 'G-' ) || tag_id.startsWith( 'GT-' ) ) {
 								ga_parms.send_to = tag_id;
-								console.log( ga_parms );
 
-								console.log( 'gtag event - send_to: ' + tag_id );
+								console.log('gtag event - send_to: ' + tag_id);
+								console.log('g_event_name: ' + g_event_name);
+								console.log( 'ga_parms: ' );
+								console.log( ga_parms );
 
 								gtag( 'event', g_event_name, ga_parms );
 
@@ -1090,39 +1093,91 @@
 							}
 						}
 
-						// Try to get GA tag IDs from global tag data
-						if (
-							window.google_tag_data &&
-							window.google_tag_data.tidr &&
-							window.google_tag_data.tidr.destination
-						) {
-							console.log( 'google_tag_data tidr destination' );
-							console.log( window.google_tag_data.tidr.destination );
-
-							// Trigger gtag event for each tag ID
-							for ( var tag_id in window.google_tag_data.tidr.destination ) {
-								console.log( 'google_tag_data destination - loop: ' + tag_id );
-								call_gtag( tag_id );
+						/**
+						 * Helper: Add unique ID to measurement_ids array
+						 */
+						function addMeasurementId(id, source) {
+							if (id && typeof id === 'string' && id.trim() !== '') {
+								if (!measurement_ids.includes(id)) {
+									console.log(`✔️ Added ${id} (from ${source})`);
+									measurement_ids.push(id);
+								}
 							}
 						}
 
-						// Scan through dataLayer for tag IDs
-						dataLayer.forEach( function ( i ) {
-							console.log( 'datalayer - loop' );
-							console.log( i );
-							if ( i[ 0 ] == 'config' && i[ 1 ] ) {
-								tag_id = i[ 1 ];
-								console.log( 'datalayer - loop - tag_id: ' + tag_id );
-								call_gtag( tag_id );
+						/**
+						 * From google_tag_data.tidr.destination
+						 */
+						try {
+							const tidr = window.google_tag_data?.tidr;
+							if (tidr?.destination && typeof tidr.destination === 'object') {
+								console.log('google_tag_data.tidr.destination:', tidr.destination);
+								Object.keys(tidr.destination).forEach(tag_id => {
+									addMeasurementId(tag_id, 'google_tag_data.destination');
+								});
 							}
+						} catch (err) {
+							console.warn('Error reading google_tag_data.tidr.destination', err);
+						}
+
+						/**
+						 * From google_tag_data.tidr.container → destinations[]
+						 */
+						try {
+							const containers = window.google_tag_data?.tidr?.container;
+							if (containers && typeof containers === 'object') {
+								Object.values(containers).forEach(container => {
+									if (Array.isArray(container.destinations)) {
+										container.destinations.forEach(dest => {
+											if (typeof dest === 'string' && dest.startsWith('G-')) {
+												addMeasurementId(dest, 'google_tag_data.container.destinations');
+											}
+										});
+									}
+								});
+							}
+						} catch (err) {
+							console.warn('Error reading google_tag_data.tidr.container', err);
+						}
+
+						/**
+						 * From dataLayer[] (fallback)
+						 */
+						try {
+							if (Array.isArray(window.dataLayer)) {
+								window.dataLayer.forEach(item => {
+									if (Array.isArray(item) && item[0] === 'config' && typeof item[1] === 'string') {
+										addMeasurementId(item[1], 'dataLayer.config');
+									}
+									else if (item?.send_to && typeof item.send_to === 'string') {
+										addMeasurementId(item.send_to, 'dataLayer.send_to');
+									}
+								});
+							}
+						} catch (err) {
+							console.warn('Error scanning dataLayer', err);
+						}
+						
+
+						console.log( 'Final unique measurement_ids:: ' );
+						console.log( measurement_ids );
+
+						// Call gtag for each unique measurement ID
+						measurement_ids.forEach( function ( id ) {
+							call_gtag( id );
 						} );
+						
+
 					} catch ( e ) { }
 				}
 
 				// Fallback: if no gtag events were sent and gtag exists, send the default event
-				if ( 0 == gtag_count && 'no' == is_ctc_add_gtag ) {
+				if (0 == gtag_count && 'no' == is_ctc_add_gtag) {
+					console.log('gtag_count is 0 and gtag is not created by plugin. - sending default event');
 					if ( typeof gtag !== 'undefined' ) {
-						console.log( 'calling gtag - default' );
+						console.log('calling gtag - default (no specifc send to parm. ' + 'g_event_name: ' + g_event_name);
+						console.log( 'ga_parms: ' );
+						console.log( ga_parms );
 						gtag( 'event', g_event_name, ga_parms );
 					} else if ( typeof ga !== 'undefined' && typeof ga.getAll !== 'undefined' ) {
 						console.log( 'ga' );
@@ -1137,7 +1192,9 @@
 
 			// Push analytics event to GTM dataLayer
 			if ( typeof dataLayer !== 'undefined' ) {
-				console.log( 'dataLayer' );
+				console.log('dataLayer');
+
+				// legacy
 				dataLayer.push( {
 					event: 'Click to Chat',
 					type: 'chat',
@@ -1148,7 +1205,16 @@
 					event_label: ga_label,
 					event_action: ga_action,
 					ref: 'dataLayer push',
-				} );
+				});
+				
+				// new since 3.40. using admin settings.
+				const pushParams = {
+					...(ga_parms ?? {}),
+					event: g_event_name ?? 'chat_click',
+					ref: 'dataLayer push ga admin values',
+				};
+				dataLayer.push(pushParams);
+				console.debug('dataLayer event pushed:', pushParams);
 			}
 
 			// Google Ads Conversion Tracking

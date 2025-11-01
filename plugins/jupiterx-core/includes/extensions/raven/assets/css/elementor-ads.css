@@ -126,3 +126,19 @@ body.admin-bar div.e-admin-top-bar div.e-admin-top-bar__secondary-area {
 .elementor-control-display_conditions_pro {
   display: none !important;
 }
+
+#e-checklist {
+  display: none !important;
+}
+
+#elementor-editor-wrapper-v2 > header > div > div > div.MuiGrid-root.MuiGrid-container.eui-ga4m3r-MuiGrid-root > div.MuiStack-root.eui-1lhlars-MuiStack-root > span:nth-child(2) > button {
+  display: none !important;
+}
+
+#elementor-template-library-filter > div > div.source-option[data-source="cloud"] {
+  visibility: hidden !important;
+}
+
+#elementor-template-library-save-template-form > div > div.source-selections > div.source-selections-input.cloud {
+  display: none !important;
+}

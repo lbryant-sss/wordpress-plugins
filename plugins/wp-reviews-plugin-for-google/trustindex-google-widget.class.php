@@ -42,7 +42,11 @@ break;
 if (!$wasError && $instance['ti-widget-ID']) {
 echo wp_kses($pluginManagerInstance->renderWidgetFrontend($instance['ti-widget-ID']), $pluginManager::$allowedAttributesForWidget);
 } else if ($pluginManagerInstance->is_noreg_linked()) {
-echo wp_kses($pluginManagerInstance->renderWidgetFrontend(), $pluginManager::$allowedAttributesForWidget);
+$html = preg_replace('/<style\b[^>]*>.*?<\/style>/is', '', $pluginManagerInstance->renderWidgetFrontend());
+echo wp_kses($html, $pluginManager::$allowedAttributesForWidget);
+if (!is_file($chosedPlatform->getCssFile()) || get_option($chosedPlatform->get_option_name('load-css-inline'), 0)) {
+echo '<style type="text/css">'.get_option($chosedPlatform->get_option_name('css-content')).'</style>';
+}
 } else {
 /* translators: %s: URL */
 echo wp_kses_post($pluginManagerInstance->frontEndErrorForAdmins(sprintf(__("Please fill out <strong>all the required fields</strong> in the <a href='%s'>widget settings</a> page", 'wp-reviews-plugin-for-google'), admin_url('admin.php?page='.$pluginManagerInstance->get_plugin_slug().'/settings.php'))));

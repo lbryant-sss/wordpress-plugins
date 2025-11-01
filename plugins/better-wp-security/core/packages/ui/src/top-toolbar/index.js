@@ -54,6 +54,10 @@ const StyledShield = styled( PurpleShield )`
 	width: 2rem;
 `;
 
+const StyledBannerArea = styled.div`
+	width: 100%;
+`;
+
 function ToolbarSlot( { area, ...props } ) {
 	return <Slot name={ `Toolbar${ area }` } { ...props } />;
 }
@@ -67,19 +71,27 @@ export default function TopToolbar() {
 	const isSmall = useViewportMatch( 'medium', '<' );
 
 	return (
-		<StyledTopToolbar role="region" aria-label={ __( 'Toolbar', 'better-wp-security' ) }>
-			{ isSmall ? <StyledShield /> : <Logo /> }
-			<ToolbarSlot area="main">
-				{ ( fills ) => <StyledMainFill>{ fills }</StyledMainFill> }
+		<>
+			<StyledTopToolbar
+				role="region"
+				aria-label={ __( 'Toolbar', 'better-wp-security' ) }
+			>
+				{ isSmall ? <StyledShield /> : <Logo /> }
+				<ToolbarSlot area="main">
+					{ ( fills ) => <StyledMainFill>{ fills }</StyledMainFill> }
+				</ToolbarSlot>
+				<StyledToolbar label={ __( 'Toolbar Actions', 'better-wp-security' ) }>
+					<ToolbarButton
+						icon={ dashboardIcon }
+						href={ dashboardUrl }
+						text={ __( 'Dashboard', 'better-wp-security' ) }
+					/>
+					<ToolbarSlot area="actions" />
+				</StyledToolbar>
+			</StyledTopToolbar>
+			<ToolbarSlot area="banner">
+				{ ( fills ) => <StyledBannerArea>{ fills }</StyledBannerArea> }
 			</ToolbarSlot>
-			<StyledToolbar label={ __( 'Toolbar Actions', 'better-wp-security' ) }>
-				<ToolbarButton
-					icon={ dashboardIcon }
-					href={ dashboardUrl }
-					text={ __( 'Dashboard', 'better-wp-security' ) }
-				/>
-				<ToolbarSlot area="actions" />
-			</StyledToolbar>
-		</StyledTopToolbar>
+		</>
 	);
 }

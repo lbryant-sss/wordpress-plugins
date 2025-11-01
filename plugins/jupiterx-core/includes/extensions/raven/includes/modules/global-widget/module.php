@@ -189,6 +189,11 @@ class Module extends Module_Base {
 
 			update_post_meta( $widget_id, self::INCLUDED_POSTS_LIST_META_KEY, $included_posts );
 		}
+
+		// Ensure the current document will regenerate both CSS and cached HTML
+		// so the frontend markup contains the expected `elementor-global-<templateID>` classes.
+		delete_post_meta( $post_id, '_elementor_css' );
+		delete_post_meta( $post_id, '_elementor_element_cache' );
 	}
 
 	private function delete_included_posts_css( $template_id ) {
@@ -199,7 +204,12 @@ class Module extends Module_Base {
 		}
 
 		foreach ( array_keys( $including_post_ids ) as $post_id ) {
+			// Remove generated CSS meta so CSS will be regenerated on next request.
 			delete_post_meta( $post_id, '_elementor_css' );
+
+			// Also remove Elementor's cached rendered HTML so markup reflects the latest global widget state.
+			// This prevents a mismatch between cached HTML and regenerated CSS when Elementor's element cache is enabled.
+			delete_post_meta( $post_id, '_elementor_element_cache' );
 		}
 	}
 

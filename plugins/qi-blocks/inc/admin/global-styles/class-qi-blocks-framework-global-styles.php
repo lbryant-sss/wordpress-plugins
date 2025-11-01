@@ -20,7 +20,8 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 			add_filter( 'qi_blocks_filter_localize_main_editor_js', array( $this, 'localize_script' ) );
 
 			// Add page inline styles.
-			add_action( 'wp_enqueue_scripts', array( $this, 'add_page_inline_style' ), 20 ); // permission 20 is set in order to be after the main css file and after the global typography styles (@see Qi_Blocks_Global_Settings_Typography)
+			// permission 20 is set in order to be after the main css file and after the global typography styles (@see Qi_Blocks_Global_Settings_Typography).
+			add_action( 'wp_enqueue_scripts', array( $this, 'add_page_inline_style' ), 20 );
 
 			// Set Qode themes Gutenberg styles.
 			add_action( 'enqueue_block_editor_assets', array( $this, 'set_themes_gutenberg_styles' ), 15 );
@@ -47,7 +48,7 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 		}
 
 		public function sanitize_block_selector( $selector ) {
-			return preg_replace( '/[^a-zA-Z0-9\-_.,:>\s\[\]*~=\"()#\'+]/', '', $selector );
+			return isset( $selector ) && is_string( $selector ) ? preg_replace( '/[^a-zA-Z0-9\-_.,:>\s\[\]*~=\"()#\'+]/', '', $selector ) : '';
 		}
 
 		public function add_options() {
@@ -79,7 +80,7 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 				'methods'             => WP_REST_Server::CREATABLE,
 				'callback'            => array( $this, 'update_global_styles_callback' ),
 				'permission_callback' => function () {
-					return current_user_can( 'edit_posts' );
+					return current_user_can( 'edit_posts' ) && current_user_can( 'publish_posts' );
 				},
 				'args'                => array(
 					'options' => array(
@@ -129,9 +130,10 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 				$global_options = get_option( 'qi_blocks_global_styles' );
 
 				if ( ! empty( $response_data->options ) && isset( $global_options ) ) {
-					$options = $response_data->options;
+					$options = $this->sanitize_global_options( $response_data->options );
 					$page_id = isset( $response_data->page_id ) && ! empty( $response_data->page_id ) ? esc_attr( $response_data->page_id ) : '';
 
+					// Sanitize and validate CSS options.
 					if ( isset( $global_options['widgets'] ) && 'widget' === $page_id ) {
 						$global_options['widgets'] = $options;
 					} elseif ( isset( $global_options['templates'] ) && 'template' === $page_id ) {
@@ -149,6 +151,169 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 					qi_blocks_get_ajax_status( 'error', esc_html__( 'Options are invalid', 'qi-blocks' ) );
 				}
 			}
+		}
+
+		/**
+		 * Sanitize qi-blocks $options array received via AJAX.
+		 *
+		 * @param mixed $raw_options The raw options (decoded JSON -> array/object).
+		 *
+		 * @return object Sanitized options array safe to save.
+		 */
+		private function sanitize_global_options( $raw_options ) {
+			// Ensure we have an array.
+			$options = is_array( $raw_options ) ? $raw_options : ( is_object( $raw_options ) ? (array) $raw_options : array() );
+
+			// Helper: reject if value contains dangerous tokens.
+			$contains_danger = function ( $value ) {
+				if ( ! is_string( $value ) ) {
+					return true;
+				}
+
+				$v = strtolower( $value );
+
+				// Dangerous patterns.
+				$danger_patterns = array(
+					'@import',
+					// old IE.
+					'expression(',
+					// javascript urls.
+					'javascript:',
+					// data URIs (can be used for exfiltration).
+					'data:',
+					// legacy.
+					'vbscript:',
+					// XBL.
+					'-moz-binding',
+					// IE behaviors.
+					'behavior:',
+					'onerror',
+					'onclick',
+					'onload',
+					'onfocus',
+					'onblur',
+					'onchange',
+					'onmouseover',
+					'onmouseout',
+					'onkeydown',
+					'onkeyup',
+					'oninput',
+				);
+
+				foreach ( $danger_patterns as $pat ) {
+					if ( strpos( $v, $pat ) !== false ) {
+						return true;
+					}
+				}
+
+				return false;
+			};
+
+			// Helper: sanitize a single CSS declaration block string -> returns cleaned css or empty string.
+			$sanitize_css_block = function ( $css_text ) use ( $contains_danger ) {
+				if ( ! is_string( $css_text ) ) {
+					return '';
+				}
+
+				// Normalize semicolons and remove HTML tags.
+				$css_text = wp_strip_all_tags( $css_text );
+				$css_text = trim( $css_text );
+
+				// Split into declarations by semicolon.
+				$declarations      = preg_split( '/\s*;\s*/', $css_text, -1, PREG_SPLIT_NO_EMPTY );
+				$safe_declarations = array();
+
+				foreach ( $declarations as $decl ) {
+					// split only on first colon (property: value).
+					if ( strpos( $decl, ':' ) === false ) {
+						continue;
+					}
+
+					list( $prop, $val ) = array_map( 'trim', explode( ':', $decl, 2 ) );
+
+					// lowercase property for checking.
+					$prop_lc = strtolower( $prop );
+
+					// Reject content property outright (injection vector).
+					if ( 'content' === $prop_lc ) {
+						continue;
+					}
+
+					// If value contains dangerous tokens, skip.
+					if ( $contains_danger( $val ) ) {
+						continue;
+					}
+
+					// Basic safe cleanup of value.
+					// remove any control characters.
+					$val = preg_replace( '/[\\x00-\\x1F\\x7F]+/u', '', $val );
+					// escape quotes and trim.
+					$val = trim( $val );
+					// sanitize text field but keep some chars like parentheses for transform().
+					$val = sanitize_text_field( $val );
+
+					// re-add declaration.
+					$safe_declarations[] = $prop_lc . ': ' . $val;
+				}
+
+				if ( empty( $safe_declarations ) ) {
+					return '';
+				}
+
+				return implode( '; ', $safe_declarations ) . ';';
+			};
+
+			$sanitized_options = new stdClass();
+
+			foreach ( $options as $entry ) {
+				// Ensure entry is arrayed.
+				$entry = is_array( $entry ) ? $entry : ( is_object( $entry ) ? (array) $entry : array() );
+
+				$san_entry = new stdClass();
+
+				// Sanitize key.
+				$san_entry->key = isset( $entry['key'] ) ? sanitize_text_field( wp_strip_all_tags( $entry['key'] ) ) : '';
+
+				// Sanitize fonts if present (keep array but sanitize values).
+				if ( isset( $entry['fonts'] ) && is_array( $entry['fonts'] ) ) {
+					$san_fonts = new stdClass();
+
+					foreach ( $entry['fonts'] as $fkey => $fval ) {
+						$san_fonts->{sanitize_key( $fkey )} = sanitize_text_field( wp_strip_all_tags( (string) $fval ) );
+					}
+
+					$san_entry->fonts = $san_fonts;
+				} else {
+					$san_entry->fonts = new stdClass();
+				}
+
+				// Sanitize values (array of selector/styles objects).
+				$san_entry->values = array();
+				if ( isset( $entry['values'] ) && is_array( $entry['values'] ) ) {
+					foreach ( $entry['values'] as $val_item ) {
+						$val_item = is_array( $val_item ) ? $val_item : ( is_object( $val_item ) ? (array) $val_item : array() );
+
+						$san_val           = new stdClass();
+						$san_val->selector = $this->sanitize_block_selector( $val_item['selector'] );
+
+
+						// Sanitize styles using parser/whitelist.
+						$san_val->styles        = isset( $val_item['styles'] ) ? $sanitize_css_block( $val_item['styles'] ) : '';
+						$san_val->tablet_styles = isset( $val_item['tablet_styles'] ) ? $sanitize_css_block( $val_item['tablet_styles'] ) : '';
+						$san_val->mobile_styles = isset( $val_item['mobile_styles'] ) ? $sanitize_css_block( $val_item['mobile_styles'] ) : '';
+						$san_val->custom_styles = isset( $val_item['custom_styles'] ) ? $val_item['custom_styles'] : new stdClass();
+
+						// include only if selector or styles remain.
+						if ( '' !== $san_val->selector || '' !== $san_val->styles ) {
+							$san_entry->values[] = $san_val;
+						}
+					}
+				}
+
+				$sanitized_options->{$san_entry->key} = $san_entry;
+			}
+
+			return $sanitized_options;
 		}
 
 		public function add_page_inline_style() {
@@ -170,6 +335,10 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 				// Widgets blocks.
 				if ( isset( $global_styles['widgets'] ) && ! empty( $global_styles['widgets'] ) ) {
 					foreach ( $global_styles['widgets'] as $block_style ) {
+						// Skin styles loading if item is invalid.
+						if ( empty( $block_style ) ) {
+							continue;
+						}
 
 						// If the selector key is not allowed skip that styles.
 						if ( strpos( $block_style->key, 'qodef-widget-block' ) === false ) {
@@ -212,9 +381,13 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 				// Template blocks.
 				if ( isset( $global_styles['templates'] ) && ! empty( $global_styles['templates'] ) ) {
 					foreach ( $global_styles['templates'] as $block_style ) {
+						// Skin styles loading if item is invalid.
+						if ( empty( $block_style ) ) {
+							continue;
+						}
 
 						// If the selector key is not allowed skip that styles.
-						if ( strpos( $block_style->key, 'qodef-template-block' ) === false ) {
+						if ( empty( $block_style->key ) || strpos( $block_style->key, 'qodef-template-block' ) === false ) {
 							continue;
 						}
 
@@ -280,7 +453,12 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 					}
 
 					foreach ( $global_styles['posts'][ $page_id ] as $block_index => $block_style ) {
-						$block_style_fonts = (array) $block_style->fonts;
+						// Skin styles loading if item is invalid.
+						if ( empty( $block_style ) ) {
+							continue;
+						}
+
+						$block_style_fonts = ! empty( $block_style->fonts ) ? (array) $block_style->fonts : array();
 
 						foreach ( array_keys( $fonts ) as $font_key ) {
 							if ( array_key_exists( $font_key, $block_style_fonts ) ) {
@@ -289,7 +467,8 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 						}
 
 						// Remove unnecessary styles from the database if IDS not match or values are empty, because Gutenberg can change the block ID.
-						if ( ! empty( $get_page_content ) && property_exists( $block_style, 'key' ) ) {
+						$property_exists = is_object( $block_style ) ? property_exists( $block_style, 'key' ) : key_exists( 'key', $block_style );
+						if ( ! empty( $get_page_content ) && $property_exists ) {
 							$blocks_removed = false;
 
 							if ( empty( $block_style->values ) ) {
@@ -368,7 +547,7 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 
 			$default_font_weight = isset( $fonts['weight'] ) && is_array( $fonts['weight'] ) ? array_unique( $fonts['weight'] ) : array();
 
-			if ( ! empty( $default_font_weight ) && ( ( isset( $fonts['style'] ) && is_array( $fonts['style'] ) && in_array( 'italic', $fonts['style'] ) ) || $include_italic_fonts ) ) {
+			if ( ! empty( $default_font_weight ) && ( ( isset( $fonts['style'] ) && is_array( $fonts['style'] ) && in_array( 'italic', $fonts['style'], true ) ) || $include_italic_fonts ) ) {
 				foreach ( $default_font_weight as $font_weight_value ) {
 					$default_font_weight[] = $font_weight_value . 'i';
 				}
@@ -388,8 +567,8 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 				$default_font_string = implode( '|', $modified_default_font_family );
 
 				$fonts_full_list_args = array(
-					'family'  => urlencode( $default_font_string ),
-					'subset'  => urlencode( $font_subset_str ),
+					'family'  => rawurlencode( $default_font_string ),
+					'subset'  => rawurlencode( $font_subset_str ),
 					'display' => 'swap',
 				);
 
@@ -442,21 +621,25 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 								copy( $current_style_src, $filename ); // @codingStandardsIgnoreLine.
 
 								// Get current style content.
+								// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 								$current_style_content = @file_get_contents( $current_style_src );
 
 								if ( ! empty( $current_style_content ) ) {
-									$file_handle = @fopen( $filename, 'w+' ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_read_fopen
+									// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_read_fopen, WordPress.WP.AlternativeFunctions.file_system_operations_fopen
+									$file_handle = @fopen( $filename, 'w+' );
 
 									if ( $file_handle ) {
-										@fwrite( $file_handle, str_replace( '!important', '', $current_style_content ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fwrite
-										@fclose( $file_handle ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fclose
+										// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_read_fwrite, WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
+										@fwrite( $file_handle, str_replace( '!important', '', $current_style_content ) );
+										// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_read_fclose, WordPress.WP.AlternativeFunctions.file_system_operations_fclose
+										@fclose( $file_handle );
 									}
 
 									// Dequeue current theme styles.
 									wp_dequeue_style( $style );
 
 									// Enqueue new theme styles.
-									wp_enqueue_style( $style . '-qi-blocks', $filename_url );
+									wp_enqueue_style( $style . '-qi-blocks', $filename_url, array(), QI_BLOCKS_VERSION );
 								}
 							} else {
 
@@ -466,6 +649,7 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 									set_transient( 'qi_blocks_check_theme_gutenberg_style', 1, 86400 );
 
 									// Get current style content.
+									// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 									$current_style_content = @file_get_contents( $current_style_src );
 
 									if ( ! empty( $current_style_content ) ) {
@@ -475,11 +659,14 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 										$current_theme_style_size = strlen( $current_theme_style );
 
 										if ( $current_theme_style_size > $new_style_size ) {
-											$file_handle = @fopen( $filename, 'w+' ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_read_fopen
+											// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_read_fopen, WordPress.WP.AlternativeFunctions.file_system_operations_fopen
+											$file_handle = @fopen( $filename, 'w+' );
 
 											if ( $file_handle ) {
-												@fwrite( $file_handle, $current_theme_style ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fwrite
-												@fclose( $file_handle ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fclose
+												// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_read_fwrite, WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
+												@fwrite( $file_handle, $current_theme_style );
+												// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_read_fclose, WordPress.WP.AlternativeFunctions.file_system_operations_fclose
+												@fclose( $file_handle );
 											}
 										}
 									}
@@ -489,7 +676,7 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 								wp_dequeue_style( $style );
 
 								// Enqueue new theme styles.
-								wp_enqueue_style( $style . '-qi-blocks', $filename_url );
+								wp_enqueue_style( $style . '-qi-blocks', $filename_url, array(), QI_BLOCKS_VERSION );
 							}
 						}
 					}

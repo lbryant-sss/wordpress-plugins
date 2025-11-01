@@ -394,35 +394,4 @@ jQuery( function ( $ ) {
 
 		$( this ).hide();
 	} );
-
-	/**
-	 * Hides the Connect with Jetpack form | Shows the Activate Akismet Account form
-	 */
-	var slideAnimation = {
-	  duration: 250,
-	  easing: 'swing'
-	};
-
-	$( 'button.toggle-ak-connect' ).on( 'click', function ( e ) {
-		e.preventDefault();
-
-		$( '.akismet-title' ).hide();
-		$( '.akismet-ak-connect' ).slideToggle( slideAnimation );
-		$( 'button.toggle-ak-connect' ).hide();
-		$( '.akismet-jp-connect' ).hide();
-		$( 'button.toggle-jp-connect' ).show();
-	} );
-
-	/**
-	 * Shows the Connect with Jetpack form | Hides the Activate Akismet Account form
-	 */
-	$( 'button.toggle-jp-connect' ).on( 'click', function ( e ) {
-		e.preventDefault();
-
-		$( '.akismet-title' ).show();
-		$( '.akismet-jp-connect' ).slideToggle( slideAnimation );
-		$( 'button.toggle-jp-connect' ).hide();
-		$( '.akismet-ak-connect' ).hide();
-		$( 'button.toggle-ak-connect' ).show();
-	} );
 });

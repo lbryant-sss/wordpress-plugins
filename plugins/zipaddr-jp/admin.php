@@ -181,7 +181,7 @@ SF:&nbsp;<input type="text" name="sys_sfon" size="5" maxlength="4" value="<?php 
 <?php zipaddrjp_e($footer[7]) ?><br />
 &nbsp;&nbsp;Contact Form 7/&nbsp;MW WP Forme/&nbsp;Trust Form/&nbsp;Ninja Forms/&nbsp;WP-Members/&nbsp;WPForms<br />
 &nbsp;&nbsp;WooCommerce/&nbsp;Welcart/&nbsp;Mailform Pro/&nbsp;Forminator/&nbsp;TieredWorks/&nbsp;booking-package<br />
-&nbsp;&nbsp;SnowMonkeyForm/&nbsp;Visual Form Builder<br />
+&nbsp;&nbsp;SnowMonkeyForm/&nbsp;Visual Form Builder/&nbsp;Jet Form Builder<br />
 <br />
 <div class="btn-area">
 	<ul><li>

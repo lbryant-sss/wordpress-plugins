@@ -90,7 +90,7 @@ class Cartflows_Ca_Admin_Notices {
                             </div>
                         </div>',
 					$image_path,
-					__( 'Hello! Seems like you have used WooCommerce Cart Abandonment Recovery by CartFlows plugin to recover abandoned carts. &mdash; Thanks a ton!', 'woo-cart-abandonment-recovery' ),
+					__( 'Hello! Seems like you have used Cart Abandonment Recovery for WooCommerce by CartFlows plugin to recover abandoned carts. &mdash; Thanks a ton!', 'woo-cart-abandonment-recovery' ),
 					__( 'Could you please do us a BIG favor and give it a 5-star rating on WordPress? This would boost our motivation and help other users make a comfortable decision while choosing the CartFlows cart abandonment plugin.', 'woo-cart-abandonment-recovery' ),
 					$review_url,
 					__( 'Ok, you deserve it', 'woo-cart-abandonment-recovery' ),
@@ -128,7 +128,7 @@ class Cartflows_Ca_Admin_Notices {
 					'nps_rating_message'    => __( 'How likely are you to recommend #pluginname to your friends or colleagues?', 'woo-cart-abandonment-recovery' ),
 
 					// Step 2A i.e. positive.
-					'feedback_content'      => __( 'Could you please do us a favor and give us a 5-star rating on WordPress? It would help others choose WooCommerce Cart Abandonment Recovery with confidence. Thank you!', 'woo-cart-abandonment-recovery' ),
+					'feedback_content'      => __( 'Could you please do us a favor and give us a 5-star rating on WordPress? It would help others choose Cart Abandonment Recovery for WooCommerce with confidence. Thank you!', 'woo-cart-abandonment-recovery' ),
 					'plugin_rating_link'    => esc_url( 'https://wordpress.org/support/plugin/cartflows/reviews/?filter=5#new-post' ),
 
 					// Step 2B i.e. negative.
@@ -160,7 +160,7 @@ class Cartflows_Ca_Admin_Notices {
 			$setting_url = admin_url( 'admin.php?page=woo-cart-abandonment-recovery&action=settings#wcf-ca-weekly-report-email-settings' );
 
 			/* translators: %1$s Software Title, %2$s Plugin, %3$s Anchor opening tag, %4$s Anchor closing tag, %5$s Software Title. */
-			$message = sprintf( __( '%1$sWooCommerce Cart Abandonment recovery:%2$s We just introduced an awesome new feature, weekly order recovery reports via email. Now you can see how many orders we are recovering for your store each week, without having to log into your website. You can set the email address for these email from %3$shere.%4$s', 'woo-cart-abandonment-recovery' ), '<strong>', '</strong>', '<a class="wcf-ca-redirect-to-settings" target="_blank" href=" ' . esc_url( $setting_url ) . ' ">', '</a>' );
+			$message = sprintf( __( '%1$sCart Abandonment Recovery for WooCommerce:%2$s We just introduced an awesome new feature, weekly order recovery reports via email. Now you can see how many orders we are recovering for your store each week, without having to log into your website. You can set the email address for these email from %3$shere.%4$s', 'woo-cart-abandonment-recovery' ), '<strong>', '</strong>', '<a class="wcf-ca-redirect-to-settings" target="_blank" href=" ' . esc_url( $setting_url ) . ' ">', '</a>' );
 			$output  = '<div class="weekly-report-email-notice wcar-dismissible-notice notice notice-info is-dismissible">';
 			$output .= '<p>' . $message . '</p>';
 			$output .= '</div>';
@@ -242,7 +242,7 @@ class Cartflows_Ca_Admin_Notices {
 				/* translators: %1$s white label plugin name and %2$s deactivation link */
 				'message'              => sprintf(
 					'<div class="notice-image" style="display: flex;">
-                        <img src="%1$s" class="custom-logo" alt="WooCommerce Cart Abandonment Recovery Icon" itemprop="logo"></div>
+                        <img src="%1$s" class="custom-logo" alt="Cart Abandonment Recovery for WooCommerce Icon" itemprop="logo"></div>
                         <div class="notice-content">
                             <div class="notice-heading">
                                 %2$s

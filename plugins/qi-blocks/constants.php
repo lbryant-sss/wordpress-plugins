@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'QI_BLOCKS_VERSION', '1.4.3' );
+define( 'QI_BLOCKS_VERSION', '1.4.4' );
 define( 'QI_BLOCKS_ABS_PATH', __DIR__ );
 define( 'QI_BLOCKS_REL_PATH', dirname( plugin_basename( __FILE__ ) ) );
 define( 'QI_BLOCKS_URL_PATH', plugin_dir_url( __FILE__ ) );

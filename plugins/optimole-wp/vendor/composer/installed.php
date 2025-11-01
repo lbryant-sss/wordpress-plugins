@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'codeinwp/optimole-sdk' => array(
-            'pretty_version' => 'v1.2.2',
-            'version' => '1.2.2.0',
-            'reference' => '567557f1067c934a564154dd292a3f343749b538',
+            'pretty_version' => 'v1.2.3',
+            'version' => '1.2.3.0',
+            'reference' => '901d1f2223df875f8ea65998a76049b0341f8dd7',
             'type' => 'library',
             'install_path' => __DIR__ . '/../codeinwp/optimole-sdk',
             'aliases' => array(),
